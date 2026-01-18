@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
+import 'package:smart_store/features/auth/presentation/views/forget_password_view.dart';
 import 'package:smart_store/features/auth/presentation/views/log_in_view.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/or_widget.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/custom_social_icon.dart';
@@ -132,7 +133,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   text: 'Register',
                   onTap: () {
                     if (formKey.currentState!.validate()) {
-                      // register logic
+                      Navigator.of(context).pushNamed(ForgetPasswordView.routeName);
                     } else {
                       setState(() {
                         autoValidateMode = AutovalidateMode.always;
