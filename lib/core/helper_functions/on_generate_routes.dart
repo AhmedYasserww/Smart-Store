@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/views/log_in_view.dart';
+import '../../features/auth/presentation/views/register_view.dart';
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings) {
   switch (settings.name) {
@@ -10,8 +11,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     //    return MaterialPageRoute(builder: (context) => const OnBoardingView());
     case LogInView.routeName:
       return MaterialPageRoute(builder: (context) => const LogInView());
-    // case SignUpView.routeName:
-    //   return MaterialPageRoute(builder: (context) => const SignUpView());
+    case RegisterView.routeName:
+      return MaterialPageRoute(builder: (context) => const RegisterView());
     //   case ButtonNavBarView.routeName:
     //     return MaterialPageRoute(builder: (context) => const ButtonNavBarView());
     //   case HomeView.routeName:

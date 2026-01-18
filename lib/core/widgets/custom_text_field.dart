@@ -1,68 +1,81 @@
 import 'package:flutter/material.dart';
-
 import '../utils/app_color.dart';
+
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    this.onSaved,this.onChange,
-    this.validator, this.prefixIcon,this.suffixIcon,
-    this.obscureText =false,
+    this.onSaved,
+    this.onChange,
+    this.validator,
+    this.prefixIcon,
+    this.suffixIcon,
+    this.obscureText = false,
     this.controller,
     this.hintText,
     this.keyboardType,
   });
 
-
   final void Function(String?)? onSaved;
   final void Function(String?)? onChange;
   final String? Function(String?)? validator;
   final IconData? prefixIcon;
-  final bool obscureText ;
+  final bool obscureText;
   final TextEditingController? controller;
-  final String? hintText ;
+  final String? hintText;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
+
   @override
   Widget build(BuildContext context) {
-
     return TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      onSaved: onSaved,
+      onChanged: onChange,
+      validator: validator,
+      decoration: InputDecoration(
+        filled: true,
+        fillColor: const Color(0xffF9FAFA),
 
-      //  style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w400),
-        keyboardType: keyboardType,
-        controller: controller ,
-        obscureText:obscureText,
-        onSaved:onSaved ,
-        onChanged: onChange,
-        validator: validator,
-        decoration:InputDecoration(
-          filled: true,
-            fillColor: Color(0xffF9FAFA),
-            prefixIcon:Icon(prefixIcon,color: AppColors.primaryTextColor,size: 30,) ,
-            prefixIconColor: AppColors.primaryTextColor,
-            hintText:hintText ,
+        prefixIcon: prefixIcon != null
+            ? Icon(prefixIcon, size: 30)
+            : null,
 
-            suffixIcon: suffixIcon ,
+        prefixIconColor: WidgetStateColor.resolveWith((states) {
+          if (states.contains(WidgetState.error)) {
+            return Colors.red;
+          }
+          if (states.contains(WidgetState.focused)) {
+            return AppColors.primaryColor;
+          }
+          return AppColors.greyTextColor; // enabled
+        }),
 
-            hintStyle: const  TextStyle(
-              color: AppColors.greyTextColor,
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-            ),
-            enabledBorder: buildBorder(),
-            focusedBorder: buildBorder(),
-            errorBorder: buildBorder(Colors.red),
-            focusedErrorBorder: buildBorder(Colors.red),
-            border:  buildBorder()
+        suffixIcon: suffixIcon,
+        hintText: hintText,
+        hintStyle: const TextStyle(
+          color: AppColors.greyTextColor,
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+        ),
 
-        )
+        enabledBorder: _buildBorder(const Color(0xFFF9FAFA)),
+        focusedBorder: _buildBorder(AppColors.primaryColor),
+        errorBorder: _buildBorder(Colors.red),
+        focusedErrorBorder: _buildBorder(Colors.red),
+        border: _buildBorder(),
+      ),
     );
-
   }
-  OutlineInputBorder buildBorder([color]){
+
+  OutlineInputBorder _buildBorder([Color? color]) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(color: color ??  AppColors.primaryColor,width: 1),
+      borderSide: BorderSide(
+        color: color ?? AppColors.primaryColor,
+        width: 1,
+      ),
     );
   }
 }
-

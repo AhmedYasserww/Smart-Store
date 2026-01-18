@@ -5,6 +5,7 @@ import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widg
 
 import '../../../../../core/utils/app_dimensions.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../register_view.dart';
 import 'log_in_widgets/custom_email_text_field.dart';
 import 'log_in_widgets/custom_navigate_to_register.dart';
 import 'log_in_widgets/custom_password_text_field.dart';
@@ -141,7 +142,8 @@ class _LogInViewBodyState extends State<LogInViewBody> {
 SizedBox(height: 24,),
                         CustomButton(
                           text: "Log in",
-                          onTap: () {},
+                          onTap: () {
+                          },
                         ),
                         const SizedBox(height: 16),
                    OrDivider(),
@@ -162,9 +164,11 @@ SizedBox(height: 24,),
                         ),
                         SizedBox(height: 32,),
 
-                        CustomNavigateToRegister(
+                        CustomNavigateToRegisterOrLogin(
+                          textMessage: "Don’t have an account?",
+                          buttonText: "Sign Up",
                           onPressed: () {
-                        //    Navigator.of(context).pushNamed(SignUpView.routeName);
+                            Navigator.of(context).pushNamed(RegisterView.routeName);
                           },
                         ),
                       ],
