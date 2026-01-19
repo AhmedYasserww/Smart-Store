@@ -76,7 +76,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
             autovalidateMode: autoValidateMode,
             child: Column(
               children: [
-                const SizedBox(height: 24),
+                const SizedBox(height: 32),
                 SvgPicture.asset('assets/images/logo.svg'),
                 const SizedBox(height: 40),
 
@@ -130,7 +130,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
 
                 const SizedBox(height: 24),
                 CustomButton(
-                  text: 'Register',
+                  text: 'Sign Up',
                   onTap: () {
                     if (formKey.currentState!.validate()) {
                       Navigator.of(context).pushNamed(ForgetPasswordView.routeName);
@@ -163,6 +163,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     Navigator.of(context).pushNamed(LogInView.routeName);
                   },
                 ),
+                SizedBox(height: 16,)
+
               ],
             ),
           ),

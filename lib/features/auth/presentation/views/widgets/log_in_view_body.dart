@@ -140,7 +140,7 @@ class _LogInViewBodyState extends State<LogInViewBody> {
 
                     SizedBox(height: 24),
                     CustomButton(
-                      text: "Log in",
+                      text: "Sign in",
                       onTap: () {
                         if (formKey.currentState!.validate()) {
                           Navigator.of(
@@ -179,6 +179,7 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                         Navigator.of(context).pushNamed(RegisterView.routeName);
                       },
                     ),
+                    SizedBox(height: 16,)
                   ],
                 ),
               ),
