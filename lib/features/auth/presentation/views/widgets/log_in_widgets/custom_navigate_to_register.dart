@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/core/utils/app_color.dart';
+import 'package:smart_store/core/utils/app_style.dart';
 class CustomNavigateToRegisterOrLogin extends StatelessWidget {
   const CustomNavigateToRegisterOrLogin({super.key, required this.onPressed, required this.buttonText, required this.textMessage});
   final void Function()? onPressed;
@@ -12,11 +12,7 @@ class CustomNavigateToRegisterOrLogin extends StatelessWidget {
       children: [
       Text(
       textMessage,
-      style: TextStyle(
-        color: AppColors.greyTextColor,
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-      ),
+      style: AppStyle.styleGreyRegular16
       ),
         SizedBox(width: 6,),
         TextButton(
@@ -26,12 +22,7 @@ class CustomNavigateToRegisterOrLogin extends StatelessWidget {
           ),
           child:  Text(
             buttonText,
-            style: TextStyle(
-              color: AppColors.primaryColor,
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              decoration: TextDecoration.underline,
-            ),
+            style: AppStyle.stylePurpleMedium16.copyWith( decoration: TextDecoration.underline,)
           )
         ),
       ],

@@ -1,8 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_store/features/auth/presentation/views/log_in_view.dart';
+import 'package:smart_store/features/home/presentation/views/widgets/home_view.dart';
 import 'package:smart_store/features/onboarding/presentation/views/onboarding_view.dart';
 
 import 'core/helper_functions/on_generate_routes.dart';
@@ -30,13 +30,14 @@ class MyApp extends StatelessWidget {
       // builder: DevicePreview.appBuilder,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
-        textTheme: GoogleFonts.interTextTheme(),
+        fontFamily: 'Inter',
 
       ),
 
       onGenerateRoute: onGenerateRoutes,
-      initialRoute: OnBoardingView.routeName,
+      //initialRoute: OnBoardingView.routeName,
+       initialRoute: HomeView.routeName,
+
     );
   }
 }
-

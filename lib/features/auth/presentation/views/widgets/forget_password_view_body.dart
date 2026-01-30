@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
+import 'package:smart_store/core/utils/app_style.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/custom_email_text_field.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/required_field_label.dart';
 
 class ForgetPasswordViewBody extends StatefulWidget {
   const ForgetPasswordViewBody({super.key});
@@ -48,34 +49,16 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                 const SizedBox(height: 40),
                 Text(
                   'Forgot Password?',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.primaryTextColor,
-                  ),
+                  style: AppStyle.styleBold28,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Please enter the email address associated with your account.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.greyTextColor,
-                  ),
+                  style: AppStyle.styleGreyRegular16,
                 ),
                 const SizedBox(height: 32),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Email ',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.primaryTextColor,
-                    ),
-                  ),
-                ),
+                RequiredFieldLabel(text: 'Email'),
                 const SizedBox(height: 8),
                 EmailField(emailController: emailController),
                 const SizedBox(height: 24),

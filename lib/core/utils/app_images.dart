@@ -11,6 +11,10 @@ class AppImages {
   static const String searchIcon = 'assets/images/Search_Icon.svg';
   static const String filterIcon = 'assets/images/filterIcon.svg';
   static const String offerImage = 'assets/images/Offer_1.png';
+  static String menImage = 'assets/images/men.png';
+  static String bagImage = 'assets/images/bagImage.png';
+  static String micImage = 'assets/images/Microphone.png';
+  static String scanImage = 'assets/images/Scan.png';
 
 
 }

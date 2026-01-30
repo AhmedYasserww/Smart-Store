@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/app_color.dart';
+import 'package:smart_store/core/utils/app_style.dart';
 
 class OnBoardingTexts extends StatelessWidget {
   final String title;
@@ -21,22 +20,14 @@ class OnBoardingTexts extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style:  TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
-              color:AppColors.primaryTextColor
-            ),
+            style: AppStyle.styleBold24
           ),
         ),
         const SizedBox(height: 16),
         Text(
           subTitle,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 16,
-            color: AppColors.greyTextColor,
-            fontWeight: FontWeight.w400,
-          ),
+          style: AppStyle.styleGreyRegular16
         ),
       ],
     );

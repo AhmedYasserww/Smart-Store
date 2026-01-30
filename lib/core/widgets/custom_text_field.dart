@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/core/utils/app_style.dart';
 import '../utils/app_color.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -54,11 +55,7 @@ class CustomTextField extends StatelessWidget {
 
         suffixIcon: suffixIcon,
         hintText: hintText,
-        hintStyle: const TextStyle(
-          color: AppColors.greyTextColor,
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-        ),
+        hintStyle: AppStyle.styleGreyRegular14,
 
         enabledBorder: _buildBorder(const Color(0xFFF9FAFA)),
         focusedBorder: _buildBorder(AppColors.primaryColor),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/core/utils/app_color.dart';
 import '../../../data/on_boarding_model.dart';
 import 'on_boarding_page.dart';
 import '../../../../../features/auth/presentation/views/log_in_view.dart';
@@ -39,7 +40,7 @@ class _OnBoardingViewState extends State<OnBoardingViewBody> {
       subTitle:
       'Order your favorite fashion items easily with secure payments, fast delivery, and a smooth checkout.',
       imageAlignment: Alignment.centerRight,
-      selectedColor: Colors.black,
+      selectedColor: AppColors.primaryTextColor,
       unSelectedColor: Colors.grey,
     ),
   ];

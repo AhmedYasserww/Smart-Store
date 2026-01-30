@@ -2,9 +2,21 @@
 class Assets {
   Assets._();
 
+  static const String fontsInter18ptBold = 'assets/fonts/Inter_18pt-Bold.ttf';
+  static const String fontsInter18ptMedium = 'assets/fonts/Inter_18pt-Medium.ttf';
+  static const String fontsInter18ptRegular = 'assets/fonts/Inter_18pt-Regular.ttf';
+  static const String fontsInter18ptSemiBold = 'assets/fonts/Inter_18pt-SemiBold.ttf';
   static const String imagesAppleIcon = 'assets/images/appleIcon.svg';
+  static const String imagesArrowButton = 'assets/images/arrow_button.svg';
+  static const String imagesBagImage = 'assets/images/bagImage.png';
   static const String imagesFaceBookIcon = 'assets/images/face_bookIcon.svg';
   static const String imagesGoogleIcon = 'assets/images/googleIcon.svg';
   static const String imagesLogo = 'assets/images/logo.svg';
+  static const String imagesMen = 'assets/images/men.png';
+  static const String imagesMicrophone = 'assets/images/Microphone.png';
+  static const String imagesOnBoardingImage1 = 'assets/images/onBoardingImage1.png';
+  static const String imagesOnBoardingImage2 = 'assets/images/onBoardingImage2.png';
+  static const String imagesOnBoardingImage3 = 'assets/images/onBoardingImage3.png';
+  static const String imagesScan = 'assets/images/Scan.png';
 
 }

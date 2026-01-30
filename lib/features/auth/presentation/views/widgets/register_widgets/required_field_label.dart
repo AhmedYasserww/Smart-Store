@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../../core/utils/app_color.dart';
+import '../../../../../../core/utils/app_style.dart';
+
 class RequiredFieldLabel extends StatelessWidget {
   final String text;
 
@@ -15,11 +16,7 @@ class RequiredFieldLabel extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: text,
-          style: TextStyle(
-            color: AppColors.primaryTextColor,
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          ),
+          style: AppStyle.styleRegular14,
           children: const [
             TextSpan(
               text: ' *',
