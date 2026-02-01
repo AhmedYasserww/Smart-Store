@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 import 'package:smart_store/features/auth/presentation/views/forget_password_view.dart';
@@ -10,6 +9,7 @@ import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widg
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/confirm_password_field_widget.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/custom_name_text_field.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/required_field_label.dart';
+import '../../../../../core/utils/app_style.dart';
 import 'log_in_widgets/custom_email_text_field.dart';
 import 'log_in_widgets/custom_navigate_to_register.dart';
 import 'log_in_widgets/custom_password_text_field.dart';
@@ -79,23 +79,15 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 const SizedBox(height: 32),
                 SvgPicture.asset('assets/images/logo.svg'),
                 const SizedBox(height: 40),
-
                 Text(
-                  'Create an  account',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  'Create an account',
+                  style: AppStyle.styleBold28,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Join us and start your Smart store journey.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.greyTextColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: AppStyle.styleGreyRegular16,
                 ),
 
                 const SizedBox(height: 32),
@@ -156,7 +148,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 ),
 
                 const SizedBox(height: 32),
-                CustomNavigateToRegisterOrLogin(
+                CustomNavigateToRegisterOrLoginOrResendCode(
                   textMessage: "Have an account?",
                   buttonText: "Sign In",
                   onPressed: () {

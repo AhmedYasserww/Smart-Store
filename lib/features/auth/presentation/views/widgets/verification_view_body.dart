@@ -1,33 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_store/core/utils/app_dimensions.dart';
-import 'package:smart_store/core/utils/app_style.dart';
-import 'package:smart_store/core/widgets/custom_button.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/custom_email_text_field.dart';
-import '../../../../../core/utils/app_color.dart';
-import '../verification_view.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/verificatin_code_widgets/otp_field.dart';
 
-class ForgetPasswordViewBody extends StatefulWidget {
-  const ForgetPasswordViewBody({super.key});
+import '../../../../../core/utils/app_dimensions.dart';
+import '../../../../../core/utils/app_style.dart';
+import '../../../../../core/widgets/custom_button.dart';
+import 'log_in_widgets/custom_navigate_to_register.dart';
+
+class VerificationViewBody extends StatefulWidget {
+  const VerificationViewBody({super.key});
 
   @override
-  State<ForgetPasswordViewBody> createState() => _ForgetPasswordViewBodyState();
+  State<VerificationViewBody> createState() => _VerificationViewBodyState();
 }
 
-class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
+class _VerificationViewBodyState extends State<VerificationViewBody> {
   late TextEditingController emailController;
+  late TextEditingController otpController;
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
   @override
   void initState() {
     emailController = TextEditingController();
+    otpController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
     emailController.dispose();
+    otpController.dispose();
     super.dispose();
   }
 
@@ -47,43 +51,54 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
               children: [
                 SvgPicture.asset('assets/images/logo.svg'),
                 const SizedBox(height: 40),
+
                 Text(
-                  'Forgot Password?',
+                  'Verification Code',
                   style: AppStyle.styleBold28,
                 ),
                 const SizedBox(height: 8),
+
                 Text(
-                  'Please enter the email address associated with your account.',
+                  'Enter the 6-digit code sent to your email or phone number.',
                   textAlign: TextAlign.center,
                   style: AppStyle.styleGreyRegular16,
                 ),
+
                 const SizedBox(height: 32),
+
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'Email',
-                    style: TextStyle(
-                      color: AppColors.primaryTextColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    'Enter Verification Code',
+                    style: AppStyle.styleRegular14,
                   ),
                 ),
-                const SizedBox(height: 8),
-                EmailField(emailController: emailController),
+
+                const SizedBox(height: 16),
+
+                OtpField(controller: otpController),
+
                 const SizedBox(height: 24),
+
                 CustomButton(
-                  text: 'Reset Password',
+                  text: 'Verify',
                   onTap: () {
                     if (formKey.currentState!.validate()) {
-                      Navigator.of(
-                        context,
-                      ).pushNamed(VerificationView.routeName);
                     } else {
                       setState(() {
                         autoValidateMode = AutovalidateMode.always;
                       });
                     }
+                  },
+                ),
+
+                const SizedBox(height: 24),
+
+                CustomNavigateToRegisterOrLoginOrResendCode(
+                  textMessage: "Don’t receive a code?",
+                  buttonText: "Resend Code",
+                  onPressed: () {
+                    // resend code logic
                   },
                 ),
               ],

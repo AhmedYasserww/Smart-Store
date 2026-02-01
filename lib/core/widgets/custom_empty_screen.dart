@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../utils/app_style.dart';
 class CustomEmptyScreen extends StatelessWidget {
   final String message;
   const CustomEmptyScreen({
@@ -12,12 +13,8 @@ class CustomEmptyScreen extends StatelessWidget {
     return Center(
       child: Text(
         message,
-        style: GoogleFonts.gabarito(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Colors.grey,
-        ),
-      ),
+        style:AppStyle.styleBold18.copyWith(color: Colors.grey),
+      )
     );
   }
 }

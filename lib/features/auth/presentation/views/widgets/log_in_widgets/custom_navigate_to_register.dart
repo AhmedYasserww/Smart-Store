@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_style.dart';
-class CustomNavigateToRegisterOrLogin extends StatelessWidget {
-  const CustomNavigateToRegisterOrLogin({super.key, required this.onPressed, required this.buttonText, required this.textMessage});
+class CustomNavigateToRegisterOrLoginOrResendCode extends StatelessWidget {
+  const CustomNavigateToRegisterOrLoginOrResendCode({super.key, required this.onPressed, required this.buttonText, required this.textMessage});
   final void Function()? onPressed;
   final String buttonText ;
   final String textMessage;

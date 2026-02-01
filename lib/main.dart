@@ -1,7 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/auth/presentation/views/forget_password_view.dart';
 import 'package:smart_store/features/auth/presentation/views/log_in_view.dart';
+import 'package:smart_store/features/auth/presentation/views/verification_view.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/home_view.dart';
 import 'package:smart_store/features/onboarding/presentation/views/onboarding_view.dart';
 
@@ -36,7 +38,8 @@ class MyApp extends StatelessWidget {
 
       onGenerateRoute: onGenerateRoutes,
       //initialRoute: OnBoardingView.routeName,
-       initialRoute: HomeView.routeName,
+       initialRoute: ForgetPasswordView.routeName,
+
 
     );
   }
