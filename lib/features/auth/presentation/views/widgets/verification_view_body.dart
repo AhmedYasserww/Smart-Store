@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/verificatin_code_widgets/otp_field.dart';
 
+import '../../../../../core/helper_functions/show_alert_dialog.dart';
 import '../../../../../core/utils/app_dimensions.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -84,6 +85,7 @@ class _VerificationViewBodyState extends State<VerificationViewBody> {
                   text: 'Verify',
                   onTap: () {
                     if (formKey.currentState!.validate()) {
+                      showSuccessDialog(context);
                     } else {
                       setState(() {
                         autoValidateMode = AutovalidateMode.always;
