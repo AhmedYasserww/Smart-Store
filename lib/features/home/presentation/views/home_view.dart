@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/core/utils/app_dimensions.dart';
+import 'package:smart_store/features/home/presentation/views/widgets/custom_search_field.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/product_list_view.dart';
-import 'package:smart_store/features/home/presentation/views/widgets/search_field.dart';
-
-import '../../../../../core/utils/app_color.dart';
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/utils/app_style.dart';
-import 'category_widget.dart';
-import 'custom_app_bar.dart';
-
+import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/app_images.dart';
+import '../../../../core/utils/app_style.dart';
+import 'widgets/category_widget.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
   static const String routeName = 'home';
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
-      appBar: CustomAppBar(height: 80, title: SearchField(), hideBack: true),
-      body: HomeBody(),
+    return SafeArea(
+      child: const Scaffold(
+        body: HomeBody(),
+      ),
     );
   }
 }
@@ -27,28 +25,33 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(
-      'Font Family Used: ${Theme.of(context).textTheme.bodyMedium?.fontFamily}',
-    );
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: ListView(
-        children:const [
-          Divider(),
-          CategoryWidget(),
-          SizedBox(height: 16),
-          Text("Exclusive Offers", style: AppStyle.styleSemiBold20),
-          SizedBox(height: 16),
-          OfferCardListView(),
-          Text("Recently Viewed", style: AppStyle.styleSemiBold20),
-          SizedBox(height: 16),
-          ProductListview(),
 
-          SizedBox(height: 16),
-          Text("Recommended For You", style: AppStyle.styleSemiBold20),
-          SizedBox(height: 16),
-          ProductListview(),
-        ],
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal:AppDimensions.homeScreenPadding),
+      child: SingleChildScrollView(
+        child: Column(
+          children:const [
+            SizedBox(height: 16,),
+            CustomSearchField(),
+            SizedBox(height: 14,),
+            Divider(
+              color: Color(0xFFE5E5E5),
+            ),
+            CategoryWidget(),
+            SizedBox(height: 16),
+            Text("Exclusive Offers", style: AppStyle.styleSemiBold20),
+            SizedBox(height: 16),
+            OfferCardListView(),
+            Text("Recently Viewed", style: AppStyle.styleSemiBold20),
+            SizedBox(height: 16),
+            ProductListview(),
+
+            SizedBox(height: 16),
+            Text("Recommended For You", style: AppStyle.styleSemiBold20),
+            SizedBox(height: 16),
+            ProductListview(),
+          ],
+        ),
       ),
     );
   }

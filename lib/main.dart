@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:smart_store/features/auth/presentation/views/forget_password_view.dart';
 import 'package:smart_store/features/auth/presentation/views/log_in_view.dart';
 import 'package:smart_store/features/auth/presentation/views/verification_view.dart';
-import 'package:smart_store/features/home/presentation/views/widgets/home_view.dart';
+import 'package:smart_store/features/home/presentation/views/home_view.dart';
 import 'package:smart_store/features/onboarding/presentation/views/onboarding_view.dart';
 
 import 'core/helper_functions/on_generate_routes.dart';
+import 'features/bottom_nav_bar/presentaition/views/bottom_nav_bar_view.dart';
 
 void main() {
   runApp(
@@ -38,8 +39,8 @@ class MyApp extends StatelessWidget {
 
       onGenerateRoute: onGenerateRoutes,
       //initialRoute: OnBoardingView.routeName,
-       initialRoute: ForgetPasswordView.routeName,
-
+    //   initialRoute: ForgetPasswordView.routeName,
+      initialRoute: CustomNavigationBar.routeName,
 
     );
   }

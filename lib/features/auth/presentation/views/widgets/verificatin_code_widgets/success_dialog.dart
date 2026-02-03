@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_store/features/home/presentation/views/widgets/home_view.dart';
+import 'package:smart_store/features/home/presentation/views/home_view.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 

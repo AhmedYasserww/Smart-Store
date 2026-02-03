@@ -17,6 +17,7 @@ class Assets {
   static const String imagesOnBoardingImage1 = 'assets/images/onBoardingImage1.png';
   static const String imagesOnBoardingImage2 = 'assets/images/onBoardingImage2.png';
   static const String imagesOnBoardingImage3 = 'assets/images/onBoardingImage3.png';
-  static const String imagesScan = 'assets/images/Scan.png';
+  static const String imagesScan = 'assets/images/Scan.svg';
+  static const String imagesSuccessIcon = 'assets/images/success_icon.svg';
 
 }
