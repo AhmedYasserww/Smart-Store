@@ -5,12 +5,13 @@ class ProductListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 260,
+      height: 256,
       child: ListView.separated(
+        padding: const EdgeInsets.only(bottom: 8),
         scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
+
         itemBuilder: (context, index) => const ProductCard(),
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
+        separatorBuilder: (context, index) => const SizedBox(width: 22),
         itemCount: 10,
       ),
     );

@@ -7,16 +7,13 @@ class CategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text("Categories", style: AppStyle.styleSemiBold18),
-          SizedBox(height: 16),
-          CategoriesListView(),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [
+        Text("Categories", style: AppStyle.styleSemiBold18),
+        SizedBox(height: 16),
+        CategoriesListView(),
+      ],
     );
   }
 }
