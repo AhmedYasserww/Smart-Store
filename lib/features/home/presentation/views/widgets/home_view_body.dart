@@ -3,6 +3,7 @@ import 'package:smart_store/features/home/presentation/views/widgets/product_lis
 import 'package:smart_store/features/home/presentation/views/widgets/section_title.dart';
 
 import '../../../../../core/utils/app_dimensions.dart';
+import '../../../../search/presentation/views/search_view.dart';
 import 'category_widget.dart';
 import 'custom_search_field.dart';
 import 'offer_card_list_view.dart';
@@ -22,33 +23,37 @@ class HomeViewBody extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             SizedBox(height: _sectionSpacing),
-            CustomSearchField(),
+            CustomSearchField(
+              readOnly: true,
+              onTap: () {
+                Navigator.of(context).pushNamed(SearchView.routeName);
+              },
+            ),
+            const SizedBox(height: _sectionSpacing),
+            const Divider(height: 0, color: Color(0xFFE5E5E5)),
 
-            SizedBox(height: _sectionSpacing),
-            Divider(height: 0, color: Color(0xFFE5E5E5)),
+            const SizedBox(height: _sectionSpacing),
+            const CategoryWidget(),
 
-            SizedBox(height: _sectionSpacing),
-            CategoryWidget(),
+            const SizedBox(height: _sectionSpacing),
+            const SectionTitle(title: 'Exclusive Offers'),
 
-            SizedBox(height: _sectionSpacing),
-            SectionTitle(title: 'Exclusive Offers'),
+            const SizedBox(height: _sectionSpacing),
+            const  OfferCardListView(),
 
-            SizedBox(height: _sectionSpacing),
-            OfferCardListView(),
+            const  SizedBox(height: _largeSpacing),
+            const SectionTitle(title: 'Recently Viewed'),
 
-            SizedBox(height: _largeSpacing),
-            SectionTitle(title: 'Recently Viewed'),
+            const SizedBox(height: _sectionSpacing),
+            const ProductListview(),
 
-            SizedBox(height: _sectionSpacing),
-            ProductListview(),
+            const SizedBox(height: 8),
+            const SectionTitle(title: 'Recommended For You'),
 
-            SizedBox(height: 8),
-            SectionTitle(title: 'Recommended For You'),
-
-            SizedBox(height: _sectionSpacing),
-            ProductListview(),
+            const SizedBox(height: _sectionSpacing),
+            const ProductListview(),
           ],
         ),
       ),

@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_store/core/utils/app_style.dart';
-import 'package:smart_store/features/home/presentation/views/widgets/search_field.dart';
 import '../../../../../core/utils/app_images.dart';
+import '../../../../../core/utils/app_style.dart';
 
 class CustomSearchField extends StatelessWidget {
-  const CustomSearchField({super.key});
+  const CustomSearchField({
+    super.key,
+    this.controller,
+    this.readOnly = false,
+    this.autofocus = false,
+    this.onTap,
+    this.onChanged,
+    this.hintText = 'Search on Smart Store...',
+  });
+
+  final TextEditingController? controller;
+  final bool readOnly;
+  final bool autofocus;
+  final VoidCallback? onTap;
+  final ValueChanged<String>? onChanged;
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      readOnly: true,
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => const SearchView(),
-          ),
-        );
-      },
+      controller: controller,
+      readOnly: readOnly,
+      autofocus: autofocus,
+      onTap: onTap,
+      onChanged: onChanged,
       decoration: InputDecoration(
         filled: true,
         fillColor: const Color(0xffF9FAFA),
@@ -27,18 +37,25 @@ class CustomSearchField extends StatelessWidget {
         enabledBorder: _buildBorder(),
         focusedBorder: _buildBorder(),
         disabledBorder: _buildBorder(),
+
         isDense: true,
         contentPadding: EdgeInsets.zero,
 
-        /// 🔍 Search icon
+        /// 🔍 search icon
         prefixIcon: SizedBox(
           height: 17,
-            width: 17,
-            child: Center(child: SvgPicture.asset(AppImages.searchIcon,))),
+          width: 17,
+          child: Center(
+            child: SvgPicture.asset(
+              AppImages.searchIcon,
+            ),
+          ),
+        ),
 
-        hintText: "Search on Smart Store...",
-        hintStyle:AppStyle.styleGreyRegular14,
+        hintText: hintText,
+        hintStyle: AppStyle.styleGreyRegular14,
 
+        /// 🎤 + 📷
         suffixIcon: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -55,11 +72,12 @@ class CustomSearchField extends StatelessWidget {
       ),
     );
   }
+
   OutlineInputBorder _buildBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: BorderSide(
-        color: const Color(0xFF666666),
+      borderSide: const BorderSide(
+        color: Color(0xFF666666),
         width: 1,
       ),
     );
