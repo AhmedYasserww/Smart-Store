@@ -57,7 +57,7 @@ class CustomTextField extends StatelessWidget {
         hintText: hintText,
         hintStyle: AppStyle.styleGreyRegular14,
 
-        enabledBorder: _buildBorder(const Color(0xFFF9FAFA)),
+        enabledBorder: _buildBorder(AppColors.palletBorderColor),
         focusedBorder: _buildBorder(AppColors.primaryColor),
         errorBorder: _buildBorder(Colors.red),
         focusedErrorBorder: _buildBorder(Colors.red),

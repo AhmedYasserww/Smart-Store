@@ -81,7 +81,12 @@ class AppStyle {
 
   //////////////////////////////////////
   //Medium
-
+  static const styleMedium16 = TextStyle(
+    color: Color(0xFF1A1515),
+    fontSize: 16,
+    fontFamily: "Inter",
+    fontWeight: FontWeight.w500,
+  );
   static const styleGreyMedium12 = TextStyle(
     color: Color(0xff666666),
     fontSize: 12,
@@ -174,6 +179,12 @@ class AppStyle {
   static const styleRegular14 = TextStyle(
     color: Color(0xFF1A1515),
     fontSize: 14,
+    fontFamily: "Inter",
+    fontWeight: FontWeight.w400,
+  );
+  static const styleRegular18 = TextStyle(
+    color: Color(0xFF1A1515),
+    fontSize: 18,
     fontFamily: "Inter",
     fontWeight: FontWeight.w400,
   );

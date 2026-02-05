@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_style.dart';
+import '../../find_size_view.dart';
 class SizeSelector extends StatefulWidget {
   const SizeSelector({super.key});
 
@@ -23,7 +24,9 @@ class _SizeSelectorState extends State<SizeSelector> {
           children: [
             Text('Size', style: AppStyle.styleSemiBold18),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(FindSizeView.routeName);
+              },
               child: Text(
                 "Find your size",
                 style: AppStyle.styleMedium14.copyWith(
