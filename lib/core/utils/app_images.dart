@@ -15,6 +15,8 @@ class AppImages {
   static String bagImage = 'assets/images/bagImage.png';
   static String micImage = 'assets/images/Microphone.svg';
   static String scanImage = 'assets/images/Scan.svg';
+  static String vto = 'assets/images/VTO.svg';
+  static String checkImage = 'assets/images/check_circle.svg';
 
 
 }
