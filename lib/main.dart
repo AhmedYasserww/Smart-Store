@@ -28,9 +28,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
+       debugShowCheckedModeBanner: false,
+      // useInheritedMediaQuery: true,
+      // locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,

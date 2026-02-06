@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/product_info_card.dart';
+import 'package:smart_store/features/products/presentation/views/product_details_view.dart';
 
 import '../../../../../core/utils/app_images.dart';
 class ProductCard extends StatefulWidget {
@@ -19,7 +20,9 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).pushNamed(ProductDetailsView.routeName);
+      },
       borderRadius: BorderRadius.circular(16),
       child: Container(
         width: cardWidth,
