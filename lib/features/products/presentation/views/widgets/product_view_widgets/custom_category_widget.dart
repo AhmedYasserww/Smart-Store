@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/app_style.dart';
 
-class FilterWidget extends StatefulWidget {
-  const FilterWidget({super.key});
+class CustomCategoryWidget extends StatefulWidget {
+  const CustomCategoryWidget({super.key});
 
   @override
-  State<FilterWidget> createState() => _FilterWidgetState();
+  State<CustomCategoryWidget> createState() => _CustomCategoryWidgetState();
 }
 
-class _FilterWidgetState extends State<FilterWidget> {
+class _CustomCategoryWidgetState extends State<CustomCategoryWidget> {
   List<String> filterList = ['All', 'Women', 'Men', 'Kids', 'Accessories'];
   int selectedIndex = 0;
   @override

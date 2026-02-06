@@ -5,14 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../data/product_or_list_cubit/product_or_list_cubit.dart';
 
-class ProductButton extends StatefulWidget {
-  const ProductButton({super.key});
+class ProductToggleButton extends StatefulWidget {
+  const ProductToggleButton({super.key});
 
   @override
-  State<ProductButton> createState() => _ProductButtonState();
+  State<ProductToggleButton> createState() => _ProductToggleButtonState();
 }
 
-class _ProductButtonState extends State<ProductButton> {
+class _ProductToggleButtonState extends State<ProductToggleButton> {
   bool isProduct = true;
 
   @override
