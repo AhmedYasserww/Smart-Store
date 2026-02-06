@@ -18,5 +18,13 @@ class AppImages {
   static String vto = 'assets/images/VTO.svg';
   static String checkImage = 'assets/images/check_circle.svg';
 
+  static const String filterIcon1 = 'assets/images/filterIcon_1.svg';
+  static const String filterIcon2 = 'assets/images/filterIcon_2.svg';
+  static const String productIcon = 'assets/images/ProductIcon.svg';
+  static const String whiteProductIcon = 'assets/images/whiteProductIcon.svg';
+  static const String blackListIcon = 'assets/images/blackListIcon.svg';
+  static const String listIcon = 'assets/images/ListIcon.svg';
+  static const String exitIcon = 'assets/images/ExitIcon.svg';
+
 
 }

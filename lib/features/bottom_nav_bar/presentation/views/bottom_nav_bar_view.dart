@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_color.dart';
+import 'package:smart_store/features/products/presentation/views/product_view.dart';
 import '../../../../core/utils/app_style.dart';
 import '../../../home/presentation/views/home_view.dart';
-
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key});
   static const String routeName = 'bottom-nav-bar';
@@ -16,7 +16,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
 
   final List<Widget> items = const [
     HomeView(),
-    ProductView(),
+   ProductView(),
     CartView(),
     MoreView(),
   ];
@@ -111,26 +111,7 @@ class _CurvePainter extends CustomPainter {
 }
 
 // ---------- Screens ----------
-class ProductView extends StatelessWidget {
-  const ProductView({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final textPainter = TextPainter(
-      text: TextSpan(
-        text: 'Products',
-        style: AppStyle.styleRegular12,
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-
-    final double widthOfProducts = textPainter.width;
-    print('Width of "Products": $widthOfProducts');
-    return const Scaffold(
-      body: Center(child: Text("Product View")),
-    );
-  }
-}
 
 class CartView extends StatelessWidget {
   const CartView({super.key});

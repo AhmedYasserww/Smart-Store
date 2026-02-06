@@ -4,11 +4,12 @@ import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/auth/presentation/views/log_in_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/auth/presentation/views/verification_view.dart';
-import '../../features/bottom_nav_bar/presentaition/views/bottom_nav_bar_view.dart';
+import '../../features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/products/presentation/views/find_size_view.dart';
 import '../../features/products/presentation/views/product_details_view.dart';
+import '../../features/products/presentation/views/product_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings) {
@@ -36,6 +37,9 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const ProductDetailsView());
     case FindSizeView.routeName:
       return MaterialPageRoute(builder: (context) => const FindSizeView());
+    case ProductView.routeName:
+      return MaterialPageRoute(builder: (context) => const ProductView());
+
 
   //   case ButtonNavBarView.routeName:
     //     return MaterialPageRoute(builder: (context) => const ButtonNavBarView());

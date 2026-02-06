@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String assetsImagesMicrophone = 'assets/images/Microphone.svg';
   static const String fontsInter18ptBold = 'assets/fonts/Inter_18pt-Bold.ttf';
   static const String fontsInter18ptMedium = 'assets/fonts/Inter_18pt-Medium.ttf';
   static const String fontsInter18ptRegular = 'assets/fonts/Inter_18pt-Regular.ttf';
@@ -9,15 +10,26 @@ class Assets {
   static const String imagesAppleIcon = 'assets/images/appleIcon.svg';
   static const String imagesArrowButton = 'assets/images/arrow_button.svg';
   static const String imagesBagImage = 'assets/images/bagImage.png';
+  static const String imagesBlackListIcon = 'assets/images/blackListIcon.svg';
+  static const String imagesCheckCircle = 'assets/images/check_circle.svg';
+  static const String imagesDressTest = 'assets/images/dress_test.jpg';
+  static const String imagesExitIcon = 'assets/images/ExitIcon.svg';
   static const String imagesFaceBookIcon = 'assets/images/face_bookIcon.svg';
+  static const String imagesFilterIcon1 = 'assets/images/filterIcon_1.svg';
+  static const String imagesFilterIcon2 = 'assets/images/filterIcon_2.svg';
   static const String imagesGoogleIcon = 'assets/images/googleIcon.svg';
+  static const String imagesListIcon = 'assets/images/ListIcon.svg';
   static const String imagesLogo = 'assets/images/logo.svg';
   static const String imagesMen = 'assets/images/men.png';
   static const String imagesMicrophone = 'assets/images/Microphone.png';
   static const String imagesOnBoardingImage1 = 'assets/images/onBoardingImage1.png';
   static const String imagesOnBoardingImage2 = 'assets/images/onBoardingImage2.png';
   static const String imagesOnBoardingImage3 = 'assets/images/onBoardingImage3.png';
+  static const String imagesProductIcon = 'assets/images/ProductIcon.svg';
   static const String imagesScan = 'assets/images/Scan.svg';
+  static const String imagesSearch = 'assets/images/search.svg';
   static const String imagesSuccessIcon = 'assets/images/success_icon.svg';
+  static const String imagesVTO = 'assets/images/VTO.svg';
+  static const String imagesWhiteProductIcon = 'assets/images/whiteProductIcon.svg';
 
 }
