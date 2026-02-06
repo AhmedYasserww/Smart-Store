@@ -4,7 +4,7 @@ import 'package:smart_store/features/products/presentation/views/widgets/product
 
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
-import 'custom_bottom_sheet.dart';
+import 'custom_bottom_sheet_widget/custom_bottom_sheet.dart';
 import 'filter_widget.dart';
 class ProductFilterWidget extends StatelessWidget {
   const ProductFilterWidget({super.key});

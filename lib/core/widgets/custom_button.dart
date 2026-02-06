@@ -10,12 +10,13 @@ class CustomButton extends StatelessWidget {
     required this.text,
     required this.onTap,
     this.buttonColor,
-    this.height,
+    this.height, this.textButtonColor,
   });
 
   final String text;
   final void Function() onTap;
   final Color? buttonColor;
+  final Color? textButtonColor;
   final double? height;
 
   @override
@@ -32,7 +33,7 @@ class CustomButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style:AppStyle.styleWhiteRegular16
+            style:AppStyle.styleWhiteRegular16.copyWith(color: textButtonColor ?? Colors.white),
           ),
         ),
       ),
