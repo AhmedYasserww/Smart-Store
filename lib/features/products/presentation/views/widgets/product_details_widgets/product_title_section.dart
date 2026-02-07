@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../../core/helper_functions/show_try_on_dialog.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
 class ProductTitleSection extends StatelessWidget {
@@ -17,7 +18,9 @@ class ProductTitleSection extends StatelessWidget {
           ),
         ),
         InkWell(
-            onTap: (){},
+            onTap: () {
+              showTryOnDialog(context);
+            },
             child: SvgPicture.asset(AppImages.vto))
       ],
     );

@@ -11,6 +11,7 @@ import '../../features/products/presentation/views/find_size_view.dart';
 import '../../features/products/presentation/views/product_details_view.dart';
 import '../../features/products/presentation/views/product_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
+import '../../features/vto/presentation/views/vto_view.dart';
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings) {
   switch (settings.name) {
@@ -39,7 +40,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const FindSizeView());
     case ProductView.routeName:
       return MaterialPageRoute(builder: (context) => const ProductView());
-
+    case VtoView.routeName:
+      return MaterialPageRoute(builder: (context) => const VtoView());
 
   //   case ButtonNavBarView.routeName:
     //     return MaterialPageRoute(builder: (context) => const ButtonNavBarView());
