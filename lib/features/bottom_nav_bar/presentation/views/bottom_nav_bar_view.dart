@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/features/products/presentation/views/product_view.dart';
 import '../../../../core/utils/app_style.dart';
+import '../../../cart/presentation/views/cart_view.dart';
 import '../../../home/presentation/views/home_view.dart';
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key});
@@ -112,17 +113,6 @@ class _CurvePainter extends CustomPainter {
 
 // ---------- Screens ----------
 
-
-class CartView extends StatelessWidget {
-  const CartView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Cart View")),
-    );
-  }
-}
 
 class MoreView extends StatelessWidget {
   const MoreView({super.key});

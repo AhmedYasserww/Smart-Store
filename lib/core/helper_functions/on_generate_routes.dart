@@ -5,6 +5,7 @@ import '../../features/auth/presentation/views/log_in_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/auth/presentation/views/verification_view.dart';
 import '../../features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
+import '../../features/cart/presentation/views/cart_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/products/presentation/views/find_size_view.dart';
@@ -42,6 +43,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const ProductView());
     case VtoView.routeName:
       return MaterialPageRoute(builder: (context) => const VtoView());
+    case CartView.routeName:
+      return MaterialPageRoute(builder: (context) => const CartView());
 
   //   case ButtonNavBarView.routeName:
     //     return MaterialPageRoute(builder: (context) => const ButtonNavBarView());
