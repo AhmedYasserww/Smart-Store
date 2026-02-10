@@ -1,35 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_store/core/utils/app_color.dart';
 
 import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_style.dart';
+
 class CartItem extends StatelessWidget {
   const CartItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.only(top: 24),
       elevation: 3,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(16),
       ),
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Image (no radius)
             Image.asset(
               AppImages.bagImage,
-              width: 90,
-              height: 110,
+              width: 85,
+              height: 100,
               fit: BoxFit.cover,
             ),
 
-            const SizedBox(width: 12),
+            const SizedBox(width: 8),
 
-            /// Content
+
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,19 +49,24 @@ class CartItem extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {},
-                        child: const Icon(
-                          Icons.close,
-                          size: 20,
-                        ),
+                        child: SvgPicture.asset(AppImages.circleRemove),
                       ),
                     ],
                   ),
 
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 8),
 
-                  Text(
-                    'Quantity: 1',
-                    style: AppStyle.styleGreyRegular12,
+                  Row(
+                    children: [
+                      Text(
+                        'Quantity: ',
+                        style: AppStyle.styleGreyRegular12,
+                      ),
+                      Text(
+                        ' 1',
+                        style: AppStyle.styleGreyRegular12,
+                      ),
+                    ],
                   ),
 
                   const SizedBox(height: 4),
@@ -75,19 +83,18 @@ class CartItem extends StatelessWidget {
                     children: [
                       Text(
                         '\$49.99',
-                        style: AppStyle.styleSemiBold16,
+                        style: AppStyle.styleMedium16,
                       ),
 
-                      const SizedBox(width: 12),
+                    Spacer(),
 
                       Text(
                         'Move to Wishlist',
-                        style: AppStyle.styleRegular12.copyWith(
-                          color: Theme.of(context).primaryColor,
+                        style: AppStyle.styleSemiBold10.copyWith(
+                          color:Color(0xff2861AB),
                         ),
                       ),
-
-                      const Spacer(),
+                      SizedBox(width: 8,),
 
                       Row(
                         children: [
@@ -128,8 +135,8 @@ class CartItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 28,
-        height: 28,
+        width: 20,
+        height: 20,
         decoration: const BoxDecoration(
           color: Color(0xFFBFBFBF),
           shape: BoxShape.circle,

@@ -25,6 +25,7 @@ class AppImages {
   static const String blackListIcon = 'assets/images/blackListIcon.svg';
   static const String listIcon = 'assets/images/ListIcon.svg';
   static const String exitIcon = 'assets/images/ExitIcon.svg';
+  static const String circleRemove = 'assets/images/circle_remove.svg';
 
 
 }

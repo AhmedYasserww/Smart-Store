@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       ),
 
       onGenerateRoute: onGenerateRoutes,
-      //initialRoute: OnBoardingView.routeName,
+     // initialRoute: OnBoardingView.routeName,
       // initialRoute: ProductDetailsView.routeName,
       initialRoute: CustomNavigationBar.routeName,
 
