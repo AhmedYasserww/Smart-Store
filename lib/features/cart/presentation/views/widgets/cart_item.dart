@@ -22,7 +22,6 @@ class CartItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// Image (no radius)
             Image.asset(
               AppImages.bagImage,
               width: 85,
@@ -37,7 +36,6 @@ class CartItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// Title + Close
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -77,8 +75,6 @@ class CartItem extends StatelessWidget {
                   ),
 
                   const SizedBox(height: 8),
-
-                  /// Price + Wishlist + Counter
                   Row(
                     children: [
                       Text(
@@ -86,17 +82,30 @@ class CartItem extends StatelessWidget {
                         style: AppStyle.styleMedium16,
                       ),
 
-                    Spacer(),
+                      const SizedBox(width: 8),
 
-                      Text(
-                        'Move to Wishlist',
-                        style: AppStyle.styleSemiBold10.copyWith(
-                          color:Color(0xff2861AB),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              'Move to Wishlist',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppStyle.styleSemiBold10.copyWith(
+                                color: const Color(0xff2861AB),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      SizedBox(width: 8,),
+
+                      const SizedBox(width: 8),
 
                       Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           _circleButton(
                             context: context,
@@ -118,6 +127,9 @@ class CartItem extends StatelessWidget {
                       ),
                     ],
                   ),
+
+
+
                 ],
               ),
             ),

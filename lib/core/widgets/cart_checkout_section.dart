@@ -18,7 +18,7 @@ class CartCheckoutSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 24),
+        const SizedBox(height: 16),
 
         Divider(thickness: 1 ,height: 0,color: AppColors.palletBorderColor ,),
 
