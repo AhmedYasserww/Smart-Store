@@ -27,6 +27,10 @@ class AppImages {
   static const String exitIcon = 'assets/images/ExitIcon.svg';
   static const String circleRemove = 'assets/images/circle_remove.svg';
   static const String emptyCart = 'assets/images/empty_cart.svg';
+  static const String deleteOutline = 'assets/images/delete-outline.svg';
+  static const String editIcon = 'assets/images/icon_edit-thin.svg';
+  static const String locationIcon = 'assets/images/location_icon.svg';
+  static const String arrowUpIcon = 'assets/images/icon_arrow_up.svg';
 
 
 }

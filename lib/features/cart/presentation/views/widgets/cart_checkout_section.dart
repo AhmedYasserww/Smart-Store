@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 
-import '../utils/app_color.dart';
-import '../utils/app_style.dart';
+import '../../../../../core/utils/app_color.dart';
+import '../../../../../core/utils/app_style.dart';
 
 class CartCheckoutSection extends StatelessWidget {
   const CartCheckoutSection({

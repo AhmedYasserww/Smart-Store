@@ -87,6 +87,18 @@ class AppStyle {
     fontFamily: "Inter",
     fontWeight: FontWeight.w500,
   );
+  static const styleMedium12 = TextStyle(
+    color: Color(0xFF1A1515),
+    fontSize: 12,
+    fontFamily: "Inter",
+    fontWeight: FontWeight.w500,
+  );
+  static const styleMedium20 = TextStyle(
+    color: Color(0xFF1A1515),
+    fontSize: 20,
+    fontFamily: "Inter",
+    fontWeight: FontWeight.w500,
+  );
   static const styleGreyMedium12 = TextStyle(
     color: Color(0xff666666),
     fontSize: 12,

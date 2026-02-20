@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
     required this.onTap,
     this.buttonColor,
     this.height, this.textButtonColor,
+    this.border
   });
 
   final String text;
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
   final Color? buttonColor;
   final Color? textButtonColor;
   final double? height;
+  final BoxBorder? border;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         height: height?? 48,
         decoration: BoxDecoration(
+          border:border,
           borderRadius: BorderRadius.circular(AppDimensions.buttonRadius),
           color: buttonColor ?? AppColors.primaryColor,
         ),
