@@ -6,6 +6,7 @@ import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/auth/presentation/views/verification_view.dart';
 import '../../features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../features/cart/presentation/views/cart_view.dart';
+import '../../features/delivery/presentation/views/delevery_option_view.dart';
 import '../../features/delivery/presentation/views/delivery_address_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
@@ -48,7 +49,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const CartView());
     case DeliveryAddressView.routeName:
       return MaterialPageRoute(builder: (context) => const DeliveryAddressView());
-
+    case DeliveryOptionView.routeName:
+      return MaterialPageRoute(builder: (context) => const DeliveryOptionView());
 
 
     default:
