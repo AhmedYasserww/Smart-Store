@@ -4,7 +4,9 @@ import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 
 class CustomDeliveryAppBar extends StatelessWidget {
-  const CustomDeliveryAppBar({super.key});
+  const CustomDeliveryAppBar({super.key, required this.value, required this.textValue});
+  final double value;
+  final String textValue;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class CustomDeliveryAppBar extends StatelessWidget {
                   width: 48,
                   height: 48,
                   child: CircularProgressIndicator(
-                    value: 0.25,
+                    value: value,
                     strokeWidth: 8,
                     backgroundColor: AppColors.palletBorderColor,
                     valueColor: AlwaysStoppedAnimation(
@@ -31,7 +33,7 @@ class CustomDeliveryAppBar extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '1/4',
+                  textValue,
                   style: AppStyle.styleRegular16,
                 ),
               ],

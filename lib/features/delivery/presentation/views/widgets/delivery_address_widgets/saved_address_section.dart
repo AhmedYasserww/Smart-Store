@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../data/address_model.dart';
-import '../radio_circle.dart';
+import '../custom_select_container.dart';
 class SavedAddressSection extends StatelessWidget {
+
   const SavedAddressSection({
     super.key,
     required this.address,
@@ -20,53 +20,79 @@ class SavedAddressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
+
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
-        Text('Saved Address', style: AppStyle.styleSemiBold16),
+
+        Text(
+          'Saved Address',
+          style: AppStyle.styleSemiBold16,
+        ),
+
         const SizedBox(height: 24),
 
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFFF3EEFB) : Colors.white,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              width: 1,
-              color: isSelected
-                  ?  Color(0xFF5D3A82)
-                  : AppColors.palletBorderColor,
-            ),
-          ),
+        SelectableContainer(
+
+          isSelected: isSelected,
+
+          onTap: onSelect,
+
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+
             children: [
-              GestureDetector(
-                onTap: onSelect,
-                child: RadioCircle(isSelected: isSelected),
-              ),
-              const SizedBox(width: 16),
 
               Expanded(
+
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  crossAxisAlignment:
+                  CrossAxisAlignment.start,
+
                   children: [
-                    Text(address.name, style: AppStyle.styleSemiBold16),
+
+                    Text(
+                      address.name,
+                      style: AppStyle.styleSemiBold16,
+                    ),
+
                     const SizedBox(height: 8),
-                    Text(address.phone, style: AppStyle.styleMedium12),
+
+                    Text(
+                      address.phone,
+                      style: AppStyle.styleMedium12,
+                    ),
+
                     const SizedBox(height: 8),
-                    Text(address.address, style: AppStyle.styleMedium12),
+
+                    Text(
+                      address.address,
+                      style: AppStyle.styleMedium12,
+                    ),
+
                   ],
+
                 ),
+
               ),
 
               SvgPicture.asset(AppImages.editIcon),
+
               const SizedBox(width: 12),
-              SvgPicture.asset(AppImages.deleteOutline),
+
+              SvgPicture.asset(
+                  AppImages.deleteOutline),
+
             ],
+
           ),
+
         ),
+
       ],
+
     );
   }
 }

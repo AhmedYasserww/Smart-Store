@@ -34,7 +34,10 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const CustomDeliveryAppBar(),
+        const CustomDeliveryAppBar(
+          textValue: "1/4",
+          value: .25,
+        ),
 
         Expanded(
           child: SingleChildScrollView(
