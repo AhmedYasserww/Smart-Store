@@ -6,13 +6,13 @@ class DeliveryOptionItem extends StatelessWidget {
   const DeliveryOptionItem({
     super.key,
     required this.title,
-    required this.subtitle,
+     this.subtitle,
     required this.isSelected,
     required this.onTap,
   });
 
   final String title;
-  final String subtitle;
+  final String ? subtitle;
   final bool isSelected;
   final VoidCallback onTap;
 
@@ -30,11 +30,11 @@ class DeliveryOptionItem extends StatelessWidget {
             style: AppStyle.styleMedium14,
           ),
           const SizedBox(height: 8),
-          Text(
-            subtitle,
-            style: AppStyle.styleGreyMedium12,
-          ),
-
+          if (subtitle != null)
+            Text(
+              subtitle!,
+              style: AppStyle.styleMedium12,
+            ),
         ],
 
       ),

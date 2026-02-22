@@ -9,6 +9,7 @@ import '../../features/cart/presentation/views/cart_view.dart';
 import '../../features/delivery/presentation/views/delevery_option_view.dart';
 import '../../features/delivery/presentation/views/delivery_address_view.dart';
 import '../../features/delivery/presentation/views/payment_method_view.dart';
+import '../../features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/products/presentation/views/find_size_view.dart';
@@ -54,7 +55,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const DeliveryOptionView());
     case PaymentMethodView.routeName:
       return MaterialPageRoute(builder: (context) => const PaymentMethodView());
-
+case ReviewAndConfirmDeliveryView.routeName:
+  return MaterialPageRoute(builder: (context) => const ReviewAndConfirmDeliveryView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
