@@ -35,6 +35,8 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
     return Column(
       children: [
         const CustomDeliveryAppBar(
+          title: "Delivery Address",
+          nextStepValue: "Next Delivery Option",
           textValue: "1/4",
           value: .25,
         ),

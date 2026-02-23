@@ -5,7 +5,6 @@ import '../review_and_confirm_delivery_view.dart';
 import 'back_and_continue_buttons.dart';
 import 'custom_delivery_app_bar.dart';
 import 'delivery_option_widgets/delivery_option_item.dart';
-
 class PaymentMethodViewBody extends StatefulWidget {
   const PaymentMethodViewBody({super.key});
   @override
@@ -18,6 +17,8 @@ class _PaymentMethodViewBodyState extends State<PaymentMethodViewBody> {
     return Column(
       children: [
         const CustomDeliveryAppBar(
+          title: "Payment Method",
+          nextStepValue: "Next Review & Confirm",
           value: .75,
           textValue: "3/4",
         ),

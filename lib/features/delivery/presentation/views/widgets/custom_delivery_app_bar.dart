@@ -4,9 +4,16 @@ import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 
 class CustomDeliveryAppBar extends StatelessWidget {
-  const CustomDeliveryAppBar({super.key, required this.value, required this.textValue});
+  const CustomDeliveryAppBar({super.key, required this.value,
+    required this.textValue,
+    required this.nextStepValue,
+    this.isHaveSubtitle = true,
+    required this.title});
   final double value;
   final String textValue;
+  final String nextStepValue;
+  final String title;
+  final bool ? isHaveSubtitle;
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +21,7 @@ class CustomDeliveryAppBar extends StatelessWidget {
       color: Color(0xffF9FAFA),
       child: Padding(
         padding: const EdgeInsets.only(top: 48,bottom: 16,left: 16,right: 16),
+
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -41,21 +49,23 @@ class CustomDeliveryAppBar extends StatelessWidget {
 
             const SizedBox(width: 12),
 
-
-            Column(
+isHaveSubtitle == true ? Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  'Delivery Address',
+                  title,
                   style: AppStyle.styleMedium20,
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Next Delivery Option',
+                  nextStepValue,
                   style: AppStyle.styleGreyRegular12,
                 ),
               ],
-            ),
+            ) : Text(
+          title,
+  style: AppStyle.styleMedium20,
+),
           ],
         ),
 

@@ -23,6 +23,8 @@ class _DeliveryOptionViewBodyState extends State<DeliveryOptionViewBody> {
       children: [
 
         const CustomDeliveryAppBar(
+          title: "Delivery Option",
+          nextStepValue: "Next Delivery Method",
           value: .5,
           textValue: "2/4",
         ),
