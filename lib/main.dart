@@ -9,6 +9,7 @@ import 'package:smart_store/features/onboarding/presentation/views/onboarding_vi
 
 import 'core/helper_functions/on_generate_routes.dart';
 import 'features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
+import 'features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
 import 'features/products/presentation/views/product_details_view.dart';
 
 void main() {
@@ -40,8 +41,8 @@ class MyApp extends StatelessWidget {
 
       onGenerateRoute: onGenerateRoutes,
      // initialRoute: OnBoardingView.routeName,
-      // initialRoute: ProductDetailsView.routeName,
-      initialRoute: CustomNavigationBar.routeName,
+       initialRoute: ReviewAndConfirmDeliveryView.routeName,
+     // initialRoute: CustomNavigationBar.routeName,
 
     );
   }

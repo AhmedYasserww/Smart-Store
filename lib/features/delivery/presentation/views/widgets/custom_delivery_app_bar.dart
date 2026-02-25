@@ -49,7 +49,8 @@ class CustomDeliveryAppBar extends StatelessWidget {
 
             const SizedBox(width: 12),
 
-isHaveSubtitle == true ? Column(
+isHaveSubtitle == true ?
+Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(

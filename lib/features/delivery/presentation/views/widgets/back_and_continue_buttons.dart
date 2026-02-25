@@ -9,10 +9,14 @@ class BackAndContinueButtons extends StatelessWidget {
     super.key,
     required this.isEnabled,
     required this.onContinue,
+    this.continueButtonColor,
+    this.title,
   });
 
   final bool isEnabled;
   final VoidCallback onContinue;
+  final Color ? continueButtonColor ;
+  final String ? title;
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +47,8 @@ class BackAndContinueButtons extends StatelessWidget {
           Expanded(
             child: isEnabled
                 ? CustomButton(
-              text: 'Continue',
-              buttonColor: AppColors.primaryColor,
+              text: title ?? 'Continue',
+              buttonColor:continueButtonColor?? AppColors.primaryColor,
               textButtonColor: Colors.white,
               onTap: onContinue,
             )
