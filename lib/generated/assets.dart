@@ -8,6 +8,7 @@ class Assets {
   static const String fontsInter18ptRegular = 'assets/fonts/Inter_18pt-Regular.ttf';
   static const String fontsInter18ptSemiBold = 'assets/fonts/Inter_18pt-SemiBold.ttf';
   static const String imagesAppleIcon = 'assets/images/appleIcon.svg';
+  static const String imagesArrivedIcon = 'assets/images/arrived_icon.svg';
   static const String imagesArrowButton = 'assets/images/arrow_button.svg';
   static const String imagesBagImage = 'assets/images/bagImage.png';
   static const String imagesBlackListIcon = 'assets/images/blackListIcon.svg';
@@ -59,7 +60,6 @@ class Assets {
   static const String imagesScan = 'assets/images/Scan.svg';
   static const String imagesSearch = 'assets/images/search.svg';
   static const String imagesSellerIcon = 'assets/images/seller_icon.svg';
-  static const String imagesShippedIcon = 'assets/images/ShippedIcon.png';
   static const String imagesSuccessIcon = 'assets/images/success_icon.svg';
   static const String imagesVTO = 'assets/images/VTO.svg';
   static const String imagesWhiteProductIcon = 'assets/images/whiteProductIcon.svg';

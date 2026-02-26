@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
+import 'package:smart_store/features/delivery/presentation/views/confirm_order_view.dart';
 import 'package:smart_store/features/delivery/presentation/views/widgets/custom_delivery_app_bar.dart';
 import 'package:smart_store/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/delivery_information_card.dart';
 import 'package:smart_store/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/order_summary_card.dart';
@@ -52,7 +53,7 @@ class ReviewAndConfirmDeliveryViewBody extends StatelessWidget {
 title: "Confirm Payment",
 isEnabled: true,
           onContinue: () {
-          //  Navigator.of(context).pushNamed(PaymentMethodView.routeName);
+            Navigator.of(context).pushNamed(ConfirmOrderView.routeName);
           },
 
         ),

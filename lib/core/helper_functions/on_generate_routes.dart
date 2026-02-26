@@ -6,6 +6,7 @@ import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/auth/presentation/views/verification_view.dart';
 import '../../features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../features/cart/presentation/views/cart_view.dart';
+import '../../features/delivery/presentation/views/confirm_order_view.dart';
 import '../../features/delivery/presentation/views/delevery_option_view.dart';
 import '../../features/delivery/presentation/views/delivery_address_view.dart';
 import '../../features/delivery/presentation/views/payment_method_view.dart';
@@ -15,6 +16,7 @@ import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/products/presentation/views/find_size_view.dart';
 import '../../features/products/presentation/views/product_details_view.dart';
 import '../../features/products/presentation/views/product_view.dart';
+import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/vto/presentation/views/vto_view.dart';
 
@@ -55,8 +57,12 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const DeliveryOptionView());
     case PaymentMethodView.routeName:
       return MaterialPageRoute(builder: (context) => const PaymentMethodView());
-case ReviewAndConfirmDeliveryView.routeName:
-  return MaterialPageRoute(builder: (context) => const ReviewAndConfirmDeliveryView());
+   case ReviewAndConfirmDeliveryView.routeName:
+      return MaterialPageRoute(builder: (context) => const ReviewAndConfirmDeliveryView());
+  case ConfirmOrderView.routeName:
+    return MaterialPageRoute(builder: (context) => const ConfirmOrderView());
+case ProfileView.routeName:
+  return MaterialPageRoute(builder: (context) => const ProfileView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

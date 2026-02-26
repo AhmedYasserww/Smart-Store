@@ -62,7 +62,7 @@ class AppImages {
   static const String orderConfirmIcon = 'assets/images/correct_icon.svg';
   static const String processingIcon = 'assets/images/Processing.svg';
   static const String deliveredIcon = 'assets/images/DeliveredIcon.svg';
-  static const String shippedIcon = 'assets/images/ShippedIcon.png';
+  static const String shippedIcon = 'assets/images/shipped_icon.svg';
   static const String arrivedIcon = 'assets/images/arrived_icon.svg';
 
 
