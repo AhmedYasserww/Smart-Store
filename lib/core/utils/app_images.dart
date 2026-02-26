@@ -32,6 +32,15 @@ class AppImages {
   static const String locationIcon = 'assets/images/location_icon.svg';
   static const String arrowUpIcon = 'assets/images/icon_arrow_up.svg';
   static const String correctIcon = 'assets/images/correct_icon.svg';
+  static const String homeOutlined = 'assets/images/home_outlined.svg';
+  static const String homeFilled = 'assets/images/home-filled.svg';
+  static const String cartOutlined = 'assets/images/cart-outline.svg';
+  static const String cartFilled = 'assets/images/cart_filled.svg';
+  static const String productOutlined = 'assets/images/product-outlined.svg';
+  static const String productFilled = 'assets/images/product-filled.svg';
+  static const String moreIcon = 'assets/images/more_outlined.svg';
+
+
 
 
 }

@@ -11,6 +11,7 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    //  backgroundColor: Colors.red,
       appBar: AppBar(
       backgroundColor: Colors.white,
       centerTitle: true,

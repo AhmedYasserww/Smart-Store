@@ -17,7 +17,7 @@ class ProductsSliver extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 16,
-              childAspectRatio: 0.71,
+              childAspectRatio: 0.65,
             ),
             delegate: SliverChildBuilderDelegate(
               (_, __) => const ProductCard(),

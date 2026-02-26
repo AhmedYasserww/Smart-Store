@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
       // useInheritedMediaQuery: true,
       // locale: DevicePreview.locale(context),
-      // builder: DevicePreview.appBuilder,
+      builder: DevicePreview.appBuilder,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Inter',
@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
 
       onGenerateRoute: onGenerateRoutes,
      // initialRoute: OnBoardingView.routeName,
-       initialRoute: ReviewAndConfirmDeliveryView.routeName,
-     // initialRoute: CustomNavigationBar.routeName,
+      // initialRoute: ReviewAndConfirmDeliveryView.routeName,
+      initialRoute: CustomNavigationBar.routeName,
 
     );
   }
