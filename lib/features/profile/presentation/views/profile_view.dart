@@ -10,14 +10,25 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffFBFBFB),
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
         elevation: 0,
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
-
-        backgroundColor: Colors.white,
-        title: Text("Profile", style: AppStyle.styleSemiBold20),
-        centerTitle: true,
+        title: Text(
+          'Profile',
+          style: AppStyle.styleSemiBold20,
+        ),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          child: Divider(
+            height: 1,
+            thickness: 1,
+            color: AppColors.palletBorderColor,
+          ),
+        ),
       ),
       body: ProfileViewBody(),
     );
