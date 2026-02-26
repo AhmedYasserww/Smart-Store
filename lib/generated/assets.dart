@@ -11,8 +11,11 @@ class Assets {
   static const String imagesArrowButton = 'assets/images/arrow_button.svg';
   static const String imagesBagImage = 'assets/images/bagImage.png';
   static const String imagesBlackListIcon = 'assets/images/blackListIcon.svg';
+  static const String imagesCartFilled = 'assets/images/cart_filled.svg';
+  static const String imagesCartOutline = 'assets/images/cart-outline.svg';
   static const String imagesCheckCircle = 'assets/images/check_circle.svg';
   static const String imagesCircleRemove = 'assets/images/circle_remove.svg';
+  static const String imagesCorrectIcon = 'assets/images/correct_icon.svg';
   static const String imagesDeleteOutline = 'assets/images/delete-outline.svg';
   static const String imagesDressTest = 'assets/images/dress_test.jpg';
   static const String imagesEmptyCart = 'assets/images/empty_cart.svg';
@@ -21,6 +24,8 @@ class Assets {
   static const String imagesFilterIcon1 = 'assets/images/filterIcon_1.svg';
   static const String imagesFilterIcon2 = 'assets/images/filterIcon_2.svg';
   static const String imagesGoogleIcon = 'assets/images/googleIcon.svg';
+  static const String imagesHomeFilled = 'assets/images/home-filled.svg';
+  static const String imagesHomeOutlined = 'assets/images/home_outlined.svg';
   static const String imagesIconArrowUp = 'assets/images/icon_arrow_up.svg';
   static const String imagesIconEditThin = 'assets/images/icon_edit-thin.svg';
   static const String imagesListIcon = 'assets/images/ListIcon.svg';
@@ -28,10 +33,13 @@ class Assets {
   static const String imagesLogo = 'assets/images/logo.svg';
   static const String imagesMen = 'assets/images/men.png';
   static const String imagesMicrophone = 'assets/images/Microphone.png';
+  static const String imagesMoreOutlined = 'assets/images/more_outlined.svg';
   static const String imagesOnBoardingImage1 = 'assets/images/onBoardingImage1.png';
   static const String imagesOnBoardingImage2 = 'assets/images/onBoardingImage2.png';
   static const String imagesOnBoardingImage3 = 'assets/images/onBoardingImage3.png';
+  static const String imagesProductFilled = 'assets/images/product-filled.svg';
   static const String imagesProductIcon = 'assets/images/ProductIcon.svg';
+  static const String imagesProductOutlined = 'assets/images/product-outlined.svg';
   static const String imagesScan = 'assets/images/Scan.svg';
   static const String imagesSearch = 'assets/images/search.svg';
   static const String imagesSuccessIcon = 'assets/images/success_icon.svg';
