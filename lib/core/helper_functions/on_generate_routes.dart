@@ -16,6 +16,7 @@ import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/products/presentation/views/find_size_view.dart';
 import '../../features/products/presentation/views/product_details_view.dart';
 import '../../features/products/presentation/views/product_view.dart';
+import '../../features/profile/presentation/views/edit_profile_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/vto/presentation/views/vto_view.dart';
@@ -63,6 +64,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     return MaterialPageRoute(builder: (context) => const ConfirmOrderView());
 case ProfileView.routeName:
   return MaterialPageRoute(builder: (context) => const ProfileView());
+  case EditProfileView.routeName:
+    return MaterialPageRoute(builder: (context) => const EditProfileView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

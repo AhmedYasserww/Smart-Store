@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../core/utils/app_color.dart';
-import '../../../../../core/utils/app_style.dart';
+import '../../../../../../core/utils/app_color.dart';
+import '../../../../../../core/utils/app_style.dart';
 
 class ListTileItem extends StatelessWidget {
   final String icon;

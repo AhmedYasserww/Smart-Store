@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_images.dart';
+import '../../../../../../core/utils/app_images.dart';
+import '../../edit_profile_view.dart';
 import 'list_tile_item.dart';
 
 
@@ -23,7 +24,7 @@ class ListTileListView extends StatelessWidget {
               icon: AppImages.groupIcon,
               title: "Edit Profile",
               onTap: () {
-                // Handle Edit Profile tap
+               Navigator.of(context).pushNamed(EditProfileView.routeName);
               },
             ),
             ListTileItem(

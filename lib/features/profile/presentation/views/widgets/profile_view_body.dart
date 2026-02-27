@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/features/profile/presentation/views/widgets/profile_info_card.dart';
 import '../../../../../core/utils/app_style.dart';
-import 'become_seller_widget.dart';
-import 'connect_with_us_widget.dart';
-import 'list_tile_list_view.dart';
-import 'logout_button_widget.dart';
+import 'profile_view_widgets/become_seller_widget.dart';
+import 'profile_view_widgets/connect_with_us_widget.dart';
+import 'profile_view_widgets/list_tile_list_view.dart';
+import 'profile_view_widgets/logout_button_widget.dart';
+import 'profile_view_widgets/profile_info_card.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});

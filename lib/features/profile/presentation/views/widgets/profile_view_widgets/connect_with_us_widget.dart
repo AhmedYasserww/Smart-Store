@@ -2,10 +2,9 @@
 import 'package:flutter/material.dart';
 
 
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/utils/app_style.dart';
+import '../../../../../../core/utils/app_images.dart';
+import '../../../../../../core/utils/app_style.dart';
 import 'custom_social_icon_button.dart';
-
 class ConnectWithUsWidget extends StatelessWidget {
   const ConnectWithUsWidget({super.key});
 

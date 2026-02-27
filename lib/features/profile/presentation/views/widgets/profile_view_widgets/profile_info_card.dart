@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_color.dart';
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/utils/app_style.dart';
+import '../../../../../../core/utils/app_color.dart';
+import '../../../../../../core/utils/app_images.dart';
+import '../../../../../../core/utils/app_style.dart';
 
 class ProfileInfoCard extends StatelessWidget {
   const ProfileInfoCard({super.key});
