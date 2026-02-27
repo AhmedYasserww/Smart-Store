@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
+import 'package:smart_store/features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 
 import 'confirm_order_widgets/delivery_address_widget.dart';
 import 'confirm_order_widgets/order_details_widget.dart';
@@ -35,7 +36,12 @@ class ConfirmOrderViewBody extends StatelessWidget {
                 ),
               ),
             ),
-           CustomButton(text: "Continue Shopping", onTap: (){})
+           CustomButton(text: "Continue Shopping", onTap: (){
+             Navigator.of(context).pushNamedAndRemoveUntil(
+               CustomNavigationBar.routeName,
+                   (route) => false,
+             );
+           })
           ],
         ),
       ),

@@ -3,8 +3,8 @@ import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/features/delivery/presentation/views/delevery_option_view.dart';
 import 'package:smart_store/features/delivery/presentation/views/widgets/delivery_address_widgets/saved_address_section.dart';
 import '../../../data/address_model.dart';
-import 'back_and_continue_buttons.dart';
-import 'custom_delivery_app_bar.dart';
+import 'gereral_saved_address_widgets/back_and_continue_buttons.dart';
+import 'gereral_saved_address_widgets/custom_delivery_app_bar.dart';
 import 'delivery_address_widgets/delivery_address_form_section.dart';
 import 'delivery_address_widgets/delivery_address_manual_section.dart';
 

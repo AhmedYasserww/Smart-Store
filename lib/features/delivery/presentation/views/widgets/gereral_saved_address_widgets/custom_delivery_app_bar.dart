@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_color.dart';
-import '../../../../../core/utils/app_style.dart';
+import '../../../../../../core/utils/app_color.dart';
+import '../../../../../../core/utils/app_style.dart';
 
 class CustomDeliveryAppBar extends StatelessWidget {
   const CustomDeliveryAppBar({super.key, required this.value,
