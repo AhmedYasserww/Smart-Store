@@ -32,6 +32,12 @@ class AppStyle {
     fontFamily: "Inter",
     fontWeight: FontWeight.w700,
   );
+  static const styleBold32 = TextStyle(
+    color: Color(0xFF1A1515),
+    fontSize: 32,
+    fontFamily: "Inter",
+    fontWeight: FontWeight.w700,
+  );
   static const styleBold28 = TextStyle(
     color: Color(0xFF1A1515),
     fontSize: 28,
