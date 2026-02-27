@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../../../core/utils/app_style.dart';
+
 class OrderStatusTile extends StatelessWidget {
   const OrderStatusTile({
     super.key,
@@ -11,7 +10,8 @@ class OrderStatusTile extends StatelessWidget {
     required this.icon,
     required this.circleColor,
     required this.lineColor,
-    this.isSvg = false,
+    this.isLast = false,
+    this.isSelected = false,
   });
 
   final String title;
@@ -19,32 +19,64 @@ class OrderStatusTile extends StatelessWidget {
   final String icon;
   final Color circleColor;
   final Color lineColor;
-  final bool isSvg;
+  final bool isLast;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          CircleAvatar(
-            backgroundColor: circleColor,
-            radius: 12,
-            child: isSvg
-                ? SvgPicture.asset(
-                    icon,
-                    height: 13,
-                    width: 13,
-                    fit: BoxFit.contain,
-                  )
-                : Image.asset(icon, height: 13, width: 13, fit: BoxFit.contain),
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+
+        Column(
+          children: [
+
+            CircleAvatar(
+              radius: 14,
+              backgroundColor: circleColor,
+              child: SvgPicture.asset(
+                icon,
+                height: 14,
+                width: 14,
+              ),
+            ),
+
+            if(!isLast)
+              Container(
+                width: 2,
+                height: 40,
+                color: lineColor,
+              ),
+
+          ],
+        ),
+        SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+
+              Text(
+                title,
+                style: isSelected
+                    ? AppStyle.styleBold14
+                    : AppStyle.styleGreyRegular14.copyWith(
+            fontWeight: FontWeight.w700
+                ),
+              ),
+
+              SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: AppStyle.styleGreyRegular12,
+              ),
+
+            ],
           ),
-          Container(width: 2, height: 32, color: lineColor),
-        ],
-      ),
-      title: Text(title, style: AppStyle.styleBold14),
-      subtitle: Text(subtitle, style: AppStyle.styleGreyRegular12),
+        ),
+
+      ],
     );
   }
 }

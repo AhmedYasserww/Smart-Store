@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/features/delivery/presentation/views/widgets/confirm_order_widgets/row_item.dart';
+import 'package:smart_store/core/utils/app_color.dart';
+import 'package:smart_store/features/delivery/presentation/views/widgets/confirm_order_widgets/item_order_details.dart';
 
 import '../../../../../../core/utils/app_style.dart';
 
@@ -10,6 +11,10 @@ class OrderDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Color(0xFFFFFFFF),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: AppColors.palletBorderColor, width: 1),
+      ),
       elevation: 1,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -18,34 +23,43 @@ class OrderDetailsWidget extends StatelessWidget {
           children: [
             Text("Order Details", style: AppStyle.styleBold16),
             SizedBox(height: 16),
-            RowItem(text1: "Classic Blue Suit x 1", text2: "\$49.99"),
+            ItemOrderDetails(text1: "Classic Blue Suit x 1", text2: "\$49.99"),
             SizedBox(height: 16),
 
-            RowItem(text1: "Classic Blue Suit x 1", text2: "\$49.99"),
+            ItemOrderDetails(text1: "Classic Blue Suit x 1", text2: "\$49.99"),
             SizedBox(height: 16),
 
-            RowItem(text1: "Classic Blue Suit x 1", text2: "\$49.99"),
+            ItemOrderDetails(text1: "Classic Blue Suit x 1", text2: "\$49.99"),
 
             SizedBox(height: 16),
-            Divider(),
+            Divider(
+              height: 0,
+              color: AppColors.palletBorderColor,
+            ),
             SizedBox(height: 16),
-            RowItem(text1: "Subtotal", text2: "\$149.97"),
+            ItemOrderDetails(text1: "Subtotal", text2: "\$149.97"),
             SizedBox(height: 16),
 
-            RowItem(text1: "Shipping Fee", text2: "\$4.99"),
+            ItemOrderDetails(text1: "Shipping Fee", text2: "\$4.99"),
             SizedBox(height: 16),
-            RowItem(text1: "Discount", text2: "\$10.99"),
+            ItemOrderDetails(text1: "Discount", text2: "\$10.99"),
             SizedBox(height: 16),
-            Divider(),
+            Divider(
+              height: 0,
+              color: AppColors.palletBorderColor,
+            ),
             SizedBox(height: 16),
             Row(
               children: [
                 Text("Total", style: AppStyle.styleBold16),
                 Spacer(),
-                Text(
-                  "\$143.97",
-                  style: AppStyle.styleSemiBold18.copyWith(
-                    color: Color(0xFF5D3A82),
+                Opacity(
+                  opacity: .9,
+                  child: Text(
+                    "\$143.97",
+                    style: AppStyle.styleSemiBold18.copyWith(
+                      color: AppColors.primaryColor,
+                    ),
                   ),
                 ),
               ],

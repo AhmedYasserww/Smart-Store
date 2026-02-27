@@ -6,9 +6,36 @@ class DeliveryAddressWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return
+    //   Container(
+    //     width: 408,
+    //     padding: const EdgeInsets.all(16),
+    // decoration: ShapeDecoration(
+    // color: Colors.white,
+    // shape: RoundedRectangleBorder(
+    // side: BorderSide(
+    // width: 1,
+    // color: const Color(0xFFE5E5E5),
+    // ),
+    // borderRadius: BorderRadius.circular(16),
+    // ),
+    // shadows: [
+    // BoxShadow(
+    // color: Color(0x19000000),
+    // blurRadius: 2,
+    // offset: Offset(0, 0),
+    // spreadRadius: -1,
+    // )BoxShadow(
+    // color: Color(0x19000000),
+    // blurRadius: 3,
+    // offset: Offset(0, 0),
+    // spreadRadius: 0,
+    // )
+    // ],
+    // ),
+      Card(
       color: Color(0xFFFFFFFF),
-      elevation: 1,
+      elevation: 2,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -20,7 +47,7 @@ class DeliveryAddressWidget extends StatelessWidget {
             SizedBox(height: 16),
             Text(
               "Danial Joe",
-              style: AppStyle.styleRegular12.copyWith(color: Color(0xFF1A1515)),
+              style: AppStyle.styleRegular12
             ),
             SizedBox(height: 8),
             Text("12 Nile Road, Cairo", style: AppStyle.styleGreyRegular12),

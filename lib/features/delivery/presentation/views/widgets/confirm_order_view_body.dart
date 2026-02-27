@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 
 import 'confirm_order_widgets/delivery_address_widget.dart';
@@ -13,22 +14,20 @@ class ConfirmOrderViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Padding(
+        padding:  const EdgeInsets.symmetric(horizontal: AppDimensions.homeScreenPadding,),
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    spacing: 16,
                     children: [
                       TopThankYouWidget(),
-                      SizedBox(height: 16),
                       OrderDetailsWidget(),
-                      SizedBox(height: 16),
                       OrderStatusWidget(),
-                      SizedBox(height: 16),
                       DeliveryAddressWidget(),
                       SizedBox(height: 16),
                     ],
@@ -36,9 +35,9 @@ class ConfirmOrderViewBody extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-         CustomButton(text: "Continue Shopping", onTap: (){})
-        ],
+           CustomButton(text: "Continue Shopping", onTap: (){})
+          ],
+        ),
       ),
     );
   }

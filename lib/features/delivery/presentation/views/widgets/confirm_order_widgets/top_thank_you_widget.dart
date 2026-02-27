@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_store/core/utils/app_color.dart';
 
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
@@ -14,12 +16,8 @@ class TopThankYouWidget extends StatelessWidget {
           radius: 40,
           backgroundColor: Color(0xFF5D3A82),
 
-          child: Image.asset(
+          child: SvgPicture.asset(
             AppImages.orderConfirmIcon,
-            height: 40,
-            width: 40,
-            fit: BoxFit.contain,
-            color: Color(0xFFFFFFFF),
           ),
         ),
         SizedBox(height: 24),
@@ -27,18 +25,17 @@ class TopThankYouWidget extends StatelessWidget {
         SizedBox(height: 16),
         Text(
           "Your payment has been processed successfully",
-          style: AppStyle.styleRegular14.copyWith(color: Color(0xFF666666)),
+          style: AppStyle.styleGreyRegular14,
         ),
         SizedBox(height: 8),
         Container(
-          height: 40,
-          width: 220,
           decoration: BoxDecoration(
             color: Color(0xFFF3EEFB),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(width: 2, color: Color(0xFF5D3A82)),
+            border: Border.all(width: 2, color: AppColors.primaryColor),
           ),
-          child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 24),
             child: Text(
               "Order #123456",
               style: AppStyle.styleMedium14.copyWith(color: Color(0xFF5D3A82)),

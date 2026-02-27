@@ -8,7 +8,6 @@ class ConfirmOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFFFFF),
       body: ConfirmOrderViewBody(),
     );
   }
