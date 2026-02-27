@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_images.dart';
@@ -16,7 +17,9 @@ class ProfileInfoCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             image: DecorationImage(
-              image: AssetImage(AppImages.infoImage),
+              image: Svg(
+                AppImages.infoImage,
+              ),
               fit: BoxFit.cover,
             ),
           ),

@@ -34,8 +34,6 @@ class Assets {
   static const String imagesHomeOutlined = 'assets/images/home_outlined.svg';
   static const String imagesIconArrowUp = 'assets/images/icon_arrow_up.svg';
   static const String imagesIconEditThin = 'assets/images/icon_edit-thin.svg';
-  static const String imagesInfo = 'assets/images/info.png';
-  static const String imagesInfo2 = 'assets/images/info_2.png';
   static const String imagesInsita = 'assets/images/Insita.svg';
   static const String imagesKeyIcon = 'assets/images/key_icon.svg';
   static const String imagesLinkedIn = 'assets/images/LinkedIn.svg';
@@ -60,6 +58,7 @@ class Assets {
   static const String imagesScan = 'assets/images/Scan.svg';
   static const String imagesSearch = 'assets/images/search.svg';
   static const String imagesSellerIcon = 'assets/images/seller_icon.svg';
+  static const String imagesShippedIcon = 'assets/images/shipped_icon.svg';
   static const String imagesSuccessIcon = 'assets/images/success_icon.svg';
   static const String imagesVTO = 'assets/images/VTO.svg';
   static const String imagesWhiteProductIcon = 'assets/images/whiteProductIcon.svg';

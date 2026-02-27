@@ -26,7 +26,13 @@ class ReadyToConfirmPaymentWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 16,
         children: [
-         SvgPicture.asset(AppImages.correctIcon),
+         CircleAvatar(
+           radius: 24,
+           backgroundColor: AppColors.primaryColor,
+             child: Padding(
+               padding: const EdgeInsets.all(8.0),
+               child: SvgPicture.asset(AppImages.correctIcon),
+             )),
           Text(
             'Ready to Confirm Payment',
             textAlign: TextAlign.center,

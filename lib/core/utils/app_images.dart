@@ -40,13 +40,13 @@ class AppImages {
   static const String productFilled = 'assets/images/product-filled.svg';
   static const String moreIcon = 'assets/images/more_outlined.svg';
 
-  static const String info2Image = 'assets/images/info_2.png';
+  static const String info2Image = 'assets/images/info2.svg';
   static const String sellerIcon = 'assets/images/seller_icon.svg';
   static const String notificationIcon = 'assets/images/notification_icon.svg';
   static const String savedAddressIcon = 'assets/images/saved_address_icon.svg';
   static const String groupIcon = 'assets/images/group_icon.svg';
   static const String keyIcon = 'assets/images/key_icon.svg';
-  static const String infoImage = 'assets/images/info.png';
+  static const String infoImage = 'assets/images/info.svg';
   static const String ordersIcon = 'assets/images/Orders.svg';
   static const String returnsIcon = 'assets/images/Returns.svg';
   static const String wishlistIcon = 'assets/images/Wishlist.svg';
@@ -58,12 +58,14 @@ class AppImages {
   static const String instagramIcon = 'assets/images/Insita.svg';
   static const String facebookIcon = 'assets/images/FaceBook.svg';
   static const String linkedInIcon = 'assets/images/LinkedIn.svg';
+  static const String lightCamera = 'assets/images/light_camera.svg';
 
   static const String orderConfirmIcon = 'assets/images/correct_icon.svg';
   static const String processingIcon = 'assets/images/Processing.svg';
   static const String deliveredIcon = 'assets/images/DeliveredIcon.svg';
   static const String shippedIcon = 'assets/images/shipped_icon.svg';
   static const String arrivedIcon = 'assets/images/arrived_icon.svg';
+  static const String circleAvatar ='assets/images/circle_avatar.svg';
 
 
 }

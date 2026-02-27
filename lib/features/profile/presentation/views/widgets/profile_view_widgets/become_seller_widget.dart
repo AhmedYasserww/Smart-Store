@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart' as sv;
 
 class BecomeSellerWidget extends StatelessWidget {
   const BecomeSellerWidget({super.key});
@@ -14,7 +15,9 @@ class BecomeSellerWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         image: DecorationImage(
-          image: AssetImage(AppImages.info2Image),
+          image: sv.Svg(
+            AppImages.info2Image,
+          ),
           fit: BoxFit.cover,
         ),
       ),
