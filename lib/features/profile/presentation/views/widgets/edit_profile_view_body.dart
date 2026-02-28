@@ -6,6 +6,7 @@ import 'package:smart_store/core/widgets/custom_button.dart';
 import 'package:smart_store/core/widgets/custom_text_field.dart';
 import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_style.dart';
+import 'edit_profile_view_widgets/custom_profile_action_button.dart';
 
 class EditProfileViewBody extends StatelessWidget {
   const EditProfileViewBody({super.key});
@@ -18,13 +19,12 @@ class EditProfileViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 32),
-
           Center(
             child: Stack(
               children: [
                 Container(
-                  height: 90,
-                  width: 90,
+                  height: 88,
+                  width: 88,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -47,7 +47,7 @@ class EditProfileViewBody extends StatelessWidget {
                 Positioned(
                   bottom: 0,
                   right: 0,
-                  child: GestureDetector(
+                  child: InkWell(
                     onTap: () {
                     },
                     child: SvgPicture.asset(
@@ -108,27 +108,9 @@ class EditProfileViewBody extends StatelessWidget {
 
           const SizedBox(height: 32),
 
-          Row(
-            children: [
-              Expanded(
-                child: CustomButton(
-                  buttonColor: Colors.white,
-                  textButtonColor: AppColors.primaryTextColor,
-                  border: Border.all(
-                    color: AppColors.palletBorderColor,
-                  ),
-                  text: "Delete",
-                  onTap: () {},
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: CustomButton(
-                  text: "Save Changes",
-                  onTap: () {},
-                ),
-              ),
-            ],
+          CustomProfileActionButtons(
+            onDeleteTap: () {},
+            onSaveTap: () {},
           ),
         ],
       ),

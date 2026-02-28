@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/profile/presentation/views/change_password_view.dart';
 
 import '../../../../../../core/utils/app_images.dart';
 import '../../edit_profile_view.dart';
@@ -31,7 +32,7 @@ class ListTileListView extends StatelessWidget {
               icon: AppImages.keyIcon,
               title: "Change Password",
               onTap: () {
-                // Handle Change Password tap
+                Navigator.of(context).pushNamed(ChangePasswordView.routeName);
               },
             ),
             ListTileItem(
