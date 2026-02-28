@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/orders/presentation/views/orders_view.dart';
 import 'package:smart_store/features/profile/presentation/views/change_password_view.dart';
 
 import '../../features/auth/presentation/views/forget_password_view.dart';
@@ -69,6 +70,8 @@ case ProfileView.routeName:
     return MaterialPageRoute(builder: (context) => const EditProfileView());
   case ChangePasswordView.routeName:
     return MaterialPageRoute(builder: (context) => const ChangePasswordView());
+    case OrdersView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrdersView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

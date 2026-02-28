@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/orders/presentation/views/orders_view.dart';
 import 'package:smart_store/features/profile/presentation/views/change_password_view.dart';
 
 import '../../../../../../core/utils/app_images.dart';
@@ -39,7 +40,7 @@ class ListTileListView extends StatelessWidget {
               icon: AppImages.ordersIcon,
               title: "My Orders",
               onTap: () {
-                // Handle My Orders tap
+                Navigator.of(context).pushNamed(OrdersView.routeName);
               },
             ),
             ListTileItem(
