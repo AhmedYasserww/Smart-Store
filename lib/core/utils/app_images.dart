@@ -73,5 +73,15 @@ class AppImages {
   static const String deliveryIcon = 'assets/images/mdi_location.svg';
   static const String dateIcon = 'assets/images/date_icon.svg';
 
+  static const String correctSolidIcon = 'assets/images/solid_success_icon.svg';
+  static const String checkDouble = 'assets/images/check-double.svg';
+  static const String orderProcessing = 'assets/images/processing_icon.svg';
+  static const String orderArrivedIcon = "assets/images/order_arrived_icon.svg";
+  static const String orderOutOfDeliveryIcon = "assets/images/order_out_of_delivery.svg";
+static const String orderShippedIcon = "assets/images/order_shipped_icon.svg";
+
+static const String emptyOrderImage = "assets/images/empty_order.svg";
+static const String emptyReturnImage = "assets/images/empty_return.svg";
+static const String emptyFavoriteImage = "assets/images/empty_favorite.svg";
 
 }

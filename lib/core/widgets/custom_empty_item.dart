@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_store/core/utils/app_images.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
-import 'package:smart_store/features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
-
 import '../utils/app_style.dart';
 
-class CustomEmptyCart extends StatelessWidget {
-  const CustomEmptyCart({super.key});
+class CustomEmptyItem extends StatelessWidget {
+  const CustomEmptyItem({super.key, required this.title, required this.subtitle, required this.imagePath, required this.buttonTitle, required this.onTap});
+  final String title;
+  final String subtitle;
+  final String imagePath;
+  final String buttonTitle;
+  final VoidCallback onTap;
 
   double _clamp(double value, double min, double max) {
     return value.clamp(min, max);
@@ -27,12 +29,13 @@ class CustomEmptyCart extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(AppImages.emptyCart),
-
+       //   SvgPicture.asset(AppImages.emptyCart),
+SvgPicture.asset(imagePath),
           const SizedBox(height: 24),
 
           Text(
-            "Your Cart is empty",
+            title,
+           // "Your Cart is empty",
             style: AppStyle.styleBold20,
           ),
 
@@ -43,8 +46,9 @@ class CustomEmptyCart extends StatelessWidget {
               horizontal: textHorizontalPadding,
             ),
             child: Text(
-              "Looks like you haven’t added anything yet."
-                  " Start exploring products now!",
+              subtitle,
+            //  "Looks like you haven’t added anything yet."
+            //      " Start exploring products now!",
               textAlign: TextAlign.center,
               style: AppStyle.styleRegular16,
             ),
@@ -57,12 +61,14 @@ class CustomEmptyCart extends StatelessWidget {
               horizontal: buttonHorizontalPadding,
             ),
             child: CustomButton(
-              text: "Start Shopping",
-              onTap: () {
-                Navigator.of(context).pushReplacementNamed(
-                  CustomNavigationBar.routeName,
-                );
-              },
+              text: buttonTitle,
+            //  text: "Start Shopping",
+              onTap: onTap,
+            //   onTap: () {
+            //     Navigator.of(context).pushReplacementNamed(
+            //       CustomNavigationBar.routeName,
+            //     );
+            //   },
             ),
           ),
         ],

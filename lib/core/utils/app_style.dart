@@ -200,6 +200,12 @@ class AppStyle {
     fontFamily: "Inter",
     fontWeight: FontWeight.w400,
   );
+  static const styleRegular20 = TextStyle(
+    color: Color(0xFF1A1515),
+    fontSize: 20,
+    fontFamily: "Inter",
+    fontWeight: FontWeight.w400,
+  );
   static const styleRegular18 = TextStyle(
     color: Color(0xFF1A1515),
     fontSize: 18,
