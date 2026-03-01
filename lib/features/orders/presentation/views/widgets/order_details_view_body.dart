@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../profile/presentation/views/widgets/edit_profile_view_widgets/custom_profile_action_button.dart';
+import '../order_status_view.dart';
+import 'custom_cancel_order.dart';
 import 'order_details_card.dart';
 
 class OrderDetailsViewBody extends StatelessWidget {
@@ -24,8 +26,20 @@ class OrderDetailsViewBody extends StatelessWidget {
             textButton1: "Cancel Order",
             textButton2: "Order Status",
             saveButtonColor: AppColors.primaryTextColor,
-            onDeleteTap: () {},
-            onSaveTap: () {},
+            onDeleteTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return CustomCancelOrderDialog(
+                    onCancelOrder: () {
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+              );},
+            onSaveTap: () {
+              Navigator.of(context).pushNamed(OrderStatusView.routeName);
+            },
           ),
         ],
       ),

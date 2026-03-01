@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/features/orders/presentation/views/order_details_view.dart';
+import 'package:smart_store/features/orders/presentation/views/order_status_view.dart';
 import 'package:smart_store/features/orders/presentation/views/orders_view.dart';
 import 'package:smart_store/features/profile/presentation/views/change_password_view.dart';
 
@@ -75,6 +76,8 @@ case ProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const OrdersView());
     case OrderDetailsView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderDetailsView());
+      case OrderStatusView.routeName:
+      return MaterialPageRoute(builder: (context) => const OrderStatusView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
