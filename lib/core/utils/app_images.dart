@@ -67,5 +67,11 @@ class AppImages {
   static const String arrivedIcon = 'assets/images/arrived_icon.svg';
   static const String circleAvatar ='assets/images/circle_avatar.svg';
 
+  static const String statusIcon = 'assets/images/status_icon.svg';
+  static const String priceIcon = 'assets/images/price_icon.svg';
+  static const String orderIcon = 'assets/images/order_icon.svg';
+  static const String deliveryIcon = 'assets/images/mdi_location.svg';
+  static const String dateIcon = 'assets/images/date_icon.svg';
+
 
 }

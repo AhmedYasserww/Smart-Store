@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
+import 'package:smart_store/features/orders/presentation/views/order_details_view.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 
@@ -74,7 +75,7 @@ class CustomOrderItem extends StatelessWidget {
               child: CustomButton(
                 text: "Details",
                 onTap: (){
-                  
+                  Navigator.of(context).pushNamed(OrderDetailsView.routeName);
                 },
               ),
             ),

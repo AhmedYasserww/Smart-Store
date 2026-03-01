@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 class CustomProfileActionButtons extends StatelessWidget {
@@ -9,11 +7,15 @@ class CustomProfileActionButtons extends StatelessWidget {
     required this.onDeleteTap,
     required this.onSaveTap,
     this.saveButtonColor,
+    this.textButton1,
+    this.textButton2,
   });
 
   final VoidCallback onDeleteTap;
   final VoidCallback onSaveTap;
   final Color? saveButtonColor;
+  final String ?textButton1;
+  final String? textButton2;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class CustomProfileActionButtons extends StatelessWidget {
             border: Border.all(
               color: AppColors.palletBorderColor,
             ),
-            text: "Delete",
+            text:textButton1?? "Delete",
             onTap: onDeleteTap,
           ),
         ),
@@ -34,7 +36,7 @@ class CustomProfileActionButtons extends StatelessWidget {
         Expanded(
           child: CustomButton(
             buttonColor: saveButtonColor??AppColors.primaryColor,
-            text: "Save Changes",
+            text:textButton2?? "Save Changes",
             onTap: onSaveTap,
           ),
         ),
