@@ -7,7 +7,9 @@ import 'package:smart_store/features/auth/presentation/views/log_in_view.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/or_widget.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/custom_social_icon.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/confirm_password_field_widget.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/custom_address_field.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/custom_name_text_field.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/custom_phone_number_text_field.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/required_field_label.dart';
 import '../../../../../core/utils/app_style.dart';
 import 'log_in_widgets/custom_email_text_field.dart';
@@ -24,11 +26,13 @@ class RegisterViewBody extends StatefulWidget {
 class _RegisterViewBodyState extends State<RegisterViewBody> {
   bool passwordVisible = true;
   bool confirmPasswordVisible = true;
-
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late TextEditingController confirmPasswordController;
+  late TextEditingController phoneNumberController;
+  late TextEditingController addressController;
+
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
@@ -39,6 +43,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
     emailController = TextEditingController();
     passwordController = TextEditingController();
     confirmPasswordController = TextEditingController();
+    phoneNumberController = TextEditingController();
+    addressController = TextEditingController();
     super.initState();
   }
 
@@ -48,6 +54,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    phoneNumberController.dispose();
+    addressController.dispose();
     super.dispose();
   }
 
@@ -97,6 +105,16 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 NameField(nameController: nameController),
 
                 const SizedBox(height: 16),
+                RequiredFieldLabel(text: 'Phone Number'),
+                const SizedBox(height: 8),
+                PhoneNumberField(
+                  phoneNumberController:phoneNumberController),
+                const SizedBox(height: 16),
+                RequiredFieldLabel(text: 'Address'),
+                const SizedBox(height: 8),
+                CustomAddressField(addressController:addressController ),
+                const SizedBox(height: 16),
+
                 RequiredFieldLabel(text: 'Email'),
                 const SizedBox(height: 8),
                 EmailField(emailController: emailController),

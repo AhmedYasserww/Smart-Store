@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
 
       onGenerateRoute: onGenerateRoutes,
      // initialRoute: OnBoardingView.routeName,
-      // initialRoute: ReviewAndConfirmDeliveryView.routeName,
-      initialRoute: CustomNavigationBar.routeName,
+       initialRoute: LogInView.routeName,
+      //initialRoute: CustomNavigationBar.routeName,
 
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/features/orders/presentation/views/orders_view.dart';
 import 'package:smart_store/features/profile/presentation/views/change_password_view.dart';
+import 'package:smart_store/features/wishlist/presentation/views/wishlist_view.dart';
 
 import '../../../../../../core/utils/app_images.dart';
 import '../../edit_profile_view.dart';
@@ -54,7 +55,7 @@ class ListTileListView extends StatelessWidget {
               icon: AppImages.wishlistIcon,
               title: "Wishlist",
               onTap: () {
-                // Handle Wishlist tap
+Navigator.of(context).pushNamed(WishlistView.routeName);
               },
             ),
             ListTileItem(

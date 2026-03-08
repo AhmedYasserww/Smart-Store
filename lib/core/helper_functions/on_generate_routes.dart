@@ -24,6 +24,7 @@ import '../../features/profile/presentation/views/edit_profile_view.dart';
 import '../../features/profile/presentation/views/profile_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
 import '../../features/vto/presentation/views/vto_view.dart';
+import '../../features/wishlist/presentation/views/wishlist_view.dart';
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings) {
   switch (settings.name) {
@@ -78,6 +79,8 @@ case ProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderDetailsView());
       case OrderStatusView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderStatusView());
+      case WishlistView.routeName:
+        return MaterialPageRoute(builder: (context) => const WishlistView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }
