@@ -6,19 +6,16 @@ class CustomSocialIcons extends StatelessWidget {
     super.key,
     required this.firstIcon,
     required this.secondIcon,
-    required this.thirdIcon,
     required this.onFirstPressed,
     required this.onSecondPressed,
-    required this.onThirdPressed,
   });
 
   final String firstIcon;
   final String secondIcon;
-  final String thirdIcon;
 
   final VoidCallback onFirstPressed;
   final VoidCallback onSecondPressed;
-  final VoidCallback onThirdPressed;
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +31,7 @@ class CustomSocialIcons extends StatelessWidget {
           iconPath: secondIcon,
           onPressed: onSecondPressed,
         ),
-        _SocialIconItem(
-          iconPath: thirdIcon,
-          onPressed: onThirdPressed,
-        ),
+
       ],
     );
   }

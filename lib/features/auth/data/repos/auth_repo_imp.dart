@@ -19,11 +19,11 @@ class AuthRepoImpl implements AuthRepo {
       FormData formData = FormData.fromMap({
         "FullName": registerEntity.fullName,
         "Email": registerEntity.email,
-        "password": registerEntity.password,
+        "Password": registerEntity.password,
         "ConfirmPassword": registerEntity.confirmPassword,
         "PhoneNumber": registerEntity.phoneNumber,
         "Address": registerEntity.address,
-        if (registerEntity.age != null) "age": registerEntity.age,
+        if (registerEntity.age != null) "Age": registerEntity.age,
       });
 
       final response = await apiService.postMultipart(
@@ -31,15 +31,28 @@ class AuthRepoImpl implements AuthRepo {
         data: formData,
       );
 
-      if (response["succeeded"] == true) {
-        return Right(RegisterModel.fromJson(response));
+      /// check response safety
+      if (response is Map<String, dynamic>) {
+        final int? statusCode = response["statusCode"];
+        final bool succeeded = response["succeeded"] ?? false;
+
+        if ((statusCode == 200 || statusCode == 201) && succeeded) {
+          return Right(RegisterModel.fromJson(response));
+        } else {
+          final errorMessage = response["message"] ?? "Register failed";
+          return Left(ServerFailure(errorMessage: errorMessage));
+        }
       } else {
-        final errorMessage = response["message"] ?? "Register failed";
-        return Left(ServerFailure(errorMessage: errorMessage));
+        return Left(ServerFailure(errorMessage: "Invalid server response"));
       }
+
     } on DioException catch (e) {
-      final errorMessage = e.response?.data["message"] ?? "Register failed";
+
+      final errorMessage =
+          e.response?.data?["message"] ?? "Register request failed";
+
       return Left(ServerFailure(errorMessage: errorMessage));
+
     } catch (e) {
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
     }
