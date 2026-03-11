@@ -1,179 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_store/core/utils/app_dimensions.dart';
-import 'package:smart_store/core/widgets/custom_button.dart';
-import 'package:smart_store/features/auth/presentation/views/forget_password_view.dart';
-import 'package:smart_store/features/auth/presentation/views/log_in_view.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/or_widget.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/custom_social_icon.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/confirm_password_field_widget.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/custom_address_field.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/custom_name_text_field.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/custom_phone_number_text_field.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/required_field_label.dart';
-import '../../../../../core/utils/app_style.dart';
-import 'log_in_widgets/custom_email_text_field.dart';
-import 'log_in_widgets/custom_navigate_to_register.dart';
-import 'log_in_widgets/custom_password_text_field.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/register_form_widget.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/register_header_section.dart';
 
-class RegisterViewBody extends StatefulWidget {
+class RegisterViewBody extends StatelessWidget {
   const RegisterViewBody({super.key});
 
   @override
-  State<RegisterViewBody> createState() => _RegisterViewBodyState();
-}
-
-class _RegisterViewBodyState extends State<RegisterViewBody> {
-  bool passwordVisible = true;
-  bool confirmPasswordVisible = true;
-  late TextEditingController nameController;
-  late TextEditingController emailController;
-  late TextEditingController passwordController;
-  late TextEditingController confirmPasswordController;
-  late TextEditingController phoneNumberController;
-  late TextEditingController addressController;
-
-
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
-
-  @override
-  void initState() {
-    nameController = TextEditingController();
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
-    confirmPasswordController = TextEditingController();
-    phoneNumberController = TextEditingController();
-    addressController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    confirmPasswordController.dispose();
-    phoneNumberController.dispose();
-    addressController.dispose();
-    super.dispose();
-  }
-
-  void togglePasswordVisibility() {
-    setState(() {
-      passwordVisible = !passwordVisible;
-    });
-  }
-
-  void toggleConfirmPasswordVisibility() {
-    setState(() {
-      confirmPasswordVisible = !confirmPasswordVisible;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppDimensions.authScreenPadding,
-          ),
-          child: Form(
-            key: formKey,
-            autovalidateMode: autoValidateMode,
+    return SafeArea(
+      child: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
-              children: [
-                const SizedBox(height: 32),
-                SvgPicture.asset('assets/images/logo.svg'),
-                const SizedBox(height: 40),
-                Text(
-                  'Create an account',
-                  style: AppStyle.styleBold28,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Join us and start your Smart store journey.',
-                  textAlign: TextAlign.center,
-                  style: AppStyle.styleGreyRegular16,
-                ),
+              children: const [
 
-                const SizedBox(height: 32),
+                RegisterHeaderSection(),
 
-                RequiredFieldLabel(text: 'Name'),
-                const SizedBox(height: 8),
-                NameField(nameController: nameController),
+                SizedBox(height: 32),
 
-                const SizedBox(height: 16),
-                RequiredFieldLabel(text: 'Phone Number'),
-                const SizedBox(height: 8),
-                PhoneNumberField(
-                  phoneNumberController:phoneNumberController),
-                const SizedBox(height: 16),
-                RequiredFieldLabel(text: 'Address'),
-                const SizedBox(height: 8),
-                CustomAddressField(addressController:addressController ),
-                const SizedBox(height: 16),
-
-                RequiredFieldLabel(text: 'Email'),
-                const SizedBox(height: 8),
-                EmailField(emailController: emailController),
-
-                const SizedBox(height: 16),
-                RequiredFieldLabel(text: 'Password'),
-                const SizedBox(height: 8),
-                PasswordField(
-                  passwordController: passwordController,
-                  visible: passwordVisible,
-                  toggleVisibility: togglePasswordVisibility,
-                ),
-
-                const SizedBox(height: 16),
-                RequiredFieldLabel(text: 'Confirm Password'),
-                const SizedBox(height: 8),
-                ConfirmPasswordField(
-                  confirmPasswordController: confirmPasswordController,
-                  passwordController: passwordController,
-                  visible: confirmPasswordVisible,
-                  toggleVisibility: toggleConfirmPasswordVisibility,
-                ),
-
-                const SizedBox(height: 24),
-                CustomButton(
-                  text: 'Sign Up',
-                  onTap: () {
-                    if (formKey.currentState!.validate()) {
-                      Navigator.of(context).pushNamed(ForgetPasswordView.routeName);
-                    } else {
-                      setState(() {
-                        autoValidateMode = AutovalidateMode.always;
-                      });
-                    }
-                  },
-                ),
-
-                const SizedBox(height: 16),
-                OrDivider(),
-                const SizedBox(height: 16),
-
-                CustomSocialIcons(
-                  firstIcon: 'assets/images/googleIcon.svg',
-                  secondIcon: 'assets/images/face_bookIcon.svg',
-                  thirdIcon: 'assets/images/appleIcon.svg',
-                  onFirstPressed: () {},
-                  onSecondPressed: () {},
-                  onThirdPressed: () {},
-                ),
-
-                const SizedBox(height: 32),
-                CustomNavigateToRegisterOrLoginOrResendCode(
-                  textMessage: "Have an account?",
-                  buttonText: "Sign In",
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(LogInView.routeName);
-                  },
-                ),
-                SizedBox(height: 16,)
+                RegisterForm(),
 
               ],
             ),

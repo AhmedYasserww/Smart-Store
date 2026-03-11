@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smart_store/core/helper_functions/navigation_helper.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/utils/app_style.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/or_widget.dart';
 
+import '../../../../../core/utils/app_images.dart';
 import '../forget_password_view.dart';
 import '../register_view.dart';
 import 'log_in_widgets/custom_email_text_field.dart';
@@ -111,8 +113,9 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                       alignment: Alignment.centerRight,
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(ForgetPasswordView.routeName);
+                          NavigationHelper.pushWithCupertinoTransition(context,ForgetPasswordView());
+                          // Navigator.of(context)
+                          //     .pushNamed(ForgetPasswordView.routeName);
                         },
                         child: Text(
                           'Forgot Password?',
@@ -129,8 +132,9 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                       text: "Sign in",
                       onTap: () {
                         if (formKey.currentState!.validate()) {
-                          Navigator.of(context)
-                              .pushNamed(ForgetPasswordView.routeName);
+
+                          // Navigator.of(context)
+                          //     .pushNamed(ForgetPasswordView.routeName);
                         } else {
                           setState(() {
                             autoValidateMode = AutovalidateMode.always;
@@ -144,12 +148,12 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                     const SizedBox(height: 16),
 
                     CustomSocialIcons(
-                      firstIcon: 'assets/images/googleIcon.svg',
-                      secondIcon: 'assets/images/face_bookIcon.svg',
-                      thirdIcon: 'assets/images/appleIcon.svg',
+                      firstIcon: AppImages.googleLogo,
+                      secondIcon: AppImages.facebookLogo,
+
                       onFirstPressed: () {},
                       onSecondPressed: () {},
-                      onThirdPressed: () {},
+
                     ),
 
                     const SizedBox(height: 32),
