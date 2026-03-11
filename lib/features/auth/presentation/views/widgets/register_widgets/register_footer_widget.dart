@@ -30,7 +30,7 @@ class RegisterFooterSection extends StatelessWidget {
           textMessage: "Have an account?",
           buttonText: "Sign In",
           onPressed: () {
-            Navigator.of(context).pushNamed("login");
+            Navigator.of(context).pop();
           },
         ),
 

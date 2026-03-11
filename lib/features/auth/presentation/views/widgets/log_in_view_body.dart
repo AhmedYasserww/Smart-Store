@@ -163,8 +163,7 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                         textMessage: "Don’t have an account?",
                         buttonText: "Sign Up",
                         onPressed: () {
-                          Navigator.of(context)
-                              .pushNamed(RegisterView.routeName);
+                          NavigationHelper.pushWithCupertinoTransition(context,RegisterView());
                         },
                       ),
           
