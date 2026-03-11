@@ -4,10 +4,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:smart_store/core/helper_functions/navigation_helper.dart';
 import 'package:smart_store/features/auth/presentation/views/verification_view.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/register_fields.dart';
+import '../../../../../../core/helper_functions/save_user_data.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../data/entities/register_entity.dart';
 import '../../../manager/register_client_cubit/register_client_cubit.dart';
-
 class RegisterForm extends HookWidget {
   const RegisterForm({super.key});
 
@@ -29,28 +29,43 @@ class RegisterForm extends HookWidget {
 
     return BlocConsumer<RegisterClientCubit, RegisterClientState>(
 
-      listener: (context, state) {
+      listener: (context, state) async {
 
         if (state is RegisterClientSuccess) {
+          final data = state.registerModel.data!;
+          await UserPreferences.saveUserData(
+            id: data.id,
+            fullName: data.fullName,
+            email: data.email,
+            phoneNumber: data.phoneNumber,
+            age: data.age,
+            address: data.address,
+            profileImageUrl: data.profileImageUrl,
+            accessToken: data.accessToken,
+            refreshToken: data.refreshToken,
+            role: data.role,
+            isEmailConfirmed: data.isEmailConfirmed,
+          );
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
               content: Text(state.registerModel.message),
             ),
           );
-          NavigationHelper.pushWithCupertinoTransition(context, VerificationView());
 
+          NavigationHelper.pushWithCupertinoTransition(
+            context,
+            VerificationView(),
+          );
         }
 
         if (state is RegisterClientFailure) {
-
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.red,
               content: Text(state.errorMessage),
             ),
           );
-
         }
       },
 
@@ -79,9 +94,7 @@ class RegisterForm extends HookWidget {
                 text: "Sign Up",
                 isLoading: state is RegisterClientLoading,
                 onTap: () {
-
                   if (formKey.currentState!.validate()) {
-
                     context.read<RegisterClientCubit>().registerClient(
                       RegisterEntity(
                         fullName: nameController.text,
@@ -92,15 +105,11 @@ class RegisterForm extends HookWidget {
                         address: addressController.text,
                       ),
                     );
-
                   } else {
-
                     autoValidate.value = AutovalidateMode.always;
-
                   }
-
                 },
-              )
+              ),
 
             ],
           ),

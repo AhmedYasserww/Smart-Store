@@ -11,11 +11,16 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => RegisterClientCubit(getIt.get<AuthRepoImpl>() ),
-      child: Scaffold(
-        body: RegisterViewBody(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+        create: (_) => RegisterClientCubit(getIt.get<AuthRepoImpl>() ),),
+
+      ],
+        child: Scaffold(
+          body: RegisterViewBody(),
+        ),
+
     );
   }
 }

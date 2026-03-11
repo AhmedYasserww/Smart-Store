@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart_store/features/home/presentation/views/home_view.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 
 class SuccessDialog extends StatelessWidget {
-  const SuccessDialog({super.key});
+  const SuccessDialog({super.key, required this.message});
+  final String message ;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,8 @@ class SuccessDialog extends StatelessWidget {
             const SizedBox(height: 8),
 
             Text(
-              'You have successfully reset your password.',
+              message,
+          //    'You have successfully reset your password.',
               textAlign: TextAlign.center,
               style: AppStyle.styleGreyRegular16,
             ),
@@ -40,7 +41,7 @@ class SuccessDialog extends StatelessWidget {
             CustomButton(
               text: 'Done',
               onTap: () {
-             Navigator.of(context).pushNamed(CustomNavigationBar.routeName);
+           Navigator.of(context).pushNamedAndRemoveUntil(CustomNavigationBar.routeName, (route) => false);
               },
             ),
           ],

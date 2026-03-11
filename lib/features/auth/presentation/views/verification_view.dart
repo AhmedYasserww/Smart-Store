@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/verification_view_body.dart';
+
 class VerificationView extends StatelessWidget {
   const VerificationView({super.key});
   static const String routeName = 'verification_view';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/verificatin_code_widgets/verification_footer_section.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/verificatin_code_widgets/verification_form_widget.dart';
-import 'package:smart_store/features/auth/presentation/views/widgets/verificatin_code_widgets/verification_header_section.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/verification_code_widgets/verification_footer_section.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/verification_code_widgets/verification_form_widget.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/verification_code_widgets/verification_header_section.dart';
 import '../../../../../core/utils/app_dimensions.dart';
 
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_hooks/flutter_hooks.dart';
+import '../../../../../../core/helper_functions/save_user_data.dart';
+import '../../../../../../core/helper_functions/show_alert_dialog.dart';
 import '../../../../../../core/widgets/custom_button.dart';
-import 'otp_field.dart';
-
-
+import '../../../manager/verification_otp_cubit/verify_otp_cubit.dart';
+import '../verification_code_widgets/otp_field.dart';
 class VerificationForm extends HookWidget {
   const VerificationForm({super.key});
 
@@ -16,18 +16,24 @@ class VerificationForm extends HookWidget {
     final autoValidate = useState(AutovalidateMode.disabled);
     final otpController = useTextEditingController();
 
-    return BlocConsumer<VerificationCubit, VerificationState>(
-      listener: (context, state) {
-        if (state is VerificationSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.green,
-              content: Text(state.message),
-            ),
-          );
+    return BlocConsumer<VerifyOtpCubit, VerifyOtpState>(
+      listener: (context, state) async {
+
+        if (state is VerifyOtpSuccess) {
+          showSuccessDialog(context, state.message);
+          // // عرض سناك بار بالرسالة اللي رجعت من الـ API
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     backgroundColor: Colors.green,
+          //     content: Text(state.message),
+          //   ),
+          // );
+
+           await UserPreferences.getUserId();
+        //  Navigator.of(context).pushReplacementNamed('/home');
         }
 
-        if (state is VerificationFailure) {
+        if (state is VerifyOtpFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.red,
@@ -35,6 +41,7 @@ class VerificationForm extends HookWidget {
             ),
           );
         }
+
       },
       builder: (context, state) {
         return Form(
@@ -44,7 +51,7 @@ class VerificationForm extends HookWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
 
-              Text(
+              const Text(
                 'Enter Verification Code',
                 style: TextStyle(fontSize: 14),
               ),
@@ -56,12 +63,18 @@ class VerificationForm extends HookWidget {
 
               CustomButton(
                 text: 'Verify',
-                isLoading: state is VerificationLoading,
-                onTap: () {
+                isLoading: state is VerifyOtpLoading,
+                onTap: () async {
                   if (formKey.currentState!.validate()) {
-                    context.read<VerificationCubit>().verifyCode(
-                      otpController.text.trim(),
+
+                    // جلب الـ userId من SharedPreferences
+                    final userId = await UserPreferences.getUserId();
+
+                    context.read<VerifyOtpCubit>().verifyOtp(
+                      userId: userId,
+                      otp: otpController.text.trim(),
                     );
+
                   } else {
                     autoValidate.value = AutovalidateMode.always;
                   }
