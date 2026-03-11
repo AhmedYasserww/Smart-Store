@@ -6,7 +6,7 @@ class AppImages {
   static const String logo = 'assets/images/logo.png';
   static const String checkIcon = 'assets/images/check_icon.svg';
   static const String facebookLogo = 'assets/images/face_bookIcon.svg';
-  static const String googleLogo = 'assets/images/google_icon.svg';
+  static const String googleIcon= 'assets/images/googleIcon.svg';
   static const String profile = 'assets/images/profile.png';
   static const String searchIcon = 'assets/images/search.svg';
   static const String filterIcon = 'assets/images/filterIcon.svg';

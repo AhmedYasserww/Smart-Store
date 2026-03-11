@@ -53,122 +53,124 @@ class _LogInViewBodyState extends State<LogInViewBody> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: AppDimensions.authScreenPadding,
-              ),
-              child: Form(
-                key: formKey,
-                autovalidateMode: autoValidateMode,
-                child: Column(
-                  children: [
-                    SvgPicture.asset("assets/images/logo.svg"),
-                    const SizedBox(height: 40),
-
-                    Text(
-                      'Welcome Back!',
-                      style: AppStyle.styleBold28,
-                    ),
-                    const SizedBox(height: 8),
-
-                    Text(
-                      'Sign in to continue your Smart store journey.',
-                      textAlign: TextAlign.center,
-                      style: AppStyle.styleGreyRegular16,
-                    ),
-
-                    const SizedBox(height: 32),
-
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Email',
-                        style: AppStyle.styleRegular14,
+        SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppDimensions.authScreenPadding,
+                ),
+                child: Form(
+                  key: formKey,
+                  autovalidateMode: autoValidateMode,
+                  child: Column(
+                    children: [
+                      SvgPicture.asset("assets/images/logo.svg"),
+                      const SizedBox(height: 40),
+          
+                      Text(
+                        'Welcome Back!',
+                        style: AppStyle.styleBold28,
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    EmailField(emailController: emailController),
-
-                    const SizedBox(height: 16),
-
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Password',
-                        style: AppStyle.styleRegular14,
+                      const SizedBox(height: 8),
+          
+                      Text(
+                        'Sign in to continue your Smart store journey.',
+                        textAlign: TextAlign.center,
+                        style: AppStyle.styleGreyRegular16,
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    PasswordField(
-                      passwordController: passwordController,
-                      visible: visible,
-                      toggleVisibility: toggleVisibility,
-                    ),
-
-                    const SizedBox(height: 8),
-
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: GestureDetector(
-                        onTap: () {
-                          NavigationHelper.pushWithCupertinoTransition(context,ForgetPasswordView());
-                          // Navigator.of(context)
-                          //     .pushNamed(ForgetPasswordView.routeName);
-                        },
+          
+                      const SizedBox(height: 32),
+          
+                      Align(
+                        alignment: Alignment.topLeft,
                         child: Text(
-                          'Forgot Password?',
-                          style: AppStyle.styleGreyMedium14.copyWith(
-                            decoration: TextDecoration.underline,
+                          'Email',
+                          style: AppStyle.styleRegular14,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      EmailField(emailController: emailController),
+          
+                      const SizedBox(height: 16),
+          
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Password',
+                          style: AppStyle.styleRegular14,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      PasswordField(
+                        passwordController: passwordController,
+                        visible: visible,
+                        toggleVisibility: toggleVisibility,
+                      ),
+          
+                      const SizedBox(height: 8),
+          
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: GestureDetector(
+                          onTap: () {
+                            NavigationHelper.pushWithCupertinoTransition(context,ForgetPasswordView());
+                            // Navigator.of(context)
+                            //     .pushNamed(ForgetPasswordView.routeName);
+                          },
+                          child: Text(
+                            'Forgot Password?',
+                            style: AppStyle.styleGreyMedium14.copyWith(
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-
-                    const SizedBox(height: 24),
-
-                    CustomButton(
-                      text: "Sign in",
-                      onTap: () {
-                        if (formKey.currentState!.validate()) {
-
-                          // Navigator.of(context)
-                          //     .pushNamed(ForgetPasswordView.routeName);
-                        } else {
-                          setState(() {
-                            autoValidateMode = AutovalidateMode.always;
-                          });
-                        }
-                      },
-                    ),
-
-                    const SizedBox(height: 16),
-                    OrDivider(),
-                    const SizedBox(height: 16),
-
-                    CustomSocialIcons(
-                      firstIcon: AppImages.googleLogo,
-                      secondIcon: AppImages.facebookLogo,
-
-                      onFirstPressed: () {},
-                      onSecondPressed: () {},
-
-                    ),
-
-                    const SizedBox(height: 32),
-
-                    CustomNavigateToRegisterOrLoginOrResendCode(
-                      textMessage: "Don’t have an account?",
-                      buttonText: "Sign Up",
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed(RegisterView.routeName);
-                      },
-                    ),
-
-                    const SizedBox(height: 16),
-                  ],
+          
+                      const SizedBox(height: 24),
+          
+                      CustomButton(
+                        text: "Sign in",
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+          
+                            // Navigator.of(context)
+                            //     .pushNamed(ForgetPasswordView.routeName);
+                          } else {
+                            setState(() {
+                              autoValidateMode = AutovalidateMode.always;
+                            });
+                          }
+                        },
+                      ),
+          
+                      const SizedBox(height: 16),
+                      OrDivider(),
+                      const SizedBox(height: 16),
+          
+                      CustomSocialIcons(
+                        firstIcon: AppImages.googleIcon,
+                        secondIcon: AppImages.facebookLogo,
+          
+                        onFirstPressed: () {},
+                        onSecondPressed: () {},
+          
+                      ),
+          
+                      const SizedBox(height: 32),
+          
+                      CustomNavigateToRegisterOrLoginOrResendCode(
+                        textMessage: "Don’t have an account?",
+                        buttonText: "Sign Up",
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushNamed(RegisterView.routeName);
+                        },
+                      ),
+          
+                      const SizedBox(height: 16),
+                    ],
+                  ),
                 ),
               ),
             ),

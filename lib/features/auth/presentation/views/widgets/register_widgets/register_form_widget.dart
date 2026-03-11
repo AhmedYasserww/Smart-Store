@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:smart_store/core/helper_functions/navigation_helper.dart';
+import 'package:smart_store/features/auth/presentation/views/verification_view.dart';
+import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/register_fields.dart';
 import '../../../../../../core/widgets/custom_button.dart';
-
+import '../../../../data/entities/register_entity.dart';
+import '../../../manager/register_client_cubit/register_client_cubit.dart';
 
 class RegisterForm extends HookWidget {
   const RegisterForm({super.key});
@@ -23,20 +27,30 @@ class RegisterForm extends HookWidget {
     final formKey = useMemoized(() => GlobalKey<FormState>());
     final autoValidate = useState(AutovalidateMode.disabled);
 
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocConsumer<RegisterClientCubit, RegisterClientState>(
 
       listener: (context, state) {
 
-        if (state is RegisterSuccess) {
+        if (state is RegisterClientSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.green,
+              content: Text(state.registerModel.message),
+            ),
+          );
+          NavigationHelper.pushWithCupertinoTransition(context, VerificationView());
 
-          /// navigate
         }
 
-        if (state is RegisterFailure) {
+        if (state is RegisterClientFailure) {
 
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
+            SnackBar(
+              backgroundColor: Colors.red,
+              content: Text(state.errorMessage),
+            ),
           );
+
         }
       },
 
@@ -62,30 +76,31 @@ class RegisterForm extends HookWidget {
               const SizedBox(height: 24),
 
               CustomButton(
-                text: state is RegisterLoading
-                    ? "Loading..."
-                    : "Sign Up",
+                text: "Sign Up",
+                isLoading: state is RegisterClientLoading,
                 onTap: () {
 
                   if (formKey.currentState!.validate()) {
 
-                    context.read<RegisterCubit>().register(
-                      name: nameController.text,
-                      email: emailController.text,
-                      password: passwordController.text,
-                      phone: phoneController.text,
-                      address: addressController.text,
+                    context.read<RegisterClientCubit>().registerClient(
+                      RegisterEntity(
+                        fullName: nameController.text,
+                        confirmPassword: confirmPasswordController.text,
+                        phoneNumber: phoneController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
+                        address: addressController.text,
+                      ),
                     );
 
                   } else {
 
-                    autoValidate.value =
-                        AutovalidateMode.always;
+                    autoValidate.value = AutovalidateMode.always;
 
                   }
 
                 },
-              ),
+              )
 
             ],
           ),

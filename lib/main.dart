@@ -8,11 +8,14 @@ import 'package:smart_store/features/home/presentation/views/home_view.dart';
 import 'package:smart_store/features/onboarding/presentation/views/onboarding_view.dart';
 
 import 'core/helper_functions/on_generate_routes.dart';
+import 'core/service_locator/service_locator.dart';
 import 'features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import 'features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
 import 'features/products/presentation/views/product_details_view.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
   runApp(
     // DevicePreview(
     //   enabled: !kReleaseMode,
