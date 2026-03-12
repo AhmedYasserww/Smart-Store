@@ -58,6 +58,27 @@ class UserPreferences {
       'isEmailConfirmed': prefs.getBool(_isEmailConfirmedKey) ?? false,
     };
   }
+  static Future<void> saveLoginData({
+    required String id,
+    required String email,
+    required String phoneNumber,
+    required String accessToken,
+    required String refreshToken,
+    required String role,
+    required bool isEmailConfirmed,
+  }) async {
+
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.setString(_idKey, id);
+    await prefs.setString(_emailKey, email);
+    await prefs.setString(_phoneKey, phoneNumber);
+    await prefs.setString(_accessTokenKey, accessToken);
+    await prefs.setString(_refreshTokenKey, refreshToken);
+    await prefs.setString(_roleKey, role);
+    await prefs.setBool(_isEmailConfirmedKey, isEmailConfirmed);
+
+  }
   static Future<String> getUserId() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_idKey) ?? '';

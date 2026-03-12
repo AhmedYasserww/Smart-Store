@@ -141,6 +141,9 @@ class Assets {
   static const String logInWidgetsCustomNavigateToRegister = 'lib/features/auth/presentation/views/widgets/log_in_widgets/custom_navigate_to_register.dart';
   static const String logInWidgetsCustomPasswordTextField = 'lib/features/auth/presentation/views/widgets/log_in_widgets/custom_password_text_field.dart';
   static const String logInWidgetsCustomSocialIcon = 'lib/features/auth/presentation/views/widgets/log_in_widgets/custom_social_icon.dart';
+  static const String logInWidgetsLogInFooterSection = 'lib/features/auth/presentation/views/widgets/log_in_widgets/log_in_footer_section.dart';
+  static const String logInWidgetsLogInForm = 'lib/features/auth/presentation/views/widgets/log_in_widgets/log_in_form.dart';
+  static const String logInWidgetsLogInHeaderSection = 'lib/features/auth/presentation/views/widgets/log_in_widgets/log_in_header_section.dart';
   static const String logInWidgetsOrWidget = 'lib/features/auth/presentation/views/widgets/log_in_widgets/or_widget.dart';
   static const String managerRegisterClientCubitRegisterClientState = 'lib/features/auth/presentation/manager/register_client_cubit/register_client_state.dart~';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
