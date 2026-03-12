@@ -41,6 +41,7 @@ class SuccessDialog extends StatelessWidget {
             CustomButton(
               text: 'Done',
               onTap: () {
+                Navigator.of(context).pop();
            Navigator.of(context).pushNamedAndRemoveUntil(CustomNavigationBar.routeName, (route) => false);
               },
             ),

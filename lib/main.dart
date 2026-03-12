@@ -37,28 +37,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (_) => VerifyOtpCubit(getIt.get<AuthRepoImpl>() ),)
-      ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-        // useInheritedMediaQuery: true,
-        // locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          fontFamily: 'Inter',
-
-        ),
-
-        onGenerateRoute: onGenerateRoutes,
-       // initialRoute: OnBoardingView.routeName,
-         initialRoute: LogInView.routeName,
-        //initialRoute: CustomNavigationBar.routeName,
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+      // useInheritedMediaQuery: true,
+      // locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'Inter',
 
       ),
+
+      onGenerateRoute: onGenerateRoutes,
+     // initialRoute: OnBoardingView.routeName,
+       initialRoute: LogInView.routeName,
+      //initialRoute: CustomNavigationBar.routeName,
+
     );
   }
 }
