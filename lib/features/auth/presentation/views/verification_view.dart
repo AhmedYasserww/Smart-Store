@@ -4,7 +4,6 @@ import 'package:smart_store/features/auth/presentation/views/widgets/verificatio
 
 import '../../../../core/service_locator/service_locator.dart';
 import '../../data/repos/auth_repo_imp.dart';
-import '../manager/register_client_cubit/register_client_cubit.dart';
 import '../manager/verification_otp_cubit/verify_otp_cubit.dart';
 class VerificationView extends StatelessWidget {
   const VerificationView({super.key});

@@ -2,8 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
+import '../entities/log_in_entity.dart';
 import '../entities/register_entity.dart';
 import '../entities/verification_entity.dart';
+import '../models/log_in_model.dart';
 import '../models/register_model.dart';
 import '../models/verification_model.dart';
 import 'auth_repo.dart';
@@ -91,6 +93,49 @@ class AuthRepoImpl implements AuthRepo {
       return Left(ServerFailure(errorMessage: errorMessage));
     } catch (e) {
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
+    }
+  }
+  @override
+  Future<Either<Failure, LoginModel>> login({
+    required LoginEntity loginEntity,
+  }) async {
+    try {
+
+      final response = await apiService.post(
+        endPoint: "Account/login",
+        data: {
+          "email": loginEntity.email,
+          "password": loginEntity.password,
+        },
+      );
+
+      if (response is Map<String, dynamic>) {
+
+        final int? statusCode = response["statusCode"];
+        final bool succeeded = response["succeeded"] ?? false;
+
+        if (statusCode == 200 && succeeded) {
+          return Right(LoginModel.fromJson(response));
+        } else {
+          final errorMessage = response["message"] ?? "Login failed";
+          return Left(ServerFailure(errorMessage: errorMessage));
+        }
+
+      } else {
+        return Left(ServerFailure(errorMessage: "Invalid server response"));
+      }
+
+    } on DioException catch (e) {
+
+      final errorMessage =
+          e.response?.data?["message"] ?? "Login request failed";
+
+      return Left(ServerFailure(errorMessage: errorMessage));
+
+    } catch (e) {
+
+      return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
+
     }
   }
 }
