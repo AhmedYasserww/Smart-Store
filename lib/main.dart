@@ -49,9 +49,9 @@ class MyApp extends StatelessWidget {
       ),
 
       onGenerateRoute: onGenerateRoutes,
-     // initialRoute: OnBoardingView.routeName,
-       initialRoute: LogInView.routeName,
-      //initialRoute: CustomNavigationBar.routeName,
+      initialRoute: OnBoardingView.routeName,
+       //initialRoute: VerificationView.routeName,
+    // initialRoute: CustomNavigationBar.routeName,
 
     );
   }

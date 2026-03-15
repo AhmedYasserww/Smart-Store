@@ -42,18 +42,11 @@ class LoginForm extends HookWidget {
             role: data.role,
             isEmailConfirmed: data.isEmailConfirmed,
           );
-
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,
-              content: Text(state.loginModel.message),
-            ),
-          );
-
-          NavigationHelper.pushWithCupertinoTransition(context, const CustomNavigationBar(),);
-          final userId = await UserPreferences.getUserId();
-          print("User ID: $userId");
-
+              content: Text(state.loginModel.message), ), );
+          Navigator.of(context).pushNamedAndRemoveUntil(CustomNavigationBar.routeName, (route) => false, );
         }
 
         if (state is LogInFailure) {

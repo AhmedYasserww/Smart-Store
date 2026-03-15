@@ -10,27 +10,27 @@ class VerificationViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppDimensions.authScreenPadding,
-            ),
+    return Center(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppDimensions.authScreenPadding,
+          ),
+          child: SafeArea(
             child: Column(
               children: const [
                 SizedBox(height: 32),
-
+                
                 VerificationHeaderSection(),
-
+                
                 SizedBox(height: 32),
-
+                
                 VerificationForm(),
-
+                
                 SizedBox(height: 24),
-
+                
                 VerificationFooterSection(),
-
+                
                 SizedBox(height: 16),
               ],
             ),

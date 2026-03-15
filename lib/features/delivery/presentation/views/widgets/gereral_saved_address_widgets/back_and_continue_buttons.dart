@@ -20,52 +20,54 @@ class BackAndContinueButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-      decoration: ShapeDecoration(
-        color: const Color(0xFFF9FAFA),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            width: 1,
-            color: AppColors.palletBorderColor,
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+        decoration: ShapeDecoration(
+          color: const Color(0xFFF9FAFA),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              width: 1,
+              color: AppColors.palletBorderColor,
+            ),
           ),
         ),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: CustomButton(
-              border: Border.all(color: AppColors.palletBorderColor),
-              buttonColor: const Color(0xFFF3EEFB),
-              text: 'Back',
-              textButtonColor: AppColors.primaryColor,
-              onTap: () => Navigator.pop(context),
-            ),
-          ),
-          const SizedBox(width: 12),
-
-          Expanded(
-            child: isEnabled
-                ? CustomButton(
-              text: title ?? 'Continue',
-              buttonColor:continueButtonColor?? AppColors.primaryColor,
-              textButtonColor: Colors.white,
-              onTap: onContinue,
-            )
-                : Container(
-              height: 48,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: const Color(0x7F5D3A82),
-              ),
-              alignment: Alignment.center,
-              child: const Text(
-                'Continue',
-                style:AppStyle.styleWhiteRegular16
+        child: Row(
+          children: [
+            Expanded(
+              child: CustomButton(
+                border: Border.all(color: AppColors.palletBorderColor),
+                buttonColor: const Color(0xFFF3EEFB),
+                text: 'Back',
+                textButtonColor: AppColors.primaryColor,
+                onTap: () => Navigator.pop(context),
               ),
             ),
-          ),
-        ],
+            const SizedBox(width: 12),
+      
+            Expanded(
+              child: isEnabled
+                  ? CustomButton(
+                text: title ?? 'Continue',
+                buttonColor:continueButtonColor?? AppColors.primaryColor,
+                textButtonColor: Colors.white,
+                onTap: onContinue,
+              )
+                  : Container(
+                height: 48,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: const Color(0x7F5D3A82),
+                ),
+                alignment: Alignment.center,
+                child: const Text(
+                  'Continue',
+                  style:AppStyle.styleWhiteRegular16
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

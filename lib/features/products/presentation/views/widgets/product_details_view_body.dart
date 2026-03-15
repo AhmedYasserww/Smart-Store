@@ -46,8 +46,8 @@ class ProductDetailsViewBody extends StatelessWidget {
               ),
             ),
           ),
-          CustomButton(text: " Add to cart", onTap: (){},buttonColor: AppColors.primaryTextColor,),
-          SizedBox(height: 24,)
+          SafeArea(child: CustomButton(text: " Add to cart", onTap: (){},buttonColor: AppColors.primaryTextColor,)),
+          SizedBox(height: 4,)
         ],
       ),
     );

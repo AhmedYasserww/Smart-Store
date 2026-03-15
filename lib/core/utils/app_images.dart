@@ -11,12 +11,13 @@ class AppImages {
   static const String searchIcon = 'assets/images/search.svg';
   static const String filterIcon = 'assets/images/filterIcon.svg';
   static const String offerImage = 'assets/images/Offer_1.png';
-  static String menImage = 'assets/images/men.png';
-  static String bagImage = 'assets/images/bagImage.png';
-  static String micImage = 'assets/images/Microphone.svg';
-  static String scanImage = 'assets/images/Scan.svg';
-  static String vto = 'assets/images/VTO.svg';
-  static String checkImage = 'assets/images/check_circle.svg';
+  static const String menImage = 'assets/images/men.png';
+  static const String bagImage = 'assets/images/bagImage.png';
+  static const String micImage = 'assets/images/Microphone.svg';
+  static const String scanImage = 'assets/images/Scan.svg';
+  static const String vto = 'assets/images/VTO.svg';
+  static const String checkImage = 'assets/images/check_circle.svg';
+
 
   static const String filterIcon1 = 'assets/images/filterIcon_1.svg';
   static const String filterIcon2 = 'assets/images/filterIcon_2.svg';
@@ -39,7 +40,6 @@ class AppImages {
   static const String productOutlined = 'assets/images/product-outlined.svg';
   static const String productFilled = 'assets/images/product-filled.svg';
   static const String moreIcon = 'assets/images/more_outlined.svg';
-
   static const String info2Image = 'assets/images/info2.svg';
   static const String sellerIcon = 'assets/images/seller_icon.svg';
   static const String notificationIcon = 'assets/images/notification_icon.svg';
@@ -52,7 +52,6 @@ class AppImages {
   static const String wishlistIcon = 'assets/images/Wishlist.svg';
   static const String helpIcon = 'assets/images/Help.svg';
   static const String logoutIcon = 'assets/images/LogOut.svg';
-
 
   static const String gmailIcon = 'assets/images/Gmail.svg';
   static const String instagramIcon = 'assets/images/Insita.svg';
@@ -78,10 +77,11 @@ class AppImages {
   static const String orderProcessing = 'assets/images/processing_icon.svg';
   static const String orderArrivedIcon = "assets/images/order_arrived_icon.svg";
   static const String orderOutOfDeliveryIcon = "assets/images/order_out_of_delivery.svg";
-static const String orderShippedIcon = "assets/images/order_shipped_icon.svg";
 
-static const String emptyOrderImage = "assets/images/empty_order.svg";
-static const String emptyReturnImage = "assets/images/empty_return.svg";
-static const String emptyFavoriteImage = "assets/images/empty_favorite.svg";
+  static const String orderShippedIcon = "assets/images/order_shipped_icon.svg";
+  static const String emptyOrderImage = "assets/images/empty_order.svg";
+  static const String emptyReturnImage = "assets/images/empty_return.svg";
+  static const String emptyFavoriteImage = "assets/images/empty_favorite.svg";
+
 
 }

@@ -28,16 +28,24 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      child: Scaffold(
-        backgroundColor: Colors.white,
+     return  PopScope(
+       canPop: selectedIndex == 0,
+       onPopInvoked: (didPop) {
+         if (!didPop && selectedIndex != 0) {
+           setState(() {
+             selectedIndex = 0;
+           });
+         }
+       },
+       child: SafeArea(
+         top: false,
+         child: Scaffold(
+           backgroundColor: Colors.white,
 
-        body: IndexedStack(
-          index: selectedIndex,
-          children: screens,
-        ),
-
+           body: IndexedStack(
+             index: selectedIndex,
+             children: screens,
+           ),
         bottomNavigationBar: Container(
           padding: EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(
@@ -66,7 +74,8 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           ),
         ),
       ),
-    );
+    ),
+     );
   }
   Widget _navItem(int index, String title, String outlinedSvg, String filledSvg) {
     bool selected = index == selectedIndex;

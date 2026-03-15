@@ -41,7 +41,8 @@ class ConfirmOrderViewBody extends StatelessWidget {
                CustomNavigationBar.routeName,
                    (route) => false,
              );
-           })
+           }),
+            SizedBox(height: 8,),
           ],
         ),
       ),

@@ -150,7 +150,6 @@ class Assets {
   static const String modelsRegisterModel = 'lib/features/auth/data/models/register_model.dart';
   static const String modelsVerificationModel = 'lib/features/auth/data/models/verification_model.dart';
   static const String onboardingDataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart~';
-  static const String presentationViewsBottomNavBarView = 'lib/features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart~';
   static const String presentationViewsDeleveryOptionView = 'lib/features/delivery/presentation/views/delevery_option_view.dart~';
   static const String presentationViewsEditProfileView = 'lib/features/profile/presentation/views/edit_profile_view.dart~';
   static const String presentationViewsForgetPasswordView = 'lib/features/auth/presentation/views/forget_password_view.dart~';
@@ -251,9 +250,7 @@ class Assets {
   static const String viewsWidgetsCartViewBody = 'lib/features/cart/presentation/views/widgets/cart_view_body.dart~';
   static const String viewsWidgetsCategoriesListView = 'lib/features/home/presentation/views/widgets/categories_list_view.dart~';
   static const String viewsWidgetsCategoryWidget = 'lib/features/home/presentation/views/widgets/category_widget.dart~';
-  static const String viewsWidgetsConfirmOrderViewBody = 'lib/features/delivery/presentation/views/widgets/confirm_order_view_body.dart~';
   static const String viewsWidgetsCustomSearchField = 'lib/features/home/presentation/views/widgets/custom_search_field.dart~';
-  static const String viewsWidgetsDeliveryAddressViewBody = 'lib/features/delivery/presentation/views/widgets/delivery_address_view_body.dart~';
   static const String viewsWidgetsEditProfileViewBody = 'lib/features/profile/presentation/views/widgets/edit_profile_view_body.dart~';
   static const String viewsWidgetsFindSizeViewBody = 'lib/features/products/presentation/views/widgets/find_size_view_body.dart~';
   static const String viewsWidgetsForgetPasswordViewBody = 'lib/features/auth/presentation/views/widgets/forget_password_view_body.dart~';
