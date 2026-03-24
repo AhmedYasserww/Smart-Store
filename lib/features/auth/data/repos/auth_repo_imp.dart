@@ -2,9 +2,11 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
+import '../entities/forget_password_entity.dart';
 import '../entities/log_in_entity.dart';
 import '../entities/register_entity.dart';
 import '../entities/verification_entity.dart';
+import '../models/forget_password_model.dart';
 import '../models/log_in_model.dart';
 import '../models/register_model.dart';
 import '../models/verification_model.dart';
@@ -136,6 +138,43 @@ class AuthRepoImpl implements AuthRepo {
 
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
 
+    }
+  }
+  @override
+  Future<Either<Failure, ForgetPasswordModel>> forgetPassword({
+    required ForgetPasswordEntity forgetPasswordEntity,
+  }) async {
+    try {
+      final response = await apiService.post(
+        endPoint: "Account/forget-password",
+        data: {
+          "email": forgetPasswordEntity.email,
+        },
+      );
+
+      if (response is Map<String, dynamic>) {
+        final int? statusCode = response["statusCode"];
+        final bool succeeded = response["succeeded"] ?? false;
+
+        if (statusCode == 200 && succeeded) {
+          return Right(ForgetPasswordModel.fromJson(response));
+        } else {
+          final errorMessage =
+              response["message"] ?? "Forget password failed";
+          return Left(ServerFailure(errorMessage: errorMessage));
+        }
+      } else {
+        return Left(ServerFailure(errorMessage: "Invalid server response"));
+      }
+    } on DioException catch (e) {
+      final errorMessage =
+          e.response?.data?["message"] ?? "Forget password request failed";
+
+      return Left(ServerFailure(errorMessage: errorMessage));
+    } catch (e) {
+      return Left(
+        ServerFailure(errorMessage: "Unexpected error: $e"),
+      );
     }
   }
 }

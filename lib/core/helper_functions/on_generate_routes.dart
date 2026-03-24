@@ -7,6 +7,7 @@ import 'package:smart_store/features/profile/presentation/views/change_password_
 import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/auth/presentation/views/log_in_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
+import '../../features/auth/presentation/views/reset_password_view.dart';
 import '../../features/auth/presentation/views/verification_view.dart';
 import '../../features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../features/cart/presentation/views/cart_view.dart';
@@ -41,6 +42,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const ForgetPasswordView());
     case VerificationView.routeName:
       return MaterialPageRoute(builder: (context) => const VerificationView());
+    case ResetPasswordView.routeName:
+      return MaterialPageRoute(builder: (context) => const ResetPasswordView());
     case CustomNavigationBar.routeName:
       return MaterialPageRoute(builder: (context) => const CustomNavigationBar());
     case HomeView.routeName:

@@ -3,33 +3,29 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
 
-class RegisterHeaderSection extends StatelessWidget {
-  const RegisterHeaderSection({super.key});
+class ResetPasswordHeaderSection extends StatelessWidget {
+  const ResetPasswordHeaderSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-
-        const SizedBox(height: 32),
-
         SvgPicture.asset(AppImages.logo),
 
         const SizedBox(height: 40),
 
         Text(
-          'Create an account',
+          'Create New Password',
           style: AppStyle.styleBold28,
         ),
 
         const SizedBox(height: 8),
 
         Text(
-          'Join us and start your Smart store journey.',
+          'Enter a new password to secure your account.',
           textAlign: TextAlign.center,
           style: AppStyle.styleGreyRegular16,
         ),
-
       ],
     );
   }

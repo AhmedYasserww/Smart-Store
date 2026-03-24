@@ -13,6 +13,7 @@ import 'core/helper_functions/save_user_data.dart';
 import 'core/service_locator/service_locator.dart';
 import 'features/auth/data/repos/auth_repo_imp.dart';
 import 'features/auth/presentation/manager/verification_otp_cubit/verify_otp_cubit.dart';
+import 'features/auth/presentation/views/reset_password_view.dart';
 import 'features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import 'features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
 import 'features/products/presentation/views/product_details_view.dart';
@@ -49,8 +50,8 @@ class MyApp extends StatelessWidget {
       ),
 
       onGenerateRoute: onGenerateRoutes,
-      initialRoute: OnBoardingView.routeName,
-       //initialRoute: VerificationView.routeName,
+     // initialRoute: OnBoardingView.routeName,
+       initialRoute: LogInView.routeName,
     // initialRoute: CustomNavigationBar.routeName,
 
     );

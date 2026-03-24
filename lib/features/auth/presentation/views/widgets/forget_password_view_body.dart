@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
+import 'package:smart_store/core/utils/app_images.dart';
 import 'package:smart_store/core/utils/app_style.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/log_in_widgets/custom_email_text_field.dart';
@@ -45,7 +46,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.asset('assets/images/logo.svg'),
+                SvgPicture.asset(AppImages.logo),
                 const SizedBox(height: 40),
                 Text(
                   'Forgot Password?',
