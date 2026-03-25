@@ -13,7 +13,7 @@ abstract class AuthRepo {
   Future<Either<Failure, RegisterModel>> registerClient({
     required RegisterEntity registerEntity,
   });
-  Future<Either<Failure, VerificationModel>> verifyOtp({
+  Future<Either<Failure, VerificationModel>> confirmEmail({
     required VerificationEntity verificationEntity,
   });
   Future<Either<Failure, LoginModel>> login({
@@ -21,5 +21,8 @@ abstract class AuthRepo {
   });
   Future<Either<Failure, ForgetPasswordModel>> forgetPassword({
     required ForgetPasswordEntity forgetPasswordEntity,
+  });
+  Future<Either<Failure, VerificationModel>> confirmResetPassword({
+    required VerificationEntity verificationEntity,
   });
 }

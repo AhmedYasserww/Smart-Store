@@ -41,7 +41,13 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case ForgetPasswordView.routeName:
       return MaterialPageRoute(builder: (context) => const ForgetPasswordView());
     case VerificationView.routeName:
-      return MaterialPageRoute(builder: (context) => const VerificationView());
+      final args = settings.arguments as Map;
+      return MaterialPageRoute(
+        builder: (_) => VerificationView(
+          userId: args["userId"],
+          type: args["type"],
+        ),
+      );
     case ResetPasswordView.routeName:
       return MaterialPageRoute(builder: (context) => const ResetPasswordView());
     case CustomNavigationBar.routeName:

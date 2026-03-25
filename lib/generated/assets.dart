@@ -9,6 +9,7 @@ class Assets {
   static const String confirmOrderWidgetsOrderStatusTile = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/order_status_tile.dart';
   static const String confirmOrderWidgetsOrderStatusWidget = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/order_status_widget.dart';
   static const String confirmOrderWidgetsTopThankYouWidget = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/top_thank_you_widget.dart';
+  static const String constantsVerifyOtpEnum = 'lib/core/constants/verify_otp_enum.dart';
   static const String coreErrorsFailure = 'lib/core/errors/failure.dart~';
   static const String coreHelperFunctionsCalculateSize = 'lib/core/helper_functions/calculate_size.dart~';
   static const String coreUtilsAppColor = 'lib/core/utils/app_color.dart~';
@@ -25,6 +26,7 @@ class Assets {
   static const String customBottomSheetWidgetSizesWidget = 'lib/features/products/presentation/views/widgets/product_view_widgets/custom_bottom_sheet_widget/sizes_widget.dart';
   static const String dataAddressModel = 'lib/features/delivery/data/address_model.dart';
   static const String dataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart';
+  static const String dataReposAuthRepoImp = 'lib/features/auth/data/repos/auth_repo_imp.dart~';
   static const String deliveryAddressWidgetsAddressOptionContainer = 'lib/features/delivery/presentation/views/widgets/delivery_address_widgets/address_option_container.dart';
   static const String deliveryAddressWidgetsContactInformationSection = 'lib/features/delivery/presentation/views/widgets/delivery_address_widgets/contact_information_section.dart';
   static const String deliveryAddressWidgetsDeliveryAddressFormSection = 'lib/features/delivery/presentation/views/widgets/delivery_address_widgets/delivery_address_form_section.dart';
@@ -49,6 +51,10 @@ class Assets {
   static const String fontsInter18ptMedium = 'assets/fonts/Inter_18pt-Medium.ttf';
   static const String fontsInter18ptRegular = 'assets/fonts/Inter_18pt-Regular.ttf';
   static const String fontsInter18ptSemiBold = 'assets/fonts/Inter_18pt-SemiBold.ttf';
+  static const String forgetPasswordCubitForgetPasswordCubit = 'lib/features/auth/presentation/manager/forget_password_cubit/forget_password_cubit.dart';
+  static const String forgetPasswordCubitForgetPasswordState = 'lib/features/auth/presentation/manager/forget_password_cubit/forget_password_state.dart';
+  static const String forgetPasswordWidgetsForgetPasswordForm = 'lib/features/auth/presentation/views/widgets/forget_password_widgets/forget_password_form.dart';
+  static const String forgetPasswordWidgetsForgetPasswordHeader = 'lib/features/auth/presentation/views/widgets/forget_password_widgets/forget_password_header.dart';
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String gereralSavedAddressWidgetsBackAndContinueButtons = 'lib/features/delivery/presentation/views/widgets/gereral_saved_address_widgets/back_and_continue_buttons.dart';
   static const String gereralSavedAddressWidgetsCustomDeliveryAppBar = 'lib/features/delivery/presentation/views/widgets/gereral_saved_address_widgets/custom_delivery_app_bar.dart';
@@ -135,6 +141,7 @@ class Assets {
   static const String imagesVTO = 'assets/images/VTO.svg';
   static const String imagesWhiteProductIcon = 'assets/images/whiteProductIcon.svg';
   static const String imagesWishlist = 'assets/images/Wishlist.svg';
+  static const String libGeneratedAssets = 'lib/generated/assets.dart~';
   static const String libMain = 'lib/main.dart';
   static const String logInCubitLogInCubit = 'lib/features/auth/presentation/manager/log_in_cubit/log_in_cubit.dart';
   static const String logInCubitLogInState = 'lib/features/auth/presentation/manager/log_in_cubit/log_in_state.dart';
@@ -146,6 +153,7 @@ class Assets {
   static const String logInWidgetsLogInForm = 'lib/features/auth/presentation/views/widgets/log_in_widgets/log_in_form.dart';
   static const String logInWidgetsLogInHeaderSection = 'lib/features/auth/presentation/views/widgets/log_in_widgets/log_in_header_section.dart';
   static const String logInWidgetsOrWidget = 'lib/features/auth/presentation/views/widgets/log_in_widgets/or_widget.dart';
+  static const String managerForgetPasswordCubitForgetPasswordState = 'lib/features/auth/presentation/manager/forget_password_cubit/forget_password_state.dart~';
   static const String managerRegisterClientCubitRegisterClientState = 'lib/features/auth/presentation/manager/register_client_cubit/register_client_state.dart~';
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
@@ -154,8 +162,10 @@ class Assets {
   static const String onboardingDataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart~';
   static const String presentationViewsDeleveryOptionView = 'lib/features/delivery/presentation/views/delevery_option_view.dart~';
   static const String presentationViewsEditProfileView = 'lib/features/profile/presentation/views/edit_profile_view.dart~';
+  static const String presentationViewsForgetPasswordView = 'lib/features/auth/presentation/views/forget_password_view.dart~';
   static const String presentationViewsHomeView = 'lib/features/home/presentation/views/home_view.dart~';
   static const String presentationViewsProductDetailsView = 'lib/features/products/presentation/views/product_details_view.dart~';
+  static const String presentationViewsVerificationView = 'lib/features/auth/presentation/views/verification_view.dart~';
   static const String presentationViewsVtoView = 'lib/features/vto/presentation/views/vto_view.dart~';
   static const String productDetailsWidgetsColorSelector = 'lib/features/products/presentation/views/widgets/product_details_widgets/color_selector.dart';
   static const String productDetailsWidgetsDescriptionSection = 'lib/features/products/presentation/views/widgets/product_details_widgets/description_section.dart';

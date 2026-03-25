@@ -1,0 +1,4 @@
+enum OtpType {
+  register,
+  forgetPassword,
+}

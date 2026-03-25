@@ -18,3 +18,12 @@ class VerifyOtpFailure extends VerifyOtpState {
 
   VerifyOtpFailure({required this.errorMessage});
 }
+class VerifyOtpForgetSuccess extends VerifyOtpState {
+  final String message;
+  final String token;
+
+  VerifyOtpForgetSuccess({
+    required this.message,
+    required this.token,
+  });
+}

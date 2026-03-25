@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:smart_store/core/helper_functions/navigation_helper.dart';
 import 'package:smart_store/features/auth/presentation/views/verification_view.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/register_fields.dart';
+import '../../../../../../core/constants/verify_otp_enum.dart';
 import '../../../../../../core/helper_functions/save_user_data.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../data/entities/register_entity.dart';
@@ -55,7 +56,10 @@ class RegisterForm extends HookWidget {
 
           NavigationHelper.pushWithCupertinoTransition(
             context,
-            VerificationView(),
+            VerificationView(
+              userId: data.id,
+              type: OtpType.register,
+            ),
           );
         }
 

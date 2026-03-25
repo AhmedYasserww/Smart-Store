@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import '../../../../../../core/constants/verify_otp_enum.dart';
 import '../../../../../../core/helper_functions/save_user_data.dart';
 import '../../../../../../core/helper_functions/show_alert_dialog.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../manager/verification_otp_cubit/verify_otp_cubit.dart';
+import '../../reset_password_view.dart';
 import '../verification_code_widgets/otp_field.dart';
 class VerificationForm extends HookWidget {
-  const VerificationForm({super.key});
+  final String userId;
+  final OtpType type;
+
+  const VerificationForm({
+    super.key,
+    required this.userId,
+    required this.type,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +33,13 @@ class VerificationForm extends HookWidget {
 
             final userId = await UserPreferences.getUserId();
             print("User ID: $userId");
+          }
+          if (state is VerifyOtpForgetSuccess) {
+            Navigator.pushReplacementNamed(
+              context,
+              ResetPasswordView.routeName,
+              arguments: state.token,
+            );
           }
 
           if (state is VerifyOtpFailure) {
@@ -60,11 +76,13 @@ class VerificationForm extends HookWidget {
                   if (formKey.currentState!.validate()) {
 
                     // جلب الـ userId من SharedPreferences
-                    final userId = await UserPreferences.getUserId();
+                //    final userId = await UserPreferences.getUserId();
 
                     context.read<VerifyOtpCubit>().verifyOtp(
                       userId: userId,
+                      type: type,
                       otp: otpController.text.trim(),
+
                     );
 
                   } else {

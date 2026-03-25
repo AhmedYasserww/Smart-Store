@@ -64,12 +64,13 @@ class AuthRepoImpl implements AuthRepo {
     }
   }
   @override
-  Future<Either<Failure, VerificationModel>> verifyOtp({
+  @override
+  Future<Either<Failure, VerificationModel>> confirmEmail({
     required VerificationEntity verificationEntity,
   }) async {
     try {
       final response = await apiService.post(
-        endPoint: "Account/verify-otp",
+        endPoint: "Account/confirm-email",
         data: {
           "userId": verificationEntity.userId,
           "otp": verificationEntity.otp,
@@ -83,16 +84,53 @@ class AuthRepoImpl implements AuthRepo {
         if (statusCode == 200 && succeeded) {
           return Right(VerificationModel.fromJson(response));
         } else {
-          final errorMessage = response["message"] ?? "Verification failed";
-          return Left(ServerFailure(errorMessage: errorMessage));
+          return Left(ServerFailure(
+            errorMessage: response["message"] ?? "Verification failed",
+          ));
         }
       } else {
-        return Left(ServerFailure(errorMessage: "Invalid server response"));
+        return Left(ServerFailure(errorMessage: "Invalid response"));
       }
     } on DioException catch (e) {
-      final errorMessage =
-          e.response?.data?["message"] ?? "Verification request failed";
-      return Left(ServerFailure(errorMessage: errorMessage));
+      return Left(ServerFailure(
+        errorMessage: e.response?.data?["message"] ?? "Request failed",
+      ));
+    } catch (e) {
+      return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
+    }
+  }
+  @override
+  @override
+  Future<Either<Failure, VerificationModel>> confirmResetPassword({
+    required VerificationEntity verificationEntity,
+  }) async {
+    try {
+      final response = await apiService.post(
+        endPoint: "Account/confirm-reset-password",
+        data: {
+          "userId": verificationEntity.userId,
+          "otp": verificationEntity.otp,
+        },
+      );
+
+      if (response is Map<String, dynamic>) {
+        final int? statusCode = response["statusCode"];
+        final bool succeeded = response["succeeded"] ?? false;
+
+        if (statusCode == 200 && succeeded) {
+          return Right(VerificationModel.fromJson(response));
+        } else {
+          return Left(ServerFailure(
+            errorMessage: response["message"] ?? "Verification failed",
+          ));
+        }
+      } else {
+        return Left(ServerFailure(errorMessage: "Invalid response"));
+      }
+    } on DioException catch (e) {
+      return Left(ServerFailure(
+        errorMessage: e.response?.data?["message"] ?? "Request failed",
+      ));
     } catch (e) {
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
     }
