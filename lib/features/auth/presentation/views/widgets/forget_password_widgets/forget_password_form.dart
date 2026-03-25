@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 import '../../../../../../core/constants/verify_otp_enum.dart';
+import '../../../../../../core/helper_functions/save_user_data.dart';
 import '../../../manager/forget_password_cubit/forget_password_cubit.dart';
 import '../log_in_widgets/custom_email_text_field.dart';
 import '../../verification_view.dart';
@@ -17,10 +18,14 @@ class ForgetPasswordForm extends HookWidget {
     final autoValidate = useState(AutovalidateMode.disabled);
 
     return BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is ForgetPasswordSuccess) {
           final userId = state.forgetPasswordModel.data!.userId;
-print("User ID: $userId");
+
+          await UserPreferences.saveTempUserId(userId);
+
+          print("User ID saved: $userId");
+
           Navigator.pushNamed(
             context,
             VerificationView.routeName,

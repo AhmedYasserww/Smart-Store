@@ -13,6 +13,24 @@ class UserPreferences {
   static const String _roleKey = "role";
   static const String _isEmailConfirmedKey = "isEmailConfirmed";
 
+  static const String _tempUserIdKey = "tempUserId";
+  static const String _tokenKey = "token";
+
+  static Future<void> saveToken(String token) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_tokenKey, token);
+  }
+
+  static Future<String> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_tokenKey) ?? '';
+  }
+
+  static Future<void> clearToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_tokenKey);
+  }
+
   static Future<void> saveUserData({
     required String id,
     required String fullName,
@@ -58,6 +76,7 @@ class UserPreferences {
       'isEmailConfirmed': prefs.getBool(_isEmailConfirmedKey) ?? false,
     };
   }
+
   static Future<void> saveLoginData({
     required String id,
     required String email,
@@ -67,9 +86,7 @@ class UserPreferences {
     required String role,
     required bool isEmailConfirmed,
   }) async {
-
     final prefs = await SharedPreferences.getInstance();
-
     await prefs.setString(_idKey, id);
     await prefs.setString(_emailKey, email);
     await prefs.setString(_phoneKey, phoneNumber);
@@ -77,11 +94,22 @@ class UserPreferences {
     await prefs.setString(_refreshTokenKey, refreshToken);
     await prefs.setString(_roleKey, role);
     await prefs.setBool(_isEmailConfirmedKey, isEmailConfirmed);
-
   }
-  static Future<String> getUserId() async {
+
+  // دوال الـ temp userId
+  static Future<void> saveTempUserId(String userId) async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_idKey) ?? '';
+    await prefs.setString(_tempUserIdKey, userId);
+  }
+
+  static Future<String> getTempUserId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_tempUserIdKey) ?? '';
+  }
+
+  static Future<void> clearTempUserId() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_tempUserIdKey);
   }
 
   static Future<void> clearUserData() async {

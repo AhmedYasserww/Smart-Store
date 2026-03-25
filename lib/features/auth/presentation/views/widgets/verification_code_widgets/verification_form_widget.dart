@@ -31,10 +31,15 @@ class VerificationForm extends HookWidget {
 
             showSuccessDialog(context, state.message);
 
-            final userId = await UserPreferences.getUserId();
+
             print("User ID: $userId");
           }
           if (state is VerifyOtpForgetSuccess) {
+            await UserPreferences.saveToken(state.token);
+            Navigator.pushReplacementNamed(
+              context,
+              ResetPasswordView.routeName,
+            );
             Navigator.pushReplacementNamed(
               context,
               ResetPasswordView.routeName,
@@ -76,7 +81,7 @@ class VerificationForm extends HookWidget {
                   if (formKey.currentState!.validate()) {
 
                     // جلب الـ userId من SharedPreferences
-                //    final userId = await UserPreferences.getUserId();
+                  //  final userId = await UserPreferences.getUserId();
 
                     context.read<VerifyOtpCubit>().verifyOtp(
                       userId: userId,

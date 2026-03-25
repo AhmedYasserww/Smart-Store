@@ -9,7 +9,6 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final AuthRepo authRepo;
 
   ResetPasswordCubit(this.authRepo) : super(ResetPasswordInitial());
-
   Future<void> resetPassword({required ResetPasswordEntity entity}) async {
     emit(ResetPasswordLoading());
 
