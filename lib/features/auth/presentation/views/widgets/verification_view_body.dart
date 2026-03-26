@@ -36,7 +36,9 @@ class VerificationViewBody extends StatelessWidget {
                 
                 SizedBox(height: 24),
                 
-                VerificationFooterSection(),
+                VerificationFooterSection(
+                  type: type,
+                ),
                 
                 SizedBox(height: 16),
               ],

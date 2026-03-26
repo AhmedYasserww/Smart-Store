@@ -1,11 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../../../core/utils/app_color.dart';
 
 class OtpField extends StatelessWidget {
   final TextEditingController controller;
-
-  const OtpField({super.key, required this.controller});
+  final StreamController<ErrorAnimationType>? errorController;
+  const OtpField({super.key, required this.controller, this.errorController});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +17,7 @@ class OtpField extends StatelessWidget {
       length: 6,
       controller: controller,
       keyboardType: TextInputType.number,
+      errorAnimationController: errorController,
       animationType: AnimationType.fade,
       enableActiveFill: true,
       autoFocus: false,

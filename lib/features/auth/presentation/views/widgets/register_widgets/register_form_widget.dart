@@ -47,6 +47,7 @@ class RegisterForm extends HookWidget {
             role: data.role,
             isEmailConfirmed: data.isEmailConfirmed,
           );
+          await UserPreferences.saveUserId(data.id);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,

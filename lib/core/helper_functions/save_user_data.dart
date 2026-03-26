@@ -15,6 +15,7 @@ class UserPreferences {
 
   static const String _tempUserIdKey = "tempUserId";
   static const String _tokenKey = "token";
+  static const String _userIdKey = "userId";
 
   static Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
@@ -94,6 +95,22 @@ class UserPreferences {
     await prefs.setString(_refreshTokenKey, refreshToken);
     await prefs.setString(_roleKey, role);
     await prefs.setBool(_isEmailConfirmedKey, isEmailConfirmed);
+  }
+
+
+  static Future<void> saveUserId(String userId) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_userIdKey, userId);
+  }
+
+  static Future<String> getUserId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_userIdKey) ?? '';
+  }
+
+  static Future<void> clearUserId() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_userIdKey);
   }
 
   // دوال الـ temp userId

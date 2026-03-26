@@ -211,6 +211,8 @@ class Assets {
   static const String registerWidgetsRequiredFieldLabel = 'lib/features/auth/presentation/views/widgets/register_widgets/required_field_label.dart';
   static const String reposAuthRepo = 'lib/features/auth/data/repos/auth_repo.dart';
   static const String reposAuthRepoImp = 'lib/features/auth/data/repos/auth_repo_imp.dart';
+  static const String resendOtpCubitResendOtpCubit = 'lib/features/auth/presentation/manager/resend_otp_cubit/resend_otp_cubit.dart';
+  static const String resendOtpCubitResendOtpState = 'lib/features/auth/presentation/manager/resend_otp_cubit/resend_otp_state.dart';
   static const String resetPasswordCubitResetPasswordCubit = 'lib/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
   static const String resetPasswordCubitResetPasswordState = 'lib/features/auth/presentation/manager/reset_password_cubit/reset_password_state.dart';
   static const String resetPasswordWidgetsResetPasswordForm = 'lib/features/auth/presentation/views/widgets/reset_password_widgets/reset_password_form.dart';

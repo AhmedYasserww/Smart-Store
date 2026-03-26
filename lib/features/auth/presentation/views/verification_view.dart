@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_store/features/auth/presentation/manager/resend_otp_cubit/resend_otp_cubit.dart';
 import 'package:smart_store/features/auth/presentation/views/widgets/verification_view_body.dart';
 import '../../../../core/constants/verify_otp_enum.dart';
 import '../../../../core/service_locator/service_locator.dart';
@@ -14,18 +15,27 @@ class VerificationView extends StatelessWidget {
   static const String routeName = 'verification_view';
 
   @override Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => VerifyOtpCubit(getIt.get<AuthRepoImpl>()), child: Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white, elevation: 0, leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back_ios_new),),),
-      body: VerificationViewBody(
-        type: type,
-        userId: userId,
-      ),
-    ),
-    );
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => VerifyOtpCubit(getIt.get<AuthRepoImpl>()),),
+        BlocProvider(
+            create: (_) => ResendOtpCubit(getIt.get<AuthRepoImpl>()
+        ),)
+      ],
+          child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white, elevation: 0, leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            }, icon: Icon(Icons.arrow_back_ios_new),),),
+          body: VerificationViewBody(
+            type: type,
+            userId: userId,
+          ),
+        ),
+        );
+
+
   }
 }

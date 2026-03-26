@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../../../../core/constants/verify_otp_enum.dart';
 import '../../../../../../core/helper_functions/save_user_data.dart';
 import '../../../../../../core/helper_functions/show_alert_dialog.dart';
@@ -24,6 +27,15 @@ class VerificationForm extends HookWidget {
     final formKey = useRef(GlobalKey<FormState>()).value;
     final autoValidate = useState(AutovalidateMode.disabled);
     final otpController = useTextEditingController();
+    final errorController = useMemoized(
+          () => StreamController<ErrorAnimationType>(),
+    );
+
+    useEffect(() {
+      return () {
+        errorController.close();
+      };
+    }, []);
 
     return BlocConsumer<VerifyOtpCubit, VerifyOtpState>(
         listener: (context, state) async {
@@ -36,18 +48,19 @@ class VerificationForm extends HookWidget {
           }
           if (state is VerifyOtpForgetSuccess) {
             await UserPreferences.saveToken(state.token);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: Colors.green,
+                content: Text(state.message), ), );
             Navigator.pushReplacementNamed(
-              context,
-              ResetPasswordView.routeName,
-            );
-            Navigator.pushReplacementNamed(
-              context,
-              ResetPasswordView.routeName,
-              arguments: state.token,
+              context, ResetPasswordView.routeName,
             );
           }
 
           if (state is VerifyOtpFailure) {
+            errorController.add(ErrorAnimationType.shake);
+            otpController.clear();
+
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 backgroundColor: Colors.red,
@@ -70,7 +83,10 @@ class VerificationForm extends HookWidget {
               ),
               const SizedBox(height: 16),
 
-              OtpField(controller: otpController),
+              OtpField(
+                  controller: otpController,
+                errorController: errorController,
+              ),
 
               const SizedBox(height: 24),
 

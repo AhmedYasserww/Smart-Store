@@ -25,6 +25,10 @@ class ForgetPasswordForm extends HookWidget {
           await UserPreferences.saveTempUserId(userId);
 
           print("User ID saved: $userId");
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.green,
+              content: Text(state.forgetPasswordModel.message), ), );
 
           Navigator.pushNamed(
             context,
