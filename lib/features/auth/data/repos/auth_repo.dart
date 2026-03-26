@@ -3,11 +3,13 @@ import '../../../../core/errors/failure.dart';
 import '../entities/forget_password_entity.dart';
 import '../entities/log_in_entity.dart';
 import '../entities/register_entity.dart';
+import '../entities/resend_otp_entity.dart';
 import '../entities/reset_password_entity.dart';
 import '../entities/verification_entity.dart';
 import '../models/forget_password_model.dart';
 import '../models/log_in_model.dart';
 import '../models/register_model.dart';
+import '../models/resend_otp_model.dart';
 import '../models/reset_password_model.dart';
 import '../models/verification_model.dart';
 
@@ -29,5 +31,8 @@ abstract class AuthRepo {
   });
   Future<Either<Failure, ResetPasswordModel>> resetPassword({
     required ResetPasswordEntity entity,
+  });
+  Future<Either<Failure, ResendOtpModel>> resendOtp({
+    required ResendOtpEntity entity,
   });
 }

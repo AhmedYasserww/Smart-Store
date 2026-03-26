@@ -38,6 +38,7 @@ class Assets {
   static const String entitiesForgetPasswordEntity = 'lib/features/auth/data/entities/forget_password_entity.dart';
   static const String entitiesLogInEntity = 'lib/features/auth/data/entities/log_in_entity.dart';
   static const String entitiesRegisterEntity = 'lib/features/auth/data/entities/register_entity.dart';
+  static const String entitiesResendOtpEntity = 'lib/features/auth/data/entities/resend_otp_entity.dart';
   static const String entitiesResetPasswordEntity = 'lib/features/auth/data/entities/reset_password_entity.dart';
   static const String entitiesVerificationEntity = 'lib/features/auth/data/entities/verification_entity.dart';
   static const String errorsFailure = 'lib/core/errors/failure.dart';
@@ -157,6 +158,7 @@ class Assets {
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
   static const String modelsRegisterModel = 'lib/features/auth/data/models/register_model.dart';
+  static const String modelsResendOtpModel = 'lib/features/auth/data/models/resend_otp_model.dart';
   static const String modelsResetPasswordModel = 'lib/features/auth/data/models/reset_password_model.dart';
   static const String modelsVerificationModel = 'lib/features/auth/data/models/verification_model.dart';
   static const String onboardingDataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart~';

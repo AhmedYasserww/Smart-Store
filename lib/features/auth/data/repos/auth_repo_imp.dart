@@ -5,11 +5,13 @@ import '../../../../core/services/api_service.dart';
 import '../entities/forget_password_entity.dart';
 import '../entities/log_in_entity.dart';
 import '../entities/register_entity.dart';
+import '../entities/resend_otp_entity.dart';
 import '../entities/reset_password_entity.dart';
 import '../entities/verification_entity.dart';
 import '../models/forget_password_model.dart';
 import '../models/log_in_model.dart';
 import '../models/register_model.dart';
+import '../models/resend_otp_model.dart';
 import '../models/reset_password_model.dart';
 import '../models/verification_model.dart';
 import 'auth_repo.dart';
@@ -266,6 +268,50 @@ class AuthRepoImpl implements AuthRepo {
           e.response?.data?["message"] ?? "Forget password request failed";
 
       return Left(ServerFailure(errorMessage: errorMessage));
+    } catch (e) {
+      return Left(
+        ServerFailure(errorMessage: "Unexpected error: $e"),
+      );
+    }
+  }
+
+  //////////////////////////////////////////////////
+
+  @override
+  Future<Either<Failure, ResendOtpModel>> resendOtp({
+    required ResendOtpEntity entity,
+  }) async {
+    try {
+      final response = await apiService.post(
+        endPoint: "Account/resend-otp",
+        data: {
+          "userId": entity.userId,
+        },
+      );
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response["statusCode"];
+        final succeeded = response["succeeded"] ?? false;
+
+        if (statusCode == 200 && succeeded) {
+          return Right(ResendOtpModel.fromJson(response));
+        } else {
+          return Left(
+            ServerFailure(
+              errorMessage: response["message"] ?? "Resend OTP failed",
+            ),
+          );
+        }
+      } else {
+        return Left(ServerFailure(errorMessage: "Invalid response"));
+      }
+    } on DioException catch (e) {
+      return Left(
+        ServerFailure(
+          errorMessage:
+          e.response?.data?["message"] ?? "Resend OTP request failed",
+        ),
+      );
     } catch (e) {
       return Left(
         ServerFailure(errorMessage: "Unexpected error: $e"),
