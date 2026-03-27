@@ -1,11 +1,37 @@
 import 'package:dio/dio.dart';
+import '../constants/api_constants.dart';
 
 class ApiService {
   final Dio dio;
 
-  ApiService({required this.dio});
+  ApiService({required this.dio}) {
+    dio.options.baseUrl = ApiConstants.baseUrl;
+    dio.options.headers = {
+      "Accept": "application/json",
+    };
 
-  final String baseUrl = "https://tryha.runasp.net/api/";
+    dio.options.connectTimeout = const Duration(seconds: 15);
+    dio.options.receiveTimeout = const Duration(seconds: 15);
+  }
+
+  ///  Build Options
+  Options _buildOptions({String? token, String? contentType}) {
+    return Options(
+      headers: {
+        if (contentType != null) "Content-Type": contentType,
+        if (token != null) "Authorization": "Bearer $token",
+      },
+    );
+  }
+
+  ///  Handle Dio Errors
+  dynamic _handleDioError(DioException e) {
+    if (e.response != null) {
+      return e.response?.data;
+    } else {
+      throw Exception("Network error: ${e.message}");
+    }
+  }
 
   /// GET REQUEST
   Future<dynamic> get({
@@ -14,13 +40,8 @@ class ApiService {
   }) async {
     try {
       final response = await dio.get(
-        "$baseUrl$endPoint",
-        options: Options(
-          headers: {
-            "Accept": "application/json",
-            if (token != null) "Authorization": "Bearer $token",
-          },
-        ),
+        endPoint,
+        options: _buildOptions(token: token),
       );
 
       return response.data;
@@ -39,27 +60,21 @@ class ApiService {
   }) async {
     try {
       final response = await dio.post(
-        "$baseUrl$endPoint",
+        endPoint,
         data: data,
-        options: Options(
-          headers: {
-            "Content-Type": "application/json",
-            if (token != null) "Authorization": "Bearer $token",
-          },
+        options: _buildOptions(
+          token: token,
+          contentType: ApiConstants.contentType,
         ),
       );
 
       return response.data;
     } on DioException catch (e) {
-      if (e.response != null) {
-        return e.response?.data;
-      } else {
-        throw Exception("Network error: ${e.message}");
-      }
+      return _handleDioError(e);
     }
   }
 
-  /// POST MULTIPART (FormData)
+  /// POST MULTIPART
   Future<dynamic> postMultipart({
     required String endPoint,
     required FormData data,
@@ -67,23 +82,17 @@ class ApiService {
   }) async {
     try {
       final response = await dio.post(
-        "$baseUrl$endPoint",
+        endPoint,
         data: data,
-        options: Options(
-          headers: {
-            "Content-Type": "multipart/form-data",
-            if (token != null) "Authorization": "Bearer $token",
-          },
+        options: _buildOptions(
+          token: token,
+          contentType: "multipart/form-data",
         ),
       );
 
       return response.data;
     } on DioException catch (e) {
-      if (e.response != null) {
-        return e.response?.data;
-      } else {
-        throw Exception("Network error: ${e.message}");
-      }
+      return _handleDioError(e);
     }
   }
 
@@ -95,23 +104,17 @@ class ApiService {
   }) async {
     try {
       final response = await dio.delete(
-        "$baseUrl$endPoint",
+        endPoint,
         data: data,
-        options: Options(
-          headers: {
-            "Content-Type": "application/json",
-            if (token != null) "Authorization": "Bearer $token",
-          },
+        options: _buildOptions(
+          token: token,
+          contentType: ApiConstants.contentType,
         ),
       );
 
       return response.data;
     } on DioException catch (e) {
-      if (e.response != null) {
-        return e.response?.data;
-      } else {
-        throw Exception("Network error: ${e.message}");
-      }
+      return _handleDioError(e);
     }
   }
 }

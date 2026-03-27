@@ -9,6 +9,7 @@ class Assets {
   static const String confirmOrderWidgetsOrderStatusTile = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/order_status_tile.dart';
   static const String confirmOrderWidgetsOrderStatusWidget = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/order_status_widget.dart';
   static const String confirmOrderWidgetsTopThankYouWidget = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/top_thank_you_widget.dart';
+  static const String constantsApiConstants = 'lib/core/constants/api_constants.dart';
   static const String constantsVerifyOtpEnum = 'lib/core/constants/verify_otp_enum.dart';
   static const String coreErrorsFailure = 'lib/core/errors/failure.dart~';
   static const String coreHelperFunctionsCalculateSize = 'lib/core/helper_functions/calculate_size.dart~';
@@ -226,6 +227,7 @@ class Assets {
   static const String reviewAndConfirmDeliveryWidgetsReadyToConfirmPaymentWidget = 'lib/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/ready_to_confirm_payment_widget.dart';
   static const String serviceLocatorServiceLocator = 'lib/core/service_locator/service_locator.dart';
   static const String servicesApiService = 'lib/core/services/api_service.dart';
+  static const String servicesEndPoints = 'lib/core/services/end_points.dart';
   static const String utilsAppColor = 'lib/core/utils/app_color.dart';
   static const String utilsAppDimensions = 'lib/core/utils/app_dimensions.dart';
   static const String utilsAppImages = 'lib/core/utils/app_images.dart';
