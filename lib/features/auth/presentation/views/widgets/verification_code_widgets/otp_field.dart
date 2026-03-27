@@ -13,6 +13,7 @@ class OtpField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PinCodeTextField(
+
       autoDisposeControllers: false,
       appContext: context,
       length: 6,

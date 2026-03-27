@@ -16,17 +16,20 @@ class PasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextField(
+    return  CustomTextField(
+      keyboardType: TextInputType.visiblePassword,
       prefixIcon: Icons.lock,
       hintText: "Enter Your Password",
       controller: passwordController,
       obscureText: visible,
       validator: ValidatorHelper.validateLoginPassword,
-    //  validator: (value) => value == null || value.isEmpty ? 'Password is required ' : null,
       suffixIcon: IconButton(
         onPressed: toggleVisibility,
-        icon: Icon(visible ? Icons.visibility_off : Icons.visibility,  color: AppColors.greyTextColor,
-          size: 22,),
+        icon: Icon(
+          visible ? Icons.visibility_off : Icons.visibility,
+          color: AppColors.greyTextColor,
+          size: 22,
+        ),
       ),
 
     );

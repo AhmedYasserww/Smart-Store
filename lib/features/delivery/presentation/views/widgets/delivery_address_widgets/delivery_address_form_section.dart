@@ -86,6 +86,7 @@ class DeliveryAddressFormSection extends StatelessWidget {
           const SizedBox(height: 16),
 
           CustomTextField(
+            keyboardType: TextInputType.name,
             hintText: 'Full Name',
             controller: nameController,
           ),

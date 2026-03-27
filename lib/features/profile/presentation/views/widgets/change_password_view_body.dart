@@ -25,6 +25,7 @@ class ChangePasswordViewBody extends StatelessWidget {
           const SizedBox(height: 8),
 
           CustomTextField(
+            keyboardType:   TextInputType.visiblePassword,
             hintText: "Enter your Password",
             obscureText: true,
           ),
@@ -40,6 +41,7 @@ class ChangePasswordViewBody extends StatelessWidget {
           const SizedBox(height: 8),
 
           CustomTextField(
+            keyboardType:   TextInputType.visiblePassword,
             hintText: "Enter New Password",
             obscureText: true,
           ),
@@ -55,6 +57,7 @@ class ChangePasswordViewBody extends StatelessWidget {
           const SizedBox(height: 8),
 
           CustomTextField(
+            keyboardType:   TextInputType.visiblePassword,
             hintText: "Confirm Password",
             obscureText: true,
           ),

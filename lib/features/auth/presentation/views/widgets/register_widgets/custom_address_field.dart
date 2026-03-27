@@ -13,6 +13,7 @@ class CustomAddressField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
+      keyboardType: TextInputType.streetAddress,
       controller: addressController,
       prefixIcon: Icons.location_on,
       hintText: 'Enter your Address',

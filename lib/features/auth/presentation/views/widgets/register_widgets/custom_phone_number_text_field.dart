@@ -11,6 +11,7 @@ class PhoneNumberField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
+      keyboardType: TextInputType.phone,
       controller: phoneNumberController,
       validator: ValidatorHelper.validatePhone,
       prefixIcon: Icons.phone_android,

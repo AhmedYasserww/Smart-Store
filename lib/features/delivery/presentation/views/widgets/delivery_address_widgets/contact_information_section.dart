@@ -22,7 +22,9 @@ class ContactInformationSection extends StatelessWidget {
         Text('Contact Information', style: AppStyle.styleSemiBold16),
         const SizedBox(height: 16),
 
-        const CustomTextField(hintText: 'Full Name'),
+        const CustomTextField(
+          keyboardType: TextInputType.name,
+            hintText: 'Full Name'),
         const SizedBox(height: 8),
         const CustomTextField(
           hintText: 'Phone Number',

@@ -20,6 +20,8 @@ class ConfirmPasswordField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
+
+      keyboardType: TextInputType.visiblePassword,
       controller: confirmPasswordController,
       obscureText: visible,
       prefixIcon: Icons.lock,

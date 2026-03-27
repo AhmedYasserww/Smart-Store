@@ -13,6 +13,7 @@ class NameField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
+        keyboardType: TextInputType.name,
       controller: nameController,
       prefixIcon: Icons.person,
       hintText: 'Enter your name',

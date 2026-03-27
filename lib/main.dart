@@ -50,9 +50,9 @@ class MyApp extends StatelessWidget {
       ),
 
       onGenerateRoute: onGenerateRoutes,
-      initialRoute: ResetPasswordView.routeName,
+      //initialRoute: ResetPasswordView.routeName,
      // initialRoute: OnBoardingView.routeName,
-    //   initialRoute: LogInView.routeName,
+       initialRoute: LogInView.routeName,
     // initialRoute: CustomNavigationBar.routeName,
 
     );

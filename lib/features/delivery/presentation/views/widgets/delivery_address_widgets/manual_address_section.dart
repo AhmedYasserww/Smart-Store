@@ -37,12 +37,14 @@ class ManualAddressSection extends StatelessWidget {
           const SizedBox(height: 16),
 
           CustomTextField(
+            keyboardType: TextInputType.streetAddress,
             hintText: 'City',
             controller: cityController,
           ),
           const SizedBox(height: 16),
 
           CustomTextField(
+            keyboardType: TextInputType.streetAddress,
             hintText: 'Street',
             controller: streetController,
           ),
@@ -52,6 +54,7 @@ class ManualAddressSection extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomTextField(
+                  keyboardType: TextInputType.streetAddress,
                   hintText: 'Building',
                   controller: buildingController,
                 ),
@@ -59,6 +62,7 @@ class ManualAddressSection extends StatelessWidget {
               const SizedBox(width: 16),
               Expanded(
                 child: CustomTextField(
+                  keyboardType: TextInputType.streetAddress,
                   hintText: 'Apartment',
                   controller: apartmentController,
                 ),

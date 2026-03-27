@@ -14,6 +14,8 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     this.hintText,
     this.keyboardType,
+     this.focusNode,
+    this.onFieldSubmitted,
   });
 
   final void Function(String?)? onSaved;
@@ -25,10 +27,13 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
+  final FocusNode? focusNode;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText,
