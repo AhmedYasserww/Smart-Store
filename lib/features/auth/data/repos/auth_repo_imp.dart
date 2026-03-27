@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
+import '../../../../core/services/end_points.dart';
 import '../entities/forget_password_entity.dart';
 import '../entities/log_in_entity.dart';
 import '../entities/register_entity.dart';
@@ -37,7 +38,7 @@ class AuthRepoImpl implements AuthRepo {
       });
 
       final response = await apiService.postMultipart(
-        endPoint: "Account/register/client",
+        endPoint: EndPoints.registerClient,
         data: formData,
       );
 
@@ -78,7 +79,7 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await apiService.post(
-        endPoint: "Account/confirm-email",
+        endPoint:EndPoints.confirmEmail,
         data: {
           "userId": verificationEntity.userId,
           "otp": verificationEntity.otp,
@@ -115,7 +116,7 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await apiService.post(
-        endPoint: "Account/confirm-reset-password",
+        endPoint: EndPoints.confirmResetPassword,
         data: {
           "userId": verificationEntity.userId,
           "otp": verificationEntity.otp,
@@ -155,7 +156,7 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await apiService.post(
-        endPoint: "Account/reset-password",
+        endPoint:EndPoints.resetPassword,
         data: {
           "userId": entity.userId,
           "token": entity.token,
@@ -197,7 +198,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
 
       final response = await apiService.post(
-        endPoint: "Account/login",
+        endPoint:EndPoints.login,
         data: {
           "email": loginEntity.email,
           "password": loginEntity.password,
@@ -243,7 +244,7 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await apiService.post(
-        endPoint: "Account/forget-password",
+        endPoint: EndPoints.forgetPassword,
         data: {
           "email": forgetPasswordEntity.email,
         },
@@ -283,7 +284,7 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await apiService.post(
-        endPoint: "Account/resend-otp",
+        endPoint: EndPoints.resendOtp,
         data: {
           "userId": entity.userId,
         },

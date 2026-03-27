@@ -69,6 +69,7 @@ class Assets {
   static const String helperFunctionsSaveUserData = 'lib/core/helper_functions/save_user_data.dart';
   static const String helperFunctionsShowAlertDialog = 'lib/core/helper_functions/show_alert_dialog.dart';
   static const String helperFunctionsShowTryOnDialog = 'lib/core/helper_functions/show_try_on_dialog.dart';
+  static const String helperFunctionsValidatorHelper = 'lib/core/helper_functions/validator_helper.dart';
   static const String imagesAppleIcon = 'assets/images/appleIcon.svg';
   static const String imagesArrivedIcon = 'assets/images/arrived_icon.svg';
   static const String imagesArrowButton = 'assets/images/arrow_button.svg';
