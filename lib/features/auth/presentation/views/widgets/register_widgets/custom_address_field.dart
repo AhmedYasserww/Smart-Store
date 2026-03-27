@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/core/helper_functions/validator_helper.dart';
 
 import '../../../../../../core/widgets/custom_text_field.dart';
 class CustomAddressField extends StatelessWidget {
@@ -15,15 +16,7 @@ class CustomAddressField extends StatelessWidget {
       controller: addressController,
       prefixIcon: Icons.location_on,
       hintText: 'Enter your Address',
-      validator: (value) {
-        if (value == null || value.trim().isEmpty) {
-          return 'Address is required';
-        }
-        if (value.length < 3) {
-          return 'Address must be at least 3 characters';
-        }
-        return null;
-      },
+      validator: ValidatorHelper.validateAddress,
     );
   }
 }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:smart_store/core/helper_functions/validator_helper.dart';
 import '../../../../../../core/utils/app_color.dart';
 
 class OtpField extends StatelessWidget {
@@ -22,12 +23,7 @@ class OtpField extends StatelessWidget {
       enableActiveFill: true,
       autoFocus: false,
       cursorColor: AppColors.primaryColor,
-      validator: (value) {
-        if (value == null || value.length != 6) {
-          return 'Enter 6-digit code';
-        }
-        return null;
-      },
+      validator: ValidatorHelper.validateOtp,
 
       pinTheme: PinTheme(
         shape: PinCodeFieldShape.box,

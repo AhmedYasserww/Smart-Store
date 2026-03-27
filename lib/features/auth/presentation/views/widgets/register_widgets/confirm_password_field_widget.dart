@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/helper_functions/validator_helper.dart';
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
@@ -23,15 +24,10 @@ class ConfirmPasswordField extends StatelessWidget {
       obscureText: visible,
       prefixIcon: Icons.lock,
       hintText: 'Re_enter your Password',
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Confirm password is required';
-        }
-        if (value != passwordController.text) {
-          return 'Passwords do not match';
-        }
-        return null;
-      },
+      validator: (value) => ValidatorHelper.validateConfirmPassword(
+        passwordController.text,
+        value,
+      ),
       suffixIcon: IconButton(
         onPressed: toggleVisibility,
         icon: Icon(

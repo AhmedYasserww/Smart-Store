@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/core/helper_functions/validator_helper.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
 
@@ -11,14 +12,7 @@ class PhoneNumberField extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomTextField(
       controller: phoneNumberController,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'This field is required. Please enter a phone number.';
-        } else if (value.length != 11) {
-          return 'Phone number must be exactly 11 digits long.';
-        }
-        return null;
-      },
+      validator: ValidatorHelper.validatePhone,
       prefixIcon: Icons.phone_android,
       hintText: "Enter Your Phone Number",
 

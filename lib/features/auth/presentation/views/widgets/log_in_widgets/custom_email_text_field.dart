@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/helper_functions/validator_helper.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
 class EmailField extends StatelessWidget {
@@ -12,15 +13,7 @@ class EmailField extends StatelessWidget {
       prefixIcon:Icons.email,
 hintText: "Enter Your Email",
       controller: emailController,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'required this field';
-        }
-        final bool emailValid = RegExp(
-          r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-        ).hasMatch(value);
-        return emailValid ? null : 'Enter a valid email';
-      },
+      validator: ValidatorHelper.validateEmail,
     );
   }
 }

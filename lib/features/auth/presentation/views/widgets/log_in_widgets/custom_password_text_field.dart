@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../../core/helper_functions/validator_helper.dart';
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 class PasswordField extends StatelessWidget {
@@ -20,7 +21,8 @@ class PasswordField extends StatelessWidget {
       hintText: "Enter Your Password",
       controller: passwordController,
       obscureText: visible,
-      validator: (value) => value == null || value.isEmpty ? 'required this field' : null,
+      validator: ValidatorHelper.validateLoginPassword,
+    //  validator: (value) => value == null || value.isEmpty ? 'Password is required ' : null,
       suffixIcon: IconButton(
         onPressed: toggleVisibility,
         icon: Icon(visible ? Icons.visibility_off : Icons.visibility,  color: AppColors.greyTextColor,
