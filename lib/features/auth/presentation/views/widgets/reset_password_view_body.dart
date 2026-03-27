@@ -8,26 +8,24 @@ class ResetPasswordViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppDimensions.authScreenPadding,
-          ),
-          child: SafeArea(
-            child: Column(
-              children: const [
-                SizedBox(height: 32),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: AppDimensions.authScreenPadding,
+        ),
+        child: SafeArea(
+          child: Column(
+            children: const [
+              SizedBox(height: 32),
 
-                ResetPasswordHeaderSection(),
+              ResetPasswordHeaderSection(),
 
-                SizedBox(height: 32),
+              SizedBox(height: 32),
 
-                ResetPasswordForm(),
+              ResetPasswordForm(),
 
-                SizedBox(height: 16),
-              ],
-            ),
+              SizedBox(height: 16),
+            ],
           ),
         ),
       ),

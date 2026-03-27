@@ -8,28 +8,26 @@ class ForgetPasswordViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppDimensions.authScreenPadding,
-            ),
-            child: Column(
-              children: const [
-                SizedBox(height: 32),
-
-                // Header Section
-                ForgetPasswordHeader(),
-
-                SizedBox(height: 32),
-
-                // Form with BlocConsumer
-                ForgetPasswordForm(),
-
-                SizedBox(height: 16),
-              ],
-            ),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: AppDimensions.authScreenPadding,
+        ),
+        child: SafeArea(
+          child: Column(
+            children: const [
+              SizedBox(height: 32),
+          
+              // Header Section
+              ForgetPasswordHeader(),
+          
+              SizedBox(height: 32),
+          
+              // Form with BlocConsumer
+              ForgetPasswordForm(),
+          
+              SizedBox(height: 16),
+            ],
           ),
         ),
       ),
