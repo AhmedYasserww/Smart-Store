@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/products/data/models/product_model.dart';
 import 'package:smart_store/features/products/presentation/views/product_details_view.dart';
 
 import '../../../../../../core/utils/app_color.dart';
@@ -7,7 +8,8 @@ import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../product_view.dart';
 class ProductOfListCard extends StatefulWidget {
-  const ProductOfListCard({super.key});
+  const ProductOfListCard({super.key, required this.productModel});
+  final ProductModel productModel ;
 
   @override
   State<ProductOfListCard> createState() => _ProductOfListCardState();
@@ -28,25 +30,35 @@ class _ProductOfListCardState extends State<ProductOfListCard> {
         color: Color(0xFFFFFFFF),
         child: Row(
           children: [
-            Container(
+            Image.network(
+              widget.productModel.productImages.isNotEmpty
+                  ? widget.productModel.productImages.first.images
+                  : "",
               height: 120,
               width: 129,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                image: DecorationImage(
-                  image: AssetImage(AppImages.bagImage),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) => Icon(Icons.image_not_supported),
             ),
+            // Container(
+            //   height: 120,
+            //   width: 129,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(8),
+            //     image: DecorationImage(
+            //       image: NetworkImage(widget.productModel.productImages[0].images.toString()
+            //       ),
+            //       fit: BoxFit.cover,
+            //     ),
+            //   ),
+            // ),
             SizedBox(width: 8),
             Column(
               spacing: 8,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Classic Blue Suit", style: AppStyle.styleBold16),
-                Text("Cotton 100%", style: AppStyle.styleGreyRegular10),
-                Text("\$49.99", style: AppStyle.styleRegular16),
+                Text(widget.productModel.name, style: AppStyle.styleBold16),
+                Text(widget.productModel.categoryName, style: AppStyle.styleGreyRegular14),
+                Text(widget.productModel.price.toString(), style: AppStyle.styleRegular16),
                 Row(
                   children: [
                     Icon(
@@ -56,7 +68,7 @@ class _ProductOfListCardState extends State<ProductOfListCard> {
                     ),
                     SizedBox(width: 4),
                     Text(
-                      "4.5",
+                      widget.productModel.rating.toString(),
                       style: AppStyle.styleRegular12.copyWith(
                         color: Color(0xFFEAB308),
                       ),

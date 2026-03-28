@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/product_info_card.dart';
+import 'package:smart_store/features/products/data/models/product_model.dart';
 import 'package:smart_store/features/products/presentation/views/product_details_view.dart';
 
 import '../../../../../core/utils/app_images.dart';
 class ProductCard extends StatefulWidget {
-  const ProductCard({super.key});
+  const ProductCard({super.key, required this.productModel});
+  final ProductModel productModel;
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -42,7 +44,7 @@ class _ProductCardState extends State<ProductCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(
+              borderRadius:  BorderRadius.vertical(
                 top: Radius.circular(16),
               ),
               child: SizedBox(
@@ -50,12 +52,16 @@ class _ProductCardState extends State<ProductCard> {
                 width: cardWidth,
                 child: Stack(
                   children: [
-                    Image.asset(
-                      AppImages.bagImage,
+                    Image.network(
+                      widget.productModel.productImages.isNotEmpty
+                          ? widget.productModel.productImages.first.images
+                          : "",
                       width: double.infinity,
                       height: imageHeight,
                       fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => Icon(Icons.image_not_supported),
                     ),
+
                     Positioned(
                       top: 8,
                       right: 8,
@@ -88,7 +94,9 @@ class _ProductCardState extends State<ProductCard> {
                 ),
               ),
             ),
-            const ProductInfoWidget(),
+             ProductInfoWidget(
+              productModel: widget.productModel,
+            ),
           ],
         ),
       ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/products/data/models/product_model.dart';
 import '../../../../../core/utils/app_style.dart';
 
 class ProductInfoWidget extends StatelessWidget {
-  const ProductInfoWidget({super.key});
+  const ProductInfoWidget({super.key, required this.productModel});
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ProductInfoWidget extends StatelessWidget {
             fit: BoxFit.scaleDown,
             alignment: Alignment.centerLeft,
             child: Text(
-              "Classic Blue Suit",
+              productModel.name,
               maxLines: 1,
               style: AppStyle.styleBold16,
             ),
@@ -30,9 +32,9 @@ class ProductInfoWidget extends StatelessWidget {
             fit: BoxFit.scaleDown,
             alignment: Alignment.centerLeft,
             child: Text(
-              "Cotton 100%",
+              productModel.categoryName,
               maxLines: 1,
-              style: AppStyle.styleGreyRegular10,
+              style: AppStyle.styleGreyRegular14,
             ),
           ),
 
@@ -44,24 +46,24 @@ class ProductInfoWidget extends StatelessWidget {
               Expanded(
              //   flex: 3,
                 child: Text(
-                  "\$49.99",
+                  productModel.price.toString(),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: AppStyle.styleRegular16,
                 ),
               ),
               const SizedBox(width: 4),
-              Expanded(
-          //      flex: 2,
-                child: Text(
-                  "\$60.00",
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppStyle.styleGreyRegular16.copyWith(
-                    decoration: TextDecoration.lineThrough,
-                  ),
-                ),
-              ),
+          //     Expanded(
+          // //      flex: 2,
+          //       child: Text(
+          //         "\$60.00",
+          //         maxLines: 1,
+          //         overflow: TextOverflow.ellipsis,
+          //         style: AppStyle.styleGreyRegular16.copyWith(
+          //           decoration: TextDecoration.lineThrough,
+          //         ),
+          //       ),
+          //     ),
              // const Spacer(),
               const Icon(
                 Icons.star_border_outlined,
@@ -70,7 +72,7 @@ class ProductInfoWidget extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                "4.5",
+               productModel.rating.toString(),
                 style: AppStyle.styleRegular12.copyWith(
                   color: Color(0xFFEAB308),
                 ),

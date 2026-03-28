@@ -6,4 +6,5 @@ class EndPoints {
   static const String forgetPassword = "Account/forget-password";
   static const String confirmResetPassword = "Account/confirm-reset-password";
   static const String resetPassword = "Account/reset-password";
+  static const String getAllProducts = "Products";
 }

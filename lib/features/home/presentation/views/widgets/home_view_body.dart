@@ -47,13 +47,13 @@ class HomeViewBody extends StatelessWidget {
             const SectionTitle(title: 'Recently Viewed'),
 
             const SizedBox(height: _sectionSpacing),
-            const ProductListview(),
+         //   const ProductListview(),
 
             const SizedBox(height: 8),
             const SectionTitle(title: 'Recommended For You'),
 
             const SizedBox(height: _sectionSpacing),
-            const ProductListview(),
+         //   const ProductListview(),
           ],
         ),
       ),
