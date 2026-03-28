@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/products/data/models/product_model.dart';
 
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../find_size_view.dart';
+
 class SizeSelector extends StatefulWidget {
-  const SizeSelector({super.key});
+  const SizeSelector({super.key, required this.productSizes});
+
+  final List<ProductSizeModel> productSizes;
 
   @override
   State<SizeSelector> createState() => _SizeSelectorState();
 }
 
 class _SizeSelectorState extends State<SizeSelector> {
-  int selectedIndex = 1;
-  final sizes = ['S', 'M', 'L', 'XL'];
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,37 +39,57 @@ class _SizeSelectorState extends State<SizeSelector> {
             ),
           ],
         ),
-        //   const SizedBox(height: 8),
-        Row(
-          children: List.generate(
-            sizes.length,
-                (index) => GestureDetector(
-              onTap: () => setState(() => selectedIndex = index),
-              child: Container(
-                margin: const EdgeInsets.only(right: 8),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 10,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: selectedIndex == index
-                      ? Color(0xff5D3A82)
-                      : Colors.transparent,
-                  border: Border.all(color: AppColors.palletBorderColor),
-                ),
-                child: Text(
-                  sizes[index],
-                  style: TextStyle(
-                    color: selectedIndex == index ? Colors.white : Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+        if (widget.productSizes.isEmpty)
+          Text(
+            'No sizes available',
+            style: AppStyle.styleRegular14.copyWith(
+              color: AppColors.primaryTextColor.withValues(alpha: 0.6),
+            ),
+          )
+        else
+          Row(
+            children: List.generate(widget.productSizes.length, (index) {
+              final size = widget.productSizes[index];
+              final isAvailable = size.quantity > 0;
+              final isSelected = selectedIndex == index;
+
+              return GestureDetector(
+                onTap: isAvailable
+                    ? () => setState(() => selectedIndex = index)
+                    : null,
+                child: Container(
+                  margin: const EdgeInsets.only(right: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: isSelected && isAvailable
+                        ? const Color(0xff5D3A82)
+                        : Colors.transparent,
+                    border: Border.all(
+                      color: isAvailable
+                          ? AppColors.palletBorderColor
+                          : AppColors.palletBorderColor.withValues(alpha: 0.4),
+                    ),
+                  ),
+                  child: Text(
+                    size.sizeName,
+                    style: TextStyle(
+                      color: isSelected && isAvailable
+                          ? Colors.white
+                          : isAvailable
+                          ? Colors.black
+                          : Colors.grey,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              ),
-            ),
+              );
+            }),
           ),
-        ),
       ],
     );
   }

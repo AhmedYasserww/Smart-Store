@@ -1,9 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../../../../core/utils/app_color.dart';
 import '../../../../../../../core/utils/app_style.dart';
+
 class PriceRange extends StatelessWidget {
-  const PriceRange({super.key});
+  const PriceRange({
+    super.key,
+    this.initialMinPrice,
+    this.initialMaxPrice,
+    required this.onMinChanged,
+    required this.onMaxChanged,
+  });
+
+  final int? initialMinPrice;
+  final int? initialMaxPrice;
+  final ValueChanged<int?> onMinChanged;
+  final ValueChanged<int?> onMaxChanged;
+
+  int? _toIntOrNull(String value) {
+    final trimmed = value.trim();
+    if (trimmed.isEmpty) return null;
+    return int.tryParse(trimmed);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +38,25 @@ class PriceRange extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.palletBorderColor, width: 1),
+                  border: Border.all(
+                    color: AppColors.palletBorderColor,
+                    width: 1,
+                  ),
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.5),
-                    child: Text("Min Price", style: AppStyle.styleRegular12),
+                child: TextFormField(
+                  initialValue: initialMinPrice?.toString(),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  onChanged: (value) => onMinChanged(_toIntOrNull(value)),
+                  decoration: InputDecoration(
+                    hintText: "Min Price",
+                    hintStyle: AppStyle.styleRegular12,
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 12.5,
+                    ),
                   ),
                 ),
               ),
@@ -33,15 +64,26 @@ class PriceRange extends StatelessWidget {
 
             Expanded(
               child: Container(
-
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.palletBorderColor, width: 1),
+                  border: Border.all(
+                    color: AppColors.palletBorderColor,
+                    width: 1,
+                  ),
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.5),
-                    child: Text("Max Price", style: AppStyle.styleRegular12),
+                child: TextFormField(
+                  initialValue: initialMaxPrice?.toString(),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  onChanged: (value) => onMaxChanged(_toIntOrNull(value)),
+                  decoration: InputDecoration(
+                    hintText: "Max Price",
+                    hintStyle: AppStyle.styleRegular12,
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 12.5,
+                    ),
                   ),
                 ),
               ),

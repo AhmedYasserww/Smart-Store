@@ -18,6 +18,7 @@ import '../../features/delivery/presentation/views/payment_method_view.dart';
 import '../../features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
+import '../../features/products/data/models/product_model.dart';
 import '../../features/products/presentation/views/find_size_view.dart';
 import '../../features/products/presentation/views/product_details_view.dart';
 import '../../features/products/presentation/views/product_view.dart';
@@ -32,32 +33,49 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     // case SplashView.routeName:
     //   return MaterialPageRoute(builder: (context) => const SplashView());
 
-     case OnBoardingView.routeName:
-       return MaterialPageRoute(builder: (context) => const OnBoardingView());
+    case OnBoardingView.routeName:
+      return MaterialPageRoute(builder: (context) => const OnBoardingView());
     case LogInView.routeName:
       return MaterialPageRoute(builder: (context) => const LogInView());
     case RegisterView.routeName:
       return MaterialPageRoute(builder: (context) => const RegisterView());
     case ForgetPasswordView.routeName:
-      return MaterialPageRoute(builder: (context) => const ForgetPasswordView());
+      return MaterialPageRoute(
+        builder: (context) => const ForgetPasswordView(),
+      );
     case VerificationView.routeName:
       final args = settings.arguments as Map;
       return MaterialPageRoute(
-        builder: (_) => VerificationView(
-          userId: args["userId"],
-          type: args["type"],
-        ),
+        builder: (_) =>
+            VerificationView(userId: args["userId"], type: args["type"]),
       );
     case ResetPasswordView.routeName:
       return MaterialPageRoute(builder: (context) => const ResetPasswordView());
     case CustomNavigationBar.routeName:
-      return MaterialPageRoute(builder: (context) => const CustomNavigationBar());
+      return MaterialPageRoute(
+        builder: (context) => const CustomNavigationBar(),
+      );
     case HomeView.routeName:
       return MaterialPageRoute(builder: (context) => const HomeView());
     case SearchView.routeName:
       return MaterialPageRoute(builder: (context) => const SearchView());
     case ProductDetailsView.routeName:
-      return MaterialPageRoute(builder: (context) => const ProductDetailsView());
+      final arg = settings.arguments;
+      if (arg is String && arg.isNotEmpty) {
+        return MaterialPageRoute(
+          builder: (context) => ProductDetailsView(productId: arg),
+        );
+      }
+      if (arg is ProductModel && arg.id.isNotEmpty) {
+        return MaterialPageRoute(
+          builder: (context) => ProductDetailsView(productId: arg.id),
+        );
+      }
+      return MaterialPageRoute(
+        builder: (context) => const Scaffold(
+          body: Center(child: Text('Product details argument is missing.')),
+        ),
+      );
     case FindSizeView.routeName:
       return MaterialPageRoute(builder: (context) => const FindSizeView());
     case ProductView.routeName:
@@ -67,29 +85,37 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case CartView.routeName:
       return MaterialPageRoute(builder: (context) => const CartView());
     case DeliveryAddressView.routeName:
-      return MaterialPageRoute(builder: (context) => const DeliveryAddressView());
+      return MaterialPageRoute(
+        builder: (context) => const DeliveryAddressView(),
+      );
     case DeliveryOptionView.routeName:
-      return MaterialPageRoute(builder: (context) => const DeliveryOptionView());
+      return MaterialPageRoute(
+        builder: (context) => const DeliveryOptionView(),
+      );
     case PaymentMethodView.routeName:
       return MaterialPageRoute(builder: (context) => const PaymentMethodView());
-   case ReviewAndConfirmDeliveryView.routeName:
-      return MaterialPageRoute(builder: (context) => const ReviewAndConfirmDeliveryView());
-  case ConfirmOrderView.routeName:
-    return MaterialPageRoute(builder: (context) => const ConfirmOrderView());
-case ProfileView.routeName:
-  return MaterialPageRoute(builder: (context) => const ProfileView());
-  case EditProfileView.routeName:
-    return MaterialPageRoute(builder: (context) => const EditProfileView());
-  case ChangePasswordView.routeName:
-    return MaterialPageRoute(builder: (context) => const ChangePasswordView());
+    case ReviewAndConfirmDeliveryView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const ReviewAndConfirmDeliveryView(),
+      );
+    case ConfirmOrderView.routeName:
+      return MaterialPageRoute(builder: (context) => const ConfirmOrderView());
+    case ProfileView.routeName:
+      return MaterialPageRoute(builder: (context) => const ProfileView());
+    case EditProfileView.routeName:
+      return MaterialPageRoute(builder: (context) => const EditProfileView());
+    case ChangePasswordView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const ChangePasswordView(),
+      );
     case OrdersView.routeName:
       return MaterialPageRoute(builder: (context) => const OrdersView());
     case OrderDetailsView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderDetailsView());
-      case OrderStatusView.routeName:
+    case OrderStatusView.routeName:
       return MaterialPageRoute(builder: (context) => const OrderStatusView());
-      case WishlistView.routeName:
-        return MaterialPageRoute(builder: (context) => const WishlistView());
+    case WishlistView.routeName:
+      return MaterialPageRoute(builder: (context) => const WishlistView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

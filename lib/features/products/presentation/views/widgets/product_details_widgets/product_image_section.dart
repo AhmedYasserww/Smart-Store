@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/core/widgets/custom_cached_network_image.dart';
+import 'package:smart_store/features/products/data/models/product_model.dart';
 
 import '../../../../../../core/utils/app_color.dart';
+
 class ProductImagesSection extends StatefulWidget {
-  const ProductImagesSection({super.key});
+  const ProductImagesSection({super.key, required this.productImages});
+
+  final List<ProductImageModel> productImages;
 
   @override
   State<ProductImagesSection> createState() => _ProductImagesSectionState();
@@ -11,13 +16,6 @@ class ProductImagesSection extends StatefulWidget {
 class _ProductImagesSectionState extends State<ProductImagesSection> {
   final PageController _pageController = PageController();
   int currentIndex = 0;
-
-  final List<String> images = [
-    'assets/images/dress_test.jpg',
-    'assets/images/bagImage.png',
-    'assets/images/dress_test.jpg',
-    'assets/images/bagImage.png',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +27,28 @@ class _ProductImagesSectionState extends State<ProductImagesSection> {
             height: 250,
             child: PageView.builder(
               controller: _pageController,
-              itemCount: images.length,
+              itemCount: widget.productImages.isEmpty
+                  ? 1
+                  : widget.productImages.length,
               onPageChanged: (index) {
                 setState(() {
                   currentIndex = index;
                 });
               },
               itemBuilder: (context, index) {
-                return Image.asset(
-                  images[index],
+                if (widget.productImages.isEmpty) {
+                  return Container(
+                    width: double.infinity,
+                    color: Colors.grey.shade100,
+                    alignment: Alignment.center,
+                    child: const Icon(Icons.image_not_supported_outlined),
+                  );
+                }
+
+                return CustomCachedNetworkImage(
+                  path: widget.productImages[index].images,
                   width: double.infinity,
+                  height: 250,
                   fit: BoxFit.cover,
                 );
               },
@@ -51,8 +61,8 @@ class _ProductImagesSectionState extends State<ProductImagesSection> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-            images.length,
-                (index) => AnimatedContainer(
+            widget.productImages.isEmpty ? 1 : widget.productImages.length,
+            (index) => AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               margin: const EdgeInsets.symmetric(horizontal: 4),
               width: currentIndex == index ? 18 : 8,

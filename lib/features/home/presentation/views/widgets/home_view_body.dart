@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/features/home/presentation/views/widgets/product_list_view.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/section_title.dart';
 
 import '../../../../../core/utils/app_dimensions.dart';
@@ -7,6 +6,7 @@ import '../../../../search/presentation/views/search_view.dart';
 import 'category_widget.dart';
 import 'custom_search_field.dart';
 import 'offer_card_list_view.dart';
+import 'recently_viewed_home_list.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -41,19 +41,19 @@ class HomeViewBody extends StatelessWidget {
             const SectionTitle(title: 'Exclusive Offers'),
 
             const SizedBox(height: _sectionSpacing),
-            const  OfferCardListView(),
+            const OfferCardListView(),
 
-            const  SizedBox(height: _largeSpacing),
+            const SizedBox(height: _largeSpacing),
             const SectionTitle(title: 'Recently Viewed'),
 
             const SizedBox(height: _sectionSpacing),
-         //   const ProductListview(),
+            const RecentlyViewedHomeList(),
 
             const SizedBox(height: 8),
             const SectionTitle(title: 'Recommended For You'),
 
             const SizedBox(height: _sectionSpacing),
-         //   const ProductListview(),
+            //   const ProductListview(),
           ],
         ),
       ),

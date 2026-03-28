@@ -1,9 +1,17 @@
-
 import 'package:dartz/dartz.dart';
+
 import '../../../../core/errors/failure.dart';
 import '../models/product_model.dart';
+import '../models/product_query_params_model.dart';
 
 abstract class ProductsRepo {
-  Future<Either<Failure, ProductsResponse>> getAllProducts();
-}
+  Future<Either<Failure, ProductsResponse>> getAllProducts({
+    ProductQueryParams? params,
+  });
 
+  Future<Either<Failure, ProductModel>> getProductById({required String id});
+
+  Future<Either<Failure, List<ProductModel>>> getRecentlyViewedProducts({
+    String? token,
+  });
+}

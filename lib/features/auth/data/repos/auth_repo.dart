@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+
 import '../../../../core/errors/failure.dart';
 import '../entities/forget_password_entity.dart';
 import '../entities/log_in_entity.dart';
@@ -20,9 +21,7 @@ abstract class AuthRepo {
   Future<Either<Failure, VerificationModel>> confirmEmail({
     required VerificationEntity verificationEntity,
   });
-  Future<Either<Failure, LoginModel>> login({
-    required LoginEntity loginEntity,
-  });
+  Future<Either<Failure, LoginModel>> login({required LoginEntity loginEntity});
   Future<Either<Failure, ForgetPasswordModel>> forgetPassword({
     required ForgetPasswordEntity forgetPasswordEntity,
   });
@@ -35,4 +34,6 @@ abstract class AuthRepo {
   Future<Either<Failure, ResendOtpModel>> resendOtp({
     required ResendOtpEntity entity,
   });
+
+  Future<Either<Failure, String>> logout({required String token});
 }

@@ -4,8 +4,11 @@ import 'package:smart_store/features/products/presentation/views/widgets/product
 
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
+
 class QuantitySelector extends StatefulWidget {
-  const QuantitySelector({super.key});
+  const QuantitySelector({super.key, required this.stockQuantity});
+
+  final int stockQuantity;
 
   @override
   State<QuantitySelector> createState() => _QuantitySelectorState();
@@ -15,6 +18,12 @@ class _QuantitySelectorState extends State<QuantitySelector> {
   int quantity = 1;
 
   @override
+  void initState() {
+    super.initState();
+    quantity = widget.stockQuantity > 0 ? 1 : 0;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -22,13 +31,20 @@ class _QuantitySelectorState extends State<QuantitySelector> {
           children: [
             const Text('Quantity', style: AppStyle.styleSemiBold18),
             const Spacer(),
-            const Text('15 in stock', style: AppStyle.styleRegular14),
-            const SizedBox(width: 4),
-            SvgPicture.asset(
-              AppImages.checkImage,
-              width: 14,
-              height: 14,
+            Text(
+              widget.stockQuantity > 0
+                  ? '${widget.stockQuantity} in stock'
+                  : 'Out of stock',
+              style: AppStyle.styleRegular14,
             ),
+            const SizedBox(width: 4),
+            widget.stockQuantity > 0
+                ? SvgPicture.asset(AppImages.checkImage, width: 14, height: 14)
+                : const Icon(
+                    Icons.error_outline,
+                    size: 14,
+                    color: Colors.redAccent,
+                  ),
           ],
         ),
 
@@ -38,20 +54,21 @@ class _QuantitySelectorState extends State<QuantitySelector> {
           children: [
             QuantityButton(
               icon: Icons.remove,
-              onTap: quantity > 1
-                  ? () => setState(() => quantity--)
-                  : null,
+              onTap: quantity > 1 ? () => setState(() => quantity--) : null,
             ),
             const SizedBox(width: 8),
             Text(
               '$quantity',
-              style: AppStyle.styleRegular16
-                  .copyWith(fontWeight: FontWeight.w600),
+              style: AppStyle.styleRegular16.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
             ),
             const SizedBox(width: 8),
             QuantityButton(
               icon: Icons.add,
-              onTap: () => setState(() => quantity++),
+              onTap: widget.stockQuantity > 0 && quantity < widget.stockQuantity
+                  ? () => setState(() => quantity++)
+                  : null,
             ),
           ],
         ),
@@ -59,4 +76,3 @@ class _QuantitySelectorState extends State<QuantitySelector> {
     );
   }
 }
-

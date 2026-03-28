@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
 import '../../../../core/services/end_points.dart';
@@ -56,22 +57,17 @@ class AuthRepoImpl implements AuthRepo {
       } else {
         return Left(ServerFailure(errorMessage: "Invalid server response"));
       }
-
     } on DioException catch (e) {
-
       final errorMessage =
           e.response?.data?["message"] ?? "Register request failed";
 
       return Left(ServerFailure(errorMessage: errorMessage));
-
     } catch (e) {
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
     }
   }
 
-
- ///////////////////////////////////////////////////
-
+  ///////////////////////////////////////////////////
 
   @override
   Future<Either<Failure, VerificationModel>> confirmEmail({
@@ -79,7 +75,7 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await apiService.post(
-        endPoint:EndPoints.confirmEmail,
+        endPoint: EndPoints.confirmEmail,
         data: {
           "userId": verificationEntity.userId,
           "otp": verificationEntity.otp,
@@ -93,17 +89,21 @@ class AuthRepoImpl implements AuthRepo {
         if (statusCode == 200 && succeeded) {
           return Right(VerificationModel.fromJson(response));
         } else {
-          return Left(ServerFailure(
-            errorMessage: response["message"] ?? "Verification failed",
-          ));
+          return Left(
+            ServerFailure(
+              errorMessage: response["message"] ?? "Verification failed",
+            ),
+          );
         }
       } else {
         return Left(ServerFailure(errorMessage: "Invalid response"));
       }
     } on DioException catch (e) {
-      return Left(ServerFailure(
-        errorMessage: e.response?.data?["message"] ?? "Request failed",
-      ));
+      return Left(
+        ServerFailure(
+          errorMessage: e.response?.data?["message"] ?? "Request failed",
+        ),
+      );
     } catch (e) {
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
     }
@@ -130,25 +130,27 @@ class AuthRepoImpl implements AuthRepo {
         if (statusCode == 200 && succeeded) {
           return Right(VerificationModel.fromJson(response));
         } else {
-          return Left(ServerFailure(
-            errorMessage: response["message"] ?? "Verification failed",
-          ));
+          return Left(
+            ServerFailure(
+              errorMessage: response["message"] ?? "Verification failed",
+            ),
+          );
         }
       } else {
         return Left(ServerFailure(errorMessage: "Invalid response"));
       }
     } on DioException catch (e) {
-      return Left(ServerFailure(
-        errorMessage: e.response?.data?["message"] ?? "Request failed",
-      ));
+      return Left(
+        ServerFailure(
+          errorMessage: e.response?.data?["message"] ?? "Request failed",
+        ),
+      );
     } catch (e) {
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
     }
   }
 
-
   ///////////////////////////////////////////////////////////
-
 
   @override
   Future<Either<Failure, ResetPasswordModel>> resetPassword({
@@ -156,7 +158,7 @@ class AuthRepoImpl implements AuthRepo {
   }) async {
     try {
       final response = await apiService.post(
-        endPoint:EndPoints.resetPassword,
+        endPoint: EndPoints.resetPassword,
         data: {
           "userId": entity.userId,
           "token": entity.token,
@@ -172,22 +174,25 @@ class AuthRepoImpl implements AuthRepo {
         if (statusCode == 200 && succeeded) {
           return Right(ResetPasswordModel.fromJson(response));
         } else {
-          return Left(ServerFailure(
-            errorMessage: response["message"] ?? "Reset password failed",
-          ));
+          return Left(
+            ServerFailure(
+              errorMessage: response["message"] ?? "Reset password failed",
+            ),
+          );
         }
       } else {
         return Left(ServerFailure(errorMessage: "Invalid response"));
       }
     } on DioException catch (e) {
-      return Left(ServerFailure(
-        errorMessage: e.response?.data?["message"] ?? "Request failed",
-      ));
+      return Left(
+        ServerFailure(
+          errorMessage: e.response?.data?["message"] ?? "Request failed",
+        ),
+      );
     } catch (e) {
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
     }
   }
-
 
   ///////////////////////////////////////////////////////////
 
@@ -196,17 +201,12 @@ class AuthRepoImpl implements AuthRepo {
     required LoginEntity loginEntity,
   }) async {
     try {
-
       final response = await apiService.post(
-        endPoint:EndPoints.login,
-        data: {
-          "email": loginEntity.email,
-          "password": loginEntity.password,
-        },
+        endPoint: EndPoints.login,
+        data: {"email": loginEntity.email, "password": loginEntity.password},
       );
 
       if (response is Map<String, dynamic>) {
-
         final int? statusCode = response["statusCode"];
         final bool succeeded = response["succeeded"] ?? false;
 
@@ -216,27 +216,20 @@ class AuthRepoImpl implements AuthRepo {
           final errorMessage = response["message"] ?? "Login failed";
           return Left(ServerFailure(errorMessage: errorMessage));
         }
-
       } else {
         return Left(ServerFailure(errorMessage: "Invalid server response"));
       }
-
     } on DioException catch (e) {
-
       final errorMessage =
           e.response?.data?["message"] ?? "Login request failed";
 
       return Left(ServerFailure(errorMessage: errorMessage));
-
     } catch (e) {
-
       return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
-
     }
   }
 
   ///////////////////////////////////////////////////////////
-
 
   @override
   Future<Either<Failure, ForgetPasswordModel>> forgetPassword({
@@ -245,9 +238,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       final response = await apiService.post(
         endPoint: EndPoints.forgetPassword,
-        data: {
-          "email": forgetPasswordEntity.email,
-        },
+        data: {"email": forgetPasswordEntity.email},
       );
 
       if (response is Map<String, dynamic>) {
@@ -257,8 +248,7 @@ class AuthRepoImpl implements AuthRepo {
         if (statusCode == 200 && succeeded) {
           return Right(ForgetPasswordModel.fromJson(response));
         } else {
-          final errorMessage =
-              response["message"] ?? "Forget password failed";
+          final errorMessage = response["message"] ?? "Forget password failed";
           return Left(ServerFailure(errorMessage: errorMessage));
         }
       } else {
@@ -270,9 +260,7 @@ class AuthRepoImpl implements AuthRepo {
 
       return Left(ServerFailure(errorMessage: errorMessage));
     } catch (e) {
-      return Left(
-        ServerFailure(errorMessage: "Unexpected error: $e"),
-      );
+      return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
     }
   }
 
@@ -285,9 +273,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       final response = await apiService.post(
         endPoint: EndPoints.resendOtp,
-        data: {
-          "userId": entity.userId,
-        },
+        data: {"userId": entity.userId},
       );
 
       if (response is Map<String, dynamic>) {
@@ -310,13 +296,46 @@ class AuthRepoImpl implements AuthRepo {
       return Left(
         ServerFailure(
           errorMessage:
-          e.response?.data?["message"] ?? "Resend OTP request failed",
+              e.response?.data?["message"] ?? "Resend OTP request failed",
         ),
       );
     } catch (e) {
-      return Left(
-        ServerFailure(errorMessage: "Unexpected error: $e"),
+      return Left(ServerFailure(errorMessage: "Unexpected error: $e"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> logout({required String token}) async {
+    try {
+      final response = await apiService.post(
+        endPoint: EndPoints.logout,
+        data: {},
+        token: token,
       );
+
+      if (response is! Map<String, dynamic>) {
+        return Left(ServerFailure(errorMessage: 'Invalid server response'));
+      }
+
+      final statusCode = response['statusCode'];
+      final succeeded = response['succeeded'] ?? false;
+      if (statusCode == 200 && succeeded) {
+        return Right(
+          response['message']?.toString() ?? 'Logged out successfully',
+        );
+      }
+
+      return Left(
+        ServerFailure(errorMessage: response['message'] ?? 'Logout failed'),
+      );
+    } on DioException catch (e) {
+      return Left(
+        ServerFailure(
+          errorMessage: e.response?.data?['message'] ?? 'Logout request failed',
+        ),
+      );
+    } catch (e) {
+      return Left(ServerFailure(errorMessage: 'Unexpected error: $e'));
     }
   }
 }

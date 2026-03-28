@@ -1,4 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:smart_store/core/helper_functions/save_user_data.dart';
+
 import '../constants/api_constants.dart';
 
 class ApiService {
@@ -6,12 +10,22 @@ class ApiService {
 
   ApiService({required this.dio}) {
     dio.options.baseUrl = ApiConstants.baseUrl;
-    dio.options.headers = {
-      "Accept": "application/json",
-    };
+    dio.options.headers = {"Accept": "application/json"};
 
     dio.options.connectTimeout = const Duration(seconds: 15);
     dio.options.receiveTimeout = const Duration(seconds: 15);
+    dio.interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: false,
+        error: true,
+        compact: true,
+        maxWidth: 90,
+        enabled: kDebugMode,
+      ),
+    );
   }
 
   ///  Build Options
@@ -22,6 +36,25 @@ class ApiService {
         if (token != null) "Authorization": "Bearer $token",
       },
     );
+  }
+
+  Future<String?> _resolveToken(String? token) async {
+    if (token != null && token.isNotEmpty) {
+      return token;
+    }
+
+    final userData = await UserPreferences.getUserData();
+    final accessToken = (userData['accessToken'] as String?) ?? '';
+    if (accessToken.isNotEmpty) {
+      return accessToken;
+    }
+
+    final fallbackToken = await UserPreferences.getToken();
+    if (fallbackToken.isNotEmpty) {
+      return fallbackToken;
+    }
+
+    return null;
   }
 
   ///  Handle Dio Errors
@@ -37,11 +70,14 @@ class ApiService {
   Future<dynamic> get({
     required String endPoint,
     String? token,
+    Map<String, dynamic>? queryParameters,
   }) async {
     try {
+      final resolvedToken = await _resolveToken(token);
       final response = await dio.get(
         endPoint,
-        options: _buildOptions(token: token),
+        queryParameters: queryParameters,
+        options: _buildOptions(token: resolvedToken),
       );
 
       return response.data;
@@ -59,11 +95,12 @@ class ApiService {
     String? token,
   }) async {
     try {
+      final resolvedToken = await _resolveToken(token);
       final response = await dio.post(
         endPoint,
         data: data,
         options: _buildOptions(
-          token: token,
+          token: resolvedToken,
           contentType: ApiConstants.contentType,
         ),
       );
@@ -81,11 +118,12 @@ class ApiService {
     String? token,
   }) async {
     try {
+      final resolvedToken = await _resolveToken(token);
       final response = await dio.post(
         endPoint,
         data: data,
         options: _buildOptions(
-          token: token,
+          token: resolvedToken,
           contentType: "multipart/form-data",
         ),
       );
@@ -103,11 +141,12 @@ class ApiService {
     String? token,
   }) async {
     try {
+      final resolvedToken = await _resolveToken(token);
       final response = await dio.delete(
         endPoint,
         data: data,
         options: _buildOptions(
-          token: token,
+          token: resolvedToken,
           contentType: ApiConstants.contentType,
         ),
       );

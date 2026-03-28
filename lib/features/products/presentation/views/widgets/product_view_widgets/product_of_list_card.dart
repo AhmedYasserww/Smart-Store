@@ -1,28 +1,36 @@
-
 import 'package:flutter/material.dart';
+import 'package:smart_store/core/widgets/custom_cached_network_image.dart';
 import 'package:smart_store/features/products/data/models/product_model.dart';
 import 'package:smart_store/features/products/presentation/views/product_details_view.dart';
 
 import '../../../../../../core/utils/app_color.dart';
-import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
-import '../../product_view.dart';
+
 class ProductOfListCard extends StatefulWidget {
   const ProductOfListCard({super.key, required this.productModel});
-  final ProductModel productModel ;
+  final ProductModel productModel;
 
   @override
   State<ProductOfListCard> createState() => _ProductOfListCardState();
 }
 
 class _ProductOfListCardState extends State<ProductOfListCard> {
-  bool isFavorite = false;
+  late bool isFavorite;
+
+  @override
+  void initState() {
+    super.initState();
+    isFavorite = widget.productModel.isFavorite;
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.of(context).pushNamed(ProductDetailsView.routeName);
+      onTap: () {
+        Navigator.of(context).pushNamed(
+          ProductDetailsView.routeName,
+          arguments: widget.productModel.id,
+        );
       },
       child: Card(
         elevation: 3,
@@ -30,14 +38,16 @@ class _ProductOfListCardState extends State<ProductOfListCard> {
         color: Color(0xFFFFFFFF),
         child: Row(
           children: [
-            Image.network(
-              widget.productModel.productImages.isNotEmpty
+            CustomCachedNetworkImage(
+              path: widget.productModel.productImages.isNotEmpty
                   ? widget.productModel.productImages.first.images
                   : "",
               height: 120,
               width: 129,
               fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => Icon(Icons.image_not_supported),
+              borderRadius: const BorderRadius.horizontal(
+                left: Radius.circular(8),
+              ),
             ),
             // Container(
             //   height: 120,
@@ -57,8 +67,14 @@ class _ProductOfListCardState extends State<ProductOfListCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(widget.productModel.name, style: AppStyle.styleBold16),
-                Text(widget.productModel.categoryName, style: AppStyle.styleGreyRegular14),
-                Text(widget.productModel.price.toString(), style: AppStyle.styleRegular16),
+                Text(
+                  widget.productModel.categoryName,
+                  style: AppStyle.styleGreyRegular14,
+                ),
+                Text(
+                  widget.productModel.price.toString(),
+                  style: AppStyle.styleRegular16,
+                ),
                 Row(
                   children: [
                     Icon(

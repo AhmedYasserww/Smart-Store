@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_store/features/products/presentation/views/widgets/product_view_widgets/product_filter_widget.dart';
 import 'package:smart_store/features/products/presentation/views/widgets/product_view_widgets/products_sliver.dart';
 
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../home/presentation/views/widgets/custom_search_field.dart';
+import '../../../manager/get_all_product_cubit.dart';
 
 class ProductViewBody extends StatelessWidget {
   const ProductViewBody({super.key});
@@ -18,8 +20,13 @@ class ProductViewBody extends StatelessWidget {
           SizedBox(height: 16),
           Divider(height: 0, color: AppColors.palletBorderColor),
           Expanded(
-            child: CustomScrollView(
-              slivers: [ProductFilterWidget(), ProductsSliver()],
+            child: RefreshIndicator(
+              onRefresh: () =>
+                  context.read<GetAllProductCubit>().fetchAllProducts(),
+              child: CustomScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                slivers: [ProductFilterWidget(), ProductsSliver()],
+              ),
             ),
           ),
         ],
@@ -27,4 +34,3 @@ class ProductViewBody extends StatelessWidget {
     );
   }
 }
-

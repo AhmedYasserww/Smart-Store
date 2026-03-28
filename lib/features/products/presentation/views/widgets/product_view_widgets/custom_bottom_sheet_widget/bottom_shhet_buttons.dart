@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../../../core/utils/app_color.dart';
 import '../../../../../../../core/widgets/custom_button.dart';
+
 class BottomSheetButtons extends StatelessWidget {
-  const BottomSheetButtons({super.key});
+  const BottomSheetButtons({
+    super.key,
+    required this.onReset,
+    required this.onApply,
+  });
+
+  final VoidCallback onReset;
+  final VoidCallback onApply;
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +28,16 @@ class BottomSheetButtons extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                  child: CustomButton(
-                      textButtonColor: AppColors.primaryColor,
-                      buttonColor: Color(0xffF3EEFB),
-                      text: "Reset", onTap: (){}
-                  )
+                child: CustomButton(
+                  textButtonColor: AppColors.primaryColor,
+                  buttonColor: Color(0xffF3EEFB),
+                  text: "Reset",
+                  onTap: onReset,
+                ),
               ),
               SizedBox(width: 16),
               Expanded(
-                  child: CustomButton(text: "Apply Filters", onTap: (){}
-                  )
+                child: CustomButton(text: "Apply Filters", onTap: onApply),
               ),
             ],
           ),

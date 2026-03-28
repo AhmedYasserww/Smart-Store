@@ -14,9 +14,9 @@ class ProductsSliver extends StatelessWidget {
     return BlocConsumer<GetAllProductCubit, GetAllProductState>(
       listener: (context, state) {
         if (state is GetAllProductFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errorMessage)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
       },
       builder: (context, productState) {
@@ -29,6 +29,18 @@ class ProductsSliver extends StatelessWidget {
         if (productState is GetAllProductSuccess) {
           final products = productState.products;
 
+          if (products.isEmpty) {
+            return const SliverFillRemaining(
+              hasScrollBody: false,
+              child: Center(
+                child: Text(
+                  'No products match your current filters. Try adjusting them.',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            );
+          }
+
           return BlocBuilder<ProductOrListCubit, ProductOrListState>(
             builder: (context, viewState) {
               // ✅ Grid View
@@ -40,31 +52,24 @@ class ProductsSliver extends StatelessWidget {
                     mainAxisSpacing: 16,
                     childAspectRatio: 0.65,
                   ),
-                  delegate: SliverChildBuilderDelegate(
-                        (_, index) {
-                      return ProductCard(
-                        productModel: products[index], // 🔥 الداتا الحقيقية
-                      );
-                    },
-                    childCount: products.length,
-                  ),
+                  delegate: SliverChildBuilderDelegate((_, index) {
+                    return ProductCard(
+                      productModel: products[index], // 🔥 الداتا الحقيقية
+                    );
+                  }, childCount: products.length),
                 );
               }
-
               // ✅ List View
               else if (viewState is ProductOrList) {
                 return SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: ProductOfListCard(
-                          productModel: products[index], // 🔥 الداتا الحقيقية
-                        ),
-                      );
-                    },
-                    childCount: products.length,
-                  ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: ProductOfListCard(
+                        productModel: products[index], // 🔥 الداتا الحقيقية
+                      ),
+                    );
+                  }, childCount: products.length),
                 );
               }
 
