@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_color.dart';
 
+import '../../../../../../../core/helper_functions/format_size_.dart';
 import '../../../../../../../core/utils/app_style.dart';
+import '../../../../manager/get_all_product_cubit.dart';
 
-class SizeFilterOption {
-  const SizeFilterOption({required this.id, required this.name});
-
-  final String id;
-  final String name;
-}
+// class SizeFilterOption {
+//   const SizeFilterOption({required this.id, required this.name});
+//
+//   final String id;
+//   final String name;
+// }
 
 class SizesWidget extends StatelessWidget {
   const SizesWidget({
@@ -62,7 +64,8 @@ class SizesWidget extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          option.name,
+                          formatSize(  option.name,),
+
                           style: AppStyle.styleGreyMedium14.copyWith(
                             color: const Color(0xFF1A1515),
                           ),

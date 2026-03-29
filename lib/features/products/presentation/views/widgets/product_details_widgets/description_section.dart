@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../../core/utils/app_style.dart';
 
 class DescriptionSection extends StatefulWidget {
@@ -21,27 +20,32 @@ class _DescriptionSectionState extends State<DescriptionSection> {
       children: [
         Text('Description', style: AppStyle.styleSemiBold18),
         const SizedBox(height: 8),
+
         Text(
-          expanded
-              ? widget.description
-              : _buildShortDescription(widget.description),
+          widget.description,
           style: AppStyle.styleGreyRegular14,
+          maxLines: expanded ? null : 1,
+          overflow: expanded
+              ? TextOverflow.visible
+              : TextOverflow.ellipsis,
         ),
-        GestureDetector(
-          onTap: () => setState(() => expanded = !expanded),
-          child: Text(
-            expanded ? 'See less' : 'See more',
-            style: AppStyle.styleMedium14.copyWith(color: Color(0xff2861AB)),
+
+        const SizedBox(height: 4),
+        if (_isLongText(widget.description))
+          GestureDetector(
+            onTap: () => setState(() => expanded = !expanded),
+            child: Text(
+              expanded ? 'See less' : 'See more',
+              style: AppStyle.styleMedium14.copyWith(
+                color: const Color(0xff2861AB),
+              ),
+            ),
           ),
-        ),
       ],
     );
   }
 
-  String _buildShortDescription(String text) {
-    if (text.length <= 80) {
-      return text;
-    }
-    return '${text.substring(0, 80)}...';
+  bool _isLongText(String text) {
+    return text.length > 50;
   }
 }

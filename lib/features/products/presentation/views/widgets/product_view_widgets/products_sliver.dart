@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_store/features/products/presentation/views/widgets/product_view_widgets/product_of_list_card.dart';
 
+import '../../../../../../core/utils/app_style.dart';
 import '../../../../../home/presentation/views/widgets/product_card.dart';
 import '../../../../data/product_or_list_cubit/product_or_list_cubit.dart';
 import '../../../manager/get_all_product_cubit.dart';
@@ -30,12 +31,13 @@ class ProductsSliver extends StatelessWidget {
           final products = productState.products;
 
           if (products.isEmpty) {
-            return const SliverFillRemaining(
+            return  SliverFillRemaining(
               hasScrollBody: false,
               child: Center(
                 child: Text(
                   'No products match your current filters. Try adjusting them.',
                   textAlign: TextAlign.center,
+                  style: AppStyle.styleMedium14
                 ),
               ),
             );
@@ -43,7 +45,6 @@ class ProductsSliver extends StatelessWidget {
 
           return BlocBuilder<ProductOrListCubit, ProductOrListState>(
             builder: (context, viewState) {
-              // ✅ Grid View
               if (viewState is ProductOrListProduct) {
                 return SliverGrid(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -54,7 +55,7 @@ class ProductsSliver extends StatelessWidget {
                   ),
                   delegate: SliverChildBuilderDelegate((_, index) {
                     return ProductCard(
-                      productModel: products[index], // 🔥 الداتا الحقيقية
+                      productModel: products[index],
                     );
                   }, childCount: products.length),
                 );
@@ -66,7 +67,7 @@ class ProductsSliver extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: ProductOfListCard(
-                        productModel: products[index], // 🔥 الداتا الحقيقية
+                        productModel: products[index],
                       ),
                     );
                   }, childCount: products.length),

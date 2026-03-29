@@ -14,21 +14,6 @@ import 'custom_category_widget.dart';
 class ProductFilterWidget extends StatelessWidget {
   const ProductFilterWidget({super.key});
 
-  List<SizeFilterOption> _extractSizeOptions(List<dynamic> products) {
-    final map = <String, String>{};
-    for (final product in products) {
-      for (final size in product.productSizes) {
-        if (size.sizeId.isNotEmpty && size.sizeName.isNotEmpty) {
-          map[size.sizeId] = size.sizeName;
-        }
-      }
-    }
-
-    return map.entries
-        .map((entry) => SizeFilterOption(id: entry.key, name: entry.value))
-        .toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -50,17 +35,15 @@ class ProductFilterWidget extends StatelessWidget {
                       showModalBottomSheet(
                         context: context,
                         isScrollControlled: true,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadiusGeometry.vertical(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
                             top: Radius.circular(24),
                           ),
                         ),
                         builder: (context) {
                           return CustomBottomSheet(
                             initialParams: cubit.currentParams,
-                            availableSizes: _extractSizeOptions(
-                              cubit.cachedProducts,
-                            ),
+                            availableSizes: cubit.getAllSizes(),
                             onApply: (params) {
                               cubit.fetchAllProducts(params: params);
                               Navigator.pop(context);

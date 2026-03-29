@@ -4,6 +4,7 @@ import 'package:smart_store/features/products/presentation/views/widgets/product
 import 'package:smart_store/features/products/presentation/views/widgets/product_view_widgets/custom_bottom_sheet_widget/reviews_widget.dart';
 import 'package:smart_store/features/products/presentation/views/widgets/product_view_widgets/custom_bottom_sheet_widget/sizes_widget.dart';
 
+import '../../../../manager/get_all_product_cubit.dart';
 import 'bottom_shhet_buttons.dart';
 import 'color_widget.dart';
 import 'drag_handle_widget.dart';
@@ -48,14 +49,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     final hasInvalidRange =
         minPrice != null && maxPrice != null && minPrice! > maxPrice!;
 
-    if (hasInvalidRange) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Min price cannot be greater than max price.'),
-        ),
-      );
-      return;
-    }
+    if (hasInvalidRange) return;
 
     widget.onApply(
       widget.initialParams.copyWith(
@@ -67,7 +61,6 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(

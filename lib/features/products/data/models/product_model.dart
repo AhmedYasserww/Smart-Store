@@ -2,13 +2,11 @@
 import 'package:equatable/equatable.dart';
 
 class ProductImageModel extends Equatable {
-  final String id;
   final String altText;
   final bool isPrimary;
   final String images;
 
   const ProductImageModel({
-    required this.id,
     required this.altText,
     required this.isPrimary,
     required this.images,
@@ -16,7 +14,6 @@ class ProductImageModel extends Equatable {
 
   factory ProductImageModel.fromJson(Map<String, dynamic> json) {
     return ProductImageModel(
-      id: json["id"]?.toString() ?? "",
       altText: json["altText"] ?? "",
       isPrimary: json["isPrimary"] ?? false,
       images: json["images"] ?? "",
@@ -24,7 +21,7 @@ class ProductImageModel extends Equatable {
   }
 
   @override
-  List<Object?> get props => [id, altText, isPrimary, images];
+  List<Object?> get props => [altText, isPrimary, images];
 }
 
 class ProductSizeModel extends Equatable {
@@ -40,7 +37,7 @@ class ProductSizeModel extends Equatable {
 
   factory ProductSizeModel.fromJson(Map<String, dynamic> json) {
     return ProductSizeModel(
-      sizeId: json["sizeId"],
+      sizeId: json["sizeId"] ?? "",
       sizeName: json["sizeName"] ?? "",
       quantity: json["quantity"] ?? 0,
     );
@@ -79,14 +76,7 @@ class ClientProductRatingModel extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-    clientId,
-    productId,
-    rating,
-    comment,
-    ratedAt,
-    updatedAt,
-  ];
+  List<Object?> get props => [clientId, productId, rating, comment, ratedAt, updatedAt];
 }
 
 class ProductModel extends Equatable {
@@ -101,7 +91,7 @@ class ProductModel extends Equatable {
   final bool isActive;
   final String categoryName;
   final bool isFavorite;
-  final String color;
+  final List<String> colors; // <-- تم التغيير من color إلى List<String>
   final double rating;
   final int reviews;
   final List<ProductImageModel> productImages;
@@ -120,7 +110,7 @@ class ProductModel extends Equatable {
     required this.isActive,
     required this.categoryName,
     required this.isFavorite,
-    required this.color,
+    required this.colors,
     required this.rating,
     required this.reviews,
     required this.productImages,
@@ -129,16 +119,15 @@ class ProductModel extends Equatable {
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
-    final ratingsList =
-        (json["clientProductRatings"] as List<dynamic>?)
-            ?.map((e) => ClientProductRatingModel.fromJson(e))
-            .toList() ??
+    final ratingsList = (json["clientProductRatings"] as List<dynamic>?)
+        ?.map((e) => ClientProductRatingModel.fromJson(e))
+        .toList() ??
         [];
 
     final fallbackRating = ratingsList.isEmpty
         ? 0.0
         : ratingsList.map((e) => e.rating).reduce((a, b) => a + b) /
-              ratingsList.length;
+        ratingsList.length;
 
     return ProductModel(
       id: json["id"]?.toString() ?? "",
@@ -152,27 +141,28 @@ class ProductModel extends Equatable {
       isActive: json["isActive"] ?? false,
       categoryName: json["categoryName"] ?? "",
       isFavorite: json["isFavorite"] ?? false,
-      color: json["color"] ?? "",
+      colors: (json["colors"] as List<dynamic>?)
+          ?.map((e) => e.toString())
+          .toList() ??
+          [],
       rating: json["rating"] != null
           ? (json["rating"] ?? 0).toDouble()
           : fallbackRating,
       reviews: json["reviews"] ?? ratingsList.length,
-      productImages:
-          (json["productImages"] as List<dynamic>?)
-              ?.map((e) => ProductImageModel.fromJson(e))
-              .toList() ??
+      productImages: (json["productImages"] as List<dynamic>?)
+          ?.map((e) => ProductImageModel.fromJson(e))
+          .toList() ??
           [],
       clientProductRatings: ratingsList,
-      productSizes:
-          (json["productSizes"] as List<dynamic>?)
-              ?.map((e) => ProductSizeModel.fromJson(e))
-              .toList() ??
+      productSizes: (json["productSizes"] as List<dynamic>?)
+          ?.map((e) => ProductSizeModel.fromJson(e))
+          .toList() ??
           [],
     );
   }
 
   @override
-  List<Object?> get props => [id, name, price, productImages, productSizes];
+  List<Object?> get props => [id, name, price, productImages, productSizes, colors];
 }
 
 class ProductsResponse {
@@ -197,10 +187,7 @@ class ProductsResponse {
   factory ProductsResponse.fromJson(Map<String, dynamic> json) {
     final data = json["data"] ?? {};
     final itemsList =
-        (data["items"] as List<dynamic>?)
-            ?.map((e) => ProductModel.fromJson(e))
-            .toList() ??
-        [];
+        (data["items"] as List<dynamic>?)?.map((e) => ProductModel.fromJson(e)).toList() ?? [];
     return ProductsResponse(
       items: itemsList,
       pageSize: data["pageSize"] ?? 0,

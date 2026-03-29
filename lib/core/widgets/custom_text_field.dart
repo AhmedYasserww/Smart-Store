@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:smart_store/core/utils/app_style.dart';
 import '../utils/app_color.dart';
 
@@ -16,6 +17,7 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType,
      this.focusNode,
     this.onFieldSubmitted,
+    this.initialValue, this.inputFormatters,
   });
 
   final void Function(String?)? onSaved;
@@ -25,14 +27,18 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final TextEditingController? controller;
   final String? hintText;
+  final String? initialValue;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
   final FocusNode? focusNode;
   final void Function(String)? onFieldSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: inputFormatters,
+      initialValue:initialValue ,
       focusNode: focusNode,
       controller: controller,
       keyboardType: keyboardType,

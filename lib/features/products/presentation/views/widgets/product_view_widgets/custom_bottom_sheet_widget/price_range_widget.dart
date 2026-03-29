@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../../../../../../../core/utils/app_color.dart';
 import '../../../../../../../core/utils/app_style.dart';
+import '../../../../../../../core/widgets/custom_text_field.dart';
 
-class PriceRange extends StatelessWidget {
+class PriceRange extends StatefulWidget {
   const PriceRange({
     super.key,
     this.initialMinPrice,
@@ -18,10 +17,35 @@ class PriceRange extends StatelessWidget {
   final ValueChanged<int?> onMinChanged;
   final ValueChanged<int?> onMaxChanged;
 
+  @override
+  State<PriceRange> createState() => _PriceRangeState();
+}
+
+class _PriceRangeState extends State<PriceRange> {
+  int? minPrice;
+  int? maxPrice;
+  String? error;
+
   int? _toIntOrNull(String value) {
     final trimmed = value.trim();
     if (trimmed.isEmpty) return null;
     return int.tryParse(trimmed);
+  }
+
+  void _validate() {
+    if (minPrice != null && maxPrice != null && minPrice! > maxPrice!) {
+      error = "Min > Max ";
+    } else {
+      error = null;
+    }
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    minPrice = widget.initialMinPrice;
+    maxPrice = widget.initialMaxPrice;
   }
 
   @override
@@ -30,66 +54,58 @@ class PriceRange extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Price Range", style: AppStyle.styleRegular16),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
+
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          spacing: 16,
           children: [
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppColors.palletBorderColor,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: TextFormField(
-                  initialValue: initialMinPrice?.toString(),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  onChanged: (value) => onMinChanged(_toIntOrNull(value)),
-                  decoration: InputDecoration(
-                    hintText: "Min Price",
-                    hintStyle: AppStyle.styleRegular12,
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 12.5,
-                    ),
-                  ),
-                ),
+              child: CustomTextField(
+                initialValue: minPrice?.toString(),
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                hintText: "Min Price",
+                onChange: (value) {
+                  minPrice = _toIntOrNull(value ?? '');
+                  widget.onMinChanged(minPrice);
+                  _validate();
+                },
               ),
             ),
 
+            const SizedBox(width: 16),
+
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppColors.palletBorderColor,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: TextFormField(
-                  initialValue: initialMaxPrice?.toString(),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  onChanged: (value) => onMaxChanged(_toIntOrNull(value)),
-                  decoration: InputDecoration(
-                    hintText: "Max Price",
-                    hintStyle: AppStyle.styleRegular12,
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 12.5,
-                    ),
-                  ),
-                ),
+              child: CustomTextField(
+                initialValue: maxPrice?.toString(),
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                hintText: "Max Price",
+                onChange: (value) {
+                  maxPrice = _toIntOrNull(value ?? '');
+                  widget.onMaxChanged(maxPrice);
+                  _validate();
+                },
+                validator: (_) => error, // 👈 مهم حتى بدون Form عشان يظهر UI
               ),
             ),
           ],
         ),
+
+        // 👇 عرض الرسالة تحت الاتنين (أفضل UX)
+        if (error != null) ...[
+          const SizedBox(height: 6),
+          Text(
+            error!,
+            style: TextStyle(
+              color: Colors.red,
+              fontSize: 11, // 👈 صغيرة زي ما طلبت
+            ),
+          ),
+        ],
       ],
     );
   }

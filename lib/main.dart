@@ -14,11 +14,11 @@ void main() {
   // final userData = await UserPreferences.getUserData();
   // print(userData['id']);
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(), // Wrap your app
-    ),
-    // MyApp(),
+    // DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) => MyApp(), // Wrap your app
+    // ),
+     MyApp(),
   );
 }
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // useInheritedMediaQuery: true,
       // locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+     // builder: DevicePreview.appBuilder,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Inter',

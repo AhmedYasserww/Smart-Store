@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/features/products/data/models/product_model.dart';
 
+import '../../../../../../core/helper_functions/format_size_.dart';
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../find_size_view.dart';
@@ -26,8 +27,8 @@ class _SizeSelectorState extends State<SizeSelector> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Size', style: AppStyle.styleSemiBold18),
-            TextButton(
-              onPressed: () {
+            InkWell(
+              onTap: () {
                 Navigator.of(context).pushNamed(FindSizeView.routeName);
               },
               child: Text(
@@ -39,6 +40,7 @@ class _SizeSelectorState extends State<SizeSelector> {
             ),
           ],
         ),
+        SizedBox(height: 16,),
         if (widget.productSizes.isEmpty)
           Text(
             'No sizes available',
@@ -75,13 +77,13 @@ class _SizeSelectorState extends State<SizeSelector> {
                     ),
                   ),
                   child: Text(
-                    size.sizeName,
+                    formatSize(size.sizeName),
                     style: TextStyle(
                       color: isSelected && isAvailable
                           ? Colors.white
                           : isAvailable
-                          ? Colors.black
-                          : Colors.grey,
+                          ? AppColors.primaryTextColor
+                          : AppColors.palletBorderColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
@@ -93,4 +95,5 @@ class _SizeSelectorState extends State<SizeSelector> {
       ],
     );
   }
+
 }
