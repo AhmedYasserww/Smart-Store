@@ -8,7 +8,6 @@ import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
 import 'custom_bottom_sheet_widget/custom_bottom_sheet.dart';
-import 'custom_bottom_sheet_widget/sizes_widget.dart';
 import 'custom_category_widget.dart';
 
 class ProductFilterWidget extends StatelessWidget {
@@ -44,6 +43,7 @@ class ProductFilterWidget extends StatelessWidget {
                           return CustomBottomSheet(
                             initialParams: cubit.currentParams,
                             availableSizes: cubit.getAllSizes(),
+                            availableColors: cubit.getAllColors(),
                             onApply: (params) {
                               cubit.fetchAllProducts(params: params);
                               Navigator.pop(context);

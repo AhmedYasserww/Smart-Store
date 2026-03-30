@@ -85,11 +85,12 @@ class GetAllProductCubit extends Cubit<GetAllProductState> {
     return list;
   }
 
-  /// ترجع كل الألوان من كل المنتجات بدون تكرار
+
   List<String> getAllColors() {
     final set = <String>{};
     for (final product in _allProducts) {
       for (final color in product.colors) {
+
         if (color.isNotEmpty) set.add(color);
       }
     }

@@ -16,11 +16,12 @@ class CustomBottomSheet extends StatefulWidget {
     required this.initialParams,
     required this.availableSizes,
     required this.onApply,
-    required this.onReset,
+    required this.onReset, required this.availableColors,
   });
 
   final ProductQueryParams initialParams;
   final List<SizeFilterOption> availableSizes;
+  final List<String> availableColors;
   final ValueChanged<ProductQueryParams> onApply;
   final VoidCallback onReset;
 
@@ -55,9 +56,16 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
       widget.initialParams.copyWith(
         minPrice: minPrice,
         maxPrice: maxPrice,
+
         color: selectedColor,
+        clearColor: selectedColor == null, // ✅ مهم
+
         sizeIds: selectedSizeIds.toList(),
+        clearSizeIds: selectedSizeIds.isEmpty, // ✅ زي السايز
+
         rating: selectedRating,
+        clearRating: selectedRating == null, // ✅ مهم
+
       ),
     );
   }
@@ -93,6 +101,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                 SizedBox(height: 24),
                 ColorsWidget(
                   selectedColor: selectedColor,
+                  options: widget.availableColors,
                   onColorSelected: (value) {
                     setState(() {
                       selectedColor = value;

@@ -44,8 +44,9 @@ class ProductDetailsViewBody extends StatelessWidget {
                     price: productModel.price,
                   ),
                   SizedBox(height: 24),
-                  const ColorSelector(),
-                  SizedBox(height: 16,),
+                   ColorSelector(
+                    colors: productModel.colors,
+                  ),
                   SizeSelector(productSizes: productModel.productSizes),
                   const SizedBox(height: 24),
                   QuantitySelector(stockQuantity: productModel.stockQuantity),

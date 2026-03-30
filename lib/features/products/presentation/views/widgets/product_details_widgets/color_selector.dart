@@ -1,53 +1,71 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../../core/utils/app_style.dart';
 class ColorSelector extends StatefulWidget {
-  const ColorSelector({super.key});
+  const ColorSelector({
+    super.key,
+    required this.colors,
+  });
+
+  final List<String> colors; // 👈 hex strings
 
   @override
   State<ColorSelector> createState() => _ColorSelectorState();
 }
 
 class _ColorSelectorState extends State<ColorSelector> {
-  int selectedIndex = 0;
+  int selectedIndex = -1;
 
-  final colors = [
-    Colors.black,
-    Colors.purple,
-    Colors.grey,
-    Colors.brown,
-  ];
+  Color _hexToColor(String hex) {
+    final normalized = hex.replaceAll('#', '');
+    return Color(int.parse('FF$normalized', radix: 16));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Choose color',style: AppStyle.styleSemiBold18,),
-        SizedBox(width: 32,),
-        Row(
-          children: List.generate(
-            colors.length,
-                (index) => GestureDetector(
-              onTap: () => setState(() => selectedIndex = index),
-              child: Container(
-                margin: const EdgeInsets.only(right: 8),
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: selectedIndex == index
-                      ? [
-                    BoxShadow(
-                      color: colors[index].withOpacity(.65),
-                      blurRadius: 8,
-                    )
-                  ]
-                      : null,
-                ),
-                child: CircleAvatar(
-                  radius: 12,
-                  backgroundColor: colors[index],
-                ),
+        Text('Choose color', style: AppStyle.styleSemiBold18),
+        const SizedBox(width: 32),
+
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(
+                widget.colors.length,
+                    (index) {
+                  final color = _hexToColor(widget.colors[index]);
+                  final isSelected = selectedIndex == index;
+
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex =
+                        isSelected ? -1 : index;
+                      });
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 8),
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: isSelected
+                            ? [
+                          BoxShadow(
+                            color: color.withOpacity(.7),
+                            blurRadius: 8,
+                          )
+                        ]
+                            : null,
+                      ),
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundColor: color,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
           ),
