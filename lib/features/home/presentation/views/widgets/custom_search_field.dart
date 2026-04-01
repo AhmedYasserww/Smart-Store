@@ -12,6 +12,8 @@ class CustomSearchField extends StatelessWidget {
     this.onTap,
     this.onChanged,
     this.hintText = 'Search on Smart Store...',
+    this.suffixImage,
+    this.onSuffixIconTap,
   });
 
   final TextEditingController? controller;
@@ -20,6 +22,8 @@ class CustomSearchField extends StatelessWidget {
   final VoidCallback? onTap;
   final ValueChanged<String>? onChanged;
   final String hintText;
+  final String? suffixImage;
+  final VoidCallback? onSuffixIconTap;
 
   @override
   Widget build(BuildContext context) {
@@ -55,20 +59,13 @@ class CustomSearchField extends StatelessWidget {
         hintText: hintText,
         hintStyle: AppStyle.styleGreyRegular14,
 
-        /// 🎤 + 📷
-        suffixIcon: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(AppImages.scanImage),
+
+        suffixIcon: IconButton(
+              onPressed:onSuffixIconTap,
+             // icon: SvgPicture.asset(AppImages.clearSearch),
+              icon: SvgPicture.asset(suffixImage??AppImages.clearSearch),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(AppImages.micImage),
-            ),
-          ],
-        ),
+
       ),
     );
   }

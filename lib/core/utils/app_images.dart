@@ -18,6 +18,9 @@ class AppImages {
   static const String vto = 'assets/images/VTO.svg';
   static const String checkImage = 'assets/images/check_circle.svg';
 
+  static const String clearSearch = 'assets/images/clear_search.svg';
+  static const String failureResultIcon = 'assets/images/failure_search.svg';
+
 
   static const String filterIcon1 = 'assets/images/filterIcon_1.svg';
   static const String filterIcon2 = 'assets/images/filterIcon_2.svg';

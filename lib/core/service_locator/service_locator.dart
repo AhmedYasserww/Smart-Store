@@ -4,6 +4,9 @@ import 'package:smart_store/features/categories/data/repos/categories_repo_imp.d
 import 'package:smart_store/features/products/data/repos/product_repo_imp.dart';
 
 import '../../features/auth/data/repos/auth_repo_imp.dart';
+import '../../features/search/data/repos/search_repo.dart';
+import '../../features/search/data/repos/search_repo_imp.dart';
+import '../../features/search/presentation/manager/search_for_product_cubit/search_for_product_cubit.dart';
 import '../services/api_service.dart';
 
 final getIt = GetIt.instance;
@@ -20,6 +23,13 @@ void setupServiceLocator() {
     CategoriesRepoImpl(apiService: getIt.get<ApiService>()),
   );
 
+  getIt.registerLazySingleton<SearchRepo>(
+        () => SearchRepoImp(apiService: getIt<ApiService>()),
+  );
+
+  getIt.registerFactory<SearchForProductCubit>(
+        () => SearchForProductCubit(getIt<SearchRepo>()),
+  );
   // getIt.registerSingleton<GetAllProductRepoImp>(GetAllProductRepoImp(apiService:getIt.get<ApiService>(),));
   // getIt.registerSingleton<GetAllCategoryRepoImp>(GetAllCategoryRepoImp(apiService:getIt.get<ApiService>(),));
   // getIt.registerSingleton<GetAllBrandsRepoImp>(GetAllBrandsRepoImp(apiService:getIt.get<ApiService>(),));

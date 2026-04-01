@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/section_title.dart';
 
 import '../../../../../core/utils/app_dimensions.dart';
+import '../../../../../core/utils/app_images.dart';
 import '../../../../search/presentation/views/search_view.dart';
 import 'category_widget.dart';
 import 'custom_search_field.dart';
@@ -26,6 +27,7 @@ class HomeViewBody extends StatelessWidget {
           children: [
             SizedBox(height: _sectionSpacing),
             CustomSearchField(
+              suffixImage: AppImages.micImage,
               readOnly: true,
               onTap: () {
                 Navigator.of(context).pushNamed(SearchView.routeName);

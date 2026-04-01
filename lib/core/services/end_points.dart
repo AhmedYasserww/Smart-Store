@@ -11,4 +11,5 @@ class EndPoints {
   static const String getRecentlyViewedProducts =
       "Products/client/recently-viewed";
   static const String getAllCategories = "Categories";
+  static const String searchForProduct = "Products/search/on/products";
 }

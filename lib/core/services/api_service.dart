@@ -65,18 +65,20 @@ class ApiService {
       throw Exception("Network error: ${e.message}");
     }
   }
-
   /// GET REQUEST
+  ///
   Future<dynamic> get({
     required String endPoint,
     String? token,
     Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
   }) async {
     try {
       final resolvedToken = await _resolveToken(token);
       final response = await dio.get(
         endPoint,
         queryParameters: queryParameters,
+        cancelToken: cancelToken,
         options: _buildOptions(token: resolvedToken),
       );
 
@@ -87,6 +89,8 @@ class ApiService {
       );
     }
   }
+
+
 
   /// POST JSON REQUEST
   Future<dynamic> post({
