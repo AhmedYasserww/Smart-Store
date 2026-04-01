@@ -12,4 +12,5 @@ class EndPoints {
       "Products/client/recently-viewed";
   static const String getAllCategories = "Categories";
   static const String searchForProduct = "Products/search/on/products";
+  static const String addToCart = "Cart/client/add/to/cart";
 }

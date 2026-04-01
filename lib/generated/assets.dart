@@ -36,6 +36,7 @@ class Assets {
   static const String deliveryAddressWidgetsSavedAddressSection = 'lib/features/delivery/presentation/views/widgets/delivery_address_widgets/saved_address_section.dart';
   static const String deliveryOptionWidgetsDeliveryOptionItem = 'lib/features/delivery/presentation/views/widgets/delivery_option_widgets/delivery_option_item.dart';
   static const String editProfileViewWidgetsCustomProfileActionButton = 'lib/features/profile/presentation/views/widgets/edit_profile_view_widgets/custom_profile_action_button.dart';
+  static const String entitesCartItemEntity = 'lib/features/cart/data/entites/cart_item_entity.dart';
   static const String entitiesForgetPasswordEntity = 'lib/features/auth/data/entities/forget_password_entity.dart';
   static const String entitiesLogInEntity = 'lib/features/auth/data/entities/log_in_entity.dart';
   static const String entitiesRegisterEntity = 'lib/features/auth/data/entities/register_entity.dart';
@@ -162,6 +163,7 @@ class Assets {
   static const String managerGetAllProductCubit = 'lib/features/products/presentation/manager/get_all_product_cubit.dart';
   static const String managerGetAllProductState = 'lib/features/products/presentation/manager/get_all_product_state.dart';
   static const String managerRegisterClientCubitRegisterClientState = 'lib/features/auth/presentation/manager/register_client_cubit/register_client_state.dart~';
+  static const String modelsCartItemModel = 'lib/features/cart/data/models/cart_item_model.dart';
   static const String modelsCategoryModel = 'lib/features/categories/data/models/category_model.dart';
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
@@ -221,6 +223,8 @@ class Assets {
   static const String registerWidgetsRequiredFieldLabel = 'lib/features/auth/presentation/views/widgets/register_widgets/required_field_label.dart';
   static const String reposAuthRepo = 'lib/features/auth/data/repos/auth_repo.dart';
   static const String reposAuthRepoImp = 'lib/features/auth/data/repos/auth_repo_imp.dart';
+  static const String reposCartRepo = 'lib/features/cart/data/repos/cart_repo.dart';
+  static const String reposCartRepoImp = 'lib/features/cart/data/repos/cart_repo_imp.dart';
   static const String reposCategoriesRepo = 'lib/features/categories/data/repos/categories_repo.dart';
   static const String reposCategoriesRepoImp = 'lib/features/categories/data/repos/categories_repo_imp.dart';
   static const String reposProductRepo = 'lib/features/products/data/repos/product_repo.dart';
@@ -367,7 +371,6 @@ class Assets {
   static const String widgetsProductDetailsViewBody = 'lib/features/products/presentation/views/widgets/product_details_view_body.dart';
   static const String widgetsProductDetailsWidgetsProductDetailsAppBar = 'lib/features/products/presentation/views/widgets/product_details_widgets/product_details_app_bar.dart~';
   static const String widgetsProductDetailsWidgetsProductTitleSection = 'lib/features/products/presentation/views/widgets/product_details_widgets/product_title_section.dart~';
-  static const String widgetsProductDetailsWidgetsQuantitySelector = 'lib/features/products/presentation/views/widgets/product_details_widgets/quantity_selector.dart~';
   static const String widgetsProductInfoCard = 'lib/features/home/presentation/views/widgets/product_info_card.dart';
   static const String widgetsProductListView = 'lib/features/home/presentation/views/widgets/product_list_view.dart';
   static const String widgetsProductViewWidgetsProductViewBody = 'lib/features/products/presentation/views/widgets/product_view_widgets/product_view_body.dart~';
