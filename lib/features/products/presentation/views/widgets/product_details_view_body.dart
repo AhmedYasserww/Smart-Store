@@ -13,10 +13,27 @@ import 'package:smart_store/features/products/presentation/views/widgets/product
 
 import '../../../../../core/utils/app_dimensions.dart';
 
-class ProductDetailsViewBody extends StatelessWidget {
+class ProductDetailsViewBody extends StatefulWidget {
   const ProductDetailsViewBody({super.key, required this.productModel});
 
   final ProductModel productModel;
+
+  @override
+  State<ProductDetailsViewBody> createState() => _ProductDetailsViewBodyState();
+}
+
+class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
+  int selectedStockQuantity = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.productModel.productSizes.isNotEmpty) {
+      selectedStockQuantity = widget.productModel.productSizes[0].quantity;
+    } else {
+      selectedStockQuantity = widget.productModel.stockQuantity;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,25 +50,31 @@ class ProductDetailsViewBody extends StatelessWidget {
                 children: [
                   const SizedBox(height: 32),
                   ProductImagesSection(
-                    productImages: productModel.productImages,
+                    productImages: widget.productModel.productImages,
                   ),
-                  SizedBox(height: 16),
-                  ProductTitleSection(title: productModel.name),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
+                  ProductTitleSection(title: widget.productModel.name),
+                  const SizedBox(height: 16),
                   ProductRatingAndPriceSection(
-                    rating: productModel.rating,
-                    reviews: productModel.reviews,
-                    price: productModel.price,
+                    rating: widget.productModel.rating,
+                    reviews: widget.productModel.reviews,
+                    price: widget.productModel.price,
                   ),
-                  SizedBox(height: 24),
-                   ColorSelector(
-                    colors: productModel.colors,
+                  const SizedBox(height: 24),
+                  ColorSelector(colors: widget.productModel.colors),
+                  const SizedBox(height: 16),
+                  SizeSelector(
+                    productSizes: widget.productModel.productSizes,
+                    onSizeSelected: (selectedSize) {
+                      setState(() {
+                        selectedStockQuantity = selectedSize.quantity;
+                      });
+                    },
                   ),
-                  SizeSelector(productSizes: productModel.productSizes),
                   const SizedBox(height: 24),
-                  QuantitySelector(stockQuantity: productModel.stockQuantity),
+                  QuantitySelector(maxQuantity: selectedStockQuantity),
                   const SizedBox(height: 24),
-                  DescriptionSection(description: productModel.description),
+                  DescriptionSection(description: widget.productModel.description),
                   const SizedBox(height: 24),
                   const RecommendedList(),
                   const SizedBox(height: 32),

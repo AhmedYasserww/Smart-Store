@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/features/products/data/models/product_model.dart';
-
 import '../../../../../../core/helper_functions/format_size_.dart';
 import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../find_size_view.dart';
 
 class SizeSelector extends StatefulWidget {
-  const SizeSelector({super.key, required this.productSizes});
+  const SizeSelector({
+    super.key,
+    required this.productSizes,
+    required this.onSizeSelected,
+  });
 
   final List<ProductSizeModel> productSizes;
+
+  /// Callback to return the selected size
+  final void Function(ProductSizeModel selectedSize) onSizeSelected;
 
   @override
   State<SizeSelector> createState() => _SizeSelectorState();
@@ -17,6 +23,17 @@ class SizeSelector extends StatefulWidget {
 
 class _SizeSelectorState extends State<SizeSelector> {
   int selectedIndex = 0;
+
+  @override
+  @override
+  void initState() {
+    super.initState();
+    if (widget.productSizes.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.onSizeSelected.call(widget.productSizes[selectedIndex]);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +51,18 @@ class _SizeSelectorState extends State<SizeSelector> {
               child: Text(
                 "Find your size",
                 style: AppStyle.styleMedium14.copyWith(
-                  color: Color(0xff2861AB),
+                  color: const Color(0xff2861AB),
                 ),
               ),
             ),
           ],
         ),
-        SizedBox(height: 16,),
+        const SizedBox(height: 16),
         if (widget.productSizes.isEmpty)
           Text(
             'No sizes available',
             style: AppStyle.styleRegular14.copyWith(
-              color: AppColors.primaryTextColor.withValues(alpha: 0.6),
+              color: AppColors.primaryTextColor.withOpacity(0.6),
             ),
           )
         else
@@ -57,7 +74,11 @@ class _SizeSelectorState extends State<SizeSelector> {
 
               return GestureDetector(
                 onTap: isAvailable
-                    ? () => setState(() => selectedIndex = index)
+                    ? () {
+                  setState(() => selectedIndex = index);
+                  // Trigger the callback when a size is selected
+                  widget.onSizeSelected.call(size);
+                }
                     : null,
                 child: Container(
                   margin: const EdgeInsets.only(right: 8),
@@ -73,7 +94,7 @@ class _SizeSelectorState extends State<SizeSelector> {
                     border: Border.all(
                       color: isAvailable
                           ? AppColors.palletBorderColor
-                          : AppColors.palletBorderColor.withValues(alpha: 0.4),
+                          : AppColors.palletBorderColor.withOpacity(0.4),
                     ),
                   ),
                   child: Text(
@@ -95,5 +116,4 @@ class _SizeSelectorState extends State<SizeSelector> {
       ],
     );
   }
-
 }

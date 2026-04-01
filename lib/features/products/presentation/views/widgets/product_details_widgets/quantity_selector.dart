@@ -6,9 +6,8 @@ import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
 
 class QuantitySelector extends StatefulWidget {
-  const QuantitySelector({super.key, required this.stockQuantity});
-
-  final int stockQuantity;
+  const QuantitySelector({super.key, required this.maxQuantity});
+  final int maxQuantity;
 
   @override
   State<QuantitySelector> createState() => _QuantitySelectorState();
@@ -20,7 +19,7 @@ class _QuantitySelectorState extends State<QuantitySelector> {
   @override
   void initState() {
     super.initState();
-    quantity = widget.stockQuantity > 0 ? 1 : 0;
+    quantity = widget.maxQuantity > 0 ? 1 : 0;
   }
 
   @override
@@ -32,24 +31,18 @@ class _QuantitySelectorState extends State<QuantitySelector> {
             const Text('Quantity', style: AppStyle.styleSemiBold18),
             const Spacer(),
             Text(
-              widget.stockQuantity > 0
-                  ? '${widget.stockQuantity} in stock'
+              widget.maxQuantity > 0
+                  ? '${widget.maxQuantity} in stock'
                   : 'Out of stock',
               style: AppStyle.styleRegular14,
             ),
             const SizedBox(width: 4),
-            widget.stockQuantity > 0
+            widget.maxQuantity > 0
                 ? SvgPicture.asset(AppImages.checkImage, width: 14, height: 14)
-                : const Icon(
-                    Icons.error_outline,
-                    size: 14,
-                    color: Colors.redAccent,
-                  ),
+                : const Icon(Icons.error_outline, size: 14, color: Colors.redAccent),
           ],
         ),
-
         const SizedBox(height: 12),
-
         Row(
           children: [
             QuantityButton(
@@ -59,14 +52,12 @@ class _QuantitySelectorState extends State<QuantitySelector> {
             const SizedBox(width: 8),
             Text(
               '$quantity',
-              style: AppStyle.styleRegular16.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
+              style: AppStyle.styleRegular16.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(width: 8),
             QuantityButton(
               icon: Icons.add,
-              onTap: widget.stockQuantity > 0 && quantity < widget.stockQuantity
+              onTap: widget.maxQuantity > 0 && quantity < widget.maxQuantity
                   ? () => setState(() => quantity++)
                   : null,
             ),
