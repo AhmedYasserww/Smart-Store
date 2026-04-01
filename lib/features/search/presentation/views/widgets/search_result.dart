@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
+import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
 import 'package:smart_store/features/search/presentation/views/widgets/custom_empty_or_failure_result.dart';
 import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_style.dart';
@@ -15,12 +16,12 @@ class SearchResults extends StatelessWidget {
     return BlocBuilder<SearchForProductCubit, SearchForProductState>(
       builder: (context, state) {
 
-        /// 🔹 Loading
+
         if (state is SearchForProductLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return CustomLoadingIndicator();
         }
 
-        /// 🔹 Failure
+
         else if (state is SearchForProductFailure) {
           return Center(
             child: Text(state.errorMessage),
@@ -37,7 +38,6 @@ class SearchResults extends StatelessWidget {
                 image: AppImages.failureResultIcon,
                 title: "No Results found",
 
-                /// 🔥 RichText
                 richSubtitle: TextSpan(
                   children: [
                     TextSpan(
@@ -98,7 +98,7 @@ class SearchResults extends StatelessWidget {
           );
         }
 
-        /// 🔹 Initial
+
         return const Center(
           child: CustomEmptyOrFailureResult(image:AppImages.searchIcon,
               title: "Start Your Search",

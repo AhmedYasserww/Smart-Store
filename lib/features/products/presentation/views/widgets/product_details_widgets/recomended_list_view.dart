@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_store/core/helper_functions/save_user_data.dart';
 import 'package:smart_store/core/service_locator/service_locator.dart';
 import 'package:smart_store/core/widgets/custom_cached_network_image.dart';
+import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
 import 'package:smart_store/features/products/data/models/product_model.dart';
 import 'package:smart_store/features/products/data/repos/product_repo_imp.dart';
 import 'package:smart_store/features/products/presentation/views/product_details_view.dart';
@@ -39,7 +40,7 @@ class RecommendedList extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const SizedBox(
                 height: 90,
-                child: Center(child: CircularProgressIndicator()),
+                child: CustomLoadingIndicator(),
               );
             }
 

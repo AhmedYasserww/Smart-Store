@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/service_locator/service_locator.dart';
+import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
 import 'package:smart_store/features/products/data/repos/product_repo_imp.dart';
 import 'package:smart_store/features/products/presentation/views/widgets/product_details_view_body.dart';
 import 'package:smart_store/features/products/presentation/views/widgets/product_details_widgets/product_details_app_bar.dart';
@@ -18,7 +19,7 @@ class ProductDetailsView extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             appBar: ProductDetailsAppBar(title: 'Product', isFavorite: false),
-            body: Center(child: CircularProgressIndicator()),
+            body: CustomLoadingIndicator(),
           );
         }
 
