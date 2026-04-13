@@ -1,19 +1,32 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/utils/app_style.dart';
+
 class ColorSelector extends StatefulWidget {
   const ColorSelector({
     super.key,
     required this.colors,
+    this.onColorSelected,
   });
 
-  final List<String> colors; // 👈 hex strings
+  final List<String> colors;
+  final void Function(String color)? onColorSelected;
 
   @override
   State<ColorSelector> createState() => _ColorSelectorState();
 }
 
 class _ColorSelectorState extends State<ColorSelector> {
-  int selectedIndex = -1;
+  int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.colors.isNotEmpty) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        widget.onColorSelected?.call(widget.colors[0]);
+      });
+    }
+  }
 
   Color _hexToColor(String hex) {
     final normalized = hex.replaceAll('#', '');
@@ -27,7 +40,6 @@ class _ColorSelectorState extends State<ColorSelector> {
       children: [
         Text('Choose color', style: AppStyle.styleSemiBold18),
         const SizedBox(width: 32),
-
         Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -40,10 +52,8 @@ class _ColorSelectorState extends State<ColorSelector> {
 
                   return GestureDetector(
                     onTap: () {
-                      setState(() {
-                        selectedIndex =
-                        isSelected ? -1 : index;
-                      });
+                      setState(() => selectedIndex = index);
+                      widget.onColorSelected?.call(widget.colors[index]);
                     },
                     child: Container(
                       margin: const EdgeInsets.only(right: 8),

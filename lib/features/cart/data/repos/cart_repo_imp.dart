@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
 import '../../../../core/services/end_points.dart';
-import '../entities/cart_item_entity.dart';
+import '../entities/add_to_cart_item_entity.dart';
 import 'cart_repo.dart';
 
 class CartRepoImpl implements CartRepo {
@@ -14,7 +14,7 @@ class CartRepoImpl implements CartRepo {
 
   @override
   Future<Either<Failure, String>> addToCart({
-    required CartItemEntity cartItemEntity,
+    required AddToCartItemEntity cartItemEntity,
   }) async {
     try {
       final response = await apiService.post(

@@ -21,6 +21,9 @@ class ProductView extends StatelessWidget {
        BlocProvider(
            create: (_) => GetAllProductCubit(getIt.get<ProductsRepoImpl>())..fetchAllProducts(),
        ),
+        // BlocProvider(
+        //   create: (_) => AddToCartCubit(getIt.get<CartRepoImpl>()),
+        // ),
       ],
       child: Scaffold(
         appBar: AppBar(

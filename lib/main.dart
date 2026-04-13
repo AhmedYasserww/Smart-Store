@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'core/helper_functions/on_generate_routes.dart';
 import 'core/service_locator/service_locator.dart';
 import 'features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
+import 'features/onboarding/presentation/views/onboarding_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,4 +56,3 @@ class CustomScrollBehavior extends MaterialScrollBehavior {
     PointerDeviceKind.unknown,
   };
 }
-  
