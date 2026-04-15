@@ -6,6 +6,7 @@ import 'package:smart_store/features/products/data/repos/product_repo_imp.dart';
 import '../../features/auth/data/repos/auth_repo_imp.dart';
 import '../../features/cart/data/repos/cart_repo_imp.dart';
 import '../../features/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
+import '../../features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
 import '../../features/search/data/repos/search_repo.dart';
 import '../../features/search/data/repos/search_repo_imp.dart';
 import '../../features/search/presentation/manager/search_for_product_cubit/search_for_product_cubit.dart';
@@ -41,6 +42,7 @@ void setupServiceLocator() {
   getIt.registerFactory<AddToCartCubit>(() => AddToCartCubit(
     getIt<CartRepoImpl>(),
   ));
+  getIt.registerFactory(() => GetCartCubit(getIt.get<CartRepoImpl>()));
   // getIt.registerSingleton<GetAllProductRepoImp>(GetAllProductRepoImp(apiService:getIt.get<ApiService>(),));
   // getIt.registerSingleton<GetAllCategoryRepoImp>(GetAllCategoryRepoImp(apiService:getIt.get<ApiService>(),));
   // getIt.registerSingleton<GetAllBrandsRepoImp>(GetAllBrandsRepoImp(apiService:getIt.get<ApiService>(),));

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_store/core/utils/app_color.dart';
+import 'package:smart_store/features/cart/data/entities/get_cart_entity.dart';
 
+import '../../../../../core/helper_functions/hex_to_color.dart';
 import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_style.dart';
+import '../../../../../core/widgets/custom_cached_network_image.dart';
+import '../../manager/delete_cart_item_cubit/delete_cart_item_cubit.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+  const CartItem({super.key, required this.item});
+  final CartItemDetailsEntity item;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +28,12 @@ class CartItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              AppImages.bagImage,
+            CustomCachedNetworkImage(
+              path: item.productImageUrl,
               width: 85,
               height: 100,
               fit: BoxFit.cover,
+              borderRadius: BorderRadius.circular(12),
             ),
 
             const SizedBox(width: 8),
@@ -41,12 +48,14 @@ class CartItem extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          'Sunset Shine Heels',
+                         item.productName,
                           style: AppStyle.styleBold16,
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context.read<DeleteCartItemCubit>().deleteCartItem(itemId: item.id);
+                        },
                         child: SvgPicture.asset(AppImages.circleRemove),
                       ),
                     ],
@@ -60,25 +69,37 @@ class CartItem extends StatelessWidget {
                         'Quantity: ',
                         style: AppStyle.styleGreyRegular12,
                       ),
-                      Text(
-                        ' 1',
-                        style: AppStyle.styleGreyRegular12,
-                      ),
+                      Text('${item.quantity}', style: AppStyle.styleGreyRegular12)
                     ],
                   ),
 
                   const SizedBox(height: 4),
 
-                  Text(
-                    'Medium, Black',
-                    style: AppStyle.styleGreyRegular12,
+                  Row(
+                    children: [
+                      Text(
+                        '${item.size},  ',
+                        style: AppStyle.styleGreyRegular12,
+                      ),
+                      Container(
+                        width: 14,
+                        height: 14,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: hexToColor(item.color),
+                          border: Border.all(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-
                   const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
-                        '\$49.99',
+                        '\$${item.unitPrice.toStringAsFixed(2)}',
                         style: AppStyle.styleMedium16,
                       ),
 
@@ -113,10 +134,7 @@ class CartItem extends StatelessWidget {
                             onTap: () {},
                           ),
                           const SizedBox(width: 8),
-                          Text(
-                            '1',
-                            style: AppStyle.styleRegular14,
-                          ),
+                          Text('${item.quantity}', style: AppStyle.styleRegular14),
                           const SizedBox(width: 8),
                           _circleButton(
                             context: context,

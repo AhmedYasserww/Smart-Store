@@ -5,6 +5,8 @@ import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
 import '../../../../core/services/end_points.dart';
 import '../entities/add_to_cart_item_entity.dart';
+import '../entities/get_cart_entity.dart';
+import '../models/cart_model.dart';
 import 'cart_repo.dart';
 
 class CartRepoImpl implements CartRepo {
@@ -53,10 +55,72 @@ class CartRepoImpl implements CartRepo {
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }
+  @override
+  Future<Either<Failure, GetCartEntity>> getCart() async {
+    try {
+      final response = await apiService.get(
+        endPoint: EndPoints.getCart,
+      );
+
+      log("🛒 GetCart Response: $response");
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 &&
+            response['succeeded'] == true &&
+            response['data'] != null) {
+          return right(CartModel.fromJson(response['data']));
+        } else {
+          return left(
+            ServerFailure(errorMessage: message ?? "Failed to get cart"),
+          );
+        }
+      } else {
+        return left(ServerFailure(errorMessage: "Unexpected API response format"));
+      }
+    } on DioException catch (e) {
+      log('❌ DioException (GetCart): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (GetCart): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
 
   @override
-  Future<Either<Failure, String>> deleteFromCart({required String productId}) {
-    // TODO: implement deleteFromCart
-    throw UnimplementedError();
+  @override
+  Future<Either<Failure, String>> deleteFromCart({
+    required String productId,
+  }) async {
+    try {
+      final response = await apiService.delete(
+        endPoint: EndPoints.deleteFromCart(productId),
+      );
+
+      log("🗑️ DeleteFromCart Response: $response");
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          return right(message ?? 'Cart item removed successfully.');
+        } else {
+          return left(
+            ServerFailure(errorMessage: message ?? 'Failed to delete cart item'),
+          );
+        }
+      } else {
+        return left(ServerFailure(errorMessage: 'Unexpected API response format'));
+      }
+    } on DioException catch (e) {
+      log('❌ DioException (DeleteFromCart): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (DeleteFromCart): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
   }
 }

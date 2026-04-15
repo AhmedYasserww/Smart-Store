@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'core/helper_functions/on_generate_routes.dart';
 import 'core/service_locator/service_locator.dart';
+import 'features/auth/presentation/views/log_in_view.dart';
 import 'features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import 'features/onboarding/presentation/views/onboarding_view.dart';
 
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
     onGenerateRoute: onGenerateRoutes,
       //initialRoute: ResetPasswordView.routeName,
       // initialRoute: OnBoardingView.routeName,
-      //initialRoute: LogInView.routeName,
+    //  initialRoute: LogInView.routeName,
       initialRoute: CustomNavigationBar.routeName,
     );
   }

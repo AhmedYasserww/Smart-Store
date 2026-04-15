@@ -49,7 +49,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         child: Scaffold(
           backgroundColor: Colors.white,
 
-          body: IndexedStack(index: selectedIndex, children: screens),
+          // ✅ نفس بيهيفور القديم بدل Offstage
+          body: screens[selectedIndex],
+
           bottomNavigationBar: AnimatedContainer(
             duration: const Duration(milliseconds: 380),
             curve: Curves.easeOutCubic,
@@ -82,24 +84,9 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _navItem(
-                  0,
-                  "Home",
-                  AppImages.homeOutlined,
-                  AppImages.homeFilled,
-                ),
-                _navItem(
-                  1,
-                  "Product",
-                  AppImages.productOutlined,
-                  AppImages.productFilled,
-                ),
-                _navItem(
-                  2,
-                  "Cart",
-                  AppImages.cartOutlined,
-                  AppImages.cartFilled,
-                ),
+                _navItem(0, "Home", AppImages.homeOutlined, AppImages.homeFilled),
+                _navItem(1, "Product", AppImages.productOutlined, AppImages.productFilled),
+                _navItem(2, "Cart", AppImages.cartOutlined, AppImages.cartFilled),
                 _navItem(3, "More", AppImages.moreIcon, AppImages.moreIcon),
               ],
             ),
@@ -109,12 +96,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
     );
   }
 
-  Widget _navItem(
-    int index,
-    String title,
-    String outlinedSvg,
-    String filledSvg,
-  ) {
+  Widget _navItem(int index, String title, String outlinedSvg, String filledSvg) {
     bool selected = index == selectedIndex;
 
     return Expanded(
@@ -146,51 +128,47 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
                   },
                   child: selected
                       ? Container(
-                          key: const ValueKey("selected"),
-                          padding: const EdgeInsets.all(6),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.primaryColor.withValues(
-                                  alpha: 0.22,
-                                ),
-                                blurRadius: 14,
-                                offset: const Offset(0, 6),
-                              ),
-                            ],
-                          ),
-                          child: CircleAvatar(
-                            radius: 18,
-                            backgroundColor: AppColors.primaryColor,
-                            child: SvgPicture.asset(
-                              filledSvg,
-                              width: 28,
-                              height: 28,
-                              colorFilter: const ColorFilter.mode(
-                                Colors.white,
-                                BlendMode.srcIn,
-                              ),
-                            ),
-                          ),
-                        )
-                      : SvgPicture.asset(
-                          outlinedSvg,
-                          key: const ValueKey("normal"),
-                          width: 24,
-                          height: 24,
-                          colorFilter: ColorFilter.mode(
-                            Colors.grey.shade600,
-                            BlendMode.srcIn,
-                          ),
+                    key: const ValueKey("selected"),
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primaryColor.withValues(alpha: 0.22),
+                          blurRadius: 14,
+                          offset: const Offset(0, 6),
                         ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor: AppColors.primaryColor,
+                      child: SvgPicture.asset(
+                        filledSvg,
+                        width: 28,
+                        height: 28,
+                        colorFilter: const ColorFilter.mode(
+                          Colors.white,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ),
+                  )
+                      : SvgPicture.asset(
+                    outlinedSvg,
+                    key: const ValueKey("normal"),
+                    width: 24,
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      Colors.grey.shade600,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ),
               ),
             ),
-
             const SizedBox(height: 4),
-
             AnimatedSlide(
               duration: const Duration(milliseconds: 280),
               curve: Curves.easeOut,
@@ -201,9 +179,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
                 style: TextStyle(
                   fontSize: selected ? 12.5 : 12,
                   fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
-                  color: selected
-                      ? AppColors.primaryColor
-                      : AppColors.primaryTextColor,
+                  color: selected ? AppColors.primaryColor : AppColors.primaryTextColor,
                 ),
                 child: Text(title),
               ),

@@ -13,4 +13,6 @@ class EndPoints {
   static const String getAllCategories = "Categories";
   static const String searchForProduct = "Products/search/on/products";
   static const String addToCart = "Cart/client/add/to/cart";
+  static const String getCart = 'Cart/get/client/cart';
+  static String deleteFromCart(String itemId) => 'Cart/delete/client/cart/$itemId';
 }
