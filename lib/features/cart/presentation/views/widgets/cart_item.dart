@@ -9,6 +9,7 @@ import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_cached_network_image.dart';
 import '../../manager/delete_cart_item_cubit/delete_cart_item_cubit.dart';
+import '../../manager/get_cart_cubit/get_cart_cubit.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.item});
@@ -131,7 +132,12 @@ class CartItem extends StatelessWidget {
                           _circleButton(
                             context: context,
                             icon: Icons.remove,
-                            onTap: () {},
+                            onTap: () {
+                              context.read<GetCartCubit>().updateItemQuantityLocally(
+                                itemId: item.id,
+                                newQuantity: item.quantity - 1,
+                              );
+                            },
                           ),
                           const SizedBox(width: 8),
                           Text('${item.quantity}', style: AppStyle.styleRegular14),
@@ -139,7 +145,12 @@ class CartItem extends StatelessWidget {
                           _circleButton(
                             context: context,
                             icon: Icons.add,
-                            onTap: () {},
+                            onTap: () {
+                              context.read<GetCartCubit>().updateItemQuantityLocally(
+                                itemId: item.id,
+                                newQuantity: item.quantity + 1,
+                              );
+                            },
                           ),
                         ],
                       ),

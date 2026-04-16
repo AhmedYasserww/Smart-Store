@@ -123,4 +123,40 @@ class CartRepoImpl implements CartRepo {
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }
+  @override
+  Future<Either<Failure, GetCartEntity>> updateCartItemQuantity({
+    required String cartItemId,
+    required int quantity,
+  }) async {
+    try {
+      final response = await apiService.put(
+        endPoint: EndPoints.updateCartItem,
+        data: {
+          "cartItemId": cartItemId,
+          "quantity": quantity,
+        },
+      );
+
+      log("🔄 UpdateCartItem Response: $response");
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          return right(CartModel.fromJson(response['data']));
+        } else {
+          return left(ServerFailure(errorMessage: message ?? 'Failed to update quantity'));
+        }
+      } else {
+        return left(ServerFailure(errorMessage: 'Unexpected API response format'));
+      }
+    } on DioException catch (e) {
+      log('❌ DioException (UpdateCartItem): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (UpdateCartItem): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
 }

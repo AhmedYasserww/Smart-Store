@@ -26,6 +26,7 @@ class CartItemDetailsEntity {
   final String productName;
   final String productImageUrl;
   final String createdAt;
+  final int stockQuantity;
 
   CartItemDetailsEntity({
     required this.id,
@@ -36,6 +37,6 @@ class CartItemDetailsEntity {
     required this.productName,
     required this.productImageUrl,
     required this.createdAt,
-    required this.unitPrice,
+    required this.unitPrice, required this.stockQuantity,
   });
 }

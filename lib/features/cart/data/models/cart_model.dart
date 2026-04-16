@@ -34,7 +34,7 @@ class CartItemDetailsModel extends CartItemDetailsEntity {
     required super.productName,
     required super.productImageUrl,
     required super.createdAt,
-    required super.unitPrice,
+    required super.unitPrice, required super.stockQuantity,
   });
 
   factory CartItemDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -48,6 +48,7 @@ class CartItemDetailsModel extends CartItemDetailsEntity {
       productImageUrl: json['productImageUrl'],
       createdAt: json['createdAt'],
       unitPrice: (json['unitPrice'] as num).toDouble(),
+      stockQuantity: json['stockQuantity'],
     );
   }
 }

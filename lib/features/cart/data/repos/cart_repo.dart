@@ -9,4 +9,8 @@ abstract class CartRepo {
   });
   Future<Either<Failure, GetCartEntity>> getCart();
   Future<Either<Failure, String>> deleteFromCart({required String productId});
+  Future<Either<Failure, GetCartEntity>> updateCartItemQuantity({
+    required String cartItemId,
+    required int quantity,
+  });
 }

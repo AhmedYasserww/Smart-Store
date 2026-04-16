@@ -5,6 +5,7 @@ import 'package:smart_store/features/delivery/presentation/views/delivery_addres
 import '../../../../../core/utils/app_dimensions.dart';
 import '../../../../../core/widgets/custom_loading_indicator.dart';
 import '../../manager/delete_cart_item_cubit/delete_cart_item_cubit.dart';
+import '../../manager/update_cart_item_cubit/update_cart_item_cubit.dart';
 import 'cart_checkout_section.dart';
 import 'cart_item_list_view.dart';
 
@@ -13,14 +14,27 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<DeleteCartItemCubit, DeleteCartItemState>(
-      listener: (context, state) {
-        if (state is DeleteCartItemFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errorMessage)),
-          );
-        }
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<DeleteCartItemCubit, DeleteCartItemState>(
+          listener: (context, state) {
+            if (state is DeleteCartItemFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.errorMessage)),
+              );
+            }
+          },
+        ),
+        BlocListener<UpdateCartItemCubit, UpdateCartItemState>(
+          listener: (context, state) {
+            if (state is UpdateCartItemFailure) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.errorMessage)),
+              );
+            }
+          },
+        ),
+      ],
       child: BlocBuilder<GetCartCubit, GetCartState>(
         builder: (context, state) {
           if (state is GetCartLoading || state is GetCartInitial) {
@@ -63,9 +77,17 @@ class CartViewBody extends StatelessWidget {
                   ),
                   CartCheckoutSection(
                     total: '${cart.totalPrice.toStringAsFixed(2)} EGP',
-                    onCheckout: () {
-                      Navigator.of(context)
-                          .pushNamed(DeliveryAddressView.routeName);
+                    onCheckout: () async {
+                      final items = cart.items;
+                      for (final item in items) {
+                        await context.read<UpdateCartItemCubit>().updateQuantity(
+                          cartItemId: item.id,
+                          quantity: item.quantity,
+                        );
+                      }
+                      if (context.mounted) {
+                        Navigator.of(context).pushNamed(DeliveryAddressView.routeName);
+                      }
                     },
                   ),
                 ],

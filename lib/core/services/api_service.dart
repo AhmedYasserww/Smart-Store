@@ -160,4 +160,26 @@ class ApiService {
       return _handleDioError(e);
     }
   }
+  /// PUT REQUEST
+  Future<dynamic> put({
+    required String endPoint,
+    required Map<String, dynamic> data,
+    String? token,
+  }) async {
+    try {
+      final resolvedToken = await _resolveToken(token);
+      final response = await dio.put(
+        endPoint,
+        data: data,
+        options: _buildOptions(
+          token: resolvedToken,
+          contentType: ApiConstants.contentType,
+        ),
+      );
+
+      return response.data;
+    } on DioException catch (e) {
+      return _handleDioError(e);
+    }
+  }
 }
