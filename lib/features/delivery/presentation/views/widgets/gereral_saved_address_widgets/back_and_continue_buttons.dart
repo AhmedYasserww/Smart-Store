@@ -15,14 +15,20 @@ class BackAndContinueButtons extends StatelessWidget {
 
   final bool isEnabled;
   final VoidCallback onContinue;
-  final Color ? continueButtonColor ;
-  final String ? title;
+  final Color? continueButtonColor;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
+    final ValueNotifier<bool> backPressed =
+    ValueNotifier(false);
+
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 32,
+          vertical: 12,
+        ),
         decoration: ShapeDecoration(
           color: const Color(0xFFF9FAFA),
           shape: RoundedRectangleBorder(
@@ -35,34 +41,97 @@ class BackAndContinueButtons extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: CustomButton(
-                border: Border.all(color: AppColors.palletBorderColor),
-                buttonColor: const Color(0xFFF3EEFB),
-                text: 'Back',
-                textButtonColor: AppColors.primaryColor,
-                onTap: () => Navigator.pop(context),
+              child: ValueListenableBuilder<bool>(
+                valueListenable: backPressed,
+                builder:
+                    (context, pressed, child) {
+                  return GestureDetector(
+                    onTapDown: (_) =>
+                    backPressed.value = true,
+                    onTapUp: (_) =>
+                    backPressed.value = false,
+                    onTapCancel: () =>
+                    backPressed.value = false,
+                    onTap: () =>
+                        Navigator.pop(context),
+                    child: AnimatedContainer(
+                      duration:
+                      const Duration(
+                        milliseconds: 120,
+                      ),
+                      curve: Curves.easeOut,
+                      transform:
+                      Matrix4.identity()
+                        ..translate(
+                          0.0,
+                          pressed
+                              ? 3.0
+                              : 0.0,
+                        )
+                        ..scale(
+                          pressed
+                              ? 0.97
+                              : 1.0,
+                        ),
+                      child: CustomButton(
+                        border: Border.all(
+                          color: AppColors
+                              .palletBorderColor,
+                        ),
+                        buttonColor:
+                        const Color(
+                          0xFFF3EEFB,
+                        ),
+                        text: 'Back',
+                        textButtonColor:
+                        AppColors
+                            .primaryColor,
+                        onTap: () {},
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(width: 12),
-      
+
             Expanded(
               child: isEnabled
                   ? CustomButton(
-                text: title ?? 'Continue',
-                buttonColor:continueButtonColor?? AppColors.primaryColor,
-                textButtonColor: Colors.white,
+                text:
+                title ??
+                    'Continue',
+                buttonColor:
+                continueButtonColor ??
+                    AppColors
+                        .primaryColor,
+                textButtonColor:
+                Colors.white,
                 onTap: onContinue,
               )
-                  : Container(
-                height: 48,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: const Color(0x7F5D3A82),
+                  : AnimatedContainer(
+                duration:
+                const Duration(
+                  milliseconds: 220,
                 ),
-                alignment: Alignment.center,
+                height: 48,
+                decoration:
+                BoxDecoration(
+                  borderRadius:
+                  BorderRadius.circular(
+                    8,
+                  ),
+                  color:
+                  const Color(
+                    0x7F5D3A82,
+                  ),
+                ),
+                alignment:
+                Alignment.center,
                 child: const Text(
                   'Continue',
-                  style:AppStyle.styleWhiteRegular16
+                  style: AppStyle
+                      .styleWhiteRegular16,
                 ),
               ),
             ),

@@ -42,9 +42,9 @@ class MyApp extends StatelessWidget {
       scrollBehavior: CustomScrollBehavior(),
     onGenerateRoute: onGenerateRoutes,
       //initialRoute: ResetPasswordView.routeName,
-      // initialRoute: OnBoardingView.routeName,
+       initialRoute: OnBoardingView.routeName,
     //  initialRoute: LogInView.routeName,
-      initialRoute: CustomNavigationBar.routeName,
+      //initialRoute: CustomNavigationBar.routeName,
     );
   }
 }
