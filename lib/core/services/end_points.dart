@@ -16,4 +16,7 @@ class EndPoints {
   static const String getCart = 'Cart/get/client/cart';
   static String deleteFromCart(String itemId) => 'Cart/delete/client/cart/$itemId';
   static const String updateCartItem = 'Cart/client/update/cartItem';
+  static const String getWishlist = 'Wishlist/get/client/wishlist';
+  static const String addToWishlist = 'Wishlist/client/add/to/wishlist';
+  static String removeFromWishlist(String itemId) => 'Wishlist/client/remove/item/$itemId';
 }

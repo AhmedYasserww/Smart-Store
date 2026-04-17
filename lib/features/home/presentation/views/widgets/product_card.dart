@@ -1,29 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/core/widgets/custom_cached_network_image.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/product_info_card.dart';
 import 'package:smart_store/features/products/data/models/product_model.dart';
 import 'package:smart_store/features/products/presentation/views/product_details_view.dart';
+import '../../../../products/presentation/views/widgets/product_view_widgets/favorite_button.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.productModel});
   final ProductModel productModel;
 
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  late bool isFavorite;
-
   final double cardWidth = 196;
   final double imageHeight = 150;
-
-  @override
-  void initState() {
-    super.initState();
-    isFavorite = widget.productModel.isFavorite;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +18,7 @@ class _ProductCardState extends State<ProductCard> {
       onTap: () {
         Navigator.of(context).pushNamed(
           ProductDetailsView.routeName,
-          arguments: widget.productModel.id,
+          arguments: productModel.id,
         );
       },
       borderRadius: BorderRadius.circular(16),
@@ -53,52 +40,35 @@ class _ProductCardState extends State<ProductCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
               child: SizedBox(
                 height: imageHeight,
                 width: cardWidth,
                 child: Stack(
                   children: [
                     CustomCachedNetworkImage(
-                      path: widget.productModel.productImages.isNotEmpty
-                          ? widget.productModel.productImages.first.images
+                      path: productModel.productImages.isNotEmpty
+                          ? productModel.productImages.first.images
                           : "",
                       width: double.infinity,
                       height: imageHeight,
                       fit: BoxFit.cover,
                     ),
-
                     Positioned(
                       top: 8,
                       right: 8,
-                      child: GestureDetector(
+                      child: FavoriteButton(
+                        isFavorite: productModel.isFavorite,
                         onTap: () {
-                          setState(() {
-                            isFavorite = !isFavorite;
-                          });
+
                         },
-                        child: Container(
-                          width: 32,
-                          height: 32,
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            isFavorite ? Icons.favorite : Icons.favorite_border,
-                            color: isFavorite
-                                ? Colors.red
-                                : AppColors.primaryTextColor,
-                            size: 20,
-                          ),
-                        ),
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            ProductInfoWidget(productModel: widget.productModel),
+            ProductInfoWidget(productModel: productModel),
           ],
         ),
       ),
