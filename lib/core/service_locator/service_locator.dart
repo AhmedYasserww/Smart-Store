@@ -10,6 +10,10 @@ import '../../features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.d
 import '../../features/search/data/repos/search_repo.dart';
 import '../../features/search/data/repos/search_repo_imp.dart';
 import '../../features/search/presentation/manager/search_for_product_cubit/search_for_product_cubit.dart';
+import '../../features/wishlist/data/repos/wishlist_repo_imp.dart';
+import '../../features/wishlist/presentation/manager/add_to_wishlist_cubit/add_to_wishlist_cubit.dart';
+import '../../features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
+import '../../features/wishlist/presentation/manager/remove_from_wishlist_cubit/remove_from_wishlist_cubit.dart';
 import '../services/api_service.dart';
 
 final getIt = GetIt.instance;
@@ -36,33 +40,24 @@ void setupServiceLocator() {
   getIt.registerSingleton<CartRepoImpl>(
     CartRepoImpl(apiService: getIt.get<ApiService>()),
   );
-  // getIt.registerFactory<GetCartCubit>(() => GetCartCubit(
-  //   getIt<CartRepoImp>(),
-  // ));
+
   getIt.registerFactory<AddToCartCubit>(() => AddToCartCubit(
     getIt<CartRepoImpl>(),
   ));
   getIt.registerFactory(() => GetCartCubit(getIt.get<CartRepoImpl>()));
-  // getIt.registerSingleton<GetAllProductRepoImp>(GetAllProductRepoImp(apiService:getIt.get<ApiService>(),));
-  // getIt.registerSingleton<GetAllCategoryRepoImp>(GetAllCategoryRepoImp(apiService:getIt.get<ApiService>(),));
-  // getIt.registerSingleton<GetAllBrandsRepoImp>(GetAllBrandsRepoImp(apiService:getIt.get<ApiService>(),));
-  // getIt.registerSingleton<SearchRepoImp>(
-  //   SearchRepoImp(apiService: getIt.get<ApiService>()),
-  // );
-  // getIt.registerFactory<SearchForProductCubit>(() => SearchForProductCubit(
-  //     getIt<SearchRepoImp>(),
-  //     ));
-  // getIt.registerSingleton<GetAllProductBySingleProductRepoImp>(
-  //   GetAllProductBySingleProductRepoImp(apiService: getIt.get<ApiService>()),
-  // );
-  // getIt.registerSingleton<GetFilteredProductsRepoImp>(
-  //   GetFilteredProductsRepoImp(apiService: getIt.get<ApiService>()),
-  // );
-  //
-  // getIt.registerSingleton<CartRepoImp>(
-  //   CartRepoImp(apiService: getIt.get<ApiService>()),
-  // );
-  // getIt.registerFactory<GetCartCubit>(() => GetCartCubit(
-  //   getIt<CartRepoImp>(),
-  // ));
+
+  getIt.registerSingleton<WishlistRepoImpl>(
+    WishlistRepoImpl(apiService: getIt<ApiService>()),
+  );
+
+  getIt.registerFactory<AddToWishlistCubit>(() => AddToWishlistCubit(
+    wishlistRepo: getIt<WishlistRepoImpl>(),
+    getWishlistCubit: getIt<GetWishlistCubit>(),
+  ));
+
+  getIt.registerFactory<RemoveFromWishlistCubit>(() => RemoveFromWishlistCubit(
+    wishlistRepo: getIt<WishlistRepoImpl>(),
+    getWishlistCubit: getIt<GetWishlistCubit>(),
+  ));
+
 }
