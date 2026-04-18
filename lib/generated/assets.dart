@@ -117,8 +117,7 @@ class Assets {
   static const String imagesFailureSearch = 'assets/images/failure_search.svg';
   static const String imagesFilterIcon1 = 'assets/images/filterIcon_1.svg';
   static const String imagesFilterIcon2 = 'assets/images/filterIcon_2.svg';
-  static const String imagesFlow = 'assets/images/Flow.webm';
-  static const String imagesFlow1 = 'assets/images/Flow 7.gif';
+  static const String imagesFlow = 'assets/images/Flow.gif';
   static const String imagesGmail = 'assets/images/Gmail.svg';
   static const String imagesGoogleIcon = 'assets/images/googleIcon.svg';
   static const String imagesGroupIcon = 'assets/images/group_icon.svg';
