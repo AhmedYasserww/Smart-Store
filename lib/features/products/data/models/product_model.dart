@@ -1,4 +1,3 @@
-// data/models/product_model.dart
 import 'package:equatable/equatable.dart';
 
 class ProductImageModel extends Equatable {
@@ -91,7 +90,7 @@ class ProductModel extends Equatable {
   final bool isActive;
   final String categoryName;
   final bool isFavorite;
-  final List<String> colors; // <-- تم التغيير من color إلى List<String>
+  final List<String> colors;
   final double rating;
   final int reviews;
   final List<ProductImageModel> productImages;

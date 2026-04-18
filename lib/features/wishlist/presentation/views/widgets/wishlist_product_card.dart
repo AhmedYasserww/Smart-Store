@@ -62,12 +62,8 @@ class WishlistProductCard extends StatelessWidget {
                       top: 8,
                       right: 8,
                       child: GestureDetector(
-                        onTap: () {
-                          // ✅ حذف locally على طول
-                          context
-                              .read<GetWishlistCubit>()
-                              .removeItemLocally(item.id);
-                          // هنا هتضيف الـ API call بعدين
+                        onTap: () async {
+                          await context.read<GetWishlistCubit>().toggleFavorite(product.id);
                         },
                         child: Container(
                           width: 32,

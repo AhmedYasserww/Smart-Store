@@ -1,35 +1,23 @@
+// features/products/presentation/views/widgets/product_view_widgets/favorite_button.dart
+
 import 'package:flutter/material.dart';
-import 'package:smart_store/core/utils/app_color.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../../core/utils/app_color.dart';
+import '../../../../../wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
 
-class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({
-    super.key,
-    required this.isFavorite,
-    this.onTap,
-  });
-
-  final bool isFavorite;
-  final VoidCallback? onTap;
-
-  @override
-  State<FavoriteButton> createState() => _FavoriteButtonState();
-}
-
-class _FavoriteButtonState extends State<FavoriteButton> {
-  late bool isFavorite;
-
-  @override
-  void initState() {
-    super.initState();
-    isFavorite = widget.isFavorite;
-  }
+class FavoriteButton extends StatelessWidget {
+  const FavoriteButton({super.key, required this.productId});
+  final String productId;
 
   @override
   Widget build(BuildContext context) {
+    final isFav = context.select<GetWishlistCubit, bool>(
+          (cubit) => cubit.isFavorite(productId),
+    );
+
     return GestureDetector(
       onTap: () {
-        setState(() => isFavorite = !isFavorite);
-        widget.onTap?.call();
+        context.read<GetWishlistCubit>().toggleFavorite(productId);
       },
       child: Container(
         width: 32,
@@ -39,8 +27,8 @@ class _FavoriteButtonState extends State<FavoriteButton> {
           shape: BoxShape.circle,
         ),
         child: Icon(
-          isFavorite ? Icons.favorite : Icons.favorite_border,
-          color: isFavorite ? Colors.red : AppColors.primaryTextColor,
+          isFav ? Icons.favorite : Icons.favorite_border,
+          color: isFav ? Colors.red : AppColors.primaryTextColor,
           size: 20,
         ),
       ),

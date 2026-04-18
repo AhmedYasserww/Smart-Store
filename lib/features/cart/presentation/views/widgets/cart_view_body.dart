@@ -8,6 +8,7 @@ import '../../manager/delete_cart_item_cubit/delete_cart_item_cubit.dart';
 import '../../manager/update_cart_item_cubit/update_cart_item_cubit.dart';
 import 'cart_checkout_section.dart';
 import 'cart_item_list_view.dart';
+import 'customEmptyCart.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -29,7 +30,9 @@ class CartViewBody extends StatelessWidget {
           listener: (context, state) {
             if (state is UpdateCartItemFailure) {
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.errorMessage)),
+                SnackBar(
+                  backgroundColor: Colors.red,
+                    content: Text(state.errorMessage)),
               );
             }
           },
@@ -63,7 +66,7 @@ class CartViewBody extends StatelessWidget {
             final cart = state.cart;
       
             if (cart.items.isEmpty) {
-              return const Center(child: Text('Your cart is empty'));
+              return const CustomEmptyCart();
             }
       
             return Padding(

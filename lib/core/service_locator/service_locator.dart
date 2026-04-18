@@ -11,9 +11,7 @@ import '../../features/search/data/repos/search_repo.dart';
 import '../../features/search/data/repos/search_repo_imp.dart';
 import '../../features/search/presentation/manager/search_for_product_cubit/search_for_product_cubit.dart';
 import '../../features/wishlist/data/repos/wishlist_repo_imp.dart';
-import '../../features/wishlist/presentation/manager/add_to_wishlist_cubit/add_to_wishlist_cubit.dart';
 import '../../features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
-import '../../features/wishlist/presentation/manager/remove_from_wishlist_cubit/remove_from_wishlist_cubit.dart';
 import '../services/api_service.dart';
 
 final getIt = GetIt.instance;
@@ -46,18 +44,25 @@ void setupServiceLocator() {
   ));
   getIt.registerFactory(() => GetCartCubit(getIt.get<CartRepoImpl>()));
 
-  getIt.registerSingleton<WishlistRepoImpl>(
-    WishlistRepoImpl(apiService: getIt<ApiService>()),
+  // getIt.registerSingleton<WishlistRepoImpl>(
+  //   WishlistRepoImpl(apiService: getIt<ApiService>()),
+  // );
+
+  // getIt.registerFactory<AddToWishlistCubit>(() => AddToWishlistCubit(
+  //   wishlistRepo: getIt<WishlistRepoImpl>(),
+  //   getWishlistCubit: getIt<GetWishlistCubit>(),
+  // ));
+
+  // getIt.registerFactory<RemoveFromWishlistCubit>(() => RemoveFromWishlistCubit(
+  //   wishlistRepo: getIt<WishlistRepoImpl>(),
+  //   getWishlistCubit: getIt<GetWishlistCubit>(),
+  // ));
+  getIt.registerLazySingleton<WishlistRepoImpl>(
+        () => WishlistRepoImpl(apiService: getIt<ApiService>()),
   );
 
-  getIt.registerFactory<AddToWishlistCubit>(() => AddToWishlistCubit(
-    wishlistRepo: getIt<WishlistRepoImpl>(),
-    getWishlistCubit: getIt<GetWishlistCubit>(),
-  ));
-
-  getIt.registerFactory<RemoveFromWishlistCubit>(() => RemoveFromWishlistCubit(
-    wishlistRepo: getIt<WishlistRepoImpl>(),
-    getWishlistCubit: getIt<GetWishlistCubit>(),
-  ));
+  getIt.registerLazySingleton<GetWishlistCubit>(
+        () => GetWishlistCubit(getIt<WishlistRepoImpl>()),
+  );
 
 }

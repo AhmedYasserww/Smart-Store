@@ -6,7 +6,6 @@ class Assets {
   static const String addToCartCubitAddToCartState = 'lib/features/cart/presentation/manager/add_to_cart_cubit/add_to_cart_state.dart';
   static const String addToWishlistCubitAddToWishlistCubit = 'lib/features/wishlist/presentation/manager/add_to_wishlist_cubit/add_to_wishlist_cubit.dart';
   static const String addToWishlistCubitAddToWishlistState = 'lib/features/wishlist/presentation/manager/add_to_wishlist_cubit/add_to_wishlist_state.dart';
-  static const String assetsImagesFlow = 'assets/images/Flow.webm';
   static const String assetsImagesMicrophone = 'assets/images/Microphone.svg';
   static const String confirmOrderWidgetsDeliveryAddressWidget = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/delivery_address_widget.dart';
   static const String confirmOrderWidgetsItemOrderDetails = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/item_order_details.dart';
@@ -118,7 +117,8 @@ class Assets {
   static const String imagesFailureSearch = 'assets/images/failure_search.svg';
   static const String imagesFilterIcon1 = 'assets/images/filterIcon_1.svg';
   static const String imagesFilterIcon2 = 'assets/images/filterIcon_2.svg';
-  static const String imagesFlow = 'assets/images/Flow.gif';
+  static const String imagesFlow = 'assets/images/Flow.webm';
+  static const String imagesFlow1 = 'assets/images/Flow 7.gif';
   static const String imagesGmail = 'assets/images/Gmail.svg';
   static const String imagesGoogleIcon = 'assets/images/googleIcon.svg';
   static const String imagesGroupIcon = 'assets/images/group_icon.svg';
@@ -204,8 +204,6 @@ class Assets {
   static const String presentationViewsDeleveryOptionView = 'lib/features/delivery/presentation/views/delevery_option_view.dart~';
   static const String presentationViewsEditProfileView = 'lib/features/profile/presentation/views/edit_profile_view.dart~';
   static const String presentationViewsForgetPasswordView = 'lib/features/auth/presentation/views/forget_password_view.dart~';
-  static const String presentationViewsHomeView = 'lib/features/home/presentation/views/home_view.dart~';
-  static const String presentationViewsProductDetailsView = 'lib/features/products/presentation/views/product_details_view.dart~';
   static const String presentationViewsProductView = 'lib/features/products/presentation/views/product_view.dart~';
   static const String presentationViewsVtoView = 'lib/features/vto/presentation/views/vto_view.dart~';
   static const String productDetailsWidgetsColorSelector = 'lib/features/products/presentation/views/widgets/product_details_widgets/color_selector.dart';
@@ -281,7 +279,6 @@ class Assets {
   static const String serviceLocatorServiceLocator = 'lib/core/service_locator/service_locator.dart';
   static const String servicesApiService = 'lib/core/services/api_service.dart';
   static const String servicesEndPoints = 'lib/core/services/end_points.dart';
-  static const String smartStoreLibMain = 'lib/main.dart~';
   static const String updateCartItemCubitUpdateCartItemCubit = 'lib/features/cart/presentation/manager/update_cart_item_cubit/update_cart_item_cubit.dart';
   static const String updateCartItemCubitUpdateCartItemState = 'lib/features/cart/presentation/manager/update_cart_item_cubit/update_cart_item_state.dart';
   static const String utilsAppColor = 'lib/core/utils/app_color.dart';
@@ -322,9 +319,7 @@ class Assets {
   static const String viewsVerificationView = 'lib/features/auth/presentation/views/verification_view.dart';
   static const String viewsVtoView = 'lib/features/vto/presentation/views/vto_view.dart';
   static const String viewsWidgetsCartCheckoutSection = 'lib/features/cart/presentation/views/widgets/cart_checkout_section.dart';
-  static const String viewsWidgetsCartItem = 'lib/features/cart/presentation/views/widgets/cart_item.dart~';
   static const String viewsWidgetsCartItemListView = 'lib/features/cart/presentation/views/widgets/cart_item_list_view.dart~';
-  static const String viewsWidgetsCartViewBody = 'lib/features/cart/presentation/views/widgets/cart_view_body.dart~';
   static const String viewsWidgetsCategoriesListView = 'lib/features/home/presentation/views/widgets/categories_list_view.dart~';
   static const String viewsWidgetsCategoryWidget = 'lib/features/home/presentation/views/widgets/category_widget.dart~';
   static const String viewsWidgetsEditProfileViewBody = 'lib/features/profile/presentation/views/widgets/edit_profile_view_body.dart~';
@@ -361,6 +356,7 @@ class Assets {
   static const String widgetsCustomButton = 'lib/core/widgets/custom_button.dart';
   static const String widgetsCustomCachedNetworkImage = 'lib/core/widgets/custom_cached_network_image.dart';
   static const String widgetsCustomCancelOrder = 'lib/features/orders/presentation/views/widgets/custom_cancel_order.dart';
+  static const String widgetsCustomEmptyCart = 'lib/features/cart/presentation/views/widgets/customEmptyCart.dart';
   static const String widgetsCustomEmptyItem = 'lib/core/widgets/custom_empty_item.dart';
   static const String widgetsCustomEmptyOrFailureResult = 'lib/features/search/presentation/views/widgets/custom_empty_or_failure_result.dart';
   static const String widgetsCustomEmptyOrder = 'lib/features/orders/presentation/views/widgets/custom_empty_order.dart';
@@ -405,7 +401,6 @@ class Assets {
   static const String widgetsProductCard = 'lib/features/home/presentation/views/widgets/product_card.dart';
   static const String widgetsProductDetailsViewBody = 'lib/features/products/presentation/views/widgets/product_details_view_body.dart';
   static const String widgetsProductDetailsWidgetsColorSelector = 'lib/features/products/presentation/views/widgets/product_details_widgets/color_selector.dart~';
-  static const String widgetsProductDetailsWidgetsProductDetailsAppBar = 'lib/features/products/presentation/views/widgets/product_details_widgets/product_details_app_bar.dart~';
   static const String widgetsProductDetailsWidgetsProductTitleSection = 'lib/features/products/presentation/views/widgets/product_details_widgets/product_title_section.dart~';
   static const String widgetsProductDetailsWidgetsQuantitySelector = 'lib/features/products/presentation/views/widgets/product_details_widgets/quantity_selector.dart~';
   static const String widgetsProductInfoCard = 'lib/features/home/presentation/views/widgets/product_info_card.dart';

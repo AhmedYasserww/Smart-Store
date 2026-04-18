@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
 import 'package:smart_store/features/products/presentation/views/widgets/product_view_widgets/product_of_list_card.dart';
 
 import '../../../../../../core/utils/app_style.dart';
@@ -23,7 +24,7 @@ class ProductsSliver extends StatelessWidget {
       builder: (context, productState) {
         if (productState is GetAllProductLoading) {
           return const SliverToBoxAdapter(
-            child: Center(child: CircularProgressIndicator()),
+            child: CustomLoadingIndicator(),
           );
         }
 
@@ -51,7 +52,7 @@ class ProductsSliver extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 12,
                     mainAxisSpacing: 16,
-                    childAspectRatio: 0.65,
+                    childAspectRatio: 0.63,
                   ),
                   delegate: SliverChildBuilderDelegate((_, index) {
                     return ProductCard(

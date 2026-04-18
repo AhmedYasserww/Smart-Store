@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_store/core/utils/app_color.dart';
+import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
 import '../../../../../../core/constants/verify_otp_enum.dart';
 import '../../../../../../core/helper_functions/save_user_data.dart';
 import '../../../manager/resend_otp_cubit/resend_otp_cubit.dart';
@@ -108,14 +109,14 @@ class _VerificationFooterSectionState
                     decoration: BoxDecoration(
                       color: seconds > 0
                           ? Colors.grey.shade100
-                          : Colors.blue.withOpacity(0.09), // 🎨 dynamic color
+                          : Colors.blue.withOpacity(0.09),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: isLoading
                         ? const SizedBox(
                       width: 16,
                       height: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2),
+                      child: CustomLoadingIndicator(),
                     )
                         : Row(
                       children: [

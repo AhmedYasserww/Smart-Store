@@ -2,34 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:smart_store/core/widgets/custom_cached_network_image.dart';
 import 'package:smart_store/features/products/data/models/product_model.dart';
 import 'package:smart_store/features/products/presentation/views/product_details_view.dart';
-
-import '../../../../../../core/utils/app_color.dart';
 import '../../../../../../core/utils/app_style.dart';
+import 'favorite_button.dart';
 
-class ProductOfListCard extends StatefulWidget {
+class ProductOfListCard extends StatelessWidget {
   const ProductOfListCard({super.key, required this.productModel});
   final ProductModel productModel;
-
-  @override
-  State<ProductOfListCard> createState() => _ProductOfListCardState();
-}
-
-class _ProductOfListCardState extends State<ProductOfListCard> {
-  late bool isFavorite;
-
-  @override
-  void initState() {
-    super.initState();
-    isFavorite = widget.productModel.isFavorite;
-  }
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(
           ProductDetailsView.routeName,
-          arguments: widget.productModel.id,
+          arguments: productModel.id,
         );
       },
       child: Card(
@@ -39,8 +24,8 @@ class _ProductOfListCardState extends State<ProductOfListCard> {
         child: Row(
           children: [
             CustomCachedNetworkImage(
-              path: widget.productModel.productImages.isNotEmpty
-                  ? widget.productModel.productImages.first.images
+              path: productModel.productImages.isNotEmpty
+                  ? productModel.productImages.first.images
                   : "",
               height: 120,
               width: 129,
@@ -49,30 +34,18 @@ class _ProductOfListCardState extends State<ProductOfListCard> {
                 left: Radius.circular(8),
               ),
             ),
-            // Container(
-            //   height: 120,
-            //   width: 129,
-            //   decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.circular(8),
-            //     image: DecorationImage(
-            //       image: NetworkImage(widget.productModel.productImages[0].images.toString()
-            //       ),
-            //       fit: BoxFit.cover,
-            //     ),
-            //   ),
-            // ),
             SizedBox(width: 8),
             Column(
               spacing: 8,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(widget.productModel.name, style: AppStyle.styleBold16),
+                Text(productModel.name, style: AppStyle.styleBold16),
                 Text(
-                  widget.productModel.categoryName,
+                  productModel.categoryName,
                   style: AppStyle.styleGreyRegular14,
                 ),
                 Text(
-                  widget.productModel.price.toString(),
+                  productModel.price.toString(),
                   style: AppStyle.styleRegular16,
                 ),
                 Row(
@@ -84,7 +57,7 @@ class _ProductOfListCardState extends State<ProductOfListCard> {
                     ),
                     SizedBox(width: 4),
                     Text(
-                      widget.productModel.rating.toString(),
+                      productModel.rating.toString(),
                       style: AppStyle.styleRegular12.copyWith(
                         color: Color(0xFFEAB308),
                       ),
@@ -96,26 +69,7 @@ class _ProductOfListCardState extends State<ProductOfListCard> {
             Spacer(),
             Transform.translate(
               offset: const Offset(0, -44),
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isFavorite = !isFavorite;
-                  });
-                },
-                child: Container(
-                  width: 32,
-                  height: 32,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: isFavorite ? Colors.red : AppColors.primaryTextColor,
-                    size: 20,
-                  ),
-                ),
-              ),
+              child: FavoriteButton(productId:productModel.id),
             ),
           ],
         ),

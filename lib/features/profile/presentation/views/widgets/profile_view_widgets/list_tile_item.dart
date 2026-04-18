@@ -40,7 +40,7 @@ class ListTileItem extends StatelessWidget {
       trailing: Icon(
         Icons.arrow_forward_ios,
         size: 16,
-        color: AppColors.palletBorderColor,
+        color: AppColors.greyTextColor,
       ),
     );
   }

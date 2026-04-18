@@ -23,14 +23,14 @@ class ProductDetailsView extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Scaffold(
-              appBar: ProductDetailsAppBar(title: 'Product', isFavorite: false),
+              appBar: ProductDetailsAppBar(title: 'Product',),
               body: CustomLoadingIndicator(),
             );
           }
 
           if (!snapshot.hasData) {
             return const Scaffold(
-              appBar: ProductDetailsAppBar(title: 'Product', isFavorite: false),
+              appBar: ProductDetailsAppBar(title: 'Product',),
               body: Center(child: Text('Failed to load product details.')),
             );
           }
@@ -39,15 +39,14 @@ class ProductDetailsView extends StatelessWidget {
                 (failure) => Scaffold(
               appBar: const ProductDetailsAppBar(
                 title: 'Product',
-                isFavorite: false,
               ),
               body: Center(child: Text(failure.errorMessage)),
             ),
                 (product) => Scaffold(
               appBar: ProductDetailsAppBar(
-                title: product.name,
-                isFavorite: product.isFavorite,
-              ),
+                  title: product.name,
+                  productId: product.id,
+                ),
               body: ProductDetailsViewBody(productModel: product),
             ),
           );

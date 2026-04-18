@@ -70,11 +70,15 @@ class WishlistRepoImpl implements WishlistRepo {
   }
 
   @override
-  Future<Either<Failure, String>> removeFromWishlist({required String itemId}) async {
+  @override
+  Future<Either<Failure, String>> removeFromWishlist({
+    required String itemId,
+  }) async {
     try {
       final response = await apiService.delete(
         endPoint: EndPoints.removeFromWishlist(itemId),
       );
+
       log('🗑️ RemoveFromWishlist Response: $response');
 
       if (response is Map<String, dynamic>) {
@@ -84,12 +88,17 @@ class WishlistRepoImpl implements WishlistRepo {
         if (statusCode == 200 && response['succeeded'] == true) {
           return right(message ?? 'Item removed from wishlist');
         } else {
-          return left(ServerFailure(errorMessage: message ?? 'Failed to remove from wishlist'));
+          return left(ServerFailure(
+            errorMessage: message ?? 'Failed to remove from wishlist',
+          ));
         }
       }
-      return left(ServerFailure(errorMessage: 'Unexpected API response format'));
+
+      return right('Item removed from wishlist');
+
     } on DioException catch (e) {
       log('❌ DioException (RemoveFromWishlist): ${e.message}');
+      log('❌ Response data: ${e.response?.data}');
       return left(ServerFailure.fromDioError(e));
     } catch (e) {
       log('❌ Unexpected Error (RemoveFromWishlist): $e');

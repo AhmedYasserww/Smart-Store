@@ -15,7 +15,6 @@ class ProductInfoWidget extends StatelessWidget {
         children: [
           const SizedBox(height: 8),
 
-          /// الاسم يكبر ويقلص بس لو الشاشة صغيرة
           FittedBox(
             fit: BoxFit.scaleDown,
             alignment: Alignment.centerLeft,
