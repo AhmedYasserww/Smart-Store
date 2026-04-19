@@ -106,22 +106,15 @@ class CustomButton extends StatelessWidget {
                       key: const ValueKey(
                         'loading',
                       ),
-                      color: Colors.white,
-                      size: 28,
-                    )
-                        : Text(
-                      text,
+                      color: Colors.white, size: 28,) : Text(text,
                       key: const ValueKey(
                         'text',
                       ),
                       style: AppStyle
-                          .styleWhiteRegular16
-                          .copyWith(
-                        color:
-                        textButtonColor ??
+                          .styleWhiteRegular16.copyWith(color: textButtonColor ??
                             Colors.white,
-                        fontWeight:
-                        FontWeight.w600,
+                      //  fontWeight:
+                       // FontWeight.w600,
                       ),
                     ),
                   ),

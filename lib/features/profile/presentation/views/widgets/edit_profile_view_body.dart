@@ -108,6 +108,7 @@ class EditProfileViewBody extends StatelessWidget {
             const SizedBox(height: 32),
         
             CustomProfileActionButtons(
+
               onDeleteTap: () {},
               onSaveTap: () {},
             ),

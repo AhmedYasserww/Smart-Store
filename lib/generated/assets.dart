@@ -7,6 +7,8 @@ class Assets {
   static const String addToWishlistCubitAddToWishlistCubit = 'lib/features/wishlist/presentation/manager/add_to_wishlist_cubit/add_to_wishlist_cubit.dart';
   static const String addToWishlistCubitAddToWishlistState = 'lib/features/wishlist/presentation/manager/add_to_wishlist_cubit/add_to_wishlist_state.dart';
   static const String assetsImagesMicrophone = 'assets/images/Microphone.svg';
+  static const String changePasswordCubitChangePasswordCubit = 'lib/features/profile/presentation/manager/change_password_cubit/change_password_cubit.dart';
+  static const String changePasswordCubitChangePasswordState = 'lib/features/profile/presentation/manager/change_password_cubit/change_password_state.dart';
   static const String confirmOrderWidgetsDeliveryAddressWidget = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/delivery_address_widget.dart';
   static const String confirmOrderWidgetsItemOrderDetails = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/item_order_details.dart';
   static const String confirmOrderWidgetsOrderDetailsWidget = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/order_details_widget.dart';
@@ -414,7 +416,6 @@ class Assets {
   static const String widgetsProductViewWidgetsProductViewBody = 'lib/features/products/presentation/views/widgets/product_view_widgets/product_view_body.dart~';
   static const String widgetsProfileViewBody = 'lib/features/profile/presentation/views/widgets/profile_view_body.dart';
   static const String widgetsProfileViewWidgetsBecomeSellerWidget = 'lib/features/profile/presentation/views/widgets/profile_view_widgets/become_seller_widget.dart~';
-  static const String widgetsProfileViewWidgetsProfileInfoCard = 'lib/features/profile/presentation/views/widgets/profile_view_widgets/profile_info_card.dart~';
   static const String widgetsRecentlyViewedHomeList = 'lib/features/home/presentation/views/widgets/recently_viewed_home_list.dart';
   static const String widgetsRegisterViewBody = 'lib/features/auth/presentation/views/widgets/register_view_body.dart';
   static const String widgetsResetPasswordViewBody = 'lib/features/auth/presentation/views/widgets/reset_password_view_body.dart';

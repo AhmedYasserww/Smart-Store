@@ -9,7 +9,7 @@ class CustomProfileActionButtons extends StatelessWidget {
     required this.onSaveTap,
     this.saveButtonColor,
     this.textButton1,
-    this.textButton2,
+    this.textButton2,  this.isSaveChangeLoading =false,
   });
 
   final VoidCallback onDeleteTap;
@@ -17,6 +17,8 @@ class CustomProfileActionButtons extends StatelessWidget {
   final Color? saveButtonColor;
   final String? textButton1;
   final String? textButton2;
+  final bool  isSaveChangeLoading;
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,38 +43,18 @@ class CustomProfileActionButtons extends StatelessWidget {
                 deletePressed.value = false,
                 onTap: onDeleteTap,
                 child: AnimatedContainer(
-                  duration:
-                  const Duration(
-                    milliseconds: 120,
-                  ),
+                  duration: const Duration(milliseconds: 120,),
                   curve: Curves.easeOut,
-                  transform:
-                  Matrix4.identity()
-                    ..translate(
-                      0.0,
-                      pressed
-                          ? 3.0
-                          : 0.0,
-                    )
-                    ..scale(
-                      pressed
-                          ? 0.97
-                          : 1.0,
-                    ),
+                  transform: Matrix4.identity()
+                    ..translate(0.0, pressed ? 3.0 : 0.0,)..scale(pressed ? 0.97 : 1.0,),
                   child: CustomButton(
-                    buttonColor:
-                    Colors.white,
-                    textButtonColor:
-                    AppColors
-                        .primaryTextColor,
+                    buttonColor: Colors.white,
+                    textButtonColor: AppColors.primaryTextColor,
                     border: Border.all(
-                      color: AppColors
-                          .palletBorderColor,
+                      color: AppColors.palletBorderColor,
                     ),
-                    text:
-                    textButton1 ??
-                        "Delete",
-                    onTap: () {},
+                    text: textButton1 ?? "Delete",
+                    onTap:onDeleteTap,
                   ),
                 ),
               );
@@ -100,26 +82,14 @@ class CustomProfileActionButtons extends StatelessWidget {
                   curve: Curves.easeOut,
                   transform:
                   Matrix4.identity()
-                    ..translate(
-                      0.0,
-                      pressed
-                          ? 3.0
-                          : 0.0,
-                    )
-                    ..scale(
-                      pressed
-                          ? 0.97
-                          : 1.0,
-                    ),
+                    ..translate(0.0, pressed ? 3.0 : 0.0,)
+                    ..scale(pressed ? 0.97 : 1.0,),
                   child: CustomButton(
-                    buttonColor:
-                    saveButtonColor ??
-                        AppColors
-                            .primaryColor,
-                    text:
-                    textButton2 ??
-                        "Save Changes",
-                    onTap: () {},
+                     isLoading: isSaveChangeLoading ,
+                    buttonColor: saveButtonColor ??
+                        AppColors.primaryColor,
+                    text: textButton2 ?? "Save Changes",
+                    onTap: onSaveTap,
                   ),
                 ),
               );

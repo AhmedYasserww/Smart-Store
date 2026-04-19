@@ -6,4 +6,9 @@ import '../entities/cart_profile_entity.dart';
 
 abstract class ProfileRepo {
   Future<Either<Failure, ClientProfileEntity>> getProfile();
+  Future<Either<Failure, String>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+    required String confirmNewPassword,
+  });
 }
