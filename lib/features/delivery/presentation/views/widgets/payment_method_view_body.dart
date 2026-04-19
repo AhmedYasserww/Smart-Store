@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_dimensions.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../review_and_confirm_delivery_view.dart';
-import 'gereral_saved_address_widgets/back_and_continue_buttons.dart';
-import 'gereral_saved_address_widgets/custom_delivery_app_bar.dart';
+import 'general_saved_address_widgets/back_and_continue_buttons.dart';
+import 'general_saved_address_widgets/custom_delivery_app_bar.dart';
 import 'delivery_option_widgets/delivery_option_item.dart';
 class PaymentMethodViewBody extends StatefulWidget {
   const PaymentMethodViewBody({super.key});

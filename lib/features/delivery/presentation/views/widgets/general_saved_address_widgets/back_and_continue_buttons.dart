@@ -61,32 +61,16 @@ class BackAndContinueButtons extends StatelessWidget {
                       ),
                       curve: Curves.easeOut,
                       transform:
-                      Matrix4.identity()
-                        ..translate(
-                          0.0,
-                          pressed
-                              ? 3.0
-                              : 0.0,
-                        )
-                        ..scale(
-                          pressed
-                              ? 0.97
-                              : 1.0,
-                        ),
+                      Matrix4.identity()..translate(0.0, pressed ? 3.0 : 0.0,)..scale(pressed ? 0.97 : 1.0,),
                       child: CustomButton(
                         border: Border.all(
-                          color: AppColors
-                              .palletBorderColor,
-                        ),
-                        buttonColor:
-                        const Color(
-                          0xFFF3EEFB,
-                        ),
+                          color: AppColors.palletBorderColor,),
+                        buttonColor: const Color(0xFFF3EEFB,),
                         text: 'Back',
-                        textButtonColor:
-                        AppColors
-                            .primaryColor,
-                        onTap: () {},
+                        textButtonColor: AppColors.primaryColor,
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
                       ),
                     ),
                   );
@@ -96,43 +80,20 @@ class BackAndContinueButtons extends StatelessWidget {
             const SizedBox(width: 12),
 
             Expanded(
-              child: isEnabled
-                  ? CustomButton(
-                text:
-                title ??
-                    'Continue',
-                buttonColor:
-                continueButtonColor ??
-                    AppColors
-                        .primaryColor,
-                textButtonColor:
-                Colors.white,
+              child: isEnabled ? CustomButton(
+                text: title ?? 'Continue',
+                buttonColor: continueButtonColor ?? AppColors.primaryColor,
+                textButtonColor: Colors.white,
                 onTap: onContinue,
-              )
-                  : AnimatedContainer(
-                duration:
-                const Duration(
-                  milliseconds: 220,
-                ),
+              ) : AnimatedContainer(
+                duration: const Duration(milliseconds: 220,),
                 height: 48,
-                decoration:
-                BoxDecoration(
-                  borderRadius:
-                  BorderRadius.circular(
-                    8,
-                  ),
-                  color:
-                  const Color(
-                    0x7F5D3A82,
-                  ),
+                decoration: BoxDecoration(borderRadius:
+                  BorderRadius.circular(8,),
+                  color: const Color(0x7F5D3A82,),
                 ),
-                alignment:
-                Alignment.center,
-                child: const Text(
-                  'Continue',
-                  style: AppStyle
-                      .styleWhiteRegular16,
-                ),
+                alignment: Alignment.center,
+                child: const Text('Continue', style: AppStyle.styleWhiteRegular16,),
               ),
             ),
           ],

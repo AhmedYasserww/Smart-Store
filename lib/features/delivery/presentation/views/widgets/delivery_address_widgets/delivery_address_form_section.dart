@@ -10,15 +10,11 @@ import 'address_option_container.dart';
 class DeliveryAddressFormSection extends StatelessWidget {
 
   const DeliveryAddressFormSection({
-
     super.key,
-
     required this.showContactInfo,
     required this.showManualAddress,
-
     required this.nameController,
     required this.phoneController,
-
     required this.onToggle,
     required this.onManualTap,
 
@@ -26,29 +22,20 @@ class DeliveryAddressFormSection extends StatelessWidget {
 
   final bool showContactInfo;
   final bool showManualAddress;
-
   final TextEditingController nameController;
   final TextEditingController phoneController;
-
   final VoidCallback onToggle;
   final VoidCallback onManualTap;
-
   @override
   Widget build(BuildContext context) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         GestureDetector(
-
           onTap: onToggle,
-
           child: Row(
             children: [
-
-              showContactInfo
-                  ? SvgPicture.asset(
+              showContactInfo ? SvgPicture.asset(
                 AppImages.arrowUpIcon,
                 colorFilter: const ColorFilter.mode(
                   AppColors.primaryColor,
@@ -60,9 +47,7 @@ class DeliveryAddressFormSection extends StatelessWidget {
                 Icons.add,
                 color: AppColors.primaryColor,
               ),
-
               const SizedBox(width: 8),
-
               Text(
                 'OR Add New Address',
                 style: AppStyle.styleMedium16.copyWith(
@@ -98,7 +83,14 @@ class DeliveryAddressFormSection extends StatelessWidget {
             controller: phoneController,
             keyboardType: TextInputType.phone,
           ),
+          const SizedBox(height: 8),
 
+          CustomTextField(
+            hintText: 'Landmark',
+            controller: phoneController,
+            keyboardType: TextInputType.text,
+          ),
+          SizedBox(height: 16,),
           if (!showManualAddress) ...[
 
             AddressOptionContainer(
@@ -106,9 +98,7 @@ class DeliveryAddressFormSection extends StatelessWidget {
               icon: AppImages.locationIcon,
               onTap: onManualTap,
             ),
-
             const SizedBox(height: 16),
-
             AddressOptionContainer(
               text: 'Use My Location',
               icon: AppImages.locationIcon,

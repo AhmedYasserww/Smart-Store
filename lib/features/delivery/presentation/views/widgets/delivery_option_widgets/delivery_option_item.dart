@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../../core/utils/app_style.dart';
-import '../gereral_saved_address_widgets/custom_select_container.dart';
+import '../general_saved_address_widgets/custom_select_container.dart';
 
 class DeliveryOptionItem extends StatelessWidget {
   const DeliveryOptionItem({
