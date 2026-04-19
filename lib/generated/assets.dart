@@ -47,6 +47,7 @@ class Assets {
   static const String deliveryOptionWidgetsDeliveryOptionItem = 'lib/features/delivery/presentation/views/widgets/delivery_option_widgets/delivery_option_item.dart';
   static const String editProfileViewWidgetsCustomProfileActionButton = 'lib/features/profile/presentation/views/widgets/edit_profile_view_widgets/custom_profile_action_button.dart';
   static const String entitiesAddToCartItemEntity = 'lib/features/cart/data/entities/add_to_cart_item_entity.dart';
+  static const String entitiesCartProfileEntity = 'lib/features/profile/data/entities/cart_profile_entity.dart';
   static const String entitiesForgetPasswordEntity = 'lib/features/auth/data/entities/forget_password_entity.dart';
   static const String entitiesGetCartEntity = 'lib/features/cart/data/entities/get_cart_entity.dart';
   static const String entitiesLogInEntity = 'lib/features/auth/data/entities/log_in_entity.dart';
@@ -189,6 +190,7 @@ class Assets {
   static const String modelsCartItemModel = 'lib/features/cart/data/models/cart_item_model.dart~';
   static const String modelsCartModel = 'lib/features/cart/data/models/cart_model.dart';
   static const String modelsCategoryModel = 'lib/features/categories/data/models/category_model.dart';
+  static const String modelsClientProfileModel = 'lib/features/profile/data/models/client_profile_model.dart';
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
   static const String modelsProductModel = 'lib/features/products/data/models/product_model.dart';
@@ -257,6 +259,8 @@ class Assets {
   static const String reposCategoriesRepoImp = 'lib/features/categories/data/repos/categories_repo_imp.dart';
   static const String reposProductRepo = 'lib/features/products/data/repos/product_repo.dart';
   static const String reposProductRepoImp = 'lib/features/products/data/repos/product_repo_imp.dart';
+  static const String reposProfileRepo = 'lib/features/profile/data/repos/profile_repo.dart';
+  static const String reposProfileRepoImp = 'lib/features/profile/data/repos/profile_repo_imp.dart';
   static const String reposSearchRepo = 'lib/features/search/data/repos/search_repo.dart';
   static const String reposSearchRepoImp = 'lib/features/search/data/repos/search_repo_imp.dart';
   static const String reposWishlistRepo = 'lib/features/wishlist/data/repos/wishlist_repo.dart';
