@@ -7,6 +7,9 @@ import '../../features/auth/data/repos/auth_repo_imp.dart';
 import '../../features/cart/data/repos/cart_repo_imp.dart';
 import '../../features/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
 import '../../features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
+import '../../features/delivery/data/repos/delivery_repo_imp.dart';
+import '../../features/delivery/presentation/manager/add_address_cubit/add_address_cubit.dart';
+import '../../features/delivery/presentation/manager/get_address_cubit/get_addresses_cubit.dart';
 import '../../features/profile/data/repos/profile_repo_imp.dart';
 import '../../features/profile/presentation/manager/change_password_cubit/change_password_cubit.dart';
 import '../../features/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
@@ -65,6 +68,17 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<ChangePasswordCubit>(
         () => ChangePasswordCubit(getIt<ProfileRepoImpl>()),
+  );
+  getIt.registerSingleton<DeliveryRepoImpl>(
+    DeliveryRepoImpl(apiService: getIt<ApiService>()),
+  );
+
+  getIt.registerFactory<AddAddressCubit>(
+        () => AddAddressCubit(getIt<DeliveryRepoImpl>()),
+  );
+
+  getIt.registerFactory<GetAddressesCubit>(
+        () => GetAddressesCubit(getIt<DeliveryRepoImpl>()),
   );
 
 }

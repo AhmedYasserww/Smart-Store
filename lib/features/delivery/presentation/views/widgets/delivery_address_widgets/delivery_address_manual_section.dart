@@ -16,12 +16,12 @@ class DeliveryAddressManualSection extends StatelessWidget {
     required this.buildingController,
     required this.apartmentController,
 
-    required this.onConfirm,
+    required this.onConfirm, required this.isLoading,
 
   });
 
   final bool showManualAddress;
-
+  final bool isLoading;
   final TextEditingController cityController;
   final TextEditingController streetController;
   final TextEditingController buildingController;

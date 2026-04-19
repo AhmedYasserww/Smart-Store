@@ -17,6 +17,7 @@ class DeliveryAddressFormSection extends StatelessWidget {
     required this.phoneController,
     required this.onToggle,
     required this.onManualTap,
+    required this.landmarkController,
 
   });
 
@@ -24,6 +25,8 @@ class DeliveryAddressFormSection extends StatelessWidget {
   final bool showManualAddress;
   final TextEditingController nameController;
   final TextEditingController phoneController;
+  final TextEditingController landmarkController;
+
   final VoidCallback onToggle;
   final VoidCallback onManualTap;
   @override
@@ -87,7 +90,7 @@ class DeliveryAddressFormSection extends StatelessWidget {
 
           CustomTextField(
             hintText: 'Landmark',
-            controller: phoneController,
+            controller: landmarkController,
             keyboardType: TextInputType.text,
           ),
           SizedBox(height: 16,),
