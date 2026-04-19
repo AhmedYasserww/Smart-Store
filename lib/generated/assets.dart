@@ -133,6 +133,7 @@ class Assets {
   static const String imagesLightCamera = 'assets/images/light_camera.svg';
   static const String imagesLinkedIn = 'assets/images/LinkedIn.svg';
   static const String imagesListIcon = 'assets/images/ListIcon.svg';
+  static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesLocationIcon = 'assets/images/location_icon.svg';
   static const String imagesLogOut = 'assets/images/LogOut.svg';
   static const String imagesLogo = 'assets/images/logo.svg';
@@ -424,6 +425,7 @@ class Assets {
   static const String widgetsSearchResult = 'lib/features/search/presentation/views/widgets/search_result.dart';
   static const String widgetsSearchViewBody = 'lib/features/search/presentation/views/widgets/search_view_body.dart';
   static const String widgetsSectionTitle = 'lib/features/home/presentation/views/widgets/section_title.dart';
+  static const String widgetsVerificationCodeWidgetsVerificationFooterSection = 'lib/features/auth/presentation/views/widgets/verification_code_widgets/verification_footer_section.dart~';
   static const String widgetsVerificationViewBody = 'lib/features/auth/presentation/views/widgets/verification_view_body.dart';
   static const String widgetsVtoViewBody = 'lib/features/vto/presentation/views/widgets/vto_view_body.dart';
   static const String widgetsWishlistGridView = 'lib/features/wishlist/presentation/views/widgets/wishlist_grid_view.dart';

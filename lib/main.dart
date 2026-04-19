@@ -4,6 +4,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
 
 import 'core/helper_functions/on_generate_routes.dart';
 import 'core/service_locator/service_locator.dart';
@@ -51,6 +52,9 @@ class MyApp extends StatelessWidget {
          //initialRoute: OnBoardingView.routeName,
        // initialRoute: LogInView.routeName,
         initialRoute: CustomNavigationBar.routeName,
+     //    home: Scaffold(
+     //      body: CustomLoadingIndicator(),
+     //    ),
       ),
     );
   }

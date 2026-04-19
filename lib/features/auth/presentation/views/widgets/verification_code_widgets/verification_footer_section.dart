@@ -134,7 +134,7 @@ class _VerificationFooterSectionState
 
                         const SizedBox(width: 6),
 
-                        // ✅ success icon
+
                         if (isSuccess && seconds > 0)
                           const Icon(
                             Icons.check_circle,
