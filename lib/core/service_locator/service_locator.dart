@@ -7,6 +7,8 @@ import '../../features/auth/data/repos/auth_repo_imp.dart';
 import '../../features/cart/data/repos/cart_repo_imp.dart';
 import '../../features/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
 import '../../features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
+import '../../features/profile/data/repos/profile_repo_imp.dart';
+import '../../features/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
 import '../../features/search/data/repos/search_repo.dart';
 import '../../features/search/data/repos/search_repo_imp.dart';
 import '../../features/search/presentation/manager/search_for_product_cubit/search_for_product_cubit.dart';
@@ -44,25 +46,21 @@ void setupServiceLocator() {
   ));
   getIt.registerFactory(() => GetCartCubit(getIt.get<CartRepoImpl>()));
 
-  // getIt.registerSingleton<WishlistRepoImpl>(
-  //   WishlistRepoImpl(apiService: getIt<ApiService>()),
-  // );
 
-  // getIt.registerFactory<AddToWishlistCubit>(() => AddToWishlistCubit(
-  //   wishlistRepo: getIt<WishlistRepoImpl>(),
-  //   getWishlistCubit: getIt<GetWishlistCubit>(),
-  // ));
-
-  // getIt.registerFactory<RemoveFromWishlistCubit>(() => RemoveFromWishlistCubit(
-  //   wishlistRepo: getIt<WishlistRepoImpl>(),
-  //   getWishlistCubit: getIt<GetWishlistCubit>(),
-  // ));
   getIt.registerLazySingleton<WishlistRepoImpl>(
         () => WishlistRepoImpl(apiService: getIt<ApiService>()),
   );
 
   getIt.registerLazySingleton<GetWishlistCubit>(
         () => GetWishlistCubit(getIt<WishlistRepoImpl>()),
+  );
+
+  getIt.registerSingleton<ProfileRepoImpl>(
+    ProfileRepoImpl(apiService: getIt<ApiService>()),
+  );
+
+  getIt.registerFactory<GetProfileCubit>(
+        () => GetProfileCubit(getIt<ProfileRepoImpl>()),
   );
 
 }

@@ -78,6 +78,8 @@ class Assets {
   static const String gereralSavedAddressWidgetsRadioCircle = 'lib/features/delivery/presentation/views/widgets/gereral_saved_address_widgets/radio_circle.dart';
   static const String getCartCubitGetCartCubit = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
   static const String getCartCubitGetCartState = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_state.dart';
+  static const String getProfileCubitGetProfileCubit = 'lib/features/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
+  static const String getProfileCubitGetProfileState = 'lib/features/profile/presentation/manager/get_profile_cubit/get_profile_state.dart';
   static const String getWishlistCubitGetWishlistCubit = 'lib/features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
   static const String getWishlistCubitGetWishlistState = 'lib/features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_state.dart';
   static const String helperFunctionsBuildErrorBar = 'lib/core/helper_functions/build_error_bar.dart';

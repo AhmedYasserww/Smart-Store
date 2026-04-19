@@ -20,4 +20,5 @@ class EndPoints {
   static const String addToWishlist = 'Wishlist/client/add/to/wishlist';
   static String removeFromWishlist(String itemId) => 'Wishlist/client/remove/item/$itemId';
   static const String getProfile = 'ClientProfile/get/client/profile';
+  static const String changePassword = 'Account/change-password';
 }
