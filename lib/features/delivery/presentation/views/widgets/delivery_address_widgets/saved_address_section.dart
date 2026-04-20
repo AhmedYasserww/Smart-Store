@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../data/entities/delivery_address_entity.dart';
+import '../../edit_delivery_address_view.dart';
 import '../general_saved_address_widgets/custom_select_container.dart';
 
 class SavedAddressSection extends StatelessWidget {
@@ -22,8 +23,7 @@ class SavedAddressSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Saved Address', style: AppStyle.styleBold16),
-        const SizedBox(height: 12),
+     //   const SizedBox(height: 12),
         SelectableContainer(
           isSelected: isSelected,
           onTap: onSelect,
@@ -45,9 +45,16 @@ class SavedAddressSection extends StatelessWidget {
                   ],
                 ),
               ),
-              SvgPicture.asset(AppImages.editIcon),
-              const SizedBox(width: 12),
-              SvgPicture.asset(AppImages.deleteOutline),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    EditDeliveryAddressView.routeName,
+                    arguments: address,
+                  );
+                },
+                child: SvgPicture.asset(AppImages.editIcon),
+              ),
+
             ],
           ),
         ),

@@ -11,9 +11,11 @@ import '../../features/auth/presentation/views/reset_password_view.dart';
 import '../../features/auth/presentation/views/verification_view.dart';
 import '../../features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../features/cart/presentation/views/cart_view.dart';
+import '../../features/delivery/data/entities/delivery_address_entity.dart';
 import '../../features/delivery/presentation/views/confirm_order_view.dart';
-import '../../features/delivery/presentation/views/delevery_option_view.dart';
+import '../../features/delivery/presentation/views/delivery_option_view.dart';
 import '../../features/delivery/presentation/views/delivery_address_view.dart';
+import '../../features/delivery/presentation/views/edit_delivery_address_view.dart';
 import '../../features/delivery/presentation/views/payment_method_view.dart';
 import '../../features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
@@ -87,6 +89,11 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case DeliveryAddressView.routeName:
       return MaterialPageRoute(
         builder: (context) => const DeliveryAddressView(),
+      );
+    case EditDeliveryAddressView.routeName:
+      final address = settings.arguments as DeliveryAddressEntity;
+      return MaterialPageRoute(
+        builder: (context) => EditDeliveryAddressView(address: address),
       );
     case DeliveryOptionView.routeName:
       return MaterialPageRoute(

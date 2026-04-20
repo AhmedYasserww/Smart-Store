@@ -278,8 +278,8 @@ class CustomLoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 90,
-        width: 90,
+        height: 130,
+        width: 130,
         child: Lottie.asset(
           'assets/images/loading.json',
           repeat: true,

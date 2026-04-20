@@ -10,6 +10,8 @@ import 'core/helper_functions/on_generate_routes.dart';
 import 'core/service_locator/service_locator.dart';
 import 'features/auth/presentation/views/log_in_view.dart';
 import 'features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
+import 'features/delivery/presentation/views/edit_delivery_address_view.dart';
+import 'features/delivery/presentation/views/widgets/edit_delivery_address_view_widgets/edit_delivery_address_view_body.dart';
 import 'features/onboarding/presentation/views/onboarding_view.dart';
 import 'features/wishlist/data/repos/wishlist_repo_imp.dart';
 import 'features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
@@ -48,13 +50,13 @@ class MyApp extends StatelessWidget {
         ),
         scrollBehavior: CustomScrollBehavior(),
       onGenerateRoute: onGenerateRoutes,
-        //initialRoute: ResetPasswordView.routeName,
+      //  initialRoute: EditDeliveryAddressView.routeName,
          //initialRoute: OnBoardingView.routeName,
        // initialRoute: LogInView.routeName,
         initialRoute: CustomNavigationBar.routeName,
-     //    home: Scaffold(
-     //      body: CustomLoadingIndicator(),
-     //    ),
+    //     home: Scaffold(
+    //       body: CustomLoadingIndicator(),
+    //     ),
       ),
     );
   }
