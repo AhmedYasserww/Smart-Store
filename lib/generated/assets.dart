@@ -49,7 +49,9 @@ class Assets {
   static const String deliveryAddressWidgetsManualAddressSection = 'lib/features/delivery/presentation/views/widgets/delivery_address_widgets/manual_address_section.dart';
   static const String deliveryAddressWidgetsSavedAddressSection = 'lib/features/delivery/presentation/views/widgets/delivery_address_widgets/saved_address_section.dart';
   static const String deliveryOptionWidgetsDeliveryOptionItem = 'lib/features/delivery/presentation/views/widgets/delivery_option_widgets/delivery_option_item.dart';
+  static const String editDeliveryAddressViewWidgetsEditDeliveryAddressViewBody = 'lib/features/delivery/presentation/views/widgets/edit_delivery_address_view_widgets/edit_delivery_address_view_body.dart';
   static const String editProfileViewWidgetsCustomProfileActionButton = 'lib/features/profile/presentation/views/widgets/edit_profile_view_widgets/custom_profile_action_button.dart';
+  static const String entitiesAddAddressRequestEntity = 'lib/features/delivery/data/entities/add_address_request_entity.dart';
   static const String entitiesAddToCartItemEntity = 'lib/features/cart/data/entities/add_to_cart_item_entity.dart';
   static const String entitiesCartProfileEntity = 'lib/features/profile/data/entities/cart_profile_entity.dart';
   static const String entitiesDeliveryAddressEntity = 'lib/features/delivery/data/entities/delivery_address_entity.dart';
@@ -81,8 +83,8 @@ class Assets {
   static const String generalSavedAddressWidgetsCustomSelectContainer = 'lib/features/delivery/presentation/views/widgets/general_saved_address_widgets/custom_select_container.dart';
   static const String generalSavedAddressWidgetsRadioCircle = 'lib/features/delivery/presentation/views/widgets/general_saved_address_widgets/radio_circle.dart';
   static const String generatedAssets = 'lib/generated/assets.dart';
-  static const String getAddressCubitGetAddressCubit = 'lib/features/delivery/presentation/manager/get_address_cubit/get_addresses_cubit.dart';
-  static const String getAddressCubitGetAddressState = 'lib/features/delivery/presentation/manager/get_address_cubit/get_addresses_state.dart';
+  static const String getAddressCubitGetAddressesCubit = 'lib/features/delivery/presentation/manager/get_address_cubit/get_addresses_cubit.dart';
+  static const String getAddressCubitGetAddressesState = 'lib/features/delivery/presentation/manager/get_address_cubit/get_addresses_state.dart';
   static const String getCartCubitGetCartCubit = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
   static const String getCartCubitGetCartState = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_state.dart';
   static const String getProfileCubitGetProfileCubit = 'lib/features/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
@@ -213,7 +215,6 @@ class Assets {
   static const String onboardingDataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart~';
   static const String presentationViewsBottomNavBarView = 'lib/features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart~';
   static const String presentationViewsCartView = 'lib/features/cart/presentation/views/cart_view.dart~';
-  static const String presentationViewsDeleveryOptionView = 'lib/features/delivery/presentation/views/delevery_option_view.dart~';
   static const String presentationViewsEditProfileView = 'lib/features/profile/presentation/views/edit_profile_view.dart~';
   static const String presentationViewsForgetPasswordView = 'lib/features/auth/presentation/views/forget_password_view.dart~';
   static const String presentationViewsProductView = 'lib/features/products/presentation/views/product_view.dart~';
@@ -313,8 +314,10 @@ class Assets {
   static const String viewsCartView = 'lib/features/cart/presentation/views/cart_view.dart';
   static const String viewsChangePasswordView = 'lib/features/profile/presentation/views/change_password_view.dart';
   static const String viewsConfirmOrderView = 'lib/features/delivery/presentation/views/confirm_order_view.dart';
-  static const String viewsDeleveryOptionView = 'lib/features/delivery/presentation/views/delevery_option_view.dart';
+  static const String viewsDeleveryOptionView = 'lib/features/delivery/presentation/views/delevery_option_view.dart~';
   static const String viewsDeliveryAddressView = 'lib/features/delivery/presentation/views/delivery_address_view.dart';
+  static const String viewsDeliveryOptionView = 'lib/features/delivery/presentation/views/delivery_option_view.dart';
+  static const String viewsEditDeliveryAddressView = 'lib/features/delivery/presentation/views/edit_delivery_address_view.dart';
   static const String viewsEditProfileView = 'lib/features/profile/presentation/views/edit_profile_view.dart';
   static const String viewsFindSizeView = 'lib/features/products/presentation/views/find_size_view.dart';
   static const String viewsForgetPasswordView = 'lib/features/auth/presentation/views/forget_password_view.dart';

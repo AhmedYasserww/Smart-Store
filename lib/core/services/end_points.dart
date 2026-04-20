@@ -23,4 +23,5 @@ class EndPoints {
   static const String changePassword = 'Account/change-password';
   static const String addAddress = 'DeliveryAddress/client/add/address';
   static const String getAddresses = 'DeliveryAddress/get/client/addresses';
+  static String updateAddress(String addressId) => '/api/DeliveryAddress/client/update/address/$addressId';
 }

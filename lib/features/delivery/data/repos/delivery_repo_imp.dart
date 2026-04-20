@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
 import '../../../../core/services/end_points.dart';
+import '../entities/add_address_request_entity.dart';
 import '../entities/delivery_address_entity.dart';
 import '../models/delivery_address_model.dart';
 import 'delivery_repo.dart';
@@ -17,32 +18,12 @@ class DeliveryRepoImpl implements DeliveryRepo {
 
   @override
   Future<Either<Failure, DeliveryAddressEntity>> addAddress({
-    required String fullName,
-    required String phoneNumber,
-    required String city,
-    required String street,
-    required String building,
-    required String apartment,
-    required String landmark,
-    required bool isDefault,
-    double? latitude,
-    double? longitude,
+    required AddAddressRequestEntity request,
   }) async {
     try {
       final response = await apiService.post(
         endPoint: EndPoints.addAddress,
-        data: {
-          'fullName': fullName,
-          'phoneNumber': phoneNumber,
-          'city': city,
-          'street': street,
-          'building': building,
-          'apartment': apartment,
-          'landmark': landmark,
-          'isDefault': isDefault,
-          if (latitude != null) 'latitude': latitude,
-          if (longitude != null) 'longitude': longitude,
-        },
+        data: request.toJson(),
       );
 
       log('📍 AddAddress Response: $response');
@@ -99,4 +80,12 @@ class DeliveryRepoImpl implements DeliveryRepo {
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, DeliveryAddressEntity>> updateAddress({required String addressId, required AddAddressRequestEntity request}) {
+    // TODO: implement updateAddress
+    throw UnimplementedError();
+  }
+
 }
+
