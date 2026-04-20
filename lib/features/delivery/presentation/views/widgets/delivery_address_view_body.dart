@@ -4,8 +4,10 @@ import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
 import 'package:smart_store/features/delivery/data/entities/delivery_address_entity.dart';
 import 'package:smart_store/features/delivery/presentation/manager/add_address_cubit/add_address_cubit.dart';
-import 'package:smart_store/features/delivery/presentation/views/delevery_option_view.dart';
+import 'package:smart_store/features/delivery/presentation/views/delivery_option_view.dart';
 import 'package:smart_store/features/delivery/presentation/views/widgets/delivery_address_widgets/saved_address_section.dart';
+import '../../../../../core/utils/app_style.dart';
+import '../../../data/entities/add_address_request_entity.dart';
 import '../../manager/get_address_cubit/get_addresses_cubit.dart';
 import 'general_saved_address_widgets/back_and_continue_buttons.dart';
 import 'general_saved_address_widgets/custom_delivery_app_bar.dart';
@@ -48,13 +50,15 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
 
   void _onConfirmAddress() {
     context.read<AddAddressCubit>().addAddress(
-      fullName: _nameController.text.trim(),
-      phoneNumber: _phoneController.text.trim(),
-      city: _cityController.text.trim(),
-      street: _streetController.text.trim(),
-      building: _buildingController.text.trim(),
-      apartment: _apartmentController.text.trim(),
-      landmark: _landmarkController.text.trim(),
+      request: AddAddressRequestEntity(
+        fullName: _nameController.text.trim(),
+        phoneNumber: _phoneController.text.trim(),
+        city: _cityController.text.trim(),
+        street: _streetController.text.trim(),
+        building: _buildingController.text.trim(),
+        apartment: _apartmentController.text.trim(),
+        landmark: _landmarkController.text.trim(),
+      ),
     );
   }
 
@@ -63,7 +67,6 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
     return BlocListener<AddAddressCubit, AddAddressState>(
       listener: (context, state) {
         if (state is AddAddressSuccess) {
-          // ✅ ضيف locally في الـ GetAddressesCubit
           context.read<GetAddressesCubit>().addAddressLocally(state.address);
 
           setState(() {
@@ -107,15 +110,13 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 32),
+                  Text('Saved Address', style: AppStyle.styleBold16),
+                  SizedBox(height: 24,),
 
-                  // ── Saved Addresses من الـ API ──
                   BlocBuilder<GetAddressesCubit, GetAddressesState>(
                     builder: (context, state) {
                       if (state is GetAddressesLoading) {
-                        return const SizedBox(
-                          height: 80,
-                          child: CustomLoadingIndicator(),
-                        );
+                        return CustomLoadingIndicator();
                       }
 
                       if (state is GetAddressesSuccess &&
@@ -123,6 +124,7 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+
                             ...state.addresses.map((address) => Padding(
                               padding: const EdgeInsets.only(bottom: 12),
                               child: SavedAddressSection(
@@ -155,7 +157,12 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
                     phoneController: _phoneController,
                     landmarkController: _landmarkController,
                     onToggle: () {
-                      setState(() => showContactInfo = !showContactInfo);
+                      setState(() {
+                        showContactInfo = !showContactInfo;
+                        if (!showContactInfo) {
+                          showManualAddress = false;
+                        }
+                      });
                     },
                     onManualTap: () {
                       setState(() => showManualAddress = true);
