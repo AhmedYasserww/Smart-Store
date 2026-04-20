@@ -82,9 +82,38 @@ class DeliveryRepoImpl implements DeliveryRepo {
   }
 
   @override
-  Future<Either<Failure, DeliveryAddressEntity>> updateAddress({required String addressId, required AddAddressRequestEntity request}) {
-    // TODO: implement updateAddress
-    throw UnimplementedError();
+  Future<Either<Failure, DeliveryAddressEntity>> updateAddress({
+    required String addressId,
+    required AddAddressRequestEntity request,
+  }) async {
+    try {
+      final response = await apiService.put(
+        endPoint: EndPoints.updateAddress(addressId),
+        data: request.toJson(),
+      );
+
+      log('📍 UpdateAddress Response: $response');
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          return right(DeliveryAddressModel.fromJson(response['data']));
+        } else {
+          return left(ServerFailure(
+            errorMessage: message ?? 'Failed to update address',
+          ));
+        }
+      }
+      return left(ServerFailure(errorMessage: 'Unexpected API response format'));
+    } on DioException catch (e) {
+      log('❌ DioException (UpdateAddress): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (UpdateAddress): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
   }
 
 }

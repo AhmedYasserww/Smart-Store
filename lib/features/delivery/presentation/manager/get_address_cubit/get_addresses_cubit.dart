@@ -14,19 +14,10 @@ class GetAddressesCubit extends Cubit<GetAddressesState> {
 
   Future<void> getAddresses() async {
     emit(GetAddressesLoading());
-
     final result = await deliveryRepo.getAddresses();
-
     result.fold(
           (failure) => emit(GetAddressesFailure(errorMessage: failure.errorMessage)),
           (addresses) => emit(GetAddressesSuccess(addresses: addresses)),
     );
-  }
-
-  // ✅ بعد ما يضيف address جديدة تضيفها locally
-  void addAddressLocally(DeliveryAddressEntity address) {
-    final current = state;
-    if (current is! GetAddressesSuccess) return;
-    emit(GetAddressesSuccess(addresses: [...current.addresses, address]));
   }
 }

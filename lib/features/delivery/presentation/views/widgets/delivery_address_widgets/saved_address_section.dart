@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../data/entities/delivery_address_entity.dart';
+import '../../../manager/get_address_cubit/get_addresses_cubit.dart';
 import '../../edit_delivery_address_view.dart';
 import '../general_saved_address_widgets/custom_select_container.dart';
 
@@ -45,12 +47,16 @@ class SavedAddressSection extends StatelessWidget {
                   ],
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).pushNamed(
+              GestureDetector(
+                onTap: () async {
+                  final updated = await Navigator.of(context).pushNamed(
                     EditDeliveryAddressView.routeName,
                     arguments: address,
                   );
+
+                  if (updated != null && context.mounted) {
+                    context.read<GetAddressesCubit>().getAddresses();
+                  }
                 },
                 child: SvgPicture.asset(AppImages.editIcon),
               ),

@@ -296,6 +296,8 @@ class Assets {
   static const String serviceLocatorServiceLocator = 'lib/core/service_locator/service_locator.dart';
   static const String servicesApiService = 'lib/core/services/api_service.dart';
   static const String servicesEndPoints = 'lib/core/services/end_points.dart';
+  static const String updateAddressCubitUpdateAddressCubit = 'lib/features/delivery/presentation/manager/update_address_cubit/update_address_cubit.dart';
+  static const String updateAddressCubitUpdateAddressState = 'lib/features/delivery/presentation/manager/update_address_cubit/update_address_state.dart';
   static const String updateCartItemCubitUpdateCartItemCubit = 'lib/features/cart/presentation/manager/update_cart_item_cubit/update_cart_item_cubit.dart';
   static const String updateCartItemCubitUpdateCartItemState = 'lib/features/cart/presentation/manager/update_cart_item_cubit/update_cart_item_state.dart';
   static const String utilsAppColor = 'lib/core/utils/app_color.dart';

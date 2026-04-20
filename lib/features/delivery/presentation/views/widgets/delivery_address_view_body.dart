@@ -67,7 +67,7 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
     return BlocListener<AddAddressCubit, AddAddressState>(
       listener: (context, state) {
         if (state is AddAddressSuccess) {
-          context.read<GetAddressesCubit>().addAddressLocally(state.address);
+          context.read<GetAddressesCubit>().getAddresses();
 
           setState(() {
             selectedAddress = state.address;
