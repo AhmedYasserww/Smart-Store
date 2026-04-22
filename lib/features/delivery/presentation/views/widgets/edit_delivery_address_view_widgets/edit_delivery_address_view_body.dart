@@ -19,8 +19,7 @@ class EditDeliveryAddressViewBody extends StatefulWidget {
   final DeliveryAddressEntity address;
 
   @override
-  State<EditDeliveryAddressViewBody> createState() =>
-      _EditDeliveryAddressViewBodyState();
+  State<EditDeliveryAddressViewBody> createState() => _EditDeliveryAddressViewBodyState();
 }
 
 class _EditDeliveryAddressViewBodyState
@@ -193,8 +192,9 @@ class _EditDeliveryAddressViewBodyState
                 ),
 
                 BackAndContinueButtons(
+                  isSavedLoading: state is UpdateAddressLoading,
                   isEnabled: state is! UpdateAddressLoading,
-                  title: state is UpdateAddressLoading ? 'Saving...' : 'Save Changes',
+                  title:  'Save Changes',
                   onContinue: _onSave,
                 ),
               ],

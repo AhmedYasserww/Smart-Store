@@ -15,7 +15,7 @@ class EndPoints {
   static const String addToCart = "Cart/client/add/to/cart";
   static const String getCart = 'Cart/get/client/cart';
   static String deleteFromCart(String itemId) => 'Cart/delete/client/cart/$itemId';
-  static const String updateCartItem = 'Cart/client/update/cartItem';
+  static const String updateCartItem = 'Cart/client/items';
   static const String getWishlist = 'Wishlist/get/client/wishlist';
   static const String addToWishlist = 'Wishlist/client/add/to/wishlist';
   static String removeFromWishlist(String itemId) => 'Wishlist/client/remove/item/$itemId';
@@ -24,4 +24,6 @@ class EndPoints {
   static const String addAddress = 'DeliveryAddress/client/add/address';
   static const String getAddresses = 'DeliveryAddress/get/client/addresses';
   static String updateAddress(String addressId) => 'DeliveryAddress/client/update/address/$addressId';
+  static String createOrder(String addressId) => 'Order/create/$addressId';
+
 }

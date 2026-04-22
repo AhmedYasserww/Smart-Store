@@ -8,13 +8,14 @@ class DeliveryOptionItem extends StatelessWidget {
     required this.title,
      this.subtitle,
     required this.isSelected,
-    required this.onTap,
+    required this.onTap,  this.subtitle2,
   });
 
   final String title;
   final String ? subtitle;
   final bool isSelected;
   final VoidCallback onTap;
+  final String ? subtitle2;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +33,11 @@ class DeliveryOptionItem extends StatelessWidget {
           const SizedBox(height: 8),
           if (subtitle != null)
             Text(
-              subtitle!,
+              subtitle !,
               style: AppStyle.styleMedium12,
             ),
+          const SizedBox(height: 8),
+          Text(subtitle2 ?? '', style: AppStyle.styleMedium12,),
         ],
 
       ),

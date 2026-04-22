@@ -44,6 +44,7 @@ class _DeliveryOptionViewBodyState extends State<DeliveryOptionViewBody> {
                 DeliveryOptionItem(
                   title: "Standard Delivery",
                   subtitle: "Shipping Fee: \$4.99",
+                  subtitle2: "Estimated delivery: 3-5 Days",
                   isSelected:
                   selectedIndex == 1,
                   onTap: () {
@@ -57,6 +58,7 @@ class _DeliveryOptionViewBodyState extends State<DeliveryOptionViewBody> {
                 DeliveryOptionItem(
                   title: "Express Delivery",
                   subtitle: "Shipping Fee: \$11.99",
+                  subtitle2: "Estimated delivery: 1-3 Days",
                   isSelected:
                   selectedIndex == 0,
                   onTap: () {

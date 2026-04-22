@@ -54,6 +54,7 @@ class Assets {
   static const String entitiesAddAddressRequestEntity = 'lib/features/delivery/data/entities/add_address_request_entity.dart';
   static const String entitiesAddToCartItemEntity = 'lib/features/cart/data/entities/add_to_cart_item_entity.dart';
   static const String entitiesCartProfileEntity = 'lib/features/profile/data/entities/cart_profile_entity.dart';
+  static const String entitiesCreateOrderEntity = 'lib/features/orders/data/entities/create_order_model.dart';
   static const String entitiesDeliveryAddressEntity = 'lib/features/delivery/data/entities/delivery_address_entity.dart';
   static const String entitiesForgetPasswordEntity = 'lib/features/auth/data/entities/forget_password_entity.dart';
   static const String entitiesGetCartEntity = 'lib/features/cart/data/entities/get_cart_entity.dart';
@@ -202,6 +203,7 @@ class Assets {
   static const String modelsCartModel = 'lib/features/cart/data/models/cart_model.dart';
   static const String modelsCategoryModel = 'lib/features/categories/data/models/category_model.dart';
   static const String modelsClientProfileModel = 'lib/features/profile/data/models/client_profile_model.dart';
+  static const String modelsCreateOrderEntity = 'lib/features/orders/data/models/create_order_model.dart';
   static const String modelsDeliveryAddressModel = 'lib/features/delivery/data/models/delivery_address_model.dart';
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
