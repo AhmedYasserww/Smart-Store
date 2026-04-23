@@ -8,7 +8,9 @@ import '../../../../core/services/api_service.dart';
 import '../../../../core/services/end_points.dart';
 import '../entities/add_address_request_entity.dart';
 import '../entities/delivery_address_entity.dart';
+import '../entities/delivery_option_entity.dart';
 import '../models/delivery_address_model.dart';
+import '../models/delivery_option_model.dart';
 import 'delivery_repo.dart';
 
 class DeliveryRepoImpl implements DeliveryRepo {
@@ -112,6 +114,40 @@ class DeliveryRepoImpl implements DeliveryRepo {
       return left(ServerFailure.fromDioError(e));
     } catch (e) {
       log('❌ Unexpected Error (UpdateAddress): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
+  // DeliveryRepoImpl
+  @override
+  Future<Either<Failure, List<DeliveryOptionEntity>>> getDeliveryOptions() async {
+    try {
+      final response = await apiService.get(
+        endPoint: EndPoints.getDeliveryOptions,
+      );
+
+      log('🚚 GetDeliveryOptions Response: $response');
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          final data = response['data'] as List<dynamic>? ?? [];
+          return right(data
+              .map((e) => DeliveryOptionModel.fromJson(e))
+              .toList());
+        } else {
+          return left(ServerFailure(
+            errorMessage: message ?? 'Failed to get delivery options',
+          ));
+        }
+      }
+      return left(ServerFailure(errorMessage: 'Unexpected API response format'));
+    } on DioException catch (e) {
+      log('❌ DioException (GetDeliveryOptions): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (GetDeliveryOptions): $e');
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }

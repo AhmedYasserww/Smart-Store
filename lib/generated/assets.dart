@@ -91,6 +91,8 @@ class Assets {
   static const String getAddressCubitGetAddressesState = 'lib/features/delivery/presentation/manager/get_address_cubit/get_addresses_state.dart';
   static const String getCartCubitGetCartCubit = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
   static const String getCartCubitGetCartState = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_state.dart';
+  static const String getDeliveryOptionCubitGetDeliveryOptionCubit = 'lib/features/delivery/presentation/manager/get_delivery_option_cubit/get_delivery_options_cubit.dart';
+  static const String getDeliveryOptionCubitGetDeliveryOptionState = 'lib/features/delivery/presentation/manager/get_delivery_option_cubit/get_delivery_options_state.dart';
   static const String getProfileCubitGetProfileCubit = 'lib/features/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
   static const String getProfileCubitGetProfileState = 'lib/features/profile/presentation/manager/get_profile_cubit/get_profile_state.dart';
   static const String getWishlistCubitGetWishlistCubit = 'lib/features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';

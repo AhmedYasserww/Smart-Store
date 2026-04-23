@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failure.dart';
 import '../entities/add_address_request_entity.dart';
 import '../entities/delivery_address_entity.dart';
+import '../entities/delivery_option_entity.dart';
 
  abstract class DeliveryRepo {
 //   Future<Either<Failure, DeliveryAddressEntity>> addAddress({
@@ -26,4 +27,5 @@ Future<Either<Failure, DeliveryAddressEntity>> addAddress({
     required String addressId,
     required AddAddressRequestEntity request,
   });
+Future<Either<Failure, List<DeliveryOptionEntity>>> getDeliveryOptions();
 }
