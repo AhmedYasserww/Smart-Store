@@ -26,6 +26,8 @@ class Assets {
   static const String coreWidgetsCustomAppBar = 'lib/core/widgets/custom_app_bar.dart~';
   static const String coreWidgetsCustomEmptyScreen = 'lib/core/widgets/custom_empty_screen.dart~';
   static const String coreWidgetsCustomOfferCard = 'lib/core/widgets/custom_offer_card.dart~';
+  static const String createOrderCubitCreateOrderCubit = 'lib/features/orders/presentation/manager/create_order_cubit/create_order_cubit.dart';
+  static const String createOrderCubitCreateOrderState = 'lib/features/orders/presentation/manager/create_order_cubit/create_order_state.dart';
   static const String customBottomSheetWidgetBottomShhetButtons = 'lib/features/products/presentation/views/widgets/product_view_widgets/custom_bottom_sheet_widget/bottom_shhet_buttons.dart';
   static const String customBottomSheetWidgetColorWidget = 'lib/features/products/presentation/views/widgets/product_view_widgets/custom_bottom_sheet_widget/color_widget.dart';
   static const String customBottomSheetWidgetCustomBottomSheet = 'lib/features/products/presentation/views/widgets/product_view_widgets/custom_bottom_sheet_widget/custom_bottom_sheet.dart';
@@ -54,8 +56,9 @@ class Assets {
   static const String entitiesAddAddressRequestEntity = 'lib/features/delivery/data/entities/add_address_request_entity.dart';
   static const String entitiesAddToCartItemEntity = 'lib/features/cart/data/entities/add_to_cart_item_entity.dart';
   static const String entitiesCartProfileEntity = 'lib/features/profile/data/entities/cart_profile_entity.dart';
-  static const String entitiesCreateOrderEntity = 'lib/features/orders/data/entities/create_order_model.dart';
+  static const String entitiesCreateOrderEntity = 'lib/features/orders/data/entities/create_order_entity.dart';
   static const String entitiesDeliveryAddressEntity = 'lib/features/delivery/data/entities/delivery_address_entity.dart';
+  static const String entitiesDeliveryOptionEntity = 'lib/features/delivery/data/entities/delivery_option_entity.dart';
   static const String entitiesForgetPasswordEntity = 'lib/features/auth/data/entities/forget_password_entity.dart';
   static const String entitiesGetCartEntity = 'lib/features/cart/data/entities/get_cart_entity.dart';
   static const String entitiesLogInEntity = 'lib/features/auth/data/entities/log_in_entity.dart';
@@ -203,8 +206,9 @@ class Assets {
   static const String modelsCartModel = 'lib/features/cart/data/models/cart_model.dart';
   static const String modelsCategoryModel = 'lib/features/categories/data/models/category_model.dart';
   static const String modelsClientProfileModel = 'lib/features/profile/data/models/client_profile_model.dart';
-  static const String modelsCreateOrderEntity = 'lib/features/orders/data/models/create_order_model.dart';
+  static const String modelsCreateOrderModel = 'lib/features/orders/data/models/create_order_model.dart';
   static const String modelsDeliveryAddressModel = 'lib/features/delivery/data/models/delivery_address_model.dart';
+  static const String modelsDeliveryOptionModel = 'lib/features/delivery/data/models/delivery_option_model.dart';
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
   static const String modelsProductModel = 'lib/features/products/data/models/product_model.dart';
@@ -215,6 +219,7 @@ class Assets {
   static const String modelsVerificationModel = 'lib/features/auth/data/models/verification_model.dart';
   static const String modelsWishlistModel = 'lib/features/wishlist/data/models/wishlist_model.dart';
   static const String onboardingDataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart~';
+  static const String paymentMethodWidgetsPaymentMethodItem = 'lib/features/delivery/presentation/views/widgets/payment_method_widgets/payment_method_item.dart';
   static const String presentationViewsBottomNavBarView = 'lib/features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart~';
   static const String presentationViewsCartView = 'lib/features/cart/presentation/views/cart_view.dart~';
   static const String presentationViewsEditProfileView = 'lib/features/profile/presentation/views/edit_profile_view.dart~';
@@ -272,6 +277,8 @@ class Assets {
   static const String reposCategoriesRepoImp = 'lib/features/categories/data/repos/categories_repo_imp.dart';
   static const String reposDeliveryRepo = 'lib/features/delivery/data/repos/delivery_repo.dart';
   static const String reposDeliveryRepoImp = 'lib/features/delivery/data/repos/delivery_repo_imp.dart';
+  static const String reposOrderRepo = 'lib/features/orders/data/repos/order_repo.dart';
+  static const String reposOrderRepoImp = 'lib/features/orders/data/repos/order_repo_imp.dart';
   static const String reposProductRepo = 'lib/features/products/data/repos/product_repo.dart';
   static const String reposProductRepoImp = 'lib/features/products/data/repos/product_repo_imp.dart';
   static const String reposProfileRepo = 'lib/features/profile/data/repos/profile_repo.dart';

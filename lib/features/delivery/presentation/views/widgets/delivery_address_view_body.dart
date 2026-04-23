@@ -189,13 +189,16 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
               ),
             ),
           ),
-
           BackAndContinueButtons(
             isEnabled: selectedAddress != null,
             onContinue: () {
-              Navigator.of(context).pushNamed(DeliveryOptionView.routeName);
+              Navigator.of(context).pushNamed(
+                DeliveryOptionView.routeName,
+                arguments: selectedAddress!.id,
+              );
             },
           ),
+
         ],
       ),
     );

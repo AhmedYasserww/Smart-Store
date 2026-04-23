@@ -11,6 +11,8 @@ import '../../features/delivery/data/repos/delivery_repo_imp.dart';
 import '../../features/delivery/presentation/manager/add_address_cubit/add_address_cubit.dart';
 import '../../features/delivery/presentation/manager/get_address_cubit/get_addresses_cubit.dart';
 import '../../features/delivery/presentation/manager/update_address_cubit/update_address_cubit.dart';
+import '../../features/orders/data/repos/order_repo_imp.dart';
+import '../../features/orders/presentation/manager/create_order_cubit/create_order_cubit.dart';
 import '../../features/profile/data/repos/profile_repo_imp.dart';
 import '../../features/profile/presentation/manager/change_password_cubit/change_password_cubit.dart';
 import '../../features/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
@@ -83,6 +85,13 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<UpdateAddressCubit>(
         () => UpdateAddressCubit(getIt<DeliveryRepoImpl>()),
+  );
+  getIt.registerSingleton<OrderRepoImpl>(
+    OrderRepoImpl(apiService: getIt<ApiService>()),
+  );
+
+  getIt.registerFactory<CreateOrderCubit>(
+        () => CreateOrderCubit(getIt<OrderRepoImpl>()),
   );
 
 }

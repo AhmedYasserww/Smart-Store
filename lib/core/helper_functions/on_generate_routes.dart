@@ -96,8 +96,9 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
         builder: (context) => EditDeliveryAddressView(address: address),
       );
     case DeliveryOptionView.routeName:
+      final addressId = settings.arguments as String;
       return MaterialPageRoute(
-        builder: (context) => const DeliveryOptionView(),
+        builder: (context) => DeliveryOptionView(addressId: addressId),
       );
     case PaymentMethodView.routeName:
       return MaterialPageRoute(builder: (context) => const PaymentMethodView());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/delivery/presentation/views/widgets/payment_method_widgets/payment_method_item.dart';
 import '../../../../../core/utils/app_dimensions.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../review_and_confirm_delivery_view.dart';
@@ -39,7 +40,7 @@ class _PaymentMethodViewBodyState extends State<PaymentMethodViewBody> {
                   style: AppStyle.styleBold16,
                 ),
                 const SizedBox(height: 24),
-                DeliveryOptionItem(
+                PaymentMethodItem(
                   title: "Cash On Delivery",
                   isSelected: selectedIndex == 0,
                   onTap: () {
@@ -49,7 +50,7 @@ class _PaymentMethodViewBodyState extends State<PaymentMethodViewBody> {
                   },
                 ),
                 const SizedBox(height: 16),
-                DeliveryOptionItem(
+                PaymentMethodItem(
                   title: "Card ",
                   isSelected: selectedIndex == 1,
                   onTap: () {
@@ -59,7 +60,7 @@ class _PaymentMethodViewBodyState extends State<PaymentMethodViewBody> {
                   },
                 ),
                 const SizedBox(height: 16),
-                DeliveryOptionItem(
+                PaymentMethodItem(
                   title: "PayPal",
                   isSelected: selectedIndex == 2,
                   onTap: () {
