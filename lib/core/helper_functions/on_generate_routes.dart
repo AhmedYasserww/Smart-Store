@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/more/saved_address/presentation/views/saved_address_view.dart';
 import 'package:smart_store/features/orders/presentation/views/order_details_view.dart';
 import 'package:smart_store/features/orders/presentation/views/order_status_view.dart';
 import 'package:smart_store/features/orders/presentation/views/orders_view.dart';
@@ -140,6 +141,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const OrderStatusView());
     case WishlistView.routeName:
       return MaterialPageRoute(builder: (context) => const WishlistView());
+      case SavedAddressView.routeName:
+      return MaterialPageRoute(builder: (context) => const SavedAddressView());
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

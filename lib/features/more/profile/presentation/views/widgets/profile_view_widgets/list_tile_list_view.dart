@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/more/saved_address/presentation/views/saved_address_view.dart';
 import 'package:smart_store/features/orders/presentation/views/orders_view.dart';
 import 'package:smart_store/features/wishlist/presentation/views/wishlist_view.dart';
 import '../../../../../../../core/utils/app_images.dart';
@@ -68,7 +69,7 @@ Navigator.of(context).pushNamed(WishlistView.routeName);
               icon: AppImages.savedAddressIcon,
               title: "Saved Addresses",
               onTap: () {
-                // Handle Saved Addresses tap
+               Navigator.of(context).pushNamed(SavedAddressView.routeName);
               },
             ),
             ListTileItem(

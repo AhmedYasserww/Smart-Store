@@ -225,7 +225,6 @@ class Assets {
   static const String modelsWishlistModel = 'lib/features/wishlist/data/models/wishlist_model.dart';
   static const String onboardingDataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart~';
   static const String paymentMethodWidgetsPaymentMethodItem = 'lib/features/delivery/presentation/views/widgets/payment_method_widgets/payment_method_item.dart';
-  static const String presentationViewsEditProfileView = 'lib/features/more/profile/presentation/views/edit_profile_view.dart~';
   static const String presentationViewsForgetPasswordView = 'lib/features/auth/presentation/views/forget_password_view.dart~';
   static const String presentationViewsVtoView = 'lib/features/vto/presentation/views/vto_view.dart~';
   static const String productDetailsWidgetsColorSelector = 'lib/features/products/presentation/views/widgets/product_details_widgets/color_selector.dart';
@@ -347,6 +346,7 @@ class Assets {
   static const String viewsRegisterView = 'lib/features/auth/presentation/views/register_view.dart';
   static const String viewsResetPasswordView = 'lib/features/auth/presentation/views/reset_password_view.dart';
   static const String viewsReviewAndConfirmDeliveryView = 'lib/features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
+  static const String viewsSavedAddressView = 'lib/features/more/saved_address/presentation/views/saved_address_view.dart';
   static const String viewsSearchView = 'lib/features/search/presentation/views/search_view.dart';
   static const String viewsVerificationView = 'lib/features/auth/presentation/views/verification_view.dart';
   static const String viewsVtoView = 'lib/features/vto/presentation/views/vto_view.dart';
@@ -359,7 +359,6 @@ class Assets {
   static const String viewsWidgetsOnBoardingSkip = 'lib/features/onboarding/presentation/views/widgets/on_boarding_skip.dart~';
   static const String viewsWidgetsOnboardingText = 'lib/features/onboarding/presentation/views/widgets/onboarding_text.dart~';
   static const String viewsWidgetsOnboardingViewBody = 'lib/features/onboarding/presentation/views/widgets/onboarding_view_body.dart~';
-  static const String viewsWidgetsProfileViewBody = 'lib/features/more/profile/presentation/views/widgets/profile_view_body.dart~';
   static const String viewsWidgetsVtoViewBody = 'lib/features/vto/presentation/views/widgets/vto_view_body.dart~';
   static const String viewsWishlistView = 'lib/features/wishlist/presentation/views/wishlist_view.dart';
   static const String widgetsAnimatedBoardingPage = 'lib/features/onboarding/presentation/views/widgets/animated_boarding_page.dart';
@@ -437,7 +436,6 @@ class Assets {
   static const String widgetsProductListView = 'lib/features/home/presentation/views/widgets/product_list_view.dart';
   static const String widgetsProductViewWidgetsProductViewBody = 'lib/features/products/presentation/views/widgets/product_view_widgets/product_view_body.dart~';
   static const String widgetsProfileViewBody = 'lib/features/more/profile/presentation/views/widgets/profile_view_body.dart';
-  static const String widgetsProfileViewWidgetsBecomeSellerWidget = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/become_seller_widget.dart~';
   static const String widgetsRecentlyViewedHomeList = 'lib/features/home/presentation/views/widgets/recently_viewed_home_list.dart';
   static const String widgetsRegisterViewBody = 'lib/features/auth/presentation/views/widgets/register_view_body.dart';
   static const String widgetsResetPasswordViewBody = 'lib/features/auth/presentation/views/widgets/reset_password_view_body.dart';
@@ -447,6 +445,7 @@ class Assets {
   static const String widgetsReviewAndConfirmDeliveryWidgetsPriceRow = 'lib/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/price_row.dart~';
   static const String widgetsReviewAndConfirmDeliveryWidgetsReadyToConfirmPaymentWidget = 'lib/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/ready_to_confirm_payment_widget.dart~';
   static const String widgetsSavedAddressSection = 'lib/features/delivery/presentation/views/widgets/saved_address_section.dart~';
+  static const String widgetsSavedAddressViewBody = 'lib/features/more/saved_address/presentation/views/widgets/saved_address_view_body.dart';
   static const String widgetsSearchHeader = 'lib/features/search/presentation/views/widgets/search_header.dart';
   static const String widgetsSearchItem = 'lib/features/search/presentation/views/widgets/search_item.dart';
   static const String widgetsSearchItemGridView = 'lib/features/search/presentation/views/widgets/search_item_grid_view.dart';
