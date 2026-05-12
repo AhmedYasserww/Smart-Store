@@ -31,7 +31,7 @@ class UpdateCartItemCubit extends Cubit<UpdateCartItemState> {
           emit(UpdateCartItemFailure(errorMessage: failure.errorMessage)),
           (updatedCart) {
         emit(UpdateCartItemSuccess());
-        getCartCubit.emit(GetCartSuccess(cart: updatedCart));
+       // getCartCubit.emit(GetCartSuccess(cart: updatedCart));
       },
     );
   }

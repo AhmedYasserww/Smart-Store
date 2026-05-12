@@ -6,7 +6,7 @@ import '../entities/create_order_entity.dart';
 
 abstract class OrderRepo {
   Future<Either<Failure, CreateOrderEntity>> createOrder({
-    required String addressId,
-    required String deliveryOption,
+    required String deliveryAddressId,
+    required String deliveryOptionId,
   });
 }

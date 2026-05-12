@@ -25,6 +25,6 @@ class EndPoints {
   static const String getAddresses = 'DeliveryAddress/get/client/addresses';
   static String updateAddress(String addressId) => 'DeliveryAddress/client/update/address/$addressId';
   static const String createOrder = 'Order/create';
-  static const String getDeliveryOptions = 'DelevryOptions/all/delevery-options';
+  static const String getDeliveryOptions = 'DelivryOptions/all/delevery-options';
 
 }

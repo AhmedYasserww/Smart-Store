@@ -13,19 +13,16 @@ class CreateOrderCubit extends Cubit<CreateOrderState> {
   CreateOrderCubit(this.orderRepo) : super(CreateOrderInitial());
 
   Future<void> createOrder({
-    required String addressId,
-    required String deliveryOption,
+    required String deliveryAddressId,
+    required String deliveryOptionId,
   }) async {
     emit(CreateOrderLoading());
-
     final result = await orderRepo.createOrder(
-      addressId: addressId,
-      deliveryOption: deliveryOption,
+      deliveryAddressId: deliveryAddressId,
+      deliveryOptionId: deliveryOptionId,
     );
-
     result.fold(
           (failure) => emit(CreateOrderFailure(errorMessage: failure.errorMessage)),
           (order) => emit(CreateOrderSuccess(order: order)),
     );
-  }
-}
+  }}

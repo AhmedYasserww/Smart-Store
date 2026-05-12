@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
-import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
+import 'package:smart_store/core/utils/app_style.dart';
+import 'package:smart_store/features/delivery/data/entities/add_address_request_entity.dart';
 import 'package:smart_store/features/delivery/data/entities/delivery_address_entity.dart';
 import 'package:smart_store/features/delivery/presentation/manager/add_address_cubit/add_address_cubit.dart';
+import 'package:smart_store/features/delivery/presentation/manager/get_address_cubit/get_addresses_cubit.dart';
 import 'package:smart_store/features/delivery/presentation/views/delivery_option_view.dart';
-import 'package:smart_store/features/delivery/presentation/views/widgets/delivery_address_widgets/saved_address_section.dart';
-import '../../../../../core/utils/app_style.dart';
-import '../../../data/entities/add_address_request_entity.dart';
-import '../../manager/get_address_cubit/get_addresses_cubit.dart';
+import 'package:smart_store/features/delivery/presentation/views/widgets/delivery_address_widgets/add_new_address_section.dart';
+import 'package:smart_store/features/delivery/presentation/views/widgets/delivery_address_widgets/saved_addresses_list.dart';
 import 'general_saved_address_widgets/back_and_continue_buttons.dart';
 import 'general_saved_address_widgets/custom_delivery_app_bar.dart';
-import 'delivery_address_widgets/delivery_address_form_section.dart';
-import 'delivery_address_widgets/delivery_address_manual_section.dart';
 
 class DeliveryAddressViewBody extends StatefulWidget {
   const DeliveryAddressViewBody({super.key});
@@ -23,10 +21,9 @@ class DeliveryAddressViewBody extends StatefulWidget {
 }
 
 class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
-  bool showContactInfo = false;
-  bool showManualAddress = false;
-
-  DeliveryAddressEntity? selectedAddress;
+  bool _showContactInfo = false;
+  bool _showManualAddress = false;
+  DeliveryAddressEntity? _selectedAddress;
 
   final _nameController = TextEditingController();
   final _phoneController = TextEditingController();
@@ -68,13 +65,11 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
       listener: (context, state) {
         if (state is AddAddressSuccess) {
           context.read<GetAddressesCubit>().getAddresses();
-
           setState(() {
-            selectedAddress = state.address;
-            showManualAddress = false;
-            showContactInfo = false;
+            _selectedAddress = state.address;
+            _showManualAddress = false;
+            _showContactInfo = false;
           });
-
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Address added successfully'),
@@ -111,77 +106,35 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
                 children: [
                   const SizedBox(height: 32),
                   Text('Saved Address', style: AppStyle.styleBold16),
-                  SizedBox(height: 24,),
+                  const SizedBox(height: 24),
 
-                  BlocBuilder<GetAddressesCubit, GetAddressesState>(
-                    builder: (context, state) {
-                      if (state is GetAddressesLoading) {
-                        return CustomLoadingIndicator();
-                      }
-
-                      if (state is GetAddressesSuccess &&
-                          state.addresses.isNotEmpty) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-
-                            ...state.addresses.map((address) => Padding(
-                              padding: const EdgeInsets.only(bottom: 12),
-                              child: SavedAddressSection(
-                                address: address,
-                                isSelected: selectedAddress?.id == address.id,
-                                onSelect: () {
-                                  setState(() {
-                                    selectedAddress = selectedAddress?.id ==
-                                        address.id
-                                        ? null
-                                        : address;
-                                  });
-                                },
-                              ),
-                            )),
-                            const SizedBox(height: 4),
-                          ],
-                        );
-                      }
-
-                      return const SizedBox();
-                    },
+                  // ── 1. Saved Addresses ──
+                  SavedAddressesList(
+                    selectedAddress: _selectedAddress,
+                    onSelect: (address) =>
+                        setState(() => _selectedAddress = address),
                   ),
 
-                  // ── Add New Address Form ──
-                  DeliveryAddressFormSection(
-                    showContactInfo: showContactInfo,
-                    showManualAddress: showManualAddress,
+                  // ── 2. Add New Address ──
+                  AddNewAddressSection(
+                    showContactInfo: _showContactInfo,
+                    showManualAddress: _showManualAddress,
                     nameController: _nameController,
                     phoneController: _phoneController,
                     landmarkController: _landmarkController,
+                    cityController: _cityController,
+                    streetController: _streetController,
+                    buildingController: _buildingController,
+                    apartmentController: _apartmentController,
                     onToggle: () {
                       setState(() {
-                        showContactInfo = !showContactInfo;
-                        if (!showContactInfo) {
-                          showManualAddress = false;
-                        }
+                        _showContactInfo = !_showContactInfo;
+                        if (!_showContactInfo) _showManualAddress = false;
                       });
                     },
-                    onManualTap: () {
-                      setState(() => showManualAddress = true);
-                    },
-                  ),
-
-                  // ── Manual Address Fields ──
-                  BlocBuilder<AddAddressCubit, AddAddressState>(
-                    builder: (context, state) {
-                      return DeliveryAddressManualSection(
-                        showManualAddress: showManualAddress,
-                        cityController: _cityController,
-                        streetController: _streetController,
-                        buildingController: _buildingController,
-                        apartmentController: _apartmentController,
-                        isLoading: state is AddAddressLoading,
-                        onConfirm: _onConfirmAddress,
-                      );
-                    },
+                    onManualTap: () =>
+                        setState(() => _showManualAddress = true),
+                    onConfirm: _onConfirmAddress,
                   ),
 
                   const SizedBox(height: 36),
@@ -189,16 +142,16 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
               ),
             ),
           ),
+
           BackAndContinueButtons(
-            isEnabled: selectedAddress != null,
+            isEnabled: _selectedAddress != null,
             onContinue: () {
               Navigator.of(context).pushNamed(
                 DeliveryOptionView.routeName,
-                arguments: selectedAddress!.id,
+                arguments: _selectedAddress!,
               );
             },
           ),
-
         ],
       ),
     );

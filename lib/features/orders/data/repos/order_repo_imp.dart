@@ -16,14 +16,19 @@ class OrderRepoImpl implements OrderRepo {
   OrderRepoImpl({required this.apiService});
 
   @override
+// OrderRepoImpl
+  @override
   Future<Either<Failure, CreateOrderEntity>> createOrder({
-    required String addressId,
-    required String deliveryOption,
+    required String deliveryAddressId,
+    required String deliveryOptionId,
   }) async {
     try {
       final response = await apiService.post(
-        endPoint: EndPoints.createOrder(addressId),
-        data: {'deleveryOption': deliveryOption},
+        endPoint: EndPoints.createOrder,
+        data: {
+          'deliveryAddressId': deliveryAddressId,
+          'deliveryOptionId': deliveryOptionId,
+        },
       );
 
       log('🛒 CreateOrder Response: $response');
@@ -35,9 +40,7 @@ class OrderRepoImpl implements OrderRepo {
         if (statusCode == 200 && response['succeeded'] == true) {
           return right(CreateOrderModel.fromJson(response['data']));
         } else {
-          return left(ServerFailure(
-            errorMessage: message ?? 'Failed to create order',
-          ));
+          return left(ServerFailure(errorMessage: message ?? 'Failed to create order'));
         }
       }
       return left(ServerFailure(errorMessage: 'Unexpected API response format'));

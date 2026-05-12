@@ -63,4 +63,7 @@ class GetCartCubit extends Cubit<GetCartState> {
 
     emit(GetCartSuccess(cart: updatedCart));
   }
+  void clearCart() {
+    emit(GetCartInitial());
+  }
 }
