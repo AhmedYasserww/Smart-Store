@@ -10,6 +10,9 @@ import 'core/helper_functions/on_generate_routes.dart';
 import 'core/service_locator/service_locator.dart';
 import 'features/auth/presentation/views/log_in_view.dart';
 import 'features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
+import 'features/cart/data/repos/cart_repo_imp.dart';
+import 'features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
+import 'features/delivery/presentation/views/confirm_order_view.dart';
 import 'features/delivery/presentation/views/edit_delivery_address_view.dart';
 import 'features/delivery/presentation/views/widgets/edit_delivery_address_view_widgets/edit_delivery_address_view_body.dart';
 import 'features/onboarding/presentation/views/onboarding_view.dart';
@@ -36,8 +39,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_)=>GetWishlistCubit(getIt.get<WishlistRepoImpl>())..getWishlist(),
+    return MultiBlocProvider(
+        providers: [
+        BlocProvider(
+        create: (_)=>GetWishlistCubit(getIt.get<WishlistRepoImpl>())..getWishlist(),),
+
+    BlocProvider(
+    create: (_) => GetCartCubit(getIt.get<CartRepoImpl>())..getCart(),)
+
+        ],
+
+
 
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -50,10 +62,10 @@ class MyApp extends StatelessWidget {
         ),
         scrollBehavior: CustomScrollBehavior(),
       onGenerateRoute: onGenerateRoutes,
-      //  initialRoute: EditDeliveryAddressView.routeName,
-         //initialRoute: OnBoardingView.routeName,
+       //initialRoute: ConfirmOrderView.routeName,
+      //  initialRoute: OnBoardingView.routeName,
       //  initialRoute: LogInView.routeName,
-        initialRoute: CustomNavigationBar.routeName,
+       initialRoute: CustomNavigationBar.routeName,
     //     home: Scaffold(
     //       body: CustomLoadingIndicator(),
     //     ),

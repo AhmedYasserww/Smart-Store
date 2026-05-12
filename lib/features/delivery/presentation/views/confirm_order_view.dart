@@ -4,7 +4,6 @@ import 'package:smart_store/features/delivery/presentation/views/widgets/confirm
 
 import '../../../bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../../cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
-// في ConfirmOrderView — عمل clearCart هنا بعد ما الشاشة تفتح
 class ConfirmOrderView extends StatefulWidget {
   const ConfirmOrderView({super.key});
   static const String routeName = 'confirm_order_view';

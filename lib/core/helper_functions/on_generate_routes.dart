@@ -12,12 +12,15 @@ import '../../features/auth/presentation/views/verification_view.dart';
 import '../../features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../features/cart/presentation/views/cart_view.dart';
 import '../../features/delivery/data/entities/delivery_address_entity.dart';
+import '../../features/delivery/data/entities/delivery_option_entity.dart';
+import '../../features/delivery/data/models/order_summary_argument.dart';
 import '../../features/delivery/presentation/views/confirm_order_view.dart';
 import '../../features/delivery/presentation/views/delivery_option_view.dart';
 import '../../features/delivery/presentation/views/delivery_address_view.dart';
 import '../../features/delivery/presentation/views/edit_delivery_address_view.dart';
 import '../../features/delivery/presentation/views/payment_method_view.dart';
 import '../../features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
+import '../../features/delivery/presentation/views/widgets/confirm_order_widgets/confirm_order_route.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/onboarding/presentation/views/onboarding_view.dart';
 import '../../features/products/data/models/product_model.dart';
@@ -81,7 +84,10 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case FindSizeView.routeName:
       return MaterialPageRoute(builder: (context) => const FindSizeView());
     case ProductView.routeName:
-      return MaterialPageRoute(builder: (context) => const ProductView());
+      final categoryId = settings.arguments as String?;
+      return MaterialPageRoute(
+        builder: (_) => ProductView(initialCategoryId: categoryId),
+      );
     case VtoView.routeName:
       return MaterialPageRoute(builder: (context) => const VtoView());
     case CartView.routeName:
@@ -96,18 +102,29 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
         builder: (context) => EditDeliveryAddressView(address: address),
       );
     case DeliveryOptionView.routeName:
-      final addressId = settings.arguments as String;
+      final address = settings.arguments as DeliveryAddressEntity;
       return MaterialPageRoute(
-        builder: (context) => DeliveryOptionView(addressId: addressId),
+        builder: (_) => DeliveryOptionView(address: address),
       );
+
     case PaymentMethodView.routeName:
-      return MaterialPageRoute(builder: (context) => const PaymentMethodView());
-    case ReviewAndConfirmDeliveryView.routeName:
+      final args = settings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(
-        builder: (context) => const ReviewAndConfirmDeliveryView(),
+        builder: (_) => PaymentMethodView(
+          address: args['address'] as DeliveryAddressEntity,
+          deliveryOption: args['deliveryOption'] as DeliveryOptionEntity,
+        ),
+      );
+
+    case ReviewAndConfirmDeliveryView.routeName:
+      final args = settings.arguments as OrderSummaryArguments;
+      return MaterialPageRoute(
+        builder: (_) => ReviewAndConfirmDeliveryView(args: args),
       );
     case ConfirmOrderView.routeName:
-      return MaterialPageRoute(builder: (context) => const ConfirmOrderView());
+      return ConfirmOrderRoute.route();
+    // case ConfirmOrderView.routeName:
+    //   return MaterialPageRoute(builder: (context) => const ConfirmOrderView());
     case ProfileView.routeName:
       return MaterialPageRoute(builder: (context) => const ProfileView());
     case EditProfileView.routeName:
