@@ -54,6 +54,12 @@ class AppStyle {
     fontFamily: "Inter",
     fontWeight: FontWeight.w600,
   );
+  static const styleSemiBold14 = TextStyle(
+    color: Color(0xFF1A1515),
+    fontSize: 14,
+    fontFamily: "Inter",
+    fontWeight: FontWeight.w600,
+  );
   static const styleSemiBold24 = TextStyle(
     color: Color(0xFF1A1515),
     fontSize: 24,
