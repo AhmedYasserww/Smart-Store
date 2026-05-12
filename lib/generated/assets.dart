@@ -91,8 +91,8 @@ class Assets {
   static const String getAddressCubitGetAddressesState = 'lib/features/delivery/presentation/manager/get_address_cubit/get_addresses_state.dart';
   static const String getCartCubitGetCartCubit = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
   static const String getCartCubitGetCartState = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_state.dart';
-  static const String getDeliveryOptionCubitGetDeliveryOptionCubit = 'lib/features/delivery/presentation/manager/get_delivery_option_cubit/get_delivery_options_cubit.dart';
-  static const String getDeliveryOptionCubitGetDeliveryOptionState = 'lib/features/delivery/presentation/manager/get_delivery_option_cubit/get_delivery_options_state.dart';
+  static const String getDeliveryOptionsCubitGetDeliveryOptionsCubit = 'lib/features/delivery/presentation/manager/get_delivery_options_cubit/get_delivery_options_cubit.dart';
+  static const String getDeliveryOptionsCubitGetDeliveryOptionsState = 'lib/features/delivery/presentation/manager/get_delivery_options_cubit/get_delivery_options_state.dart';
   static const String getProfileCubitGetProfileCubit = 'lib/features/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
   static const String getProfileCubitGetProfileState = 'lib/features/profile/presentation/manager/get_profile_cubit/get_profile_state.dart';
   static const String getWishlistCubitGetWishlistCubit = 'lib/features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
@@ -213,6 +213,7 @@ class Assets {
   static const String modelsDeliveryOptionModel = 'lib/features/delivery/data/models/delivery_option_model.dart';
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
+  static const String modelsOrderSummaryArgument = 'lib/features/delivery/data/models/order_summary_argument.dart';
   static const String modelsProductModel = 'lib/features/products/data/models/product_model.dart';
   static const String modelsProductQueryParamsModel = 'lib/features/products/data/models/product_query_params_model.dart';
   static const String modelsRegisterModel = 'lib/features/auth/data/models/register_model.dart';

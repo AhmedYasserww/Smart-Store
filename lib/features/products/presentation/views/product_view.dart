@@ -4,12 +4,14 @@ import 'package:smart_store/features/products/data/repos/product_repo_imp.dart';
 import 'package:smart_store/features/products/presentation/views/widgets/product_view_widgets/product_view_body.dart';
 import '../../../../core/service_locator/service_locator.dart';
 import '../../../../core/utils/app_style.dart';
+import '../../data/models/product_query_params_model.dart';
 import '../../data/product_or_list_cubit/product_or_list_cubit.dart';
 import '../manager/get_all_product_cubit.dart';
 
 class ProductView extends StatelessWidget {
-  const ProductView({super.key});
+  const ProductView({super.key,this.initialCategoryId});
   static const String routeName = 'product_view';
+  final String? initialCategoryId;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,11 @@ class ProductView extends StatelessWidget {
           create: (_) => ProductOrListCubit()..changeUi(true),
         ),
        BlocProvider(
-           create: (_) => GetAllProductCubit(getIt.get<ProductsRepoImpl>())..fetchAllProducts(),
+           create: (_) => GetAllProductCubit(getIt.get<ProductsRepoImpl>())..fetchAllProducts(
+             params: initialCategoryId != null
+                 ? ProductQueryParams(categoryId: initialCategoryId)
+                 : null,
+           ),
        ),
         // BlocProvider(
         //   create: (_) => AddToCartCubit(getIt.get<CartRepoImpl>()),
@@ -27,6 +33,7 @@ class ProductView extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
           centerTitle: true,
           elevation: 0,
