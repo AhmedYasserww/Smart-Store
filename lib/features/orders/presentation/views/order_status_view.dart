@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:smart_store/features/profile/presentation/views/widgets/custom_profile_app_bar.dart';
-
+import '../../../more/profile/presentation/views/widgets/custom_profile_app_bar.dart';
 import 'widgets/order_status_view_body.dart';
 class OrderStatusView extends StatelessWidget {
   const OrderStatusView({super.key});

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/service_locator/service_locator.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_style.dart';
+import '../../../../../core/service_locator/service_locator.dart';
+import '../../../../../core/utils/app_color.dart';
+import '../../../../../core/utils/app_style.dart';
 import '../manager/get_profile_cubit/get_profile_cubit.dart';
 import 'widgets/profile_view_body.dart';
 
-// ProfileView — ضيف الـ BlocProvider
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
   static const String routeName = 'profile_view';

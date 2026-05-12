@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/utils/app_style.dart';
+import '../../../../../../core/utils/app_style.dart';
 import 'profile_view_widgets/become_seller_widget.dart';
 import 'profile_view_widgets/connect_with_us_widget.dart';
 import 'profile_view_widgets/list_tile_list_view.dart';

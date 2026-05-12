@@ -3,9 +3,9 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import '../../../../core/errors/failure.dart';
-import '../../../../core/services/api_service.dart';
-import '../../../../core/services/end_points.dart';
+import '../../../../../core/errors/failure.dart';
+import '../../../../../core/services/api_service.dart';
+import '../../../../../core/services/end_points.dart';
 import '../entities/cart_profile_entity.dart';
 import '../models/client_profile_model.dart';
 import 'profile_repo.dart';

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/features/orders/presentation/views/orders_view.dart';
-import 'package:smart_store/features/profile/presentation/views/change_password_view.dart';
 import 'package:smart_store/features/wishlist/presentation/views/wishlist_view.dart';
-
-import '../../../../../../core/utils/app_images.dart';
+import '../../../../../../../core/utils/app_images.dart';
+import '../../change_password_view.dart';
 import '../../edit_profile_view.dart';
 import 'list_tile_item.dart';
 

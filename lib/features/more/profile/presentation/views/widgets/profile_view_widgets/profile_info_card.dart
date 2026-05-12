@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-import '../../../../../../core/utils/app_color.dart';
-import '../../../../../../core/utils/app_images.dart';
-import '../../../../../../core/utils/app_style.dart';
-import '../../../../../../core/widgets/custom_loading_indicator.dart';
+import '../../../../../../../core/utils/app_color.dart';
+import '../../../../../../../core/utils/app_images.dart';
+import '../../../../../../../core/utils/app_style.dart';
+import '../../../../../../../core/widgets/custom_loading_indicator.dart';
 import '../../../manager/get_profile_cubit/get_profile_cubit.dart';
 
 class ProfileInfoCard extends StatelessWidget {

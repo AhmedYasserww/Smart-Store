@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
-import 'package:smart_store/features/profile/presentation/manager/change_password_cubit/change_password_cubit.dart';
-import '../../../../../core/utils/app_style.dart';
-import '../../../../auth/presentation/views/widgets/log_in_widgets/custom_password_text_field.dart';
-import '../../../../auth/presentation/views/widgets/register_widgets/confirm_password_field_widget.dart';
+import '../../../../../../core/utils/app_style.dart';
+import '../../../../../auth/presentation/views/widgets/log_in_widgets/custom_password_text_field.dart';
+import '../../../../../auth/presentation/views/widgets/register_widgets/confirm_password_field_widget.dart';
+import '../../manager/change_password_cubit/change_password_cubit.dart';
 import 'edit_profile_view_widgets/custom_profile_action_button.dart';
 
 class ChangePasswordViewBody extends StatefulWidget {

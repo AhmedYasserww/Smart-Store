@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
 import '../../../../../core/utils/app_color.dart';
-import '../../../../profile/presentation/views/widgets/edit_profile_view_widgets/custom_profile_action_button.dart';
+import '../../../../more/profile/presentation/views/widgets/edit_profile_view_widgets/custom_profile_action_button.dart';
 import '../order_status_view.dart';
 import 'custom_cancel_order.dart';
 import 'order_details_card.dart';

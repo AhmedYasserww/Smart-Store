@@ -6,8 +6,7 @@ import 'package:smart_store/features/cart/presentation/views/cart_view.dart';
 import 'package:smart_store/features/home/presentation/views/home_view.dart';
 import 'package:smart_store/features/products/presentation/views/product_view.dart';
 
-import '../../../profile/presentation/views/profile_view.dart';
-
+import '../../../more/profile/presentation/views/profile_view.dart';
 class CustomNavigationBar extends StatefulWidget {
   const CustomNavigationBar({super.key});
   static const String routeName = 'bottom-nav-bar';

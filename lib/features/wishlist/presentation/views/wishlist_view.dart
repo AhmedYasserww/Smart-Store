@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/features/profile/presentation/views/widgets/custom_profile_app_bar.dart';
 import 'package:smart_store/features/wishlist/presentation/views/widgets/wishlist_view_body.dart';
+
+import '../../../more/profile/presentation/views/widgets/custom_profile_app_bar.dart';
 class WishlistView extends StatelessWidget {
   const WishlistView({super.key});
 static const String routeName = 'wishlist_view';

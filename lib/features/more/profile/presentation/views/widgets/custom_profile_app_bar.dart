@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_color.dart';
-import '../../../../../core/utils/app_style.dart';
+import '../../../../../../core/utils/app_color.dart';
+import '../../../../../../core/utils/app_style.dart';
+
 
 class CustomProfileAppBar extends StatelessWidget
     implements PreferredSizeWidget {

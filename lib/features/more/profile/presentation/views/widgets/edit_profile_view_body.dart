@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/widgets/custom_text_field.dart';
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/utils/app_style.dart';
+import '../../../../../../core/utils/app_images.dart';
+import '../../../../../../core/utils/app_style.dart';
 import 'edit_profile_view_widgets/custom_profile_action_button.dart';
 
 class EditProfileViewBody extends StatelessWidget {
