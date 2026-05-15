@@ -21,7 +21,7 @@ class SavedAddressViewBody extends StatelessWidget {
             SizedBox(
               height: 24,
             ),
-            CustomSavedAddressItem()
+            SavedAddressListView()
           ],
         ),
       ),
@@ -100,3 +100,23 @@ class CustomSavedAddressItem extends StatelessWidget {
 
   }
 }
+class SavedAddressListView extends StatelessWidget {
+  const SavedAddressListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: 20,
+        itemBuilder: (context,i){
+      return Padding(
+        padding: const EdgeInsets.only(
+          bottom: 24
+        ),
+        child: CustomSavedAddressItem(),
+      );
+    });
+  }
+}
+
