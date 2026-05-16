@@ -22,7 +22,6 @@ class Assets {
   static const String constantsVerifyOtpEnum = 'lib/core/constants/verify_otp_enum.dart';
   static const String coreErrorsFailure = 'lib/core/errors/failure.dart~';
   static const String coreHelperFunctionsCalculateSize = 'lib/core/helper_functions/calculate_size.dart~';
-  static const String coreServicesApiService = 'lib/core/services/api_service.dart~';
   static const String coreUtilsAppColor = 'lib/core/utils/app_color.dart~';
   static const String coreWidgetsCustomAppBar = 'lib/core/widgets/custom_app_bar.dart~';
   static const String coreWidgetsCustomEmptyScreen = 'lib/core/widgets/custom_empty_screen.dart~';
@@ -256,6 +255,7 @@ class Assets {
   static const String profileViewWidgetsListTileItem = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/list_tile_item.dart';
   static const String profileViewWidgetsListTileListView = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/list_tile_list_view.dart';
   static const String profileViewWidgetsLogoutButtonWidget = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/logout_button_widget.dart';
+  static const String profileViewWidgetsLogoutConfirmDialog = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/logout_confirm_dialog.dart';
   static const String profileViewWidgetsProfileInfoCard = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/profile_info_card.dart';
   static const String registerClientCubitRegisterClientCubit = 'lib/features/auth/presentation/manager/register_client_cubit/register_client_cubit.dart';
   static const String registerClientCubitRegisterClientState = 'lib/features/auth/presentation/manager/register_client_cubit/register_client_state.dart';

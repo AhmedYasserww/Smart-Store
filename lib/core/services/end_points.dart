@@ -1,7 +1,7 @@
 class EndPoints {
   static const String registerClient = "Account/register/client";
   static const String login = "Account/login";
-  static const String logout = "Account/logout";
+  static const String logout = 'Account/logout';
   static const String confirmEmail = "Account/confirm-email";
   static const String resendOtp = "Account/resend-otp";
   static const String forgetPassword = "Account/forget-password";

@@ -35,5 +35,5 @@ abstract class AuthRepo {
     required ResendOtpEntity entity,
   });
 
-  Future<Either<Failure, String>> logout({required String token});
+  Future<Either<Failure, String>> logout();
 }

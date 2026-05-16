@@ -64,8 +64,8 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: onGenerateRoutes,
        //initialRoute: ConfirmOrderView.routeName,
       //  initialRoute: OnBoardingView.routeName,
-      //  initialRoute: LogInView.routeName,
-       initialRoute: CustomNavigationBar.routeName,
+        initialRoute: LogInView.routeName,
+      // initialRoute: CustomNavigationBar.routeName,
     //     home: Scaffold(
     //       body: CustomLoadingIndicator(),
     //     ),

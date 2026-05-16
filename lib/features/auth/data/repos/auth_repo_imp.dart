@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -305,37 +307,33 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, String>> logout({required String token}) async {
+  Future<Either<Failure, String>> logout() async {
     try {
       final response = await apiService.post(
         endPoint: EndPoints.logout,
         data: {},
-        token: token,
       );
 
-      if (response is! Map<String, dynamic>) {
-        return Left(ServerFailure(errorMessage: 'Invalid server response'));
-      }
+      log("🔐 Logout Response: $response");
 
-      final statusCode = response['statusCode'];
-      final succeeded = response['succeeded'] ?? false;
-      if (statusCode == 200 && succeeded) {
-        return Right(
-          response['message']?.toString() ?? 'Logged out successfully',
-        );
-      }
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
 
-      return Left(
-        ServerFailure(errorMessage: response['message'] ?? 'Logout failed'),
-      );
+        if (statusCode == 200 && response['succeeded'] == true) {
+          return right(message ?? "Logged out successfully");
+        } else {
+          return left(ServerFailure(errorMessage: message ?? "Logout failed"));
+        }
+      } else {
+        return left(ServerFailure(errorMessage: "Unexpected response format"));
+      }
     } on DioException catch (e) {
-      return Left(
-        ServerFailure(
-          errorMessage: e.response?.data?['message'] ?? 'Logout request failed',
-        ),
-      );
+      log('❌ DioException (Logout): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
     } catch (e) {
-      return Left(ServerFailure(errorMessage: 'Unexpected error: $e'));
+      log('❌ Unexpected Error (Logout): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
     }
   }
 }
