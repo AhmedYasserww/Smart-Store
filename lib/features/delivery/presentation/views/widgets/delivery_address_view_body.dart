@@ -65,6 +65,15 @@ class _DeliveryAddressViewBodyState extends State<DeliveryAddressViewBody> {
       listener: (context, state) {
         if (state is AddAddressSuccess) {
           context.read<GetAddressesCubit>().getAddresses();
+
+          _nameController.clear();
+          _phoneController.clear();
+          _landmarkController.clear();
+          _cityController.clear();
+          _streetController.clear();
+          _buildingController.clear();
+          _apartmentController.clear();
+
           setState(() {
             _selectedAddress = state.address;
             _showManualAddress = false;

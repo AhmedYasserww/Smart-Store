@@ -51,7 +51,10 @@ class SavedAddressSection extends StatelessWidget {
                 onTap: () async {
                   final updated = await Navigator.of(context).pushNamed(
                     EditDeliveryAddressView.routeName,
-                    arguments: address,
+                    arguments: {
+                      'address': address,
+                      'fromProfile': false, // ✅ جاي من الـ delivery مش البروفايل
+                    },
                   );
 
                   if (updated != null && context.mounted) {

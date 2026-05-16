@@ -28,4 +28,6 @@ Future<Either<Failure, DeliveryAddressEntity>> addAddress({
     required AddAddressRequestEntity request,
   });
 Future<Either<Failure, List<DeliveryOptionEntity>>> getDeliveryOptions();
+Future<Either<Failure, String>> deleteAddress({required String addressId});
+
 }

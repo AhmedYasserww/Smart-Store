@@ -42,6 +42,8 @@ class Assets {
   static const String dataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart';
   static const String dataReposCartRepo = 'lib/features/cart/data/repos/cart_repo.dart~';
   static const String dataReposCartRepoImp = 'lib/features/cart/data/repos/cart_repo_imp.dart~';
+  static const String deleteAddressCubitDeleteAddressCubit = 'lib/features/delivery/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
+  static const String deleteAddressCubitDeleteAddressState = 'lib/features/delivery/presentation/manager/delete_address_cubit/delete_address_state.dart';
   static const String deleteCartItemCubitDeleteCartItemCubit = 'lib/features/cart/presentation/manager/delete_cart_item_cubit/delete_cart_item_cubit.dart';
   static const String deleteCartItemCubitDeleteCartItemState = 'lib/features/cart/presentation/manager/delete_cart_item_cubit/delete_cart_item_state.dart';
   static const String deliveryAddressWidgetsAddNewAddressSection = 'lib/features/delivery/presentation/views/widgets/delivery_address_widgets/add_new_address_section.dart';
@@ -398,6 +400,7 @@ class Assets {
   static const String widgetsCustomOrderItem = 'lib/features/orders/presentation/views/widgets/custom_order_item.dart';
   static const String widgetsCustomOrderStatusItem = 'lib/features/orders/presentation/views/widgets/custom_order_status_item.dart';
   static const String widgetsCustomProfileAppBar = 'lib/features/more/profile/presentation/views/widgets/custom_profile_app_bar.dart';
+  static const String widgetsCustomSavedAddressItem = 'lib/features/more/saved_address/presentation/views/widgets/custom_saved_address_item.dart';
   static const String widgetsCustomSearchField = 'lib/features/home/presentation/views/widgets/custom_search_field.dart';
   static const String widgetsCustomShimmer = 'lib/features/home/presentation/views/widgets/custom_shimmer.dart';
   static const String widgetsCustomTextField = 'lib/core/widgets/custom_text_field.dart';
@@ -444,6 +447,7 @@ class Assets {
   static const String widgetsReviewAndConfirmDeliveryWidgetsInfoRow = 'lib/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/info_row.dart~';
   static const String widgetsReviewAndConfirmDeliveryWidgetsPriceRow = 'lib/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/price_row.dart~';
   static const String widgetsReviewAndConfirmDeliveryWidgetsReadyToConfirmPaymentWidget = 'lib/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/ready_to_confirm_payment_widget.dart~';
+  static const String widgetsSavedAddressListView = 'lib/features/more/saved_address/presentation/views/widgets/saved_address_list_view.dart';
   static const String widgetsSavedAddressSection = 'lib/features/delivery/presentation/views/widgets/saved_address_section.dart~';
   static const String widgetsSavedAddressViewBody = 'lib/features/more/saved_address/presentation/views/widgets/saved_address_view_body.dart';
   static const String widgetsSearchHeader = 'lib/features/search/presentation/views/widgets/search_header.dart';

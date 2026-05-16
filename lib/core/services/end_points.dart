@@ -26,5 +26,6 @@ class EndPoints {
   static String updateAddress(String addressId) => 'DeliveryAddress/client/update/address/$addressId';
   static const String createOrder = 'Order/create';
   static const String getDeliveryOptions = 'DelivryOptions/all/delevery-options';
-
+  static String deleteAddress(String addressId) =>
+      'DeliveryAddress/client/delete/address/$addressId';
 }

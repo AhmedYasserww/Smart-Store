@@ -151,6 +151,38 @@ class DeliveryRepoImpl implements DeliveryRepo {
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }
+  @override
+  Future<Either<Failure, String>> deleteAddress({
+    required String addressId,
+  }) async {
+    try {
+      final response = await apiService.delete(
+        endPoint: EndPoints.deleteAddress(addressId),
+      );
+
+      log('🗑️ DeleteAddress Response: $response');
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          return right(message ?? 'Address deleted successfully');
+        } else {
+          return left(ServerFailure(
+            errorMessage: message ?? 'Failed to delete address',
+          ));
+        }
+      }
+      return left(ServerFailure(errorMessage: 'Unexpected API response format'));
+    } on DioException catch (e) {
+      log('❌ DioException (DeleteAddress): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (DeleteAddress): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
 
 }
 

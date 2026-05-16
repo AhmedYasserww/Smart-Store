@@ -9,6 +9,7 @@ import '../../features/cart/presentation/manager/add_to_cart_cubit/add_to_cart_c
 import '../../features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
 import '../../features/delivery/data/repos/delivery_repo_imp.dart';
 import '../../features/delivery/presentation/manager/add_address_cubit/add_address_cubit.dart';
+import '../../features/delivery/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
 import '../../features/delivery/presentation/manager/get_address_cubit/get_addresses_cubit.dart';
 import '../../features/delivery/presentation/manager/get_delivery_options_cubit/get_delivery_options_cubit.dart';
 import '../../features/delivery/presentation/manager/update_address_cubit/update_address_cubit.dart';
@@ -96,6 +97,9 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<GetDeliveryOptionsCubit>(
         () => GetDeliveryOptionsCubit(getIt<DeliveryRepoImpl>()),
+  );
+  getIt.registerFactory<DeleteAddressCubit>(
+        () => DeleteAddressCubit(getIt<DeliveryRepoImpl>()),
   );
 
 }

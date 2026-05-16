@@ -4,65 +4,51 @@ import 'address_option_container.dart';
 import 'manual_address_section.dart';
 
 class DeliveryAddressManualSection extends StatelessWidget {
-
   const DeliveryAddressManualSection({
-
     super.key,
-
     required this.showManualAddress,
-
     required this.cityController,
     required this.streetController,
     required this.buildingController,
     required this.apartmentController,
-
-    required this.onConfirm, required this.isLoading,
-
+    required this.onConfirm,
+    required this.isLoading,
+    // required this.isDefault, // ✅
+    // required this.onDefaultChanged, // ✅
   });
 
   final bool showManualAddress;
   final bool isLoading;
+  // final bool isDefault;
+ // final ValueChanged<bool> onDefaultChanged;
   final TextEditingController cityController;
   final TextEditingController streetController;
   final TextEditingController buildingController;
   final TextEditingController apartmentController;
-
   final VoidCallback onConfirm;
 
   @override
   Widget build(BuildContext context) {
-
-    if (!showManualAddress) {
-      return const SizedBox();
-    }
+    if (!showManualAddress) return const SizedBox();
 
     return Column(
       children: [
-
         const SizedBox(height: 16),
-
         ManualAddressSection(
-
           cityController: cityController,
           streetController: streetController,
           buildingController: buildingController,
           apartmentController: apartmentController,
-
+          // isDefault: isDefault,
+          // onDefaultChanged: onDefaultChanged,
           onConfirm: onConfirm,
-
         ),
-
         const SizedBox(height: 16),
-
         AddressOptionContainer(
-
           text: 'Use My Location',
           icon: AppImages.locationIcon,
-
           onTap: () {},
-
         ),
-
       ],
     );
   }

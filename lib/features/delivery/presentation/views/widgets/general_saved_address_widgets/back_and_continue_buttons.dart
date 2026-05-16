@@ -11,6 +11,7 @@ class BackAndContinueButtons extends StatelessWidget {
     required this.onContinue,
     this.continueButtonColor,
     this.title,  this.isSavedLoading = false,
+    this.title2 = 'Back',
   });
 
   final bool isEnabled;
@@ -18,6 +19,7 @@ class BackAndContinueButtons extends StatelessWidget {
   final Color? continueButtonColor;
   final String? title;
   final bool isSavedLoading;
+  final String title2 ;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class BackAndContinueButtons extends StatelessWidget {
                         border: Border.all(
                           color: AppColors.palletBorderColor,),
                         buttonColor: const Color(0xFFF3EEFB,),
-                        text: 'Back',
+                        text: title2,
                         textButtonColor: AppColors.primaryColor,
                         onTap: (){
                           Navigator.pop(context);

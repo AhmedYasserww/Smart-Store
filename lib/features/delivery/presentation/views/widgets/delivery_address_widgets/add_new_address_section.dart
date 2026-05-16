@@ -4,6 +4,7 @@ import 'package:smart_store/features/delivery/presentation/manager/add_address_c
 import 'package:smart_store/features/delivery/presentation/views/widgets/delivery_address_widgets/delivery_address_form_section.dart';
 import 'package:smart_store/features/delivery/presentation/views/widgets/delivery_address_widgets/delivery_address_manual_section.dart';
 
+// AddNewAddressSection — ضيف isDefault و onDefaultChanged
 class AddNewAddressSection extends StatelessWidget {
   const AddNewAddressSection({
     super.key,
@@ -16,6 +17,8 @@ class AddNewAddressSection extends StatelessWidget {
     required this.streetController,
     required this.buildingController,
     required this.apartmentController,
+    // required this.isDefault,         // ✅
+    // required this.onDefaultChanged,  // ✅
     required this.onToggle,
     required this.onManualTap,
     required this.onConfirm,
@@ -30,6 +33,8 @@ class AddNewAddressSection extends StatelessWidget {
   final TextEditingController streetController;
   final TextEditingController buildingController;
   final TextEditingController apartmentController;
+  // final bool isDefault;
+  // final ValueChanged<bool> onDefaultChanged;
   final VoidCallback onToggle;
   final VoidCallback onManualTap;
   final VoidCallback onConfirm;
@@ -56,6 +61,8 @@ class AddNewAddressSection extends StatelessWidget {
               buildingController: buildingController,
               apartmentController: apartmentController,
               isLoading: state is AddAddressLoading,
+              // isDefault: isDefault,
+              // onDefaultChanged: onDefaultChanged,
               onConfirm: onConfirm,
             );
           },

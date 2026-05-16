@@ -97,9 +97,14 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
         builder: (context) => const DeliveryAddressView(),
       );
     case EditDeliveryAddressView.routeName:
-      final address = settings.arguments as DeliveryAddressEntity;
+      final args = settings.arguments as Map<String, dynamic>;
+      final address = args['address'] as DeliveryAddressEntity;
+      final fromProfile = args['fromProfile'] as bool? ?? false;
       return MaterialPageRoute(
-        builder: (context) => EditDeliveryAddressView(address: address),
+        builder: (_) => EditDeliveryAddressView(
+          address: address,
+          fromProfile: fromProfile,
+        ),
       );
     case DeliveryOptionView.routeName:
       final address = settings.arguments as DeliveryAddressEntity;

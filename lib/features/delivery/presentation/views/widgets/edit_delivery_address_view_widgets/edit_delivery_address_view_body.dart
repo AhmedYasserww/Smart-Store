@@ -14,9 +14,10 @@ import '../../../manager/update_address_cubit/update_address_cubit.dart';
 import '../delivery_address_widgets/manual_address_section.dart';
 
 class EditDeliveryAddressViewBody extends StatefulWidget {
-  const EditDeliveryAddressViewBody({super.key, required this.address});
+  const EditDeliveryAddressViewBody({super.key, required this.address, required this.fromProfile});
 
   final DeliveryAddressEntity address;
+  final bool fromProfile;
 
   @override
   State<EditDeliveryAddressViewBody> createState() => _EditDeliveryAddressViewBodyState();
@@ -111,12 +112,13 @@ class _EditDeliveryAddressViewBodyState
             key: _formKey,
             child: Column(
               children: [
-                const CustomDeliveryAppBar(
-                  title: 'Edit Address',
-                  nextStepValue: 'Update Your Details',
-                  textValue: '1/4',
-                  value: .25,
-                ),
+                if (!widget.fromProfile)
+                  const CustomDeliveryAppBar(
+                    title: 'Edit Address',
+                    nextStepValue: 'Update Your Details',
+                    textValue: '1/4',
+                    value: .25,
+                  ),
 
                 Expanded(
                   child: SingleChildScrollView(
@@ -196,6 +198,7 @@ class _EditDeliveryAddressViewBodyState
                   isEnabled: state is! UpdateAddressLoading,
                   title:  'Save Changes',
                   onContinue: _onSave,
+                  title2: "Cancel",
                 ),
               ],
             ),

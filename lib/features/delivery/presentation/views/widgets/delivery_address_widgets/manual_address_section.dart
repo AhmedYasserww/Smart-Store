@@ -80,3 +80,27 @@ class ManualAddressSection extends StatelessWidget {
     );
   }
 }
+/*
+ if (onDefaultChanged != null) ...[
+            GestureDetector(
+              onTap: () => onDefaultChanged!(!isDefault),
+              child: Row(
+                children: [
+                  Checkbox(
+                    value: isDefault,
+                    activeColor: AppColors.primaryColor,
+                    onChanged: (val) => onDefaultChanged!(val ?? false),
+                  ),
+                  const SizedBox(width: 4),
+                  Expanded(
+                    child: Text(
+                      'Make this my default address',
+                      style: AppStyle.styleGreyRegular14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+          ],
+ */

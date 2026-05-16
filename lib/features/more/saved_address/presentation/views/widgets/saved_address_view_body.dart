@@ -1,122 +1,87 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/core/utils/app_color.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/utils/app_style.dart';
+import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
+import 'package:smart_store/features/delivery/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
+import 'package:smart_store/features/delivery/presentation/manager/get_address_cubit/get_addresses_cubit.dart';
+import 'saved_address_list_view.dart';
 
-import '../../../../../../core/utils/app_dimensions.dart';
 class SavedAddressViewBody extends StatelessWidget {
   const SavedAddressViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: AppDimensions.homeScreenPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 32,
+    return BlocListener<DeleteAddressCubit, DeleteAddressState>(
+      listener: (context, state) {
+        if (state is DeleteAddressSuccess) {
+          context.read<GetAddressesCubit>().getAddresses();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Text('Address deleted successfully'),
+              backgroundColor: Colors.green,
+              behavior: SnackBarBehavior.floating,
+              margin: const EdgeInsets.only(bottom: 24, left: 16, right: 16),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             ),
-            Text("Saved Address",style: AppStyle.styleBold16,),
-            SizedBox(
-              height: 24,
+          );
+        }
+        if (state is DeleteAddressFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errorMessage),
+              backgroundColor: Colors.red,
+              behavior: SnackBarBehavior.floating,
+              margin: const EdgeInsets.only(
+                bottom: 24,
+                left: 16,
+                right: 16,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
             ),
-            SavedAddressListView()
-          ],
-        ),
+          );
+        }
+      },
+      child: BlocBuilder<GetAddressesCubit, GetAddressesState>(
+        builder: (context, state) {
+          if (state is GetAddressesLoading) {
+            return const CustomLoadingIndicator();
+          }
+
+          if (state is GetAddressesFailure) {
+            return Center(child: Text(state.errorMessage));
+          }
+
+          if (state is GetAddressesSuccess) {
+            if (state.addresses.isEmpty) {
+              return const Center(child: Text('No saved addresses yet'));
+            }
+
+            return SafeArea(
+              top: false,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppDimensions.homeScreenPadding,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 32),
+                    Text('Saved Address', style: AppStyle.styleBold16),
+                    const SizedBox(height: 24),
+                    SavedAddressListView(addresses: state.addresses),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
+            );
+          }
+
+          return const SizedBox();
+        },
       ),
     );
   }
 }
-class CustomSavedAddressItem extends StatelessWidget {
-  const CustomSavedAddressItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return  Container(
-      padding: const EdgeInsets.all(24),
-      decoration: ShapeDecoration(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        shadows: [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 2,
-            offset: Offset(0, 0),
-            spreadRadius: 0,
-          )
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 16,
-        children: [
-          Text(
-            'Danial Joe',
-            style: AppStyle.styleBold16,
-          ),
-          Text(
-            '01012312312',
-            style: AppStyle.styleGreyRegular12,
-          ),
-          Text(
-            '12 Nile Road, Cairo',
-            style: AppStyle.styleGreyMedium12,
-          ),
-        Divider(
-          thickness: 1,
-          color: AppColors.palletBorderColor,
-          height: 0,
-        ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 128,
-            children: [
-              GestureDetector(
-                onTap: (){},
-                child: Text(
-                  'Edit',
-                  style: AppStyle.styleSemiBold14,
-
-                ),
-              ),
-              GestureDetector(
-                onTap: (){
-
-                },
-                child: Text(
-                  'Delete',
-                  style: AppStyle.styleSemiBold14,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-
-  }
-}
-class SavedAddressListView extends StatelessWidget {
-  const SavedAddressListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return  ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: 20,
-        itemBuilder: (context,i){
-      return Padding(
-        padding: const EdgeInsets.only(
-          bottom: 24
-        ),
-        child: CustomSavedAddressItem(),
-      );
-    });
-  }
-}
-
