@@ -341,6 +341,7 @@ class Assets {
   static const String viewsOrderDetailsView = 'lib/features/orders/presentation/views/order_details_view.dart';
   static const String viewsOrderStatusView = 'lib/features/orders/presentation/views/order_status_view.dart';
   static const String viewsOrdersView = 'lib/features/orders/presentation/views/orders_view.dart';
+  static const String viewsPaymentBottomSheet = 'lib/features/payment/presentation/views/payment_bottom_sheet.dart';
   static const String viewsPaymentMethodView = 'lib/features/delivery/presentation/views/payment_method_view.dart';
   static const String viewsProductDetailsView = 'lib/features/products/presentation/views/product_details_view.dart';
   static const String viewsProductView = 'lib/features/products/presentation/views/product_view.dart';
@@ -369,8 +370,10 @@ class Assets {
   static const String widgetsBackAndContinueButtons = 'lib/features/delivery/presentation/views/widgets/back_and_continue_buttons.dart~';
   static const String widgetsButtonWidget = 'lib/features/more/profile/presentation/views/widgets/button_widget.dart~';
   static const String widgetsCartCheckoutSection = 'lib/core/widgets/cart_checkout_section.dart~';
+  static const String widgetsCartHolderNameField = 'lib/features/payment/presentation/views/widgets/cart_holder_name_field.dart';
   static const String widgetsCartItem = 'lib/features/cart/presentation/views/widgets/cart_item.dart';
   static const String widgetsCartItemListView = 'lib/features/cart/presentation/views/widgets/cart_item_list_view.dart';
+  static const String widgetsCartNumberField = 'lib/features/payment/presentation/views/widgets/cart_number_field.dart';
   static const String widgetsCartViewBody = 'lib/features/cart/presentation/views/widgets/cart_view_body.dart';
   static const String widgetsCategoriesListView = 'lib/features/home/presentation/views/widgets/categories_list_view.dart';
   static const String widgetsCategoryListItem = 'lib/features/home/presentation/views/widgets/category_list_item.dart';
@@ -404,10 +407,12 @@ class Assets {
   static const String widgetsCustomSearchField = 'lib/features/home/presentation/views/widgets/custom_search_field.dart';
   static const String widgetsCustomShimmer = 'lib/features/home/presentation/views/widgets/custom_shimmer.dart';
   static const String widgetsCustomTextField = 'lib/core/widgets/custom_text_field.dart';
+  static const String widgetsCvvField = 'lib/features/payment/presentation/views/widgets/cvv_field.dart';
   static const String widgetsDeliveryAddressViewBody = 'lib/features/delivery/presentation/views/widgets/delivery_address_view_body.dart';
   static const String widgetsDeliveryAddressWidget = 'lib/features/more/profile/presentation/views/widgets/delivery_address_widget.dart~';
   static const String widgetsDeliveryOptionViewBody = 'lib/features/delivery/presentation/views/widgets/delivery_option_view_body.dart';
   static const String widgetsEditProfileViewBody = 'lib/features/more/profile/presentation/views/widgets/edit_profile_view_body.dart';
+  static const String widgetsExpireDateField = 'lib/features/payment/presentation/views/widgets/expiry_date_field.dart';
   static const String widgetsFindSizeViewBody = 'lib/features/products/presentation/views/widgets/find_size_view_body.dart';
   static const String widgetsForgetPasswordViewBody = 'lib/features/auth/presentation/views/widgets/forget_password_view_body.dart';
   static const String widgetsHomeView = 'lib/features/home/presentation/views/widgets/home_view.dart~';

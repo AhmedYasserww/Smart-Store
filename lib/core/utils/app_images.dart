@@ -86,5 +86,7 @@ class AppImages {
   static const String emptyReturnImage = "assets/images/empty_return.svg";
   static const String emptyFavoriteImage = "assets/images/empty_favorite.svg";
 
+  static const String creditCardIcon = "assets/images/credit.svg";
+
 
 }

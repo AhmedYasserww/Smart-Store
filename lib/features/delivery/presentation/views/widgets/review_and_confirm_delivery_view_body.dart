@@ -8,6 +8,7 @@ import 'package:smart_store/features/delivery/presentation/views/widgets/review_
 import 'package:smart_store/features/delivery/presentation/views/widgets/review_and_confirm_delivery_widgets/ready_to_confirm_payment_widget.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../orders/presentation/manager/create_order_cubit/create_order_cubit.dart';
+import '../../../../payment/presentation/views/payment_bottom_sheet.dart';
 import '../../../data/models/order_summary_argument.dart';
 import 'general_saved_address_widgets/back_and_continue_buttons.dart';
 class ReviewAndConfirmDeliveryViewBody extends StatelessWidget {
@@ -70,11 +71,27 @@ class ReviewAndConfirmDeliveryViewBody extends StatelessWidget {
                 title:  'Confirm Payment',
                 isEnabled: !isLoading,
                 onContinue: () {
-                  context.read<CreateOrderCubit>().createOrder(
-                    deliveryAddressId: args.address.id,
-                    deliveryOptionId: args.deliveryOption.id,
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (_) => PaymentBottomSheet(
+                      totalAmount: '\$${args.deliveryOption.shoppingFee}', // أو الـ total بتاعك
+                      onPayNow: () {
+                        context.read<CreateOrderCubit>().createOrder(
+                          deliveryAddressId: args.address.id,
+                          deliveryOptionId: args.deliveryOption.id,
+                        );
+                      },
+                    ),
                   );
                 },
+                // onContinue: () {
+                //   context.read<CreateOrderCubit>().createOrder(
+                //     deliveryAddressId: args.address.id,
+                //     deliveryOptionId: args.deliveryOption.id,
+                //   );
+                // },
               );
             },
           ),
@@ -85,6 +102,35 @@ class ReviewAndConfirmDeliveryViewBody extends StatelessWidget {
 }
 
 
-// import 'package:flutter/material.dart';
-// import 'package:smart_store/core/utils/app_style.dart';
+
+
+
+
+
+
+
+
+
+
+/*BlocBuilder<CreateOrderCubit, CreateOrderState>(
+builder: (context, state) {
+final isLoading = state is CreateOrderLoading;
+return BackAndContinueButtons(
+isSavedLoading:state is CreateOrderLoading ,
+continueButtonColor: AppColors.primaryTextColor,
+title:  'Confirm Payment',
+isEnabled: !isLoading,
+onContinue: () {
+context.read<CreateOrderCubit>().createOrder(
+deliveryAddressId: args.address.id,
+deliveryOptionId: args.deliveryOption.id,
+);
+},
+);
+},
+),
+],
+),
+
+*/
 

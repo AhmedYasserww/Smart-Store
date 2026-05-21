@@ -105,4 +105,49 @@ class ValidatorHelper {
     }
     return null;
   }
+  /// Validate Card Holder Name
+  static String? validateCardHolderName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Card holder name is required';
+    }
+    if (value.trim().length < 3) {
+      return 'Enter a valid name';
+    }
+    if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value.trim())) {
+      return 'Name must contain letters only';
+    }
+    return null;
+  }
+
+  /// Validate Card Number
+  static String? validateCardNumber(String? value) {
+    final digits = value?.replaceAll(' ', '') ?? '';
+    if (digits.isEmpty) return 'Card number is required';
+    if (digits.length != 16) return 'Enter a valid 16-digit card number';
+    if (!RegExp(r'^[0-9]+$').hasMatch(digits)) return 'Invalid card number';
+    return null;
+  }
+
+  /// Validate Expiry Date
+  static String? validateExpiryDate(String? value) {
+    if (value == null || value.isEmpty) return 'Expiry date is required';
+    if (!RegExp(r'^(0[1-9]|1[0-2])\/([0-9]{2})$').hasMatch(value)) {
+      return 'Enter valid date (MM/YY)';
+    }
+    final parts = value.split('/');
+    final month = int.parse(parts[0]);
+    final year = int.parse('20${parts[1]}');
+    final now = DateTime.now();
+    if (year < now.year || (year == now.year && month < now.month)) {
+      return 'Card is expired';
+    }
+    return null;
+  }
+
+  /// Validate CVV
+  static String? validateCvv(String? value) {
+    if (value == null || value.isEmpty) return 'CVV is required';
+    if (!RegExp(r'^[0-9]{3}$').hasMatch(value)) return 'CVV must be 3 digits';
+    return null;
+  }
 }
