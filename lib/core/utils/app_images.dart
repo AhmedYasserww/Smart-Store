@@ -87,6 +87,6 @@ class AppImages {
   static const String emptyFavoriteImage = "assets/images/empty_favorite.svg";
 
   static const String creditCardIcon = "assets/images/credit.svg";
-
+static const String unselectedStatusOrder = "assets/images/unselect_order_status.svg";
 
 }

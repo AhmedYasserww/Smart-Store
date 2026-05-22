@@ -22,8 +22,10 @@ import 'features/onboarding/presentation/views/onboarding_view.dart';
 import 'features/wishlist/data/repos/wishlist_repo_imp.dart';
 import 'features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey = 'pk_test_51S7Nn9C0d04QyKOsnNcP2OGobEYBC089K4wgAdwQsj6YLJNf6nvwetXLFhi5xXTkwZwScanNRp5eLuvrUcbtOu7000lp6Vkubg';
+  await Stripe.instance.applySettings();
   setupServiceLocator();
   // final userData = await UserPreferences.getUserData();
   // print(userData['id']);
