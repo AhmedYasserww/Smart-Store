@@ -9,6 +9,8 @@ class Assets {
   static const String addToWishlistCubitAddToWishlistCubit = 'lib/features/wishlist/presentation/manager/add_to_wishlist_cubit/add_to_wishlist_cubit.dart';
   static const String addToWishlistCubitAddToWishlistState = 'lib/features/wishlist/presentation/manager/add_to_wishlist_cubit/add_to_wishlist_state.dart';
   static const String assetsImagesMicrophone = 'assets/images/Microphone.svg';
+  static const String cancelOrderCubitCancelOrderCubit = 'lib/features/orders/presentation/manager/cancel_order_cubit/cancel_order_cubit.dart';
+  static const String cancelOrderCubitCancelOrderState = 'lib/features/orders/presentation/manager/cancel_order_cubit/cancel_order_state.dart';
   static const String changePasswordCubitChangePasswordCubit = 'lib/features/more/profile/presentation/manager/change_password_cubit/change_password_cubit.dart';
   static const String changePasswordCubitChangePasswordState = 'lib/features/more/profile/presentation/manager/change_password_cubit/change_password_state.dart';
   static const String confirmOrderWidgetsConfirmOrderRoute = 'lib/features/delivery/presentation/views/widgets/confirm_order_widgets/confirm_order_route.dart';
@@ -24,7 +26,6 @@ class Assets {
   static const String coreHelperFunctionsCalculateSize = 'lib/core/helper_functions/calculate_size.dart~';
   static const String coreHelperFunctionsOnGenerateRoutes = 'lib/core/helper_functions/on_generate_routes.dart~';
   static const String coreServiceLocatorServiceLocator = 'lib/core/service_locator/service_locator.dart~';
-  static const String coreServicesEndPoints = 'lib/core/services/end_points.dart~';
   static const String coreUtilsAppColor = 'lib/core/utils/app_color.dart~';
   static const String coreWidgetsCustomAppBar = 'lib/core/widgets/custom_app_bar.dart~';
   static const String coreWidgetsCustomEmptyScreen = 'lib/core/widgets/custom_empty_screen.dart~';
@@ -42,8 +43,6 @@ class Assets {
   static const String dataAddressModel = 'lib/features/delivery/data/address_model.dart';
   static const String dataEntitiesGetCartEntity = 'lib/features/cart/data/entities/get_cart_entity.dart~';
   static const String dataOnBoardingModel = 'lib/features/onboarding/data/on_boarding_model.dart';
-  static const String dataReposOrderRepo = 'lib/features/orders/data/repos/order_repo.dart~';
-  static const String dataReposOrderRepoImp = 'lib/features/orders/data/repos/order_repo_imp.dart~';
   static const String dataReposPaymentRepo = 'lib/features/payment/data/repos/payment_repo.dart~';
   static const String dataReposPaymentRepoImp = 'lib/features/payment/data/repos/payment_repo_imp.dart~';
   static const String deleteAddressCubitDeleteAddressCubit = 'lib/features/delivery/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
@@ -105,6 +104,8 @@ class Assets {
   static const String getCartCubitGetCartState = 'lib/features/cart/presentation/manager/get_cart_cubit/get_cart_state.dart';
   static const String getDeliveryOptionsCubitGetDeliveryOptionsCubit = 'lib/features/delivery/presentation/manager/get_delivery_options_cubit/get_delivery_options_cubit.dart';
   static const String getDeliveryOptionsCubitGetDeliveryOptionsState = 'lib/features/delivery/presentation/manager/get_delivery_options_cubit/get_delivery_options_state.dart';
+  static const String getOrderCubitGetOrdersCubit = 'lib/features/orders/presentation/manager/get_order_cubit/get_orders_cubit.dart';
+  static const String getOrderCubitGetOrdersState = 'lib/features/orders/presentation/manager/get_order_cubit/get_orders_state.dart';
   static const String getOrderDetailsCubitGetOrderDetailsCubit = 'lib/features/orders/presentation/manager/get_order_details_cubit/get_order_details_cubit.dart';
   static const String getOrderDetailsCubitGetOrderDetailsState = 'lib/features/orders/presentation/manager/get_order_details_cubit/get_order_details_state.dart';
   static const String getProfileCubitGetProfileCubit = 'lib/features/more/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
