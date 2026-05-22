@@ -159,4 +159,34 @@ class CartRepoImpl implements CartRepo {
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }
+
+
+  @override
+  Future<Either<Failure, String>> clearCart() async {
+    try {
+      final response = await apiService.delete(
+        endPoint: EndPoints.clearCart,
+      );
+
+      log("🗑️ ClearCart Response: $response");
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          return right(message ?? "Cart cleared successfully");
+        } else {
+          return left(ServerFailure(errorMessage: message ?? "Failed to clear cart"));
+        }
+      }
+      return left(ServerFailure(errorMessage: "Unexpected response format"));
+    } on DioException catch (e) {
+      log('❌ DioException (ClearCart): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (ClearCart): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
 }

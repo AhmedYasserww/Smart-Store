@@ -13,4 +13,6 @@ abstract class CartRepo {
     required String cartItemId,
     required int quantity,
   });
+  Future<Either<Failure, String>> clearCart();
+
 }
