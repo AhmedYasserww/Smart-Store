@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failure.dart';
 import '../entities/create_order_entity.dart';
 import '../entities/order_details_entity.dart';
+import '../entities/order_entity.dart';
 
 abstract class OrderRepo {
   Future<Either<Failure, CreateOrderEntity>> createOrder({
@@ -14,4 +15,6 @@ abstract class OrderRepo {
   Future<Either<Failure, OrderDetailsEntity>> getOrderDetails({
     required String orderId,
   });
+  Future<Either<Failure, OrdersResponseEntity>> getOrders();
+  Future<Either<Failure, String>> cancelOrder({required String orderId});
 }

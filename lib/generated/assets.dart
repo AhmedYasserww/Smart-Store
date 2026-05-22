@@ -232,6 +232,7 @@ class Assets {
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
   static const String modelsOrderDetailsModel = 'lib/features/orders/data/models/order_details_model.dart';
+  static const String modelsOrderModel = 'lib/features/orders/data/models/order_model.dart';
   static const String modelsOrderSummaryArgument = 'lib/features/delivery/data/models/order_summary_argument.dart';
   static const String modelsProductModel = 'lib/features/products/data/models/product_model.dart';
   static const String modelsProductQueryParamsModel = 'lib/features/products/data/models/product_query_params_model.dart';

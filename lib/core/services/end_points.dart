@@ -31,4 +31,6 @@ class EndPoints {
   static const String createPaymentIntent = 'Payment/create-payment-intent';
   static const String clearCart = 'Cart/client/clear/cart';
   static const String orderDetails = 'Order/details';
+  static const String getOrders = 'Order/client/orders';
+  static const String cancelOrder = 'Order/cancel';
 }
