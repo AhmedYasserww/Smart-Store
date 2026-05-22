@@ -56,6 +56,7 @@ class CustomOrderStatusItem extends StatelessWidget {
         ),
         SizedBox(width: 32,),
         SvgPicture.asset(AppImages.correctSolidIcon)
+
       ],
     );
   }

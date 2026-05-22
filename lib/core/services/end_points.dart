@@ -28,4 +28,7 @@ class EndPoints {
   static const String getDeliveryOptions = 'DelivryOptions/all/delevery-options';
   static String deleteAddress(String addressId) =>
       'DeliveryAddress/client/delete/address/$addressId';
+  static const String createPaymentIntent = 'Payment/create-payment-intent';
+  static const String clearCart = 'Cart/client/clear/cart';
+  static const String orderDetails = 'Order/details';
 }

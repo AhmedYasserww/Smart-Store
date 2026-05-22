@@ -127,7 +127,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
         builder: (_) => ReviewAndConfirmDeliveryView(args: args),
       );
     case ConfirmOrderView.routeName:
-      return ConfirmOrderRoute.route();
+      final orderId = settings.arguments as String;
+      return ConfirmOrderRoute.route(orderId: orderId);
     // case ConfirmOrderView.routeName:
     //   return MaterialPageRoute(builder: (context) => const ConfirmOrderView());
     case ProfileView.routeName:

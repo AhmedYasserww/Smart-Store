@@ -7,16 +7,16 @@ import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
 import '../../../../core/services/end_points.dart';
 import '../entities/create_order_entity.dart';
+import '../entities/order_details_entity.dart';
 import '../models/create_order_model.dart';
+import '../models/order_details_model.dart';
 import 'order_repo.dart';
 
 class OrderRepoImpl implements OrderRepo {
   final ApiService apiService;
 
   OrderRepoImpl({required this.apiService});
-
-  @override
-// OrderRepoImpl
+  
   @override
   Future<Either<Failure, CreateOrderEntity>> createOrder({
     required String deliveryAddressId,
@@ -49,6 +49,39 @@ class OrderRepoImpl implements OrderRepo {
       return left(ServerFailure.fromDioError(e));
     } catch (e) {
       log('❌ Unexpected Error (CreateOrder): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, OrderDetailsEntity>> getOrderDetails({
+    required String orderId,
+  }) async {
+    try {
+      final response = await apiService.get(
+        endPoint: '${EndPoints.orderDetails}/$orderId',
+      );
+
+      log("📦 OrderDetails Response: $response");
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 &&
+            response['succeeded'] == true &&
+            response['data'] != null) {
+          return right(OrderDetailsModel.fromJson(response['data']));
+        } else {
+          return left(ServerFailure(errorMessage: message ?? "Failed to get order details"));
+        }
+      }
+      return left(ServerFailure(errorMessage: "Unexpected response format"));
+    } on DioException catch (e) {
+      log('❌ DioException (OrderDetails): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (OrderDetails): $e');
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }

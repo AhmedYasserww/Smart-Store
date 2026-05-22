@@ -1,4 +1,6 @@
 // get_cart_cubit.dart
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import '../../../data/entities/get_cart_entity.dart';
@@ -63,7 +65,25 @@ class GetCartCubit extends Cubit<GetCartState> {
 
     emit(GetCartSuccess(cart: updatedCart));
   }
-  void clearCart() {
-    emit(GetCartInitial());
+
+  Future<void> clearCart() async {
+    final result = await cartRepo.clearCart();
+    result.fold(
+          (failure) => log('❌ ClearCart Failed: ${failure.errorMessage}'),
+          (message) {
+        log('✅ $message');
+        emit(GetCartSuccess(
+          cart: CartModel(
+            cartId: '',
+            totalItems: 0,
+            totalPrice: 0,
+            items: [],
+            createdAt: '',
+            updatedAt: '',
+          ),
+        ));
+      },
+    );
   }
+
 }
