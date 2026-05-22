@@ -45,13 +45,15 @@ class OrdersViewBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: AppDimensions.homeScreenPadding,
             ),
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(vertical: 32),
-              itemCount: orders.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 16),
-              itemBuilder: (_, index) {
-                return CustomOrderItem(order: orders[index]);
-              },
+            child: SafeArea(
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 32),
+                itemCount: orders.length,
+                separatorBuilder: (_, __) => const SizedBox(height: 16),
+                itemBuilder: (_, index) {
+                  return CustomOrderItem(order: orders[index]);
+                },
+              ),
             ),
           );
         }

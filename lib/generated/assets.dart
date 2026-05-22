@@ -24,8 +24,6 @@ class Assets {
   static const String constantsVerifyOtpEnum = 'lib/core/constants/verify_otp_enum.dart';
   static const String coreErrorsFailure = 'lib/core/errors/failure.dart~';
   static const String coreHelperFunctionsCalculateSize = 'lib/core/helper_functions/calculate_size.dart~';
-  static const String coreHelperFunctionsOnGenerateRoutes = 'lib/core/helper_functions/on_generate_routes.dart~';
-  static const String coreServiceLocatorServiceLocator = 'lib/core/service_locator/service_locator.dart~';
   static const String coreUtilsAppColor = 'lib/core/utils/app_color.dart~';
   static const String coreWidgetsCustomAppBar = 'lib/core/widgets/custom_app_bar.dart~';
   static const String coreWidgetsCustomEmptyScreen = 'lib/core/widgets/custom_empty_screen.dart~';
@@ -450,6 +448,7 @@ class Assets {
   static const String widgetsOrderDetailsCard = 'lib/features/orders/presentation/views/widgets/order_details_card.dart';
   static const String widgetsOrderDetailsItem = 'lib/features/orders/presentation/views/widgets/order_details_item.dart';
   static const String widgetsOrderDetailsViewBody = 'lib/features/orders/presentation/views/widgets/order_details_view_body.dart';
+  static const String widgetsOrderItemWidget = 'lib/features/orders/presentation/views/widgets/order_item_widget.dart';
   static const String widgetsOrderStatusTile = 'lib/features/more/profile/presentation/views/widgets/order_status_tile.dart~';
   static const String widgetsOrderStatusViewBody = 'lib/features/orders/presentation/views/widgets/order_status_view_body.dart';
   static const String widgetsOrderSummaryItem = 'lib/features/delivery/presentation/views/widgets/order_summary_item.dart~';

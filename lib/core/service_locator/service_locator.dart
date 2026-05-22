@@ -17,7 +17,9 @@ import '../../features/more/profile/data/repos/profile_repo_imp.dart';
 import '../../features/more/profile/presentation/manager/change_password_cubit/change_password_cubit.dart';
 import '../../features/more/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
 import '../../features/orders/data/repos/order_repo_imp.dart';
+import '../../features/orders/presentation/manager/cancel_order_cubit/cancel_order_cubit.dart';
 import '../../features/orders/presentation/manager/create_order_cubit/create_order_cubit.dart';
+import '../../features/orders/presentation/manager/get_order_cubit/get_orders_cubit.dart';
 import '../../features/orders/presentation/manager/get_order_details_cubit/get_order_details_cubit.dart';
 import '../../features/payment/data/repos/payment_repo_imp.dart';
 import '../../features/payment/presentation/manager/payment_cubit/payment_cubit.dart';
@@ -114,6 +116,12 @@ void setupServiceLocator() {
 
   getIt.registerFactory<GetOrderDetailsCubit>(
         () => GetOrderDetailsCubit(getIt.get<OrderRepoImpl>()),
+  );
+  getIt.registerFactory<GetOrdersCubit>(
+        () => GetOrdersCubit(getIt.get<OrderRepoImpl>()),
+  );
+  getIt.registerFactory<CancelOrderCubit>(
+        () => CancelOrderCubit(getIt.get<OrderRepoImpl>()),
   );
 
 }

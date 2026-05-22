@@ -142,9 +142,15 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case OrdersView.routeName:
       return MaterialPageRoute(builder: (context) => const OrdersView());
     case OrderDetailsView.routeName:
-      return MaterialPageRoute(builder: (context) => const OrderDetailsView());
+      final orderId = settings.arguments as String;
+      return MaterialPageRoute(
+        builder: (_) => OrderDetailsView(orderId: orderId),
+      );
     case OrderStatusView.routeName:
-      return MaterialPageRoute(builder: (context) => const OrderStatusView());
+      final status = settings.arguments as String;
+      return MaterialPageRoute(
+        builder: (_) => OrderStatusView(status: status),
+      );
     case WishlistView.routeName:
       return MaterialPageRoute(builder: (context) => const WishlistView());
       case SavedAddressView.routeName:
