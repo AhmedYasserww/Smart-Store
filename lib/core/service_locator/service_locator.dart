@@ -23,6 +23,7 @@ import '../../features/orders/presentation/manager/get_order_cubit/get_orders_cu
 import '../../features/orders/presentation/manager/get_order_details_cubit/get_order_details_cubit.dart';
 import '../../features/payment/data/repos/payment_repo_imp.dart';
 import '../../features/payment/presentation/manager/payment_cubit/payment_cubit.dart';
+import '../../features/products/presentation/manager/get_recommendations_cubit/get_recommendations_cubit.dart';
 import '../../features/search/data/repos/search_repo.dart';
 import '../../features/search/data/repos/search_repo_imp.dart';
 import '../../features/search/presentation/manager/search_for_product_cubit/search_for_product_cubit.dart';
@@ -130,6 +131,9 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<VtoCubit>(
         () => VtoCubit(getIt.get<VtoRepoImpl>()),
+  );
+  getIt.registerFactory<GetRecommendationsCubit>(
+        () => GetRecommendationsCubit(getIt<ProductsRepoImpl>()),
   );
 
 }

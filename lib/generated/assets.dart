@@ -110,6 +110,8 @@ class Assets {
   static const String getOrderDetailsCubitGetOrderDetailsState = 'lib/features/orders/presentation/manager/get_order_details_cubit/get_order_details_state.dart';
   static const String getProfileCubitGetProfileCubit = 'lib/features/more/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
   static const String getProfileCubitGetProfileState = 'lib/features/more/profile/presentation/manager/get_profile_cubit/get_profile_state.dart';
+  static const String getRecommendationsCubitGetRecommendationsCubit = 'lib/features/products/presentation/manager/get_recommendations_cubit/get_recommendations_cubit.dart';
+  static const String getRecommendationsCubitGetRecommendationsState = 'lib/features/products/presentation/manager/get_recommendations_cubit/get_recommendations_state.dart';
   static const String getWishlistCubitGetWishlistCubit = 'lib/features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
   static const String getWishlistCubitGetWishlistState = 'lib/features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_state.dart';
   static const String helperFunctionsBuildErrorBar = 'lib/core/helper_functions/build_error_bar.dart';
@@ -244,6 +246,7 @@ class Assets {
   static const String modelsOrderSummaryArgument = 'lib/features/delivery/data/models/order_summary_argument.dart';
   static const String modelsProductModel = 'lib/features/products/data/models/product_model.dart';
   static const String modelsProductQueryParamsModel = 'lib/features/products/data/models/product_query_params_model.dart';
+  static const String modelsRecomendationModel = 'lib/features/products/data/models/recomendation_model.dart';
   static const String modelsRegisterModel = 'lib/features/auth/data/models/register_model.dart';
   static const String modelsResendOtpModel = 'lib/features/auth/data/models/resend_otp_model.dart';
   static const String modelsResetPasswordModel = 'lib/features/auth/data/models/reset_password_model.dart';

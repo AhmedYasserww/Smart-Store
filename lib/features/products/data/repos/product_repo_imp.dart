@@ -1,11 +1,16 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:smart_store/features/products/data/repos/product_repo.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/api_service.dart';
 import '../../../../core/services/end_points.dart';
+import '../entities/recommendation_entity.dart';
 import '../models/product_model.dart';
 import '../models/product_query_params_model.dart';
+import '../models/recomendation_model.dart';
 
 class ProductsRepoImpl implements ProductsRepo {
   final ApiService apiService;
@@ -75,6 +80,8 @@ class ProductsRepoImpl implements ProductsRepo {
     }
   }
 
+
+
   @override
   Future<Either<Failure, List<ProductModel>>> getRecentlyViewedProducts({
     String? token,
@@ -118,6 +125,50 @@ class ProductsRepoImpl implements ProductsRepo {
       return Right(products);
     } catch (e) {
       return Left(ServerFailure(errorMessage: 'Unexpected error: $e'));
+    }
+  }
+
+
+  //Recommendation
+  @override
+  Future<Either<Failure, List<RecommendationEntity>>> getRecommendations({
+    required String productId,
+    required String imageId,
+  }) async {
+    try {
+      final response = await apiService.post(
+        endPoint: EndPoints.getRecommendations,
+        data: {
+          'productId': productId,
+          'imageId': imageId,
+        },
+      );
+
+      log('🎯 Recommendations Response: $response');
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          final data = response['data'] as Map<String, dynamic>;
+          final recommendations = (data['recommendations'] as List<dynamic>)
+              .map((e) => RecommendationModel.fromJson(e))
+              .toList();
+          return right(recommendations);
+        } else {
+          return left(ServerFailure(
+            errorMessage: message ?? 'Failed to get recommendations',
+          ));
+        }
+      }
+      return left(ServerFailure(errorMessage: 'Unexpected API response format'));
+    } on DioException catch (e) {
+      log('❌ DioException (Recommendations): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (Recommendations): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
     }
   }
 }

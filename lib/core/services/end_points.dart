@@ -34,4 +34,5 @@ class EndPoints {
   static const String getOrders = 'Order/client/orders';
   static const String cancelOrder = 'Order/cancel';
   static const String tryOn = 'TryOn/fashn';
+  static const String getRecommendations = 'Recommendation/similar';
 }
