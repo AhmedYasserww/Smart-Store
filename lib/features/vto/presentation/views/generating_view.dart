@@ -41,7 +41,10 @@ class _GeneratingViewState extends State<GeneratingView> {
         if (state is VtoSuccess) {
           Navigator.of(context).pushReplacementNamed(
             VtoResultView.routeName,
-            arguments: state.result.resultImageBytes,
+            arguments: {
+              'resultImageBytes': state.result.resultImageBytes,
+              'args': widget.args, // ✅
+            },
           );
         }
         if (state is VtoFailure) {

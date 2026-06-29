@@ -1,10 +1,12 @@
-// features/vto/presentation/views/widgets/vto_result_view_body.dart
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
-import 'package:smart_store/core/utils/app_style.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 import 'dart:typed_data';
+import 'package:gal/gal.dart';
+import 'package:saver_gallery/saver_gallery.dart';
+
 
 class VtoResultViewBody extends StatelessWidget {
   const VtoResultViewBody({super.key, required this.resultImageBytes});
@@ -38,15 +40,46 @@ class VtoResultViewBody extends StatelessWidget {
             ),
           ),
           CustomButton(
-            text: 'Save to Gallery',
-            onTap: () {
-              // هنضيف الـ save logic هنا
-            },
-            buttonColor: AppColors.primaryColor,
-          ),
+          text: 'Save to Gallery',
+    onTap: () => _saveToGallery(context),
+    buttonColor: AppColors.primaryColor,
+    ),
           const SizedBox(height: 8),
         ],
       ),
     );
+  }
+
+
+  Future<void> _saveToGallery(BuildContext context) async {
+    try {
+      final result = await SaverGallery.saveImage(
+        resultImageBytes,
+        quality: 100,
+        fileName: 'vto_${DateTime.now().millisecondsSinceEpoch}',
+        androidRelativePath: 'Pictures/SmartStore',
+        skipIfExists: false,
+      );
+
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              result.isSuccess ? 'Image Saved Successfully !' : 'Failed to save',
+            ),
+            backgroundColor: result.isSuccess ? Colors.green : Colors.red,
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 }

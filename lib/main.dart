@@ -32,11 +32,11 @@ void main() async {
   // final userData = await UserPreferences.getUserData();
   // print(userData['id']);
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => MyApp(), // Wrap your app
-    ),
-   //  MyApp(),
+    // DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) => MyApp(), // Wrap your app
+    // ),
+     MyApp(),
   );
 }
 
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: onGenerateRoutes,
        //initialRoute: ConfirmOrderView.routeName,
        // initialRoute: OnBoardingView.routeName,
-      //  initialRoute: LogInView.routeName,
+        //initialRoute: LogInView.routeName,
        initialRoute: CustomNavigationBar.routeName,
     //     home: Scaffold(
     //       body: CustomLoadingIndicator(),

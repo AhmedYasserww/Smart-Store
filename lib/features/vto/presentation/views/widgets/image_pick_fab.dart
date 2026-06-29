@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'camera_permission_dialog.dart';
 
 class ImagePickFab extends StatefulWidget {
@@ -63,14 +64,30 @@ class _ImagePickFabState extends State<ImagePickFab>
     _toggle();
 
     if (source == ImageSource.camera) {
-      final allowed = await showDialog<bool>(
-        context: context,
-        builder: (_) => CameraPermissionDialog(
-          onAllow: () => Navigator.pop(context, true),
-          onDeny: () => Navigator.pop(context, false),
-        ),
-      );
-      if (allowed != true) return;
+      final status = await Permission.camera.status;
+
+      if (status.isDenied) {
+        // ✅ أول مرة بس — اعرض الـ dialog
+        final allowed = await showDialog<bool>(
+          context: context,
+          builder: (_) => CameraPermissionDialog(
+            onAllow: () => Navigator.pop(context, true),
+            onDeny: () => Navigator.pop(context, false),
+          ),
+        );
+
+        if (allowed != true) return;
+
+        // ✅ اطلب الـ permission الفعلي
+        final result = await Permission.camera.request();
+        if (!result.isGranted) return;
+
+      } else if (status.isPermanentlyDenied) {
+        // ✅ لو رفض تماماً — ودّيه للـ settings
+        await openAppSettings();
+        return;
+      }
+      // لو granted — استمر بدون dialog
     }
 
     final picker = ImagePicker();

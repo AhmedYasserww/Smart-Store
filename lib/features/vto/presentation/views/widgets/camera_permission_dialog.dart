@@ -32,14 +32,14 @@ class _CameraPermissionDialogState extends State<CameraPermissionDialog> {
           children: [
             Text(
               'Allow camera access to scan products',
-              style: AppStyle.styleBold18,
-            ),
-            const SizedBox(height: 12),
-            Text(
-              'You can use your camera to try on clothing, accessories, and beauty items live and see how they look on you in real time.',
-              style: AppStyle.styleGreyRegular14,
+              style: AppStyle.styleSemiBold18,
             ),
             const SizedBox(height: 16),
+            Text(
+              'You can use your camera to try on clothing, accessories, and beauty items live and see how they look on you in real time.',
+              style: AppStyle.styleGreyRegular12,
+            ),
+            const SizedBox(height: 24),
             Row(
               children: [
                 Checkbox(
@@ -52,7 +52,7 @@ class _CameraPermissionDialogState extends State<CameraPermissionDialog> {
                 Expanded(
                   child: Text(
                     'Allow the app to access your Camera and skip this step in the future.',
-                    style: AppStyle.styleRegular12,
+                    style: AppStyle.styleGreyRegular12,
                   ),
                 ),
               ],

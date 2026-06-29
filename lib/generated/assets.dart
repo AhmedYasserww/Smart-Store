@@ -71,6 +71,7 @@ class Assets {
   static const String entitiesLogInEntity = 'lib/features/auth/data/entities/log_in_entity.dart';
   static const String entitiesOrderDetailsEntity = 'lib/features/orders/data/entities/order_details_entity.dart';
   static const String entitiesOrderEntity = 'lib/features/orders/data/entities/order_entity.dart';
+  static const String entitiesRecommendationEntity = 'lib/features/products/data/entities/recommendation_entity.dart';
   static const String entitiesRegisterEntity = 'lib/features/auth/data/entities/register_entity.dart';
   static const String entitiesResendOtpEntity = 'lib/features/auth/data/entities/resend_otp_entity.dart';
   static const String entitiesResetPasswordEntity = 'lib/features/auth/data/entities/reset_password_entity.dart';
@@ -475,7 +476,6 @@ class Assets {
   static const String widgetsProductCard = 'lib/features/home/presentation/views/widgets/product_card.dart';
   static const String widgetsProductDetailsViewBody = 'lib/features/products/presentation/views/widgets/product_details_view_body.dart';
   static const String widgetsProductDetailsWidgetsColorSelector = 'lib/features/products/presentation/views/widgets/product_details_widgets/color_selector.dart~';
-  static const String widgetsProductDetailsWidgetsProductTitleSection = 'lib/features/products/presentation/views/widgets/product_details_widgets/product_title_section.dart~';
   static const String widgetsProductDetailsWidgetsQuantitySelector = 'lib/features/products/presentation/views/widgets/product_details_widgets/quantity_selector.dart~';
   static const String widgetsProductInfoCard = 'lib/features/home/presentation/views/widgets/product_info_card.dart';
   static const String widgetsProductListView = 'lib/features/home/presentation/views/widgets/product_list_view.dart';

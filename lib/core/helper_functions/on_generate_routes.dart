@@ -191,9 +191,12 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       );
 
     case VtoResultView.routeName:
-      final bytes = settings.arguments as Uint8List;
+      final args = settings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(
-        builder: (_) => VtoResultView(resultImageBytes: bytes),
+        builder: (_) => VtoResultView(
+          resultImageBytes: args['resultImageBytes'] as Uint8List,
+          args: args['args'] as VtoArguments,
+        ),
       );
 
 
