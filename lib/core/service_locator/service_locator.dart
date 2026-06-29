@@ -26,6 +26,8 @@ import '../../features/payment/presentation/manager/payment_cubit/payment_cubit.
 import '../../features/search/data/repos/search_repo.dart';
 import '../../features/search/data/repos/search_repo_imp.dart';
 import '../../features/search/presentation/manager/search_for_product_cubit/search_for_product_cubit.dart';
+import '../../features/vto/data/repos/vto_repo_imp.dart';
+import '../../features/vto/presentation/manager/vto_cubit.dart';
 import '../../features/wishlist/data/repos/wishlist_repo_imp.dart';
 import '../../features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
 import '../services/api_service.dart';
@@ -122,6 +124,12 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<CancelOrderCubit>(
         () => CancelOrderCubit(getIt.get<OrderRepoImpl>()),
+  );
+  getIt.registerSingleton<VtoRepoImpl>(
+    VtoRepoImpl(apiService: getIt.get<ApiService>()),
+  );
+  getIt.registerFactory<VtoCubit>(
+        () => VtoCubit(getIt.get<VtoRepoImpl>()),
   );
 
 }

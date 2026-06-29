@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_store/features/more/saved_address/presentation/views/saved_address_view.dart';
 import 'package:smart_store/features/orders/presentation/views/order_details_view.dart';
 import 'package:smart_store/features/orders/presentation/views/order_status_view.dart';
@@ -30,8 +33,15 @@ import '../../features/products/presentation/views/find_size_view.dart';
 import '../../features/products/presentation/views/product_details_view.dart';
 import '../../features/products/presentation/views/product_view.dart';
 import '../../features/search/presentation/views/search_view.dart';
-import '../../features/vto/presentation/views/vto_view.dart';
+import '../../features/vto/data/models/vto_argument.dart';
+import '../../features/vto/presentation/manager/vto_cubit.dart';
+import '../../features/vto/presentation/views/generating_view.dart';
+import '../../features/vto/presentation/views/preview_photo_view.dart';
+import '../../features/vto/presentation/views/upload_photo_view.dart';
+import '../../features/vto/presentation/views/vto_result_view.dart';
 import '../../features/wishlist/presentation/views/wishlist_view.dart';
+import 'dart:typed_data';
+
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings) {
   switch (settings.name) {
@@ -88,8 +98,6 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (_) => ProductView(initialCategoryId: categoryId),
       );
-    case VtoView.routeName:
-      return MaterialPageRoute(builder: (context) => const VtoView());
     case CartView.routeName:
       return MaterialPageRoute(builder: (context) => const CartView());
     case DeliveryAddressView.routeName:
@@ -155,6 +163,40 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const WishlistView());
       case SavedAddressView.routeName:
       return MaterialPageRoute(builder: (context) => const SavedAddressView());
+    case UploadPhotoView.routeName:
+      final args = settings.arguments as VtoArguments;
+      return MaterialPageRoute(
+        builder: (_) => UploadPhotoView(args: args),
+      );
+
+    case PreviewPhotoView.routeName:
+      final map = settings.arguments as Map<String, dynamic>;
+      return MaterialPageRoute(
+        builder: (_) => PreviewPhotoView(
+          image: map['image'] as File,
+          args: map['args'] as VtoArguments,
+        ),
+      );
+
+    case GeneratingView.routeName:
+      final map = settings.arguments as Map<String, dynamic>;
+      return MaterialPageRoute(
+        builder: (context) => BlocProvider.value(
+          value: context.read<VtoCubit>(), // ✅ نفس الـ cubit
+          child: GeneratingView(
+            personImage: map['image'] as File,
+            args: map['args'] as VtoArguments,
+          ),
+        ),
+      );
+
+    case VtoResultView.routeName:
+      final bytes = settings.arguments as Uint8List;
+      return MaterialPageRoute(
+        builder: (_) => VtoResultView(resultImageBytes: bytes),
+      );
+
+
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
   }

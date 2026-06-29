@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smart_store/features/vto/presentation/views/vto_view.dart';
+import 'package:smart_store/features/vto/presentation/views/upload_photo_view.dart';
 
+import '../../features/vto/data/models/vto_argument.dart';
 import '../utils/app_style.dart';
 import '../widgets/custom_button.dart';
 
-void showTryOnDialog(BuildContext context) {
+void showTryOnDialog(BuildContext context, {required VtoArguments args}) {
   showDialog(
     context: context,
     builder: (_) => AlertDialog(
@@ -28,8 +29,11 @@ void showTryOnDialog(BuildContext context) {
           CustomButton(
             text: 'Try on',
             onTap: () {
-              Navigator.pop(context); // close dialog
-              Navigator.of(context).pushNamed(VtoView.routeName);
+              Navigator.pop(context);
+              Navigator.of(context).pushNamed(
+                UploadPhotoView.routeName,
+                arguments: args, // ✅
+              );
             },
           ),
         ],

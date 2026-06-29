@@ -73,7 +73,13 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
                       productImages: widget.productModel.productImages,
                     ),
                     const SizedBox(height: 16),
-                    ProductTitleSection(title: widget.productModel.name),
+                    ProductTitleSection(
+                      title: widget.productModel.name,
+                      garmentUrl: widget.productModel.productImages.isNotEmpty
+                          ? widget.productModel.productImages.first.images
+                          : '',
+                      subCategory: widget.productModel.subCategory,
+                    ),
                     const SizedBox(height: 16),
                     ProductRatingAndPriceSection(
                       rating: widget.productModel.rating,

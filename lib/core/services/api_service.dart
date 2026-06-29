@@ -49,12 +49,15 @@ class ApiService {
       },
     );
   }
+  String get baseUrl => dio.options.baseUrl;
 
+  Future<String?> resolveToken(String? token) => _resolveToken(token);
   /// RESOLVE TOKEN
   Future<String?> _resolveToken(String? token) async {
     if (token != null && token.isNotEmpty) {
       return token;
     }
+
 
     final userData = await UserPreferences.getUserData();
 

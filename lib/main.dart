@@ -19,6 +19,8 @@ import 'features/delivery/presentation/views/confirm_order_view.dart';
 import 'features/delivery/presentation/views/edit_delivery_address_view.dart';
 import 'features/delivery/presentation/views/widgets/edit_delivery_address_view_widgets/edit_delivery_address_view_body.dart';
 import 'features/onboarding/presentation/views/onboarding_view.dart';
+import 'features/vto/data/repos/vto_repo_imp.dart';
+import 'features/vto/presentation/manager/vto_cubit.dart';
 import 'features/wishlist/data/repos/wishlist_repo_imp.dart';
 import 'features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
 
@@ -30,11 +32,11 @@ void main() async {
   // final userData = await UserPreferences.getUserData();
   // print(userData['id']);
   runApp(
-    // DevicePreview(
-    //   enabled: !kReleaseMode,
-    //   builder: (context) => MyApp(), // Wrap your app
-    // ),
-     MyApp(),
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(), // Wrap your app
+    ),
+   //  MyApp(),
   );
 }
 
@@ -50,7 +52,10 @@ class MyApp extends StatelessWidget {
         create: (_)=>GetWishlistCubit(getIt.get<WishlistRepoImpl>())..getWishlist(),),
 
     BlocProvider(
-    create: (_) => GetCartCubit(getIt.get<CartRepoImpl>())..getCart(),)
+    create: (_) => GetCartCubit(getIt.get<CartRepoImpl>())..getCart(),),
+          BlocProvider(
+            create: (_) => VtoCubit(getIt<VtoRepoImpl>()),
+          )
 
         ],
 
@@ -68,8 +73,8 @@ class MyApp extends StatelessWidget {
         scrollBehavior: CustomScrollBehavior(),
       onGenerateRoute: onGenerateRoutes,
        //initialRoute: ConfirmOrderView.routeName,
-      //  initialRoute: OnBoardingView.routeName,
-       // initialRoute: LogInView.routeName,
+       // initialRoute: OnBoardingView.routeName,
+      //  initialRoute: LogInView.routeName,
        initialRoute: CustomNavigationBar.routeName,
     //     home: Scaffold(
     //       body: CustomLoadingIndicator(),
@@ -93,148 +98,3 @@ class CustomScrollBehavior extends MaterialScrollBehavior {
 
 
 
-
-class PaymentPage extends StatefulWidget {
-  const PaymentPage({super.key});
-
-  @override
-  State<PaymentPage> createState() => _PaymentPageState();
-}
-
-class _PaymentPageState extends State<PaymentPage> {
-  bool isLoading = false;
-  String message = '';
-
-  Future<void> makePayment() async {
-    try {
-      setState(() {
-        isLoading = true;
-        message = '';
-      });
-
-      const orderId = "8ebf73a4-b7b1-4abd-9d80-670a9dee15fd";
-
-      final response = await http.post(
-        Uri.parse(
-          "https://tryha.runasp.net/api/Payment/create-payment-intent/$orderId",
-        ),
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization":
-          "Bearer YOUR_TOKEN_HERE"
-        },
-      );
-
-      final responseData = jsonDecode(response.body);
-
-      print(responseData);
-
-      final clientSecret = responseData["data"]["clientSecret"];
-
-      // Initialize Payment Sheet
-      await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          paymentIntentClientSecret: clientSecret,
-          merchantDisplayName: 'TryHa Store',
-        ),
-      );
-
-      // Present Payment Sheet
-      await Stripe.instance.presentPaymentSheet();
-
-      setState(() {
-        message = "Payment completed successfully";
-      });
-    } on StripeException catch (e) {
-      setState(() {
-        message = e.error.localizedMessage ?? "Payment cancelled";
-      });
-    } catch (e) {
-      setState(() {
-        message = e.toString();
-      });
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xfff4f6f9),
-      appBar: AppBar(
-        title: const Text("Secure Payment"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Container(
-          width: 380,
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(14),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 10,
-                color: Colors.black.withOpacity(0.08),
-              )
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(
-                Icons.lock_outline,
-                size: 70,
-                color: Colors.indigo,
-              ),
-
-              const SizedBox(height: 20),
-
-              const Text(
-                "Secure Payment",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
-              const SizedBox(height: 30),
-
-              SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: ElevatedButton(
-                  onPressed: isLoading ? null : makePayment,
-                  child: isLoading
-                      ? const CircularProgressIndicator(
-                    color: Colors.white,
-                  )
-                      : const Text(
-                    "Confirm Payment",
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 20),
-
-              Text(
-                message,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: message.contains("success")
-                      ? Colors.green
-                      : Colors.red,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
