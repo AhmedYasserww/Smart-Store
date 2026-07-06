@@ -1,6 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:smart_store/features/categories/data/repos/categories_repo_imp.dart';
+import 'package:smart_store/features/home/data/repos/home_repo.dart';
+import 'package:smart_store/features/home/data/repos/home_repo_impl.dart';
+import 'package:smart_store/features/home/presentation/manager/RecentlyHomeCubit/recently_home_cubit.dart';
+import 'package:smart_store/features/home/presentation/manager/highlights_home_cubit/highlights_home_cubit.dart';
+import 'package:smart_store/features/home/presentation/top_selling_cubit/top_selling_home_cubit.dart';
 import 'package:smart_store/features/products/data/repos/product_repo_imp.dart';
 
 import '../../features/auth/data/repos/auth_repo_imp.dart';
@@ -48,28 +53,27 @@ void setupServiceLocator() {
   );
 
   getIt.registerLazySingleton<SearchRepo>(
-        () => SearchRepoImp(apiService: getIt<ApiService>()),
+    () => SearchRepoImp(apiService: getIt<ApiService>()),
   );
 
   getIt.registerFactory<SearchForProductCubit>(
-        () => SearchForProductCubit(getIt<SearchRepo>()),
+    () => SearchForProductCubit(getIt<SearchRepo>()),
   );
   getIt.registerSingleton<CartRepoImpl>(
     CartRepoImpl(apiService: getIt.get<ApiService>()),
   );
 
-  getIt.registerFactory<AddToCartCubit>(() => AddToCartCubit(
-    getIt<CartRepoImpl>(),
-  ));
+  getIt.registerFactory<AddToCartCubit>(
+    () => AddToCartCubit(getIt<CartRepoImpl>()),
+  );
   getIt.registerFactory(() => GetCartCubit(getIt.get<CartRepoImpl>()));
 
-
   getIt.registerLazySingleton<WishlistRepoImpl>(
-        () => WishlistRepoImpl(apiService: getIt<ApiService>()),
+    () => WishlistRepoImpl(apiService: getIt<ApiService>()),
   );
 
   getIt.registerLazySingleton<GetWishlistCubit>(
-        () => GetWishlistCubit(getIt<WishlistRepoImpl>()),
+    () => GetWishlistCubit(getIt<WishlistRepoImpl>()),
   );
 
   getIt.registerSingleton<ProfileRepoImpl>(
@@ -77,63 +81,72 @@ void setupServiceLocator() {
   );
 
   getIt.registerFactory<GetProfileCubit>(
-        () => GetProfileCubit(getIt<ProfileRepoImpl>()),
+    () => GetProfileCubit(getIt<ProfileRepoImpl>()),
   );
   getIt.registerFactory<ChangePasswordCubit>(
-        () => ChangePasswordCubit(getIt<ProfileRepoImpl>()),
+    () => ChangePasswordCubit(getIt<ProfileRepoImpl>()),
   );
   getIt.registerSingleton<DeliveryRepoImpl>(
     DeliveryRepoImpl(apiService: getIt<ApiService>()),
   );
 
   getIt.registerFactory<AddAddressCubit>(
-        () => AddAddressCubit(getIt<DeliveryRepoImpl>()),
+    () => AddAddressCubit(getIt<DeliveryRepoImpl>()),
   );
 
   getIt.registerFactory<GetAddressesCubit>(
-        () => GetAddressesCubit(getIt<DeliveryRepoImpl>()),
+    () => GetAddressesCubit(getIt<DeliveryRepoImpl>()),
   );
   getIt.registerFactory<UpdateAddressCubit>(
-        () => UpdateAddressCubit(getIt<DeliveryRepoImpl>()),
+    () => UpdateAddressCubit(getIt<DeliveryRepoImpl>()),
   );
   getIt.registerSingleton<OrderRepoImpl>(
     OrderRepoImpl(apiService: getIt<ApiService>()),
   );
 
   getIt.registerFactory<CreateOrderCubit>(
-        () => CreateOrderCubit(getIt<OrderRepoImpl>()),
+    () => CreateOrderCubit(getIt<OrderRepoImpl>()),
   );
   getIt.registerFactory<GetDeliveryOptionsCubit>(
-        () => GetDeliveryOptionsCubit(getIt<DeliveryRepoImpl>()),
+    () => GetDeliveryOptionsCubit(getIt<DeliveryRepoImpl>()),
   );
   getIt.registerFactory<DeleteAddressCubit>(
-        () => DeleteAddressCubit(getIt<DeliveryRepoImpl>()),
+    () => DeleteAddressCubit(getIt<DeliveryRepoImpl>()),
   );
   getIt.registerSingleton<PaymentRepoImpl>(
     PaymentRepoImpl(apiService: getIt.get<ApiService>()),
   );
 
   getIt.registerFactory<PaymentCubit>(
-        () => PaymentCubit(getIt.get<PaymentRepoImpl>()),
+    () => PaymentCubit(getIt.get<PaymentRepoImpl>()),
   );
 
   getIt.registerFactory<GetOrderDetailsCubit>(
-        () => GetOrderDetailsCubit(getIt.get<OrderRepoImpl>()),
+    () => GetOrderDetailsCubit(getIt.get<OrderRepoImpl>()),
   );
   getIt.registerFactory<GetOrdersCubit>(
-        () => GetOrdersCubit(getIt.get<OrderRepoImpl>()),
+    () => GetOrdersCubit(getIt.get<OrderRepoImpl>()),
   );
   getIt.registerFactory<CancelOrderCubit>(
-        () => CancelOrderCubit(getIt.get<OrderRepoImpl>()),
+    () => CancelOrderCubit(getIt.get<OrderRepoImpl>()),
   );
   getIt.registerSingleton<VtoRepoImpl>(
     VtoRepoImpl(apiService: getIt.get<ApiService>()),
   );
-  getIt.registerFactory<VtoCubit>(
-        () => VtoCubit(getIt.get<VtoRepoImpl>()),
-  );
+  getIt.registerFactory<VtoCubit>(() => VtoCubit(getIt.get<VtoRepoImpl>()));
   getIt.registerFactory<GetRecommendationsCubit>(
-        () => GetRecommendationsCubit(getIt<ProductsRepoImpl>()),
+    () => GetRecommendationsCubit(getIt<ProductsRepoImpl>()),
   );
-
+  getIt.registerSingleton<HomeRepo>(
+    HomeRepoImpl(apiService: getIt.get<ApiService>()),
+  );
+  getIt.registerFactory<RecentlyHomeCubit>(
+    () => RecentlyHomeCubit(homeRepo: getIt<HomeRepo>()),
+  );
+  getIt.registerFactory<HighlightsHomeCubit>(
+    () => HighlightsHomeCubit(homeRepo: getIt<HomeRepo>()),
+  );
+  getIt.registerFactory<TopSellingHomeCubit>(
+    () => TopSellingHomeCubit(homeRepo: getIt<HomeRepo>()),
+  );
 }

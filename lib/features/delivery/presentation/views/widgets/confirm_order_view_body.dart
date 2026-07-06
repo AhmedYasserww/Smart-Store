@@ -5,8 +5,6 @@ import 'package:smart_store/core/widgets/custom_button.dart';
 import 'package:smart_store/core/widgets/custom_loading_indicator.dart';
 import 'package:smart_store/features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import 'package:smart_store/features/orders/presentation/manager/get_order_details_cubit/get_order_details_cubit.dart';
-import '../../../../../core/service_locator/service_locator.dart';
-import '../../../../cart/data/repos/cart_repo_imp.dart';
 import '../../../../cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
 import 'confirm_order_widgets/delivery_address_widget.dart';
 import 'confirm_order_widgets/order_details_widget.dart';

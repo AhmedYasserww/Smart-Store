@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:smart_store/core/utils/app_color.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
 import 'dart:typed_data';
-import 'package:gal/gal.dart';
 import 'package:saver_gallery/saver_gallery.dart';
 
 

@@ -49,7 +49,7 @@ class OrdersViewBody extends StatelessWidget {
               child: ListView.separated(
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 itemCount: orders.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 16),
+                separatorBuilder: (_, _) => const SizedBox(height: 16),
                 itemBuilder: (_, index) {
                   return CustomOrderItem(order: orders[index]);
                 },

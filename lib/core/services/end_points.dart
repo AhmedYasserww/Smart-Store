@@ -14,18 +14,22 @@ class EndPoints {
   static const String searchForProduct = "Products/search/on/products";
   static const String addToCart = "Cart/client/add/to/cart";
   static const String getCart = 'Cart/get/client/cart';
-  static String deleteFromCart(String itemId) => 'Cart/delete/client/cart/$itemId';
+  static String deleteFromCart(String itemId) =>
+      'Cart/delete/client/cart/$itemId';
   static const String updateCartItem = 'Cart/client/items';
   static const String getWishlist = 'Wishlist/get/client/wishlist';
   static const String addToWishlist = 'Wishlist/client/add/to/wishlist';
-  static String removeFromWishlist(String itemId) => 'Wishlist/client/remove/item/$itemId';
+  static String removeFromWishlist(String itemId) =>
+      'Wishlist/client/remove/item/$itemId';
   static const String getProfile = 'ClientProfile/get/client/profile';
   static const String changePassword = 'Account/change-password';
   static const String addAddress = 'DeliveryAddress/client/add/address';
   static const String getAddresses = 'DeliveryAddress/get/client/addresses';
-  static String updateAddress(String addressId) => 'DeliveryAddress/client/update/address/$addressId';
+  static String updateAddress(String addressId) =>
+      'DeliveryAddress/client/update/address/$addressId';
   static const String createOrder = 'Order/create';
-  static const String getDeliveryOptions = 'DelivryOptions/all/delevery-options';
+  static const String getDeliveryOptions =
+      'DelivryOptions/all/delevery-options';
   static String deleteAddress(String addressId) =>
       'DeliveryAddress/client/delete/address/$addressId';
   static const String createPaymentIntent = 'Payment/create-payment-intent';
@@ -35,4 +39,7 @@ class EndPoints {
   static const String cancelOrder = 'Order/cancel';
   static const String tryOn = 'TryOn/fashn';
   static const String getRecommendations = 'Recommendation/similar';
+  static const String getRecentlyAdded = 'Home/recently-added';
+  static const String getTopSelling = 'Home/top-selling';
+  static const String getWishListHighlights = 'Home/wishlist-highlights';
 }
