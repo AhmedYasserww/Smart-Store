@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smart_store/features/home/presentation/views/widgets/highlights_home_list.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/section_title.dart';
+import 'package:smart_store/features/home/presentation/views/widgets/top_selling_home_list.dart';
 
 import '../../../../../core/utils/app_dimensions.dart';
 import '../../../../../core/utils/app_images.dart';
@@ -50,12 +52,18 @@ class HomeViewBody extends StatelessWidget {
 
             const SizedBox(height: _sectionSpacing),
             const RecentlyViewedHomeList(),
+            const SizedBox(height: _largeSpacing),
 
-            const SizedBox(height: 8),
-            const SectionTitle(title: 'Recommended For You'),
-
+            const SectionTitle(title: 'Wishlist Highlights'),
             const SizedBox(height: _sectionSpacing),
-            //   const ProductListview(),
+
+            const HighlightsHomeList(),
+            const SizedBox(height: _largeSpacing),
+
+            const SectionTitle(title: 'Top Selling'),
+            const SizedBox(height: _sectionSpacing),
+
+            const TopSellingHomeList(),
           ],
         ),
       ),

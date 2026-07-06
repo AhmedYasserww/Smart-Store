@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
@@ -26,16 +27,33 @@ class CustomCachedNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final image = CachedNetworkImage(
-      imageUrl: path,
-      width: width,
-      height: height,
-      fit: fit,
-      color: color,
-      placeholder: (context, url) => placeholder ?? _loadingWidget(),
-      errorWidget: (context, url, error) =>
-          errorWidget ?? _errorFallback(context),
-    );
+    final bool isSvg = path.toLowerCase().endsWith('.svg');
+
+    final Widget image;
+
+    if (isSvg) {
+      image = SvgPicture.network(
+        path,
+        width: width,
+        height: height,
+        fit: fit,
+        colorFilter: color != null
+            ? ColorFilter.mode(color!, BlendMode.srcIn)
+            : null,
+        placeholderBuilder: (context) => placeholder ?? _loadingWidget(),
+      );
+    } else {
+      image = CachedNetworkImage(
+        imageUrl: path,
+        width: width,
+        height: height,
+        fit: fit,
+        color: color,
+        placeholder: (context, url) => placeholder ?? _loadingWidget(),
+        errorWidget: (context, url, error) =>
+            errorWidget ?? _errorFallback(context),
+      );
+    }
 
     if (borderRadius == null) {
       return image;
