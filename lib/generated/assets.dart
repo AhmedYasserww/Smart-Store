@@ -68,6 +68,7 @@ class Assets {
   static const String entitiesDeliveryOptionEntity = 'lib/features/delivery/data/entities/delivery_option_entity.dart';
   static const String entitiesForgetPasswordEntity = 'lib/features/auth/data/entities/forget_password_entity.dart';
   static const String entitiesGetCartEntity = 'lib/features/cart/data/entities/get_cart_entity.dart';
+  static const String entitiesGoogleLoginEntity = 'lib/features/auth/data/entities/google_login_entity.dart';
   static const String entitiesLogInEntity = 'lib/features/auth/data/entities/log_in_entity.dart';
   static const String entitiesOrderDetailsEntity = 'lib/features/orders/data/entities/order_details_entity.dart';
   static const String entitiesOrderEntity = 'lib/features/orders/data/entities/order_entity.dart';
@@ -114,6 +115,8 @@ class Assets {
   static const String getRecommendationsCubitGetRecommendationsState = 'lib/features/products/presentation/manager/get_recommendations_cubit/get_recommendations_state.dart';
   static const String getWishlistCubitGetWishlistCubit = 'lib/features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_cubit.dart';
   static const String getWishlistCubitGetWishlistState = 'lib/features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_state.dart';
+  static const String googleLogInCubitGoogleLoginCubit = 'lib/features/auth/presentation/manager/google_log_in_cubit/google_login_cubit.dart';
+  static const String googleLogInCubitGoogleLoginState = 'lib/features/auth/presentation/manager/google_log_in_cubit/google_login_state.dart';
   static const String helperFunctionsBuildErrorBar = 'lib/core/helper_functions/build_error_bar.dart';
   static const String helperFunctionsCalculateSize = 'lib/core/helper_functions/calculate_size.dart';
   static const String helperFunctionsFormatSize = 'lib/core/helper_functions/format_size_.dart';
@@ -125,6 +128,8 @@ class Assets {
   static const String helperFunctionsShowSnackBar = 'lib/core/helper_functions/show_snack_bar.dart';
   static const String helperFunctionsShowTryOnDialog = 'lib/core/helper_functions/show_try_on_dialog.dart';
   static const String helperFunctionsValidatorHelper = 'lib/core/helper_functions/validator_helper.dart';
+  static const String highlightsHomeCubitHighlightsHomeCubit = 'lib/features/home/presentation/manager/highlights_home_cubit/highlights_home_cubit.dart';
+  static const String highlightsHomeCubitHighlightsHomeState = 'lib/features/home/presentation/manager/highlights_home_cubit/highlights_home_state.dart';
   static const String imagesAppleIcon = 'assets/images/appleIcon.svg';
   static const String imagesArrivedIcon = 'assets/images/arrived_icon.svg';
   static const String imagesArrowButton = 'assets/images/arrow_button.svg';
@@ -138,11 +143,13 @@ class Assets {
   static const String imagesCircleRemove = 'assets/images/circle_remove.svg';
   static const String imagesClearSearch = 'assets/images/clear_search.svg';
   static const String imagesCorrectIcon = 'assets/images/correct_icon.svg';
+  static const String imagesCorrectSearchIcon = 'assets/images/correct_search_icon.svg';
   static const String imagesCorrectTipsIcon = 'assets/images/correct_tips_icon.svg';
   static const String imagesCredit = 'assets/images/credit.svg';
   static const String imagesDateIcon = 'assets/images/date_icon.svg';
   static const String imagesDeleteOutline = 'assets/images/delete-outline.svg';
   static const String imagesDeliveredIcon = 'assets/images/DeliveredIcon.svg';
+  static const String imagesDress = 'assets/images/dress.png';
   static const String imagesDressTest = 'assets/images/dress_test.jpg';
   static const String imagesEmptyCart = 'assets/images/empty_cart.svg';
   static const String imagesEmptyFavorite = 'assets/images/empty_favorite.svg';
@@ -151,6 +158,7 @@ class Assets {
   static const String imagesExitIcon = 'assets/images/ExitIcon.svg';
   static const String imagesFaceBook = 'assets/images/FaceBook.svg';
   static const String imagesFaceBookIcon = 'assets/images/face_bookIcon.svg';
+  static const String imagesFaceScanBqXBdgXpdl = 'assets/images/face-scan-bqXBdgXpdl.png';
   static const String imagesFailureSearch = 'assets/images/failure_search.svg';
   static const String imagesFilterIcon1 = 'assets/images/filterIcon_1.svg';
   static const String imagesFilterIcon2 = 'assets/images/filterIcon_2.svg';
@@ -171,6 +179,7 @@ class Assets {
   static const String imagesLightCamera = 'assets/images/light_camera.svg';
   static const String imagesLinkedIn = 'assets/images/LinkedIn.svg';
   static const String imagesListIcon = 'assets/images/ListIcon.svg';
+  static const String imagesListeningIcon = 'assets/images/listening_icon.svg';
   static const String imagesLoading = 'assets/images/loading.json';
   static const String imagesLocationIcon = 'assets/images/location_icon.svg';
   static const String imagesLogOut = 'assets/images/LogOut.svg';
@@ -178,6 +187,7 @@ class Assets {
   static const String imagesMdiLocation = 'assets/images/mdi_location.svg';
   static const String imagesMen = 'assets/images/men.png';
   static const String imagesMicrophone = 'assets/images/Microphone.png';
+  static const String imagesMicrophoneIcon = 'assets/images/microphone_icon.svg';
   static const String imagesMoreOutlined = 'assets/images/more_outlined.svg';
   static const String imagesNotificationIcon = 'assets/images/notification_icon.svg';
   static const String imagesOnBoardingImage1 = 'assets/images/onBoardingImage1.png';
@@ -195,6 +205,8 @@ class Assets {
   static const String imagesProductFilled = 'assets/images/product-filled.svg';
   static const String imagesProductIcon = 'assets/images/ProductIcon.svg';
   static const String imagesProductOutlined = 'assets/images/product-outlined.svg';
+  static const String imagesProfile = 'assets/images/profile.svg';
+  static const String imagesResult = 'assets/images/result.png';
   static const String imagesReturns = 'assets/images/Returns.svg';
   static const String imagesSavedAddressIcon = 'assets/images/saved_address_icon.svg';
   static const String imagesScan = 'assets/images/Scan.svg';
@@ -207,6 +219,7 @@ class Assets {
   static const String imagesUnselectOrderStatus = 'assets/images/unselect_order_status.svg';
   static const String imagesUploadYourImage = 'assets/images/upload_your_image.svg';
   static const String imagesUploadYourImageIcon = 'assets/images/upload_your_image_icon.svg';
+  static const String imagesUser = 'assets/images/user.png';
   static const String imagesVTO = 'assets/images/VTO.svg';
   static const String imagesWhiteProductIcon = 'assets/images/whiteProductIcon.svg';
   static const String imagesWishlist = 'assets/images/Wishlist.svg';
@@ -216,6 +229,7 @@ class Assets {
   static const String logInWidgetsCustomEmailTextField = 'lib/features/auth/presentation/views/widgets/log_in_widgets/custom_email_text_field.dart';
   static const String logInWidgetsCustomNavigateToRegister = 'lib/features/auth/presentation/views/widgets/log_in_widgets/custom_navigate_to_register.dart';
   static const String logInWidgetsCustomPasswordTextField = 'lib/features/auth/presentation/views/widgets/log_in_widgets/custom_password_text_field.dart';
+  static const String logInWidgetsCustomSocialContainer = 'lib/features/auth/presentation/views/widgets/log_in_widgets/custom_social_container.dart';
   static const String logInWidgetsCustomSocialIcon = 'lib/features/auth/presentation/views/widgets/log_in_widgets/custom_social_icon.dart';
   static const String logInWidgetsLogInFooterSection = 'lib/features/auth/presentation/views/widgets/log_in_widgets/log_in_footer_section.dart';
   static const String logInWidgetsLogInForm = 'lib/features/auth/presentation/views/widgets/log_in_widgets/log_in_form.dart';
@@ -240,13 +254,15 @@ class Assets {
   static const String modelsDeliveryAddressModel = 'lib/features/delivery/data/models/delivery_address_model.dart';
   static const String modelsDeliveryOptionModel = 'lib/features/delivery/data/models/delivery_option_model.dart';
   static const String modelsForgetPasswordModel = 'lib/features/auth/data/models/forget_password_model.dart';
+  static const String modelsGoogleLoginModel = 'lib/features/auth/data/models/google_login_model.dart';
   static const String modelsLogInModel = 'lib/features/auth/data/models/log_in_model.dart';
   static const String modelsOrderDetailsModel = 'lib/features/orders/data/models/order_details_model.dart';
   static const String modelsOrderModel = 'lib/features/orders/data/models/order_model.dart';
   static const String modelsOrderSummaryArgument = 'lib/features/delivery/data/models/order_summary_argument.dart';
+  static const String modelsProductHomeModel = 'lib/features/home/data/models/product_home_model.dart';
   static const String modelsProductModel = 'lib/features/products/data/models/product_model.dart';
   static const String modelsProductQueryParamsModel = 'lib/features/products/data/models/product_query_params_model.dart';
-  static const String modelsRecomendationModel = 'lib/features/products/data/models/recomendation_model.dart';
+  static const String modelsRecommendationModel = 'lib/features/products/data/models/recommendation_model.dart';
   static const String modelsRegisterModel = 'lib/features/auth/data/models/register_model.dart';
   static const String modelsResendOtpModel = 'lib/features/auth/data/models/resend_otp_model.dart';
   static const String modelsResetPasswordModel = 'lib/features/auth/data/models/reset_password_model.dart';
@@ -288,6 +304,8 @@ class Assets {
   static const String profileViewWidgetsLogoutButtonWidget = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/logout_button_widget.dart';
   static const String profileViewWidgetsLogoutConfirmDialog = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/logout_confirm_dialog.dart';
   static const String profileViewWidgetsProfileInfoCard = 'lib/features/more/profile/presentation/views/widgets/profile_view_widgets/profile_info_card.dart';
+  static const String recentlyHomeCubitRecentlyHomeCubit = 'lib/features/home/presentation/manager/RecentlyHomeCubit/recently_home_cubit.dart';
+  static const String recentlyHomeCubitRecentlyHomeState = 'lib/features/home/presentation/manager/RecentlyHomeCubit/recently_home_state.dart';
   static const String registerClientCubitRegisterClientCubit = 'lib/features/auth/presentation/manager/register_client_cubit/register_client_cubit.dart';
   static const String registerClientCubitRegisterClientState = 'lib/features/auth/presentation/manager/register_client_cubit/register_client_state.dart';
   static const String registerWidgetsConfirmPassordFieldWidget = 'lib/features/auth/presentation/views/widgets/register_widgets/confirm_passord_field_widget.dart~';
@@ -311,6 +329,8 @@ class Assets {
   static const String reposCategoriesRepoImp = 'lib/features/categories/data/repos/categories_repo_imp.dart';
   static const String reposDeliveryRepo = 'lib/features/delivery/data/repos/delivery_repo.dart';
   static const String reposDeliveryRepoImp = 'lib/features/delivery/data/repos/delivery_repo_imp.dart';
+  static const String reposHomeRepo = 'lib/features/home/data/repos/home_repo.dart';
+  static const String reposHomeRepoImpl = 'lib/features/home/data/repos/home_repo_impl.dart';
   static const String reposOrderRepo = 'lib/features/orders/data/repos/order_repo.dart';
   static const String reposOrderRepoImp = 'lib/features/orders/data/repos/order_repo_imp.dart';
   static const String reposPaymentRepo = 'lib/features/payment/data/repos/payment_repo.dart';
@@ -343,6 +363,8 @@ class Assets {
   static const String serviceLocatorServiceLocator = 'lib/core/service_locator/service_locator.dart';
   static const String servicesApiService = 'lib/core/services/api_service.dart';
   static const String servicesEndPoints = 'lib/core/services/end_points.dart';
+  static const String topSellingCubitTopSellingHomeCubit = 'lib/features/home/presentation/top_selling_cubit/top_selling_home_cubit.dart';
+  static const String topSellingCubitTopSellingHomeState = 'lib/features/home/presentation/top_selling_cubit/top_selling_home_state.dart';
   static const String updateAddressCubitUpdateAddressCubit = 'lib/features/delivery/presentation/manager/update_address_cubit/update_address_cubit.dart';
   static const String updateAddressCubitUpdateAddressState = 'lib/features/delivery/presentation/manager/update_address_cubit/update_address_state.dart';
   static const String updateCartItemCubitUpdateCartItemCubit = 'lib/features/cart/presentation/manager/update_cart_item_cubit/update_cart_item_cubit.dart';
@@ -446,6 +468,7 @@ class Assets {
   static const String widgetsCustomShimmer = 'lib/features/home/presentation/views/widgets/custom_shimmer.dart';
   static const String widgetsCustomTextField = 'lib/core/widgets/custom_text_field.dart';
   static const String widgetsCustomTipsRowWidget = 'lib/features/vto/presentation/views/widgets/custom_tips_row_widget.dart';
+  static const String widgetsCustomVtoAnimation = 'lib/features/home/presentation/views/widgets/custom_vto_animation.dart';
   static const String widgetsDeliveryAddressViewBody = 'lib/features/delivery/presentation/views/widgets/delivery_address_view_body.dart';
   static const String widgetsDeliveryAddressWidget = 'lib/features/more/profile/presentation/views/widgets/delivery_address_widget.dart~';
   static const String widgetsDeliveryOptionViewBody = 'lib/features/delivery/presentation/views/widgets/delivery_option_view_body.dart';
@@ -453,6 +476,7 @@ class Assets {
   static const String widgetsFindSizeViewBody = 'lib/features/products/presentation/views/widgets/find_size_view_body.dart';
   static const String widgetsForgetPasswordViewBody = 'lib/features/auth/presentation/views/widgets/forget_password_view_body.dart';
   static const String widgetsGeneratingViewBody = 'lib/features/vto/presentation/views/widgets/generating_view_body.dart';
+  static const String widgetsHighlightsHomeList = 'lib/features/home/presentation/views/widgets/highlights_home_list.dart';
   static const String widgetsHomeView = 'lib/features/home/presentation/views/widgets/home_view.dart~';
   static const String widgetsHomeViewBody = 'lib/features/home/presentation/views/widgets/home_view_body.dart';
   static const String widgetsImagePickFab = 'lib/features/vto/presentation/views/widgets/image_pick_fab.dart';
@@ -484,7 +508,10 @@ class Assets {
   static const String widgetsProductListView = 'lib/features/home/presentation/views/widgets/product_list_view.dart';
   static const String widgetsProductViewWidgetsProductViewBody = 'lib/features/products/presentation/views/widgets/product_view_widgets/product_view_body.dart~';
   static const String widgetsProfileViewBody = 'lib/features/more/profile/presentation/views/widgets/profile_view_body.dart';
+  static const String widgetsRecentlyProductInfoWidget = 'lib/features/home/presentation/views/widgets/recently_product_info_widget.dart';
+  static const String widgetsRecentlyUserView = 'lib/features/home/presentation/views/widgets/recently_user_view.dart';
   static const String widgetsRecentlyViewedHomeList = 'lib/features/home/presentation/views/widgets/recently_viewed_home_list.dart';
+  static const String widgetsRecentlyViewedProductCard = 'lib/features/home/presentation/views/widgets/recently_viewed_product_card.dart';
   static const String widgetsRegisterViewBody = 'lib/features/auth/presentation/views/widgets/register_view_body.dart';
   static const String widgetsResetPasswordViewBody = 'lib/features/auth/presentation/views/widgets/reset_password_view_body.dart';
   static const String widgetsResetPasswordWidgetsResetPasswordHeaderSection = 'lib/features/auth/presentation/views/widgets/reset_password_widgets/reset_password_header_section.dart~';
@@ -501,6 +528,7 @@ class Assets {
   static const String widgetsSearchResult = 'lib/features/search/presentation/views/widgets/search_result.dart';
   static const String widgetsSearchViewBody = 'lib/features/search/presentation/views/widgets/search_view_body.dart';
   static const String widgetsSectionTitle = 'lib/features/home/presentation/views/widgets/section_title.dart';
+  static const String widgetsTopSellingHomeList = 'lib/features/home/presentation/views/widgets/top_selling_home_list.dart';
   static const String widgetsUploadPhotoViewBody = 'lib/features/vto/presentation/views/widgets/upload_photo_view_body.dart';
   static const String widgetsVerificationCodeWidgetsVerificationFooterSection = 'lib/features/auth/presentation/views/widgets/verification_code_widgets/verification_footer_section.dart~';
   static const String widgetsVerificationViewBody = 'lib/features/auth/presentation/views/widgets/verification_view_body.dart';

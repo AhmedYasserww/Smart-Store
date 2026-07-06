@@ -9,7 +9,7 @@ class EndPoints {
   static const String resetPassword = "Account/reset-password";
   static const String getAllProducts = "Products";
   static const String getRecentlyViewedProducts =
-      "Products/client/recently-viewed";
+      "Products/recently-viewed";
   static const String getAllCategories = "Categories";
   static const String searchForProduct = "Products/search/on/products";
   static const String addToCart = "Cart/client/add/to/cart";
@@ -39,6 +39,9 @@ class EndPoints {
   static const String cancelOrder = 'Order/cancel';
   static const String tryOn = 'TryOn/fashn';
   static const String getRecommendations = 'Recommendation/similar';
+  static const String googleLogin = '/Account/client/google';
+  static const String editProfile = 'ClientProfile/client/update/profile';
+
   static const String getRecentlyAdded = 'Home/recently-added';
   static const String getTopSelling = 'Home/top-selling';
   static const String getWishListHighlights = 'Home/wishlist-highlights';

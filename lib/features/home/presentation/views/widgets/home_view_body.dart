@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/highlights_home_list.dart';
+import 'package:smart_store/features/home/presentation/views/widgets/recently_user_view.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/section_title.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/top_selling_home_list.dart';
 
@@ -8,6 +9,7 @@ import '../../../../../core/utils/app_images.dart';
 import '../../../../search/presentation/views/search_view.dart';
 import 'category_widget.dart';
 import 'custom_search_field.dart';
+import 'custom_vto_animation.dart';
 import 'offer_card_list_view.dart';
 import 'recently_viewed_home_list.dart';
 
@@ -42,13 +44,18 @@ class HomeViewBody extends StatelessWidget {
             const CategoryWidget(),
 
             const SizedBox(height: _sectionSpacing),
-            const SectionTitle(title: 'Exclusive Offers'),
+            VtoHeroAnimation(),
 
             const SizedBox(height: _sectionSpacing),
-            const OfferCardListView(),
+            const SectionTitle(title: 'Recently Viewed '),
+
+            const SizedBox(height: _sectionSpacing),
+
+            RecentlyUserView(),
+
 
             const SizedBox(height: _largeSpacing),
-            const SectionTitle(title: 'Recently Viewed'),
+            const SectionTitle(title: 'Recently Added Brands'),
 
             const SizedBox(height: _sectionSpacing),
             const RecentlyViewedHomeList(),
@@ -70,3 +77,4 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+

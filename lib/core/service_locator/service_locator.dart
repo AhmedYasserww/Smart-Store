@@ -9,6 +9,7 @@ import 'package:smart_store/features/home/presentation/top_selling_cubit/top_sel
 import 'package:smart_store/features/products/data/repos/product_repo_imp.dart';
 
 import '../../features/auth/data/repos/auth_repo_imp.dart';
+import '../../features/auth/presentation/manager/google_log_in_cubit/google_login_cubit.dart';
 import '../../features/cart/data/repos/cart_repo_imp.dart';
 import '../../features/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
 import '../../features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
@@ -119,6 +120,9 @@ void setupServiceLocator() {
 
   getIt.registerFactory<PaymentCubit>(
     () => PaymentCubit(getIt.get<PaymentRepoImpl>()),
+  );
+  getIt.registerFactory<GoogleLoginCubit>(
+        () => GoogleLoginCubit(getIt.get<AuthRepoImpl>()),
   );
 
   getIt.registerFactory<GetOrderDetailsCubit>(

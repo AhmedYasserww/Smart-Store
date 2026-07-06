@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../entities/forget_password_entity.dart';
+import '../entities/google_login_entity.dart';
 import '../entities/log_in_entity.dart';
 import '../entities/register_entity.dart';
 import '../entities/resend_otp_entity.dart';
@@ -33,6 +34,9 @@ abstract class AuthRepo {
   });
   Future<Either<Failure, ResendOtpModel>> resendOtp({
     required ResendOtpEntity entity,
+  });
+  Future<Either<Failure, GoogleLoginEntity>> loginWithGoogle({
+    required String idToken,
   });
 
   Future<Either<Failure, String>> logout();

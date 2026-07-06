@@ -4,15 +4,18 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../core/errors/failure.dart';
+import '../../../../core/helper_functions/save_user_data.dart';
 import '../../../../core/services/api_service.dart';
 import '../../../../core/services/end_points.dart';
 import '../entities/forget_password_entity.dart';
+import '../entities/google_login_entity.dart';
 import '../entities/log_in_entity.dart';
 import '../entities/register_entity.dart';
 import '../entities/resend_otp_entity.dart';
 import '../entities/reset_password_entity.dart';
 import '../entities/verification_entity.dart';
 import '../models/forget_password_model.dart';
+import '../models/google_login_model.dart';
 import '../models/log_in_model.dart';
 import '../models/register_model.dart';
 import '../models/resend_otp_model.dart';
@@ -333,6 +336,56 @@ class AuthRepoImpl implements AuthRepo {
       return left(ServerFailure.fromDioError(e));
     } catch (e) {
       log('❌ Unexpected Error (Logout): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
+
+
+  //////////////////////////////////////////////////////////////////
+
+  @override
+  Future<Either<Failure, GoogleLoginEntity>> loginWithGoogle({
+    required String idToken,
+  }) async {
+    try {
+      final response = await apiService.post(
+        endPoint: EndPoints.googleLogin,
+        data: {'idToken': idToken},
+      );
+
+      log("🔐 Google Login Response: $response");
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          // ✅ الـ data متداخل جوا data
+          final innerData = response['data']['data'];
+
+          final entity = GoogleLoginModel.fromJson(innerData);
+
+          await UserPreferences.saveLoginData(
+            id: entity.userId,
+            email: entity.email,
+            phoneNumber: '',
+            accessToken: entity.accessToken,
+            refreshToken: entity.refreshToken,
+            role: entity.roles,
+            isEmailConfirmed: true,
+          );
+
+          return right(entity);
+        } else {
+          return left(ServerFailure(
+            errorMessage: message ?? "Google login failed",
+          ));
+        }
+      }
+      return left(ServerFailure(errorMessage: "Unexpected response format"));
+    } on DioException catch (e) {
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }

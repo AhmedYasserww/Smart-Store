@@ -10,7 +10,7 @@ import '../../../../core/services/end_points.dart';
 import '../entities/recommendation_entity.dart';
 import '../models/product_model.dart';
 import '../models/product_query_params_model.dart';
-import '../models/recomendation_model.dart';
+import '../models/recommendation_model.dart';
 
 class ProductsRepoImpl implements ProductsRepo {
   final ApiService apiService;

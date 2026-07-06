@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_store/core/utils/app_dimensions.dart';
+import 'package:smart_store/features/auth/presentation/views/log_in_view.dart';
 import '../../../../../../core/utils/app_style.dart';
 import '../../../../../auth/presentation/views/widgets/log_in_widgets/custom_password_text_field.dart';
 import '../../../../../auth/presentation/views/widgets/register_widgets/confirm_password_field_widget.dart';
@@ -54,7 +55,10 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
               backgroundColor: Colors.green,
             ),
           );
-          Navigator.of(context).pop();
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            LogInView.routeName,
+                (route) => false,
+          );
         }
 
         if (state is ChangePasswordFailure) {
