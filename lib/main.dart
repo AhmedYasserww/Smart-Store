@@ -27,17 +27,18 @@ import 'features/wishlist/presentation/manager/get_wishlist_cubit/get_wishlist_c
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Stripe.publishableKey = 'pk_test_51S7Nn9C0d04QyKOsnNcP2OGobEYBC089K4wgAdwQsj6YLJNf6nvwetXLFhi5xXTkwZwScanNRp5eLuvrUcbtOu7000lp6Vkubg';
+  Stripe.publishableKey =
+      'pk_test_51S7Nn9C0d04QyKOsnNcP2OGobEYBC089K4wgAdwQsj6YLJNf6nvwetXLFhi5xXTkwZwScanNRp5eLuvrUcbtOu7000lp6Vkubg';
   await Stripe.instance.applySettings();
   setupServiceLocator();
   // final userData = await UserPreferences.getUserData();
   // print(userData['id']);
   runApp(
-    // DevicePreview(
-    //   enabled: !kReleaseMode,
-    //   builder: (context) => MyApp(), // Wrap your app
-    // ),
-     MyApp(),
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => MyApp(), // Wrap your app
+    ),
+    //  MyApp(),
   );
 }
 
@@ -48,42 +49,41 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
+      providers: [
         BlocProvider(
-        create: (_)=>GetWishlistCubit(getIt.get<WishlistRepoImpl>())..getWishlist(),),
+          create: (_) =>
+              GetWishlistCubit(getIt.get<WishlistRepoImpl>())..getWishlist(),
+        ),
 
-    BlocProvider(
-    create: (_) => GetCartCubit(getIt.get<CartRepoImpl>())..getCart(),),
-          BlocProvider(
-            create: (_) => VtoCubit(getIt<VtoRepoImpl>()),
-          )
-
-        ],
-
-
+        BlocProvider(
+          create: (_) => GetCartCubit(getIt.get<CartRepoImpl>())..getCart(),
+        ),
+        BlocProvider(create: (_) => VtoCubit(getIt<VtoRepoImpl>())),
+      ],
 
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        // useInheritedMediaQuery: true,
-        // locale: DevicePreview.locale(context),
-       // builder: DevicePreview.appBuilder,
+        useInheritedMediaQuery: true,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
           fontFamily: 'Inter',
         ),
         scrollBehavior: CustomScrollBehavior(),
-      onGenerateRoute: onGenerateRoutes,
-       //initialRoute: ConfirmOrderView.routeName,
-       // initialRoute: OnBoardingView.routeName,
-        //initialRoute: LogInView.routeName,
-       initialRoute: CustomNavigationBar.routeName,
-    //     home: Scaffold(
-    //       body: CustomLoadingIndicator(),
-    //     ),
+        onGenerateRoute: onGenerateRoutes,
+        //initialRoute: ConfirmOrderView.routeName,
+        // initialRoute: OnBoardingView.routeName,
+        initialRoute: LogInView.routeName,
+        //  initialRoute: CustomNavigationBar.routeName,
+        //     home: Scaffold(
+        //       body: CustomLoadingIndicator(),
+        //     ),
       ),
     );
   }
 }
+
 class CustomScrollBehavior extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {
