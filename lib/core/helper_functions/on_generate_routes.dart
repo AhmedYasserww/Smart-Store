@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_store/features/guest/presentation/views/guest_browsing_view.dart';
 import 'package:smart_store/features/more/saved_address/presentation/views/saved_address_view.dart';
 import 'package:smart_store/features/orders/presentation/views/order_details_view.dart';
 import 'package:smart_store/features/orders/presentation/views/order_status_view.dart';
@@ -41,7 +42,6 @@ import '../../features/vto/presentation/views/upload_photo_view.dart';
 import '../../features/vto/presentation/views/vto_result_view.dart';
 import '../../features/wishlist/presentation/views/wishlist_view.dart';
 import 'dart:typed_data';
-
 
 Route<dynamic> onGenerateRoutes(RouteSettings settings) {
   switch (settings.name) {
@@ -109,10 +109,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       final address = args['address'] as DeliveryAddressEntity;
       final fromProfile = args['fromProfile'] as bool? ?? false;
       return MaterialPageRoute(
-        builder: (_) => EditDeliveryAddressView(
-          address: address,
-          fromProfile: fromProfile,
-        ),
+        builder: (_) =>
+            EditDeliveryAddressView(address: address, fromProfile: fromProfile),
       );
     case DeliveryOptionView.routeName:
       final address = settings.arguments as DeliveryAddressEntity;
@@ -156,18 +154,14 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       );
     case OrderStatusView.routeName:
       final status = settings.arguments as String;
-      return MaterialPageRoute(
-        builder: (_) => OrderStatusView(status: status),
-      );
+      return MaterialPageRoute(builder: (_) => OrderStatusView(status: status));
     case WishlistView.routeName:
       return MaterialPageRoute(builder: (context) => const WishlistView());
-      case SavedAddressView.routeName:
+    case SavedAddressView.routeName:
       return MaterialPageRoute(builder: (context) => const SavedAddressView());
     case UploadPhotoView.routeName:
       final args = settings.arguments as VtoArguments;
-      return MaterialPageRoute(
-        builder: (_) => UploadPhotoView(args: args),
-      );
+      return MaterialPageRoute(builder: (_) => UploadPhotoView(args: args));
 
     case PreviewPhotoView.routeName:
       final map = settings.arguments as Map<String, dynamic>;
@@ -198,7 +192,9 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
           args: args['args'] as VtoArguments,
         ),
       );
-
+    case GuestBrowsingView.guestBrowsing:
+      return MaterialPageRoute(builder: (_) => const GuestBrowsingView());
+    // ...
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

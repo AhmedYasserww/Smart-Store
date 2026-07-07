@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart_store/features/guest/presentation/views/guest_browsing_view.dart';
 import '../../../../../../core/utils/app_images.dart';
 import '../../../../../bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../../manager/google_log_in_cubit/google_login_cubit.dart';
@@ -26,7 +27,7 @@ class LoginFooterSection extends StatelessWidget {
           );
           Navigator.of(context).pushNamedAndRemoveUntil(
             CustomNavigationBar.routeName,
-                (route) => false,
+            (route) => false,
           );
         }
         if (state is GoogleLoginFailure) {
@@ -45,7 +46,9 @@ class LoginFooterSection extends StatelessWidget {
 
           CustomSocialContainer(
             title: "Continue as Guest",
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(GuestBrowsingView.guestBrowsing);
+            },
           ),
           const SizedBox(height: 16),
 
@@ -57,20 +60,20 @@ class LoginFooterSection extends StatelessWidget {
                     : "Continue with Google",
                 icon: state is GoogleLoginLoading
                     ? const SizedBox(
-                  width: 18,
-                  height: 18,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                )
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
                     : SvgPicture.asset(
-                  AppImages.googleIcon,
-                  width: 18,
-                  height: 18,
-                ),
+                        AppImages.googleIcon,
+                        width: 18,
+                        height: 18,
+                      ),
                 onTap: state is GoogleLoginLoading
                     ? () {}
                     : () {
-                  context.read<GoogleLoginCubit>().loginWithGoogle();
-                },
+                        context.read<GoogleLoginCubit>().loginWithGoogle();
+                      },
               );
             },
           ),
