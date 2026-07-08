@@ -19,7 +19,11 @@ import 'features/delivery/presentation/views/confirm_order_view.dart';
 import 'features/delivery/presentation/views/edit_delivery_address_view.dart';
 import 'features/delivery/presentation/views/widgets/edit_delivery_address_view_widgets/edit_delivery_address_view_body.dart';
 import 'features/home/presentation/views/widgets/custom_vto_animation.dart';
+import 'features/more/profile/data/repos/profile_repo_imp.dart';
+import 'features/more/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
+import 'features/more/profile/presentation/manager/update_profile_cubit/update_profile_cubit.dart';
 import 'features/onboarding/presentation/views/onboarding_view.dart';
+import 'features/splash/presentations/views/splash_view.dart';
 import 'features/vto/data/repos/vto_repo_imp.dart';
 import 'features/vto/presentation/manager/vto_cubit.dart';
 import 'features/wishlist/data/repos/wishlist_repo_imp.dart';
@@ -59,6 +63,12 @@ class MyApp extends StatelessWidget {
           create: (_) => GetCartCubit(getIt.get<CartRepoImpl>())..getCart(),
         ),
         BlocProvider(create: (_) => VtoCubit(getIt<VtoRepoImpl>())),
+        BlocProvider(
+          create: (_) => UpdateProfileCubit(getIt.get<ProfileRepoImpl>()),
+        ),
+        BlocProvider(
+             create: (_) => getIt<GetProfileCubit>()..getProfile(),
+        )
       ],
 
       child: MaterialApp(
@@ -74,7 +84,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: onGenerateRoutes,
         //initialRoute: ConfirmOrderView.routeName,
         // initialRoute: OnBoardingView.routeName,
-        initialRoute: LogInView.routeName,
+        initialRoute:SplashView.routeName,
          // initialRoute: CustomNavigationBar.routeName,
         //     home: Scaffold(
         //       body: CustomLoadingIndicator(),

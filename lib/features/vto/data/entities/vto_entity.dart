@@ -1,4 +1,3 @@
-// features/vto/data/entities/vto_entity.dart
 import 'dart:typed_data';
 
 class VtoEntity {

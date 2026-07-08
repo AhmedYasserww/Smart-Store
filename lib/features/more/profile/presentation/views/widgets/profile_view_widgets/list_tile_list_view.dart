@@ -20,7 +20,7 @@ class ListTileListView extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
-        itemCount: 8,
+        itemCount: 5,
         itemBuilder: (context, index) {
           final items = [
             ListTileItem(
@@ -44,13 +44,13 @@ class ListTileListView extends StatelessWidget {
                 Navigator.of(context).pushNamed(OrdersView.routeName);
               },
             ),
-            ListTileItem(
-              icon: AppImages.returnsIcon,
-              title: "My Returns",
-              onTap: () {
-                // Handle My Returns tap
-              },
-            ),
+            // ListTileItem(
+            //   icon: AppImages.returnsIcon,
+            //   title: "My Returns",
+            //   onTap: () {
+            //     // Handle My Returns tap
+            //   },
+            // ),
             ListTileItem(
               icon: AppImages.wishlistIcon,
               title: "Wishlist",
@@ -58,13 +58,13 @@ class ListTileListView extends StatelessWidget {
 Navigator.of(context).pushNamed(WishlistView.routeName);
               },
             ),
-            ListTileItem(
-              icon: AppImages.notificationIcon,
-              title: "Notifications",
-              onTap: () {
-                // Handle Notifications tap
-              },
-            ),
+            // ListTileItem(
+            //   icon: AppImages.notificationIcon,
+            //   title: "Notifications",
+            //   onTap: () {
+            //     // Handle Notifications tap
+            //   },
+            // ),
             ListTileItem(
               icon: AppImages.savedAddressIcon,
               title: "Saved Addresses",
@@ -72,13 +72,13 @@ Navigator.of(context).pushNamed(WishlistView.routeName);
                Navigator.of(context).pushNamed(SavedAddressView.routeName);
               },
             ),
-            ListTileItem(
-              icon: AppImages.helpIcon,
-              title: "Helps & Support",
-              onTap: () {
-                // Handle Helps & Support tap
-              },
-            ),
+            // ListTileItem(
+            //   icon: AppImages.helpIcon,
+            //   title: "Helps & Support",
+            //   onTap: () {
+            //     // Handle Helps & Support tap
+            //   },
+            // ),
           ];
 
           final isFirst = index == 0;

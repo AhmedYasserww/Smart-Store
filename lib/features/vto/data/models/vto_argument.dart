@@ -1,4 +1,3 @@
-// features/vto/data/models/vto_arguments.dart
 class VtoArguments {
   final String garmentUrl;
   final String subCategory;

@@ -46,4 +46,5 @@ class EndPoints {
   static const String getTopSelling = 'Home/top-selling';
   static const String getWishListHighlights = 'Home/wishlist-highlights';
   static const String chatbot = 'Chatbot/ask';
+  static const String updateProfile = 'ClientProfile/client/update/profile';
 }

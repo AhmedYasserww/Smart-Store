@@ -240,7 +240,27 @@ class ApiService {
       throw Exception(_handleDioError(e));
     }
   }
-
+  /// PUT MULTIPART
+  Future<dynamic> putMultipart({
+    required String endPoint,
+    required FormData data,
+    String? token,
+  }) async {
+    try {
+      final resolvedToken = await _resolveToken(token);
+      final response = await dio.put(
+        endPoint,
+        data: data,
+        options: _buildOptions(
+          token: resolvedToken,
+          contentType: "multipart/form-data",
+        ),
+      );
+      return response.data;
+    } on DioException catch (e) {
+      return _handleDioError(e);
+    }
+  }
   /// DELETE REQUEST
   Future<dynamic> delete({
     required String endPoint,

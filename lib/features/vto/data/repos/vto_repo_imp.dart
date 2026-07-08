@@ -1,4 +1,3 @@
-// features/vto/data/repos/vto_repo_impl.dart
 import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
@@ -31,16 +30,16 @@ class VtoRepoImpl implements VtoRepo {
         'garmentPhotoType': 'model',
       });
 
-      // ✅ لازم نطلب الـ response كـ bytes مش json
+
       final dio = Dio();
       final token = await apiService.resolveToken(null);
       final response = await dio.post(
         '${apiService.baseUrl}${EndPoints.tryOn}',
         data: formData,
         options: Options(
-          responseType: ResponseType.bytes, // ✅ رجّعه
+          responseType: ResponseType.bytes,
           headers: {
-            'Accept': '*/*', // ✅ بدل application/json
+            'Accept': '*/*',
             if (token != null) 'Authorization': 'Bearer $token',
           },
         ),

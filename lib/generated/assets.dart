@@ -78,6 +78,7 @@ class Assets {
   static const String entitiesRegisterEntity = 'lib/features/auth/data/entities/register_entity.dart';
   static const String entitiesResendOtpEntity = 'lib/features/auth/data/entities/resend_otp_entity.dart';
   static const String entitiesResetPasswordEntity = 'lib/features/auth/data/entities/reset_password_entity.dart';
+  static const String entitiesUpdateProfileEntity = 'lib/features/more/profile/data/entities/update_profile_entity.dart';
   static const String entitiesVerificationEntity = 'lib/features/auth/data/entities/verification_entity.dart';
   static const String entitiesVtoEntity = 'lib/features/vto/data/entities/vto_entity.dart';
   static const String entitiesWishlistEntity = 'lib/features/wishlist/data/entities/wishlist_entity.dart';
@@ -217,6 +218,7 @@ class Assets {
   static const String imagesSearch = 'assets/images/search.svg';
   static const String imagesSellerIcon = 'assets/images/seller_icon.svg';
   static const String imagesShippedIcon = 'assets/images/shipped_icon.svg';
+  static const String imagesSmartStore = 'assets/images/Smart_Store.svg';
   static const String imagesSolidSuccessIcon = 'assets/images/solid_success_icon.svg';
   static const String imagesStatusIcon = 'assets/images/status_icon.svg';
   static const String imagesSuccessIcon = 'assets/images/success_icon.svg';
@@ -380,6 +382,8 @@ class Assets {
   static const String updateAddressCubitUpdateAddressState = 'lib/features/delivery/presentation/manager/update_address_cubit/update_address_state.dart';
   static const String updateCartItemCubitUpdateCartItemCubit = 'lib/features/cart/presentation/manager/update_cart_item_cubit/update_cart_item_cubit.dart';
   static const String updateCartItemCubitUpdateCartItemState = 'lib/features/cart/presentation/manager/update_cart_item_cubit/update_cart_item_state.dart';
+  static const String updateProfileCubitUpdateProfileCubit = 'lib/features/more/profile/presentation/manager/update_profile_cubit/update_profile_cubit.dart';
+  static const String updateProfileCubitUpdateProfileState = 'lib/features/more/profile/presentation/manager/update_profile_cubit/update_profile_state.dart';
   static const String utilsAppColor = 'lib/core/utils/app_color.dart';
   static const String utilsAppDimensions = 'lib/core/utils/app_dimensions.dart';
   static const String utilsAppImages = 'lib/core/utils/app_images.dart';
@@ -422,6 +426,7 @@ class Assets {
   static const String viewsReviewAndConfirmDeliveryView = 'lib/features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
   static const String viewsSavedAddressView = 'lib/features/more/saved_address/presentation/views/saved_address_view.dart';
   static const String viewsSearchView = 'lib/features/search/presentation/views/search_view.dart';
+  static const String viewsSplashView = 'lib/features/splash/presentations/views/splash_view.dart';
   static const String viewsUploadPhotoView = 'lib/features/vto/presentation/views/upload_photo_view.dart';
   static const String viewsVerificationView = 'lib/features/auth/presentation/views/verification_view.dart';
   static const String viewsVtoResultView = 'lib/features/vto/presentation/views/vto_result_view.dart';
@@ -548,6 +553,7 @@ class Assets {
   static const String widgetsSearchResult = 'lib/features/search/presentation/views/widgets/search_result.dart';
   static const String widgetsSearchViewBody = 'lib/features/search/presentation/views/widgets/search_view_body.dart';
   static const String widgetsSectionTitle = 'lib/features/home/presentation/views/widgets/section_title.dart';
+  static const String widgetsSplashViewBody = 'lib/features/splash/presentations/views/widgets/splash_view_body.dart';
   static const String widgetsTopSellingHomeList = 'lib/features/home/presentation/views/widgets/top_selling_home_list.dart';
   static const String widgetsUploadPhotoViewBody = 'lib/features/vto/presentation/views/widgets/upload_photo_view_body.dart';
   static const String widgetsVerificationCodeWidgetsVerificationFooterSection = 'lib/features/auth/presentation/views/widgets/verification_code_widgets/verification_footer_section.dart~';

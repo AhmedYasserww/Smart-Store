@@ -7,6 +7,7 @@ import 'package:smart_store/features/more/saved_address/presentation/views/saved
 import 'package:smart_store/features/orders/presentation/views/order_details_view.dart';
 import 'package:smart_store/features/orders/presentation/views/order_status_view.dart';
 import 'package:smart_store/features/orders/presentation/views/orders_view.dart';
+import 'package:smart_store/features/splash/presentations/views/splash_view.dart';
 import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/auth/presentation/views/log_in_view.dart';
 import '../../features/auth/presentation/views/register_view.dart';
@@ -198,6 +199,8 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
 
     case ChatbotView.routeName:
       return MaterialPageRoute(builder: (_) => const ChatbotView());
+      case SplashView.routeName:
+      return MaterialPageRoute(builder: (_) => const SplashView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

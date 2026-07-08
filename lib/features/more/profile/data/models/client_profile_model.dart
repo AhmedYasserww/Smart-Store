@@ -13,10 +13,12 @@ class ClientProfileModel extends ClientProfileEntity {
     required super.createdAt,
     required super.ordersCount,
     required super.ratingsCount,
+  required super.phoneNumber,
   });
 
   factory ClientProfileModel.fromJson(Map<String, dynamic> json) {
     return ClientProfileModel(
+
       id: json['id'] ?? '',
       fullName: json['fullName'] ?? '',
       age: json['age'] ?? 0,
@@ -27,6 +29,7 @@ class ClientProfileModel extends ClientProfileEntity {
       createdAt: json['createdAt'] ?? '',
       ordersCount: json['ordersCount'] ?? 0,
       ratingsCount: json['ratingsCount'] ?? 0,
+      phoneNumber: json['phoneNumber'] ?? '',
     );
   }
 }

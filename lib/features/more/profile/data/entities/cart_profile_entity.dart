@@ -10,6 +10,7 @@ class ClientProfileEntity {
   final String createdAt;
   final int ordersCount;
   final int ratingsCount;
+  final String phoneNumber;
 
   ClientProfileEntity({
     required this.id,
@@ -22,5 +23,6 @@ class ClientProfileEntity {
     required this.createdAt,
     required this.ordersCount,
     required this.ratingsCount,
+    required this.phoneNumber,
   });
 }

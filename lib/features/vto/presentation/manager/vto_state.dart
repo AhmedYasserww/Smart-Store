@@ -1,4 +1,3 @@
-// features/vto/presentation/manager/vto_cubit/vto_state.dart
 part of 'vto_cubit.dart';
 
 @immutable

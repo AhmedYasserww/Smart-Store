@@ -12,7 +12,7 @@ class VtoResultView extends StatelessWidget {
   const VtoResultView({
     super.key,
     required this.resultImageBytes,
-    required this.args, // ✅ ضيف الـ args
+    required this.args,
   });
   static const String routeName = 'vto_result_view';
   final Uint8List resultImageBytes;

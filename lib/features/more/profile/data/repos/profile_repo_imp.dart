@@ -1,6 +1,7 @@
 // features/profile/data/repos/profile_repo_impl.dart
 
 import 'dart:developer';
+import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import '../../../../../core/errors/failure.dart';
@@ -79,6 +80,53 @@ class ProfileRepoImpl implements ProfileRepo {
       return left(ServerFailure.fromDioError(e));
     } catch (e) {
       log('❌ Unexpected Error (ChangePassword): $e');
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
+  @override
+  Future<Either<Failure, String>> updateProfile({
+    required String fullName,
+    required String email,
+    required String phoneNumber,
+    File? profileImage,
+  }) async {
+    try {
+      final formData = FormData.fromMap({
+        'FullName': fullName,
+        'Email': email,
+        'PhoneNumber': phoneNumber,
+        if (profileImage != null)
+          'ProfileImage': await MultipartFile.fromFile(
+            profileImage.path,
+            filename: 'profile_image.jpg',
+          ),
+      });
+
+      final response = await apiService.putMultipart(
+        endPoint: EndPoints.updateProfile,
+        data: formData,
+      );
+
+      log("👤 UpdateProfile Response: $response");
+
+      if (response is Map<String, dynamic>) {
+        final statusCode = response['statusCode'];
+        final message = response['message'];
+
+        if (statusCode == 200 && response['succeeded'] == true) {
+          return right(message ?? "Profile updated successfully");
+        } else {
+          return left(ServerFailure(
+            errorMessage: message ?? "Failed to update profile",
+          ));
+        }
+      }
+      return left(ServerFailure(errorMessage: "Unexpected response format"));
+    } on DioException catch (e) {
+      log('❌ DioException (UpdateProfile): ${e.message}');
+      return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      log('❌ Unexpected Error (UpdateProfile): $e');
       return left(ServerFailure(errorMessage: e.toString()));
     }
   }

@@ -12,24 +12,21 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => getIt<GetProfileCubit>()..getProfile(),
-      child: Scaffold(
-        backgroundColor: const Color(0xffFBFBFB),
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          elevation: 0,
-          surfaceTintColor: Colors.transparent,
-          scrolledUnderElevation: 0,
-          title: Text('Profile', style: AppStyle.styleSemiBold20),
-          bottom: const PreferredSize(
-            preferredSize: Size.fromHeight(1),
-            child: Divider(height: 1, thickness: 1, color: AppColors.palletBorderColor),
-          ),
+    return Scaffold(
+      backgroundColor: const Color(0xffFBFBFB),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0,
+        surfaceTintColor: Colors.transparent,
+        scrolledUnderElevation: 0,
+        title: Text('Profile', style: AppStyle.styleSemiBold20),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(1),
+          child: Divider(height: 1, thickness: 1, color: AppColors.palletBorderColor),
         ),
-        body: const ProfileViewBody(),
       ),
+      body: const ProfileViewBody(),
     );
   }
 }
