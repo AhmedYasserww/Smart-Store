@@ -24,6 +24,7 @@ import '../../features/delivery/presentation/views/edit_delivery_address_view.da
 import '../../features/delivery/presentation/views/payment_method_view.dart';
 import '../../features/delivery/presentation/views/review_and_confirm_delivery_view.dart';
 import '../../features/delivery/presentation/views/widgets/confirm_order_widgets/confirm_order_route.dart';
+import '../../features/chat_bot/presentations/views/chat_bot_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/more/profile/presentation/views/change_password_view.dart';
 import '../../features/more/profile/presentation/views/edit_profile_view.dart';
@@ -176,7 +177,7 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       final map = settings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(
         builder: (context) => BlocProvider.value(
-          value: context.read<VtoCubit>(), // ✅ نفس الـ cubit
+          value: context.read<VtoCubit>(),
           child: GeneratingView(
             personImage: map['image'] as File,
             args: map['args'] as VtoArguments,
@@ -194,7 +195,9 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       );
     case GuestBrowsingView.guestBrowsing:
       return MaterialPageRoute(builder: (_) => const GuestBrowsingView());
-    // ...
+
+    case ChatbotView.routeName:
+      return MaterialPageRoute(builder: (_) => const ChatbotView());
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());

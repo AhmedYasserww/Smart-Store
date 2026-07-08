@@ -4,6 +4,7 @@ import 'package:smart_store/core/service_locator/service_locator.dart';
 import 'package:smart_store/features/home/presentation/manager/RecentlyHomeCubit/recently_home_cubit.dart';
 import 'package:smart_store/features/home/presentation/manager/highlights_home_cubit/highlights_home_cubit.dart';
 import 'package:smart_store/features/home/presentation/top_selling_cubit/top_selling_home_cubit.dart';
+import 'package:smart_store/features/chat_bot/presentations/views/widgets/chat_bot_fab.dart';
 import 'package:smart_store/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
@@ -25,7 +26,12 @@ class HomeView extends StatelessWidget {
           create: (_) => getIt<TopSellingHomeCubit>()..getTopSellingProducts(),
         ),
       ],
-      child: const SafeArea(child: Scaffold(body: HomeViewBody())),
+      child: const SafeArea(
+          child: Scaffold
+        (
+              body: HomeViewBody(),
+            floatingActionButton:  ChatbotFab(),
+          )),
     );
   }
 }

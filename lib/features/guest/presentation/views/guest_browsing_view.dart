@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_store/core/utils/app_images.dart';
 import 'package:smart_store/core/utils/app_style.dart';
 import 'package:smart_store/core/widgets/custom_button.dart';
+import 'package:smart_store/features/guest/presentation/views/widgets/custom_outline_button.dart';
 import 'package:smart_store/features/guest/presentation/views/widgets/fade_slide_animator.dart';
 import 'package:smart_store/features/guest/presentation/views/widgets/fade_slide_show_hide_animator.dart';
 import 'package:smart_store/features/guest/presentation/views/widgets/feature_row.dart';
@@ -94,31 +95,4 @@ class GuestBrowsingView extends StatelessWidget {
   }
 }
 
-class CustomOutlinedButton extends StatelessWidget {
-  final String text;
-  final VoidCallback onPressed;
 
-  const CustomOutlinedButton({
-    super.key,
-    required this.text,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        height: 40,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border.all(color: const Color(0xFFE5E5E5), width: 1),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        alignment: Alignment.center,
-        child: Text(text, style: AppStyle.styleRegular16),
-      ),
-    );
-  }
-}

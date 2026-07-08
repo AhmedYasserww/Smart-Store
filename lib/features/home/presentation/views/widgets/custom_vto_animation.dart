@@ -242,7 +242,7 @@ class _VtoHeroAnimationState extends State<VtoHeroAnimation>
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(16),
                         child: Image.asset(
-                          'assets/images/dress.png',
+                          'assets/images/t_shirt.jpeg',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -277,7 +277,7 @@ class _VtoHeroAnimationState extends State<VtoHeroAnimation>
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(14),
                         child: Image.asset(
-                          'assets/images/user.png',
+                          'assets/images/user2.jpeg',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -357,7 +357,7 @@ class _VtoHeroAnimationState extends State<VtoHeroAnimation>
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: Image.asset(
-                        'assets/images/result.png',
+                        'assets/images/result2.jpeg',
                         fit: BoxFit.cover,
                       ),
                     ),

@@ -94,5 +94,6 @@ static const String uploadImageIcon = "assets/images/upload_your_image_icon.svg"
 static const String correctTipsIcon = "assets/images/correct_tips_icon.svg";
 static const String perfectAiMagic = "assets/images/perfect_ai-magic_icon.svg";
 static const String generatedAiProgressIcon = "assets/images/generated_ai_progress_icon.svg";
+static const String personChatBot = "assets/images/person_chat_bot.svg";
 
 }

@@ -13,6 +13,8 @@ import '../../features/auth/presentation/manager/google_log_in_cubit/google_logi
 import '../../features/cart/data/repos/cart_repo_imp.dart';
 import '../../features/cart/presentation/manager/add_to_cart_cubit/add_to_cart_cubit.dart';
 import '../../features/cart/presentation/manager/get_cart_cubit/get_cart_cubit.dart';
+import '../../features/chat_bot/data/repos/chat_bot_repo_imp.dart';
+import '../../features/chat_bot/presentations/manager/chatbot_cubit.dart';
 import '../../features/delivery/data/repos/delivery_repo_imp.dart';
 import '../../features/delivery/presentation/manager/add_address_cubit/add_address_cubit.dart';
 import '../../features/delivery/presentation/manager/delete_address_cubit/delete_address_cubit.dart';
@@ -152,5 +154,12 @@ void setupServiceLocator() {
   );
   getIt.registerFactory<TopSellingHomeCubit>(
     () => TopSellingHomeCubit(homeRepo: getIt<HomeRepo>()),
+  );
+  getIt.registerSingleton<ChatbotRepoImpl>(
+    ChatbotRepoImpl(apiService: getIt<ApiService>()),
+  );
+
+  getIt.registerFactory<ChatbotCubit>(
+        () => ChatbotCubit(getIt<ChatbotRepoImpl>()),
   );
 }
