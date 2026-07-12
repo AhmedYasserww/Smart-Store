@@ -27,12 +27,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final size = MediaQuery.of(context).size;
 
-      // اللوجو يبدأ فى منتصف الشاشة
       setState(() {
         logoLeft = (size.width - 60) / 2;
       });
 
-      // ظهور اللوجو بـ Scale + Rotation
       Timer(const Duration(milliseconds: 600), () {
         if (!mounted) return;
 
@@ -42,7 +40,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         });
       });
 
-      // بعد شوية يظهر الاسم ويتحركوا مع بعض
       Timer(const Duration(milliseconds: 3200), () {
         if (!mounted) return;
 
