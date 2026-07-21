@@ -11,6 +11,7 @@ import 'package:smart_store/features/auth/presentation/views/widgets/register_wi
 import 'package:smart_store/features/auth/presentation/views/widgets/register_widgets/custom_phone_number_text_field.dart';
 import 'package:smart_store/features/more/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
 import 'package:smart_store/features/more/profile/presentation/manager/update_profile_cubit/update_profile_cubit.dart';
+import '../../../../../auth/presentation/views/log_in_view.dart';
 import 'edit_profile_view_widgets/custom_profile_action_button.dart';
 
 class EditProfileViewBody extends StatefulWidget {
@@ -70,38 +71,44 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   }
 
   void _onSave() {
-    if (_formKey.currentState!.validate()) {
-      final state = context.read<GetProfileCubit>().state;
-      final currentProfile =
-      state is GetProfileSuccess ? state.profile : null;
+    final name = _nameController.text.trim();
+    final email = _emailController.text.trim();
+    final phone = _phoneController.text.trim();
 
-      context.read<UpdateProfileCubit>().updateProfile(
-        fullName: _nameController.text.trim().isEmpty
-            ? (currentProfile?.fullName ?? '')
-            : _nameController.text.trim(),
-        email: _emailController.text.trim().isEmpty
-            ? (currentProfile?.email ?? '')
-            : _emailController.text.trim(),
-        phoneNumber: _phoneController.text.trim().isEmpty
-            ? (currentProfile?.phoneNumber ?? '')
-            : _phoneController.text.trim(),
-        profileImage: _profileImage,
-      );
-    }
+    final state = context.read<GetProfileCubit>().state;
+    final currentProfile = state is GetProfileSuccess ? state.profile : null;
+
+
+    context.read<UpdateProfileCubit>().updateProfile(
+      fullName: name.isNotEmpty && name != currentProfile?.fullName
+          ? name
+          : null,
+      email: email.isNotEmpty && email != currentProfile?.email
+          ? email
+          : null,
+      phoneNumber: phone.isNotEmpty && phone != currentProfile?.phoneNumber
+          ? phone
+          : null,
+      profileImage: _profileImage,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<UpdateProfileCubit, UpdateProfileState>(
       listener: (context, state) {
+
         if (state is UpdateProfileSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(state.message),
+              content: Text("Profile data updated successfully"),
               backgroundColor: Colors.green,
             ),
           );
-          Navigator.pop(context);
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            LogInView.routeName,
+                (route) => false,
+          );
         }
         if (state is UpdateProfileFailure) {
           ScaffoldMessenger.of(context).showSnackBar(

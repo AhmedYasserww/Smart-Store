@@ -6,6 +6,7 @@ import 'package:smart_store/features/auth/presentation/views/forget_password_vie
 import 'package:smart_store/features/bottom_nav_bar/presentation/views/bottom_nav_bar_view.dart';
 import '../../../../../../core/helper_functions/save_user_data.dart';
 import '../../../../../../core/widgets/custom_button.dart';
+import '../../../../../more/profile/presentation/manager/get_profile_cubit/get_profile_cubit.dart';
 import '../../../../data/entities/log_in_entity.dart';
 import '../../../manager/log_in_cubit/log_in_cubit.dart';
 import 'custom_email_text_field.dart';
@@ -42,6 +43,7 @@ class LoginForm extends HookWidget {
             role: data.role,
             isEmailConfirmed: data.isEmailConfirmed,
           );
+          context.read<GetProfileCubit>().getProfile();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               backgroundColor: Colors.green,

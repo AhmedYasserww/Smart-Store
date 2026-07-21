@@ -11,6 +11,7 @@ class GetProfileCubit extends Cubit<GetProfileState> {
   GetProfileCubit(this.profileRepo) : super(GetProfileInitial());
 
   Future<void> getProfile() async {
+    print("========== GET PROFILE CALLED ==========");
     emit(GetProfileLoading());
     final result = await profileRepo.getProfile();
     result.fold(

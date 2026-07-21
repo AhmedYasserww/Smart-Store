@@ -84,23 +84,27 @@ class ProfileRepoImpl implements ProfileRepo {
     }
   }
   @override
+  
   Future<Either<Failure, String>> updateProfile({
-    required String fullName,
-    required String email,
-    required String phoneNumber,
+    String? fullName,
+    String? email,
+    String? phoneNumber,
     File? profileImage,
   }) async {
     try {
-      final formData = FormData.fromMap({
-        'FullName': fullName,
-        'Email': email,
-        'PhoneNumber': phoneNumber,
-        if (profileImage != null)
-          'ProfileImage': await MultipartFile.fromFile(
-            profileImage.path,
-            filename: 'profile_image.jpg',
-          ),
-      });
+      final map = <String, dynamic>{};
+
+      if (fullName != null && fullName.isNotEmpty) map['FullName'] = fullName;
+      if (email != null && email.isNotEmpty) map['Email'] = email;
+      if (phoneNumber != null && phoneNumber.isNotEmpty) map['PhoneNumber'] = phoneNumber;
+      if (profileImage != null) {
+        map['ProfileImage'] = await MultipartFile.fromFile(
+          profileImage.path,
+          filename: 'profile_image.jpg',
+        );
+      }
+
+      final formData = FormData.fromMap(map);
 
       final response = await apiService.putMultipart(
         endPoint: EndPoints.updateProfile,

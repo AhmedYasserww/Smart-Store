@@ -11,9 +11,9 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   UpdateProfileCubit(this.profileRepo) : super(UpdateProfileInitial());
 
   Future<void> updateProfile({
-    required String fullName,
-    required String email,
-    required String phoneNumber,
+    String? fullName,
+    String? email,
+    String? phoneNumber,
     File? profileImage,
   }) async {
     emit(UpdateProfileLoading());

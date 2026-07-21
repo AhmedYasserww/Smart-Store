@@ -95,8 +95,17 @@ class ApiService {
         return "No internet connection.";
 
       case DioExceptionType.badResponse:
-        return e.response?.data["message"] ??
-            "Server error occurred.";
+        final data = e.response?.data;
+
+        if (data is Map<String, dynamic>) {
+          return data["message"]?.toString() ?? "Server error occurred.";
+        }
+
+        if (data is String) {
+          return data;
+        }
+
+        return "Server error occurred.";
 
       case DioExceptionType.cancel:
         return "Request was cancelled.";
@@ -128,9 +137,13 @@ class ApiService {
 
       return response.data;
 
-    } on DioException catch (e) {
-      throw Exception(_handleDioError(e));
     }
+   on DioException {
+  rethrow;
+}
+    // on DioException catch (e) {
+    //   throw Exception(_handleDioError(e));
+    // }
   }
 
   /// POST REQUEST

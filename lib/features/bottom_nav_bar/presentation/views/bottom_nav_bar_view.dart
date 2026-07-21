@@ -48,7 +48,6 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         child: Scaffold(
           backgroundColor: Colors.white,
 
-          // ✅ نفس بيهيفور القديم بدل Offstage
           body: screens[selectedIndex],
 
           bottomNavigationBar: AnimatedContainer(
@@ -190,109 +189,4 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
   }
 }
 
-// class MoreView extends StatelessWidget {
-//   const MoreView({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(
-//       body: Center(child: Text("More View")),
-//     );
-//   }
-// }
-/*
-Widget _navItem(int index, String title, String outlinedSvg, String filledSvg) {
-  bool selected = index == selectedIndex;
 
-  return Expanded(
-    child: InkWell(
-      onTap: () => setState(() => selectedIndex = index),
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-
-          TweenAnimationBuilder<double>(
-            tween: Tween(
-              begin: selected ? 0 : -16,
-              end: selected ? -16 : 0,
-            ),
-            duration: const Duration(milliseconds: 600),
-            curve: Curves.easeOutBack, // كيرف واضح
-            builder: (context, value, child) {
-              return Transform.translate(
-                offset: Offset(0, value),
-                child: child,
-              );
-            },
-
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 400),
-              transitionBuilder: (child, animation) {
-
-                return ScaleTransition(
-                  scale: animation,
-                  child: FadeTransition(
-                    opacity: animation,
-                    child: child,
-                  ),
-                );
-              },
-
-              child: selected
-                  ? Container(
-                key: const ValueKey("selected"),
-
-                padding: const EdgeInsets.all(6),
-
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-
-                child: CircleAvatar(
-                  radius: 18,
-                  backgroundColor: AppColors.primaryColor,
-
-                  child: SvgPicture.asset(
-                    filledSvg,
-                    width: 28,
-                    height: 28,
-                    color: Colors.white,
-                  ),
-                ),
-              )
-                  : SvgPicture.asset(
-                outlinedSvg,
-                key: const ValueKey("normal"),
-
-                width: 24,
-                height: 24,
-
-                color: Colors.grey.shade600,
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 6),
-
-          AnimatedDefaultTextStyle(
-            duration: const Duration(milliseconds: 400),
-            curve: Curves.easeOut,
-
-            style: TextStyle(
-              fontSize: selected ? 13 : 12,
-              fontWeight:
-              selected ? FontWeight.bold : FontWeight.normal,
-              color: AppColors.primaryTextColor,
-            ),
-
-            child: Text(title),
-          ),
-        ],
-      ),
-    ),
-  );
-}
- */

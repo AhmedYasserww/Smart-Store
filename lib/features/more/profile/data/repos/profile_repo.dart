@@ -14,9 +14,9 @@ abstract class ProfileRepo {
     required String confirmNewPassword,
   });
   Future<Either<Failure, String>> updateProfile({
-    required String fullName,
-    required String email,
-    required String phoneNumber,
+    String? fullName,
+    String? email,
+    String? phoneNumber,
     File? profileImage,
   });
 }
